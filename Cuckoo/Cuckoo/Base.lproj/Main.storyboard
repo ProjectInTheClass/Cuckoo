@@ -42,14 +42,17 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="bell.circle.fill" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="notification:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e2N-2Q-30m"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="GJK-xN-wlr">
                                                 <rect key="frame" x="0.0" y="51.666666666666671" width="373" height="34.333333333333329"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diZ-21-Rix">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="diZ-21-Rix">
                                                         <rect key="frame" x="0.0" y="0.0" width="85.333333333333329" height="34.333333333333336"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8c-ti-day">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8c-ti-day">
                                                                 <rect key="frame" x="0.0" y="0.0" width="111.33333333333333" height="34.333333333333336"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,11 +67,11 @@
                                                             <constraint firstItem="G8c-ti-day" firstAttribute="leading" secondItem="diZ-21-Rix" secondAttribute="leading" constant="10" id="tDY-Gr-UqZ"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7RS-bO-lbl">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7RS-bO-lbl">
                                                         <rect key="frame" x="285.33333333333331" y="0.0" width="87.666666666666686" height="34.333333333333336"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Id8-mp-kxS">
-                                                                <rect key="frame" x="19.999999999999996" y="0.0" width="47.666666666666657" height="34.333333333333336"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Id8-mp-kxS">
+                                                                <rect key="frame" x="20" y="0.0" width="47.666666666666657" height="34.333333333333336"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="ellipsis" catalog="system"/>

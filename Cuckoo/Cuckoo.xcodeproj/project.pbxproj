@@ -16,6 +16,7 @@
 		7A29B7602AD4249000DC8988 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A29B75F2AD4249000DC8988 /* CuckooTests.swift */; };
 		7A29B76A2AD4249000DC8988 /* CuckooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A29B7692AD4249000DC8988 /* CuckooUITests.swift */; };
 		7A29B76C2AD4249000DC8988 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A29B76B2AD4249000DC8988 /* CuckooUITestsLaunchTests.swift */; };
+		A802B2EB2ADE0BAA007E91BA /* AlarmScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A802B2EA2ADE0BAA007E91BA /* AlarmScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7A29B7652AD4249000DC8988 /* CuckooUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CuckooUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A29B7692AD4249000DC8988 /* CuckooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITests.swift; sourceTree = "<group>"; };
 		7A29B76B2AD4249000DC8988 /* CuckooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A802B2EA2ADE0BAA007E91BA /* AlarmScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				7A29B7512AD4248F00DC8988 /* Assets.xcassets */,
 				7A29B7532AD4248F00DC8988 /* LaunchScreen.storyboard */,
 				7A29B7562AD4248F00DC8988 /* Info.plist */,
+				A802B2EA2ADE0BAA007E91BA /* AlarmScreenView.swift */,
 			);
 			path = Cuckoo;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A29B74D2AD4248E00DC8988 /* ViewController.swift in Sources */,
+				A802B2EB2ADE0BAA007E91BA /* AlarmScreenView.swift in Sources */,
 				7A29B7492AD4248E00DC8988 /* AppDelegate.swift in Sources */,
 				7A29B74B2AD4248E00DC8988 /* SceneDelegate.swift in Sources */,
 			);
