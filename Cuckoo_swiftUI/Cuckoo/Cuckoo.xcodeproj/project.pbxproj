@@ -14,6 +14,10 @@
 		7A7F87942AEF559E00F14B11 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87932AEF559E00F14B11 /* CuckooTests.swift */; };
 		7A7F879E2AEF559E00F14B11 /* CuckooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */; };
 		7A7F87A02AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */; };
+		7A9BF7152AFD4FA500924412 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9BF7142AFD4FA500924412 /* ShareViewController.swift */; };
+		7A9BF7182AFD4FA500924412 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9BF7162AFD4FA500924412 /* MainInterface.storyboard */; };
+		7A9BF71C2AFD4FA500924412 /* shareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A9BF7122AFD4FA500924412 /* shareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A9BF7212AFD577D00924412 /* shareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9BF7202AFD577D00924412 /* shareView.swift */; };
 		A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */; };
 		A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC23902AFA014B00A2F87F /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -33,7 +37,28 @@
 			remoteGlobalIDString = 7A7F877E2AEF559C00F14B11;
 			remoteInfo = Cuckoo;
 		};
+		7A9BF71A2AFD4FA500924412 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A7F87772AEF559C00F14B11 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A9BF7112AFD4FA500924412;
+			remoteInfo = shareExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7A9BF7092AFD4DF900924412 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7A9BF71C2AFD4FA500924412 /* shareExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7A7F877F2AEF559C00F14B11 /* Cuckoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuckoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +71,11 @@
 		7A7F87992AEF559E00F14B11 /* CuckooUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CuckooUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITests.swift; sourceTree = "<group>"; };
 		7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7A9BF7122AFD4FA500924412 /* shareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = shareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9BF7142AFD4FA500924412 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		7A9BF7172AFD4FA500924412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7A9BF7192AFD4FA500924412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A9BF7202AFD577D00924412 /* shareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shareView.swift; sourceTree = "<group>"; };
 		A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		A8BC23902AFA014B00A2F87F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +102,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A9BF70F2AFD4FA500924412 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,6 +118,7 @@
 				7A7F87812AEF559C00F14B11 /* Cuckoo */,
 				7A7F87922AEF559E00F14B11 /* CuckooTests */,
 				7A7F879C2AEF559E00F14B11 /* CuckooUITests */,
+				7A9BF7132AFD4FA500924412 /* shareExtension */,
 				7A7F87802AEF559C00F14B11 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,6 +129,7 @@
 				7A7F877F2AEF559C00F14B11 /* Cuckoo.app */,
 				7A7F878F2AEF559E00F14B11 /* CuckooTests.xctest */,
 				7A7F87992AEF559E00F14B11 /* CuckooUITests.xctest */,
+				7A9BF7122AFD4FA500924412 /* shareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +142,7 @@
 				7A7F87842AEF559C00F14B11 /* ContentView.swift */,
 				A8BC23902AFA014B00A2F87F /* MainView.swift */,
 				7A7F87862AEF559D00F14B11 /* Assets.xcassets */,
+				7A9BF7202AFD577D00924412 /* shareView.swift */,
 				7A7F87882AEF559D00F14B11 /* Preview Content */,
 			);
 			path = Cuckoo;
@@ -133,6 +173,16 @@
 			path = CuckooUITests;
 			sourceTree = "<group>";
 		};
+		7A9BF7132AFD4FA500924412 /* shareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				7A9BF7142AFD4FA500924412 /* ShareViewController.swift */,
+				7A9BF7162AFD4FA500924412 /* MainInterface.storyboard */,
+				7A9BF7192AFD4FA500924412 /* Info.plist */,
+			);
+			path = shareExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,10 +193,12 @@
 				7A7F877B2AEF559C00F14B11 /* Sources */,
 				7A7F877C2AEF559C00F14B11 /* Frameworks */,
 				7A7F877D2AEF559C00F14B11 /* Resources */,
+				7A9BF7092AFD4DF900924412 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7A9BF71B2AFD4FA500924412 /* PBXTargetDependency */,
 			);
 			name = Cuckoo;
 			productName = Cuckoo;
@@ -189,6 +241,23 @@
 			productReference = 7A7F87992AEF559E00F14B11 /* CuckooUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		7A9BF7112AFD4FA500924412 /* shareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9BF71D2AFD4FA500924412 /* Build configuration list for PBXNativeTarget "shareExtension" */;
+			buildPhases = (
+				7A9BF70E2AFD4FA500924412 /* Sources */,
+				7A9BF70F2AFD4FA500924412 /* Frameworks */,
+				7A9BF7102AFD4FA500924412 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = shareExtension;
+			productName = shareExtension;
+			productReference = 7A9BF7122AFD4FA500924412 /* shareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -210,6 +279,9 @@
 						CreatedOnToolsVersion = 15.0.1;
 						TestTargetID = 7A7F877E2AEF559C00F14B11;
 					};
+					7A9BF7112AFD4FA500924412 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
 				};
 			};
 			buildConfigurationList = 7A7F877A2AEF559C00F14B11 /* Build configuration list for PBXProject "Cuckoo" */;
@@ -228,6 +300,7 @@
 				7A7F877E2AEF559C00F14B11 /* Cuckoo */,
 				7A7F878E2AEF559E00F14B11 /* CuckooTests */,
 				7A7F87982AEF559E00F14B11 /* CuckooUITests */,
+				7A9BF7112AFD4FA500924412 /* shareExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -256,6 +329,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A9BF7102AFD4FA500924412 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9BF7182AFD4FA500924412 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -267,6 +348,7 @@
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
+				7A9BF7212AFD577D00924412 /* shareView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +369,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7A9BF70E2AFD4FA500924412 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9BF7152AFD4FA500924412 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -300,7 +390,23 @@
 			target = 7A7F877E2AEF559C00F14B11 /* Cuckoo */;
 			targetProxy = 7A7F879A2AEF559E00F14B11 /* PBXContainerItemProxy */;
 		};
+		7A9BF71B2AFD4FA500924412 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A9BF7112AFD4FA500924412 /* shareExtension */;
+			targetProxy = 7A9BF71A2AFD4FA500924412 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A9BF7162AFD4FA500924412 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A9BF7172AFD4FA500924412 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7A7F87A12AEF559E00F14B11 /* Debug */ = {
@@ -425,6 +531,7 @@
 		7A7F87A42AEF559E00F14B11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -454,6 +561,7 @@
 		7A7F87A52AEF559E00F14B11 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -552,6 +660,54 @@
 			};
 			name = Release;
 		};
+		7A9BF71E2AFD4FA500924412 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = shareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = shareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo.shareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A9BF71F2AFD4FA500924412 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = shareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = shareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo.shareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -587,6 +743,15 @@
 			buildConfigurations = (
 				7A7F87AA2AEF559E00F14B11 /* Debug */,
 				7A7F87AB2AEF559E00F14B11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A9BF71D2AFD4FA500924412 /* Build configuration list for PBXNativeTarget "shareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9BF71E2AFD4FA500924412 /* Debug */,
+				7A9BF71F2AFD4FA500924412 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
