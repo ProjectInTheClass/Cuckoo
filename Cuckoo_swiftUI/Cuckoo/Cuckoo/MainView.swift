@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+//struct LeftPaddingView: View{
+//    var body: some View{
+//
+//    }
+//}
+
 struct MainView: View {
     
     //title 수정용
     @State private var text = "Initial Text"
     @State private var isEditing = false
+
     
     //메모들을 위한 item
     let items: [Item] = [
@@ -23,11 +30,18 @@ struct MainView: View {
         // Add more items as needed
     ]
     
+    
+    var itemCount: Int {
+        return items.count
+    }
+    
     var body: some View {
         VStack{
             HStack{
                 Spacer()
                 Image(systemName:"bell")
+                    .frame(width: 70)
+                
             }
             //Title
             HStack {
@@ -37,25 +51,35 @@ struct MainView: View {
                         .border(Color.gray, width: 1)
                         .padding()
                 } else {
-                    Text(text)
-                        .padding()
-                        .frame(width: 200)
+                    VStack(alignment: .leading,spacing: 0){
+                        Text("득수의 메모장")
+                            .font(.system(size: 30))
+                            .frame(width: 200)
+                        Text("\(itemCount)개의 메모")
+                            .frame(width:110)
+                            
+                    }
                 }
+                Spacer()
                 Button(action: {
                     isEditing.toggle()
                 }) {
                     Text(isEditing ? "Done" : "Edit")
                         .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
+                        
+                        .foregroundColor(.black)
                         .cornerRadius(5)
+                        .frame(width:100)
                 }
                 Menu {
                     Button("Cancel", action: {})
                 } label: {
                     Image(systemName: "ellipsis")
+                        .frame(width:100)
                 }
             }
+
+            
             Section{
                 List{
                     HStack{
@@ -68,14 +92,11 @@ struct MainView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(0..<10) { index in
-                        Button(action: {
-                            // Button action
-                        }) {
-                            Text("Button \(index + 1)")
-                                .padding()
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
+                        CardContent {
+                            HStack {
+                                TypeBubble("메모", "#b2b2b2")
+                                TypeBubble("기록", "#b2b2b2")
+                            }
                         }
                     }
                 }
