@@ -7,17 +7,16 @@
 
 import SwiftUI
 
-//struct LeftPaddingView: View{
-//    var body: some View{
-//
-//    }
-//}
+let paddingView = UIView(frame: CGRect(x:0,y:0, width:30,height:0))
 
 struct MainView: View {
     
     //title 수정용
     @State private var text = "Initial Text"
     @State private var isEditing = false
+    @State private var isPresentingMemoSheet = false
+    @State private var newMemoTitle = ""
+    @State private var newMemoDetails = ""
 
     
     //메모들을 위한 item
@@ -37,17 +36,15 @@ struct MainView: View {
     
     var body: some View {
         VStack{
-            HStack{
-                Spacer()
-                Image(systemName:"bell")
-                    .frame(width: 70)
-                
-            }
+            Image(systemName:"bell.circle.fill")
+                .resizable()
+                .frame(width: 45,height: 45)
+                .padding([.leading],300)
+                .padding([.top],14)
             //Title
-            HStack {
+            HStack(spacing:0) {
                 if isEditing {
                     TextField("Edit text", text: $text)
-                        .padding()
                         .border(Color.gray, width: 1)
                         .padding()
                 } else {
@@ -55,35 +52,44 @@ struct MainView: View {
                         Text("득수의 메모장")
                             .font(.system(size: 30))
                             .frame(width: 200)
+                            .padding([.leading],10)
                         Text("\(itemCount)개의 메모")
                             .frame(width:110)
+                            .padding([.leading],10)
                             
                     }
+                    
                 }
-                Spacer()
                 Button(action: {
                     isEditing.toggle()
                 }) {
-                    Text(isEditing ? "Done" : "Edit")
-                        .padding()
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .foregroundColor(.gray)
+                        .frame(width: 30, height: 30)
                         
-                        .foregroundColor(.black)
-                        .cornerRadius(5)
-                        .frame(width:100)
                 }
                 Menu {
                     Button("Cancel", action: {})
+                    Button("Add Memo", action: {
+                        isPresentingMemoSheet.toggle()
+                     })
                 } label: {
                     Image(systemName: "ellipsis")
                         .frame(width:100)
+                        .padding([.leading],65)
+                        .padding([.trailing],0)
                 }
+                .sheet(isPresented: $isPresentingMemoSheet) {
+                                // Memo entry view
+                                AddMemoView()
+                            }
             }
-
-            
             Section{
                 List{
                     HStack{
                         TextField("Search",text:$text)
+                        
                         Image(systemName: "magnifyingglass")
                     }
                 }

@@ -21,34 +21,33 @@ struct AddMemoHeaderView: View {
 
 struct AddMemoView: View {
     var body: some View {
-        VStack {
-            AddMemoHeaderView()
-                .frame(height: 60)
+        NavigationView{
+            VStack {
+                AddMemoHeaderView()
+                    .frame(height: 60)
+                    .frame(maxWidth: .infinity)
+                
+                VStack(alignment: .leading, spacing: 30) {
+                    MemoTypeFormView()
+                        .frame(maxWidth: .infinity)
+                    
+                    MemoContentFormView()
+                        .frame(maxWidth: .infinity)
+                    
+                    MemoAlarmIntervalFormView()
+                        .frame(maxWidth: .infinity)
+                    
+                    MemoPreView()
+                        .frame(maxWidth: .infinity)
+                }
+                .padding(.top, 30)
+                .padding(.horizontal, 30)
                 .frame(maxWidth: .infinity)
-            
-            
-            VStack(alignment: .leading, spacing: 30) {
-                MemoTypeFormView()
-                    .frame(maxWidth: .infinity)
-                
-                MemoContentFormView()
-                    .frame(maxWidth: .infinity)
-                
-                MemoAlarmIntervalFormView()
-                    .frame(maxWidth: .infinity)
-                
-                MemoPreView()
+                Spacer()
+                AddMemoFooterView()
+                    .frame(height: 60)
                     .frame(maxWidth: .infinity)
             }
-            .padding(.top, 30)
-            .padding(.horizontal, 30)
-            .frame(maxWidth: .infinity)
-            
-            Spacer()
-            
-            AddMemoFooterView()
-                .frame(height: 60)
-                .frame(maxWidth: .infinity)
         }
     }
 }
