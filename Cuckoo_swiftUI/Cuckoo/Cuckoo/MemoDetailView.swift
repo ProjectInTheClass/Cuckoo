@@ -11,8 +11,9 @@ struct MemoDetailView: View {
     let tags = ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5"]
     @State private var isEditing = false // 편집 모드 상태 관리
     @State private var editedTitle = "기존 제목"
-        @State private var editedComment = "기존 코멘트"
-
+    @State private var editedComment = "기존 코멘트"
+    @State private var showDeleteAlert = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -22,10 +23,10 @@ struct MemoDetailView: View {
                 }
                 .foregroundColor(.gray)
                 // 상세 텍스트 가운데로 오게 하려고 더미 아이콘추가
-                                Button(action: {}) {
-                                    Image(systemName: "chevron.left").opacity(0)
-                                }
-                                .foregroundColor(.gray)
+                Button(action: {}) {
+                    Image(systemName: "chevron.left").opacity(0)
+                }
+                .foregroundColor(.gray)
                 Spacer()
                 
                 Text("상세")
@@ -33,32 +34,44 @@ struct MemoDetailView: View {
                     .fontWeight(.semibold)
                 
                 Spacer()
-
+                
                 if !isEditing {
-                                    Button(action: {
-                                        isEditing = true
-                                    }) {
-                                        Image(systemName: "pencil")
-                                    }
-                                    .foregroundColor(.gray)
-                                }
-
-                                // 편집 모드가 활성화되면 확인 버튼 표시
-                                if isEditing {
-                                    Button(action: {
-                                        saveChanges()
-                                        isEditing = false
-                                    }) {
-                                        Text("확인")
-                                    }
-                                    .foregroundColor(.blue)
-                                }
+                    Button(action: {
+                        isEditing = true
+                    }) {
+                        Image(systemName: "pencil")
+                    }
+                    .foregroundColor(.gray)
+                }
+                
+                // 편집 모드가 활성화되면 확인 버튼 표시
+                if isEditing {
+                    Button(action: {
+                        saveChanges()
+                        isEditing = false
+                    }) {
+                        Text("확인")
+                    }
+                    .foregroundColor(.blue)
+                }
+                
                 
                 Button(action: {
+                    showDeleteAlert = true // 삭제 확인 대화 상자 표시
                 }) {
                     Image(systemName: "trash")
                 }
                 .foregroundColor(.gray)
+                .alert(isPresented: $showDeleteAlert) {
+                    Alert(
+                        title: Text("삭제 확인"),
+                        message: Text("이 메모를 삭제하시겠습니까?"),
+                        primaryButton: .destructive(Text("삭제")) {
+                            deleteMemo()
+                        },
+                        secondaryButton: .cancel()
+                    )
+                }
             }
             .padding(.horizontal, 30)
             
@@ -76,20 +89,20 @@ struct MemoDetailView: View {
                         .padding(.horizontal, 30)
                     
                     if isEditing {
-                                    // 편집 모드일 때 편집 가능한 필드 사용
-                                    TextField("제목", text: $editedTitle)
-                                        .font(.largeTitle)
-                                        .padding(.horizontal, 30)
-                                    TextField("코멘트", text: $editedComment)
-                                        .padding(.horizontal, 30)
-                                } else {
-                                    // 편집 모드가 아닐 때 일반 텍스트 표시
-                                    Text(editedTitle)
-                                        .font(.largeTitle)
-                                        .padding(.horizontal, 30)
-                                    Text(editedComment)
-                                        .padding(.horizontal, 30)
-                                }
+                        // 편집 모드일 때 편집 가능한 필드 사용
+                        TextField("제목", text: $editedTitle)
+                            .font(.largeTitle)
+                            .padding(.horizontal, 30)
+                        TextField("코멘트", text: $editedComment)
+                            .padding(.horizontal, 30)
+                    } else {
+                        // 편집 모드가 아닐 때 일반 텍스트 표시
+                        Text(editedTitle)
+                            .font(.largeTitle)
+                            .padding(.horizontal, 30)
+                        Text(editedComment)
+                            .padding(.horizontal, 30)
+                    }
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
@@ -99,7 +112,7 @@ struct MemoDetailView: View {
                         }
                         
                     }.padding(.horizontal, 30)
-
+                    
                     Text("메타데이터메타데이터메타데이터메타데이터메타데이터메타데이터메타데이터메타데이터메타데이터메타데이터메타데이터메타데이터메타데이터")
                         .font(.footnote)
                         .foregroundColor(.gray)
@@ -131,6 +144,11 @@ struct MemoDetailView_Previews: PreviewProvider {
     
 }
 func saveChanges() {
-        // TODO: 변경된 데이터를 데이터베이스에 저장하는 로직 구현
-        // 예: API 호출, 로컬 데이터베이스 업데이트 등
-    }
+    // TODO: 변경된 데이터를 데이터베이스에 저장하는 로직 구현
+    // 예: API 호출, 로컬 데이터베이스 업데이트 등
+}
+
+func deleteMemo() {
+    // TODO: 메모 삭제 로직 구현
+    // 예: 데이터베이스에서 삭제, 로컬 저장소에서 제거 등
+}
