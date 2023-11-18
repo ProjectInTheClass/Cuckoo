@@ -6,13 +6,33 @@
 	<dict>
 		<key>Cuckoo.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>shareExtension.xcscheme_^#shared#^_</key>
+		<key>ShareExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>7A7F877E2AEF559C00F14B11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A9BF7282B01BAF300924412</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A9BF73A2B02596900924412</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
