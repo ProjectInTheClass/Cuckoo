@@ -209,9 +209,6 @@
                                                                 <state key="normal" title="   알림 주기 설정   ">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
-                                                                <connections>
-                                                                    <action selector="alertPeriodButton:" destination="j1y-V4-xli" eventType="touchUpInside" id="GOI-oZ-Yf4"/>
-                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7D-rl-IsV">
                                                                 <rect key="frame" x="160" y="0.0" width="203" height="38"/>
@@ -270,6 +267,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="alertPeriodButton" destination="dyy-Yv-1HK" id="8au-5m-E3j"/>
                         <outlet property="commentTextView" destination="oWu-P3-lha" id="k6v-fc-194"/>
                         <outlet property="firstView" destination="M6g-Uz-qSz" id="dce-0A-Tl7"/>
                         <outlet property="linkURL" destination="B42-oa-7VR" id="67U-xq-JHO"/>

@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import Social
+import UniformTypeIdentifiers
 
 class tags{
     var tagtitle : String
@@ -15,6 +17,12 @@ class tags{
         self.tagtitle = tagtitle
         self.color = color
     }
+}
+
+// Add AlertPeriod struct definition
+struct AlertPeriod {
+    var title: String
+    var cornerRadius: CGFloat
 }
 
 // Custom UICollectionViewCell for tags
@@ -61,19 +69,17 @@ class TagCollectionViewCell: UICollectionViewCell {
 class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     var tagsData: [tags] = []
+    var alertPeriods: [AlertPeriod] = []
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tagCollectionView: UICollectionView!
     @IBOutlet weak var linkURL: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
-    
+    @IBOutlet weak var alertPeriodButton: UIButton!
     @IBOutlet weak var firstView: UIView!
     
     @IBAction func closeFirstView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func alertPeriodButton(_ sender: Any) {
     }
     
     @IBAction func registerAndMove(_ sender: Any) {
@@ -88,6 +94,27 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // this gets the incoming information from the share sheet
+        if let item = extensionContext?.inputItems.first as? NSExtensionItem {
+            if let attachments = item.attachments {
+                for attachment: NSItemProvider in attachments {
+                    if attachment.hasItemConformingToTypeIdentifier((UTType.url.identifier as CFString) as String) {
+                        attachment.loadItem(forTypeIdentifier: (UTType.url.identifier as CFString) as String) { url, error in
+                            guard error == nil, let url = url as? NSURL, let urlString = url.absoluteString else {
+                                print("Failed to load URL")
+                                return
+                            }
+
+                            // Update the linkURL text
+                            DispatchQueue.main.async {
+                                self.linkURL.text = urlString
+                            }
+                        }
+                    }
+                }
+            }
+        }
         
         // Configure your initial tags
         tagsData.append(tags(tagtitle: "태그 추가", color: "Red"))
@@ -128,12 +155,39 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         firstView.layer.cornerRadius = 30
         firstView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
         
+        
+        //design of alertPeriod
+        // Configure the alertPeriodButton as a pulldown menu
+        alertPeriodButton.layer.cornerRadius = 5
+        alertPeriodButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
+    
+        // Initialize the array with default values
+        alertPeriods = [
+            AlertPeriod(title: "7일 주기", cornerRadius: 15),
+            AlertPeriod(title: "14일 주기", cornerRadius: 30)
+        ]
+        
+        
         if let layout = tagCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
             layout.minimumInteritemSpacing = 8  // You can adjust the spacing between cells as needed
         }
+        
+//        // at the end of viewDidLoad
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name("close"), object: nil, queue: nil) { _ in
+//            self.close()
+//        }
+//
+//        // add this function to UIShareViewController
+//        func close() {
+//            extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
+//        }
     }
     
+//    func close() {
+//        NotificationCenter.default.post(name: NSNotification.Name("close"), object: nil)
+//    }
+//    
     func revealView(){
         firstView.isHidden = false
     }
@@ -152,12 +206,32 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
             return cell
     }
     
+    // 한 줄로 만드는데 영향을 주지는 못하고 있는 듯
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = tagCollectionView.frame.width
         let cellHeight: CGFloat = 50.0
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
+    //alertPeriodButton 동작 => alert
+    // Function to show the pulldown menu
+    @objc func showAlertPeriodMenu() {
+        let alertController = UIAlertController(title: "주기 선택",message: nil, preferredStyle: .actionSheet)
+        for alertPeriod in alertPeriods {
+            let action = UIAlertAction(title: alertPeriod.title,style: .default) { _ in
+                self.updateButtonCorner(radius:alertPeriod.cornerRadius)
+            }
+            alertController.addAction(action)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style:.cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    // Function to update the corner radius of the alertPeriodButton
+    func updateButtonCorner(radius: CGFloat) {
+        alertPeriodButton.layer.cornerRadius = radius
+        alertPeriodButton.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+    }
     
 }
 

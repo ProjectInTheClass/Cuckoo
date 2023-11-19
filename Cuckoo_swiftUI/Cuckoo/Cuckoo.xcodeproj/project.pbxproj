@@ -12,6 +12,7 @@
 		7A393A512B08E7B400B1E994 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A393A472B08E7B400B1E994 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A393A582B08EDD600B1E994 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393A572B08EDD600B1E994 /* SecondViewController.swift */; };
 		7A393A5A2B08F23500B1E994 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393A592B08F23500B1E994 /* FirstViewController.swift */; };
+		7A67B4622B0A4A15009AE56C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67B4612B0A4A15009AE56C /* SettingsView.swift */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87852AEF559C00F14B11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87842AEF559C00F14B11 /* ContentView.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
@@ -19,8 +20,6 @@
 		7A7F87942AEF559E00F14B11 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87932AEF559E00F14B11 /* CuckooTests.swift */; };
 		7A7F879E2AEF559E00F14B11 /* CuckooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */; };
 		7A7F87A02AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */; };
-		7A9BF7212AFD577D00924412 /* shareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9BF7202AFD577D00924412 /* shareView.swift */; };
-		7A9BF7242B01BAA500924412 /* storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9BF7232B01BAA500924412 /* storage.swift */; };
 		A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */; };
 		A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC23902AFA014B00A2F87F /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +69,7 @@
 		7A393A4E2B08E7B400B1E994 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A393A572B08EDD600B1E994 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondViewController.swift; path = shareExtension/SecondViewController.swift; sourceTree = SOURCE_ROOT; };
 		7A393A592B08F23500B1E994 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstViewController.swift; path = shareExtension/FirstViewController.swift; sourceTree = SOURCE_ROOT; };
+		7A67B4612B0A4A15009AE56C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7A7F877F2AEF559C00F14B11 /* Cuckoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuckoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F87822AEF559C00F14B11 /* CuckooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooApp.swift; sourceTree = "<group>"; };
 		7A7F87842AEF559C00F14B11 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,8 +80,6 @@
 		7A7F87992AEF559E00F14B11 /* CuckooUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CuckooUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITests.swift; sourceTree = "<group>"; };
 		7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7A9BF7202AFD577D00924412 /* shareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shareView.swift; sourceTree = "<group>"; };
-		7A9BF7232B01BAA500924412 /* storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storage.swift; sourceTree = "<group>"; };
 		A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		A8BC23902AFA014B00A2F87F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,9 +158,8 @@
 				7A7F87842AEF559C00F14B11 /* ContentView.swift */,
 				A8BC23902AFA014B00A2F87F /* MainView.swift */,
 				7A7F87862AEF559D00F14B11 /* Assets.xcassets */,
-				7A9BF7202AFD577D00924412 /* shareView.swift */,
-				7A9BF7232B01BAA500924412 /* storage.swift */,
 				7A7F87882AEF559D00F14B11 /* Preview Content */,
+				7A67B4612B0A4A15009AE56C /* SettingsView.swift */,
 			);
 			path = Cuckoo;
 			sourceTree = "<group>";
@@ -363,12 +360,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A67B4622B0A4A15009AE56C /* SettingsView.swift in Sources */,
 				7A7F87852AEF559C00F14B11 /* ContentView.swift in Sources */,
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
-				7A9BF7242B01BAA500924412 /* storage.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
-				7A9BF7212AFD577D00924412 /* shareView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
