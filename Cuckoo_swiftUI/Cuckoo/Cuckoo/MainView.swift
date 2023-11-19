@@ -115,6 +115,10 @@ struct MainView: View {
                 }
             }
         }
+        .tabItem {
+            Image(systemName: "1.circle")
+            Text("Main")
+        }
     }
 }
 

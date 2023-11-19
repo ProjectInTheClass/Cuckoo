@@ -49,6 +49,10 @@ struct AddMemoView: View {
                     .frame(maxWidth: .infinity)
             }
         }
+        .tabItem {
+            Image(systemName: "2.circle")
+            Text("ADDMEMO")
+        }
     }
 }
 
