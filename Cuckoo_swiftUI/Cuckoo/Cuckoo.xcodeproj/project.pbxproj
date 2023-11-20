@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A393A4A2B08E7B400B1E994 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393A492B08E7B400B1E994 /* ShareViewController.swift */; };
 		7A393A4D2B08E7B400B1E994 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A393A4B2B08E7B400B1E994 /* MainInterface.storyboard */; };
 		7A393A512B08E7B400B1E994 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A393A472B08E7B400B1E994 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7A393A582B08EDD600B1E994 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393A572B08EDD600B1E994 /* SecondViewController.swift */; };
 		7A393A5A2B08F23500B1E994 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393A592B08F23500B1E994 /* FirstViewController.swift */; };
 		7A67B4622B0A4A15009AE56C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67B4612B0A4A15009AE56C /* SettingsView.swift */; };
+		7A67B4692B0ADE61009AE56C /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67B4672B0ADE61009AE56C /* TagCollectionViewCell.swift */; };
+		7A67B46A2B0ADE61009AE56C /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A67B4682B0ADE61009AE56C /* TagCollectionViewCell.xib */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87852AEF559C00F14B11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87842AEF559C00F14B11 /* ContentView.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
@@ -64,12 +64,12 @@
 
 /* Begin PBXFileReference section */
 		7A393A472B08E7B400B1E994 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A393A492B08E7B400B1E994 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		7A393A4C2B08E7B400B1E994 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		7A393A4E2B08E7B400B1E994 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A393A572B08EDD600B1E994 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecondViewController.swift; path = shareExtension/SecondViewController.swift; sourceTree = SOURCE_ROOT; };
 		7A393A592B08F23500B1E994 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstViewController.swift; path = shareExtension/FirstViewController.swift; sourceTree = SOURCE_ROOT; };
 		7A67B4612B0A4A15009AE56C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7A67B4672B0ADE61009AE56C /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagCollectionViewCell.swift; path = shareExtension/TagCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		7A67B4682B0ADE61009AE56C /* TagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TagCollectionViewCell.xib; path = shareExtension/TagCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		7A7F877F2AEF559C00F14B11 /* Cuckoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuckoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F87822AEF559C00F14B11 /* CuckooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooApp.swift; sourceTree = "<group>"; };
 		7A7F87842AEF559C00F14B11 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,11 +119,11 @@
 		7A393A482B08E7B400B1E994 /* ShareExtension */ = {
 			isa = PBXGroup;
 			children = (
-				7A393A492B08E7B400B1E994 /* ShareViewController.swift */,
 				7A393A592B08F23500B1E994 /* FirstViewController.swift */,
-				7A393A572B08EDD600B1E994 /* SecondViewController.swift */,
 				7A393A4B2B08E7B400B1E994 /* MainInterface.storyboard */,
 				7A393A4E2B08E7B400B1E994 /* Info.plist */,
+				7A67B4672B0ADE61009AE56C /* TagCollectionViewCell.swift */,
+				7A67B4682B0ADE61009AE56C /* TagCollectionViewCell.xib */,
 			);
 			path = ShareExtension;
 			sourceTree = "<group>";
@@ -317,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A393A4D2B08E7B400B1E994 /* MainInterface.storyboard in Resources */,
+				7A67B46A2B0ADE61009AE56C /* TagCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,8 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A393A5A2B08F23500B1E994 /* FirstViewController.swift in Sources */,
-				7A393A582B08EDD600B1E994 /* SecondViewController.swift in Sources */,
-				7A393A4A2B08E7B400B1E994 /* ShareViewController.swift in Sources */,
+				7A67B4692B0ADE61009AE56C /* TagCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +606,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.hyu2023.Cuckoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -636,7 +636,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.hyu2023.Cuckoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

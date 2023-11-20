@@ -25,51 +25,11 @@ struct AlertPeriod {
     var cornerRadius: CGFloat
 }
 
-// Custom UICollectionViewCell for tags
-class TagCollectionViewCell: UICollectionViewCell {
-
-    let tagLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        // Set your desired font
-        label.font = UIFont.systemFont(ofSize: 14)
-        // Set your desired background color
-        label.backgroundColor = UIColor.lightGray
-        return label
-    }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupUI()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupUI()
-    }
-
-    private func setupUI() {
-        addSubview(tagLabel)
-        tagLabel.translatesAutoresizingMaskIntoConstraints = false
-        tagLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        tagLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        tagLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        tagLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-    }
-
-    func configure(with tag: tags) {
-            tagLabel.text = tag.tagtitle
-            // Use the tag's color
-            tagLabel.backgroundColor = UIColor(named: tag.color)
-            tagLabel.textColor = UIColor.black
-    }
-}
-
-
 class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    var tagsData: [tags] = []
+    var tagsData: [tags] = []//tags from db
     var alertPeriods: [AlertPeriod] = []
+    var tagNum : Int = 0
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tagCollectionView: UICollectionView!
