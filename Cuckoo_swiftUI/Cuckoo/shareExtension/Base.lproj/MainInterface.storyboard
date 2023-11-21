@@ -6,7 +6,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -92,16 +91,7 @@
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
-                                                        <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GAD-iN-yOV">
-                                                                <rect key="frame" x="0.0" y="-0.33333333333333331" width="128" height="45"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uOl-dP-CmO">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="45"/>
-                                                                    <autoresizingMask key="autoresizingMask"/>
-                                                                </collectionViewCellContentView>
-                                                            </collectionViewCell>
-                                                        </cells>
+                                                        <cells/>
                                                     </collectionView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -198,7 +188,7 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dyy-Yv-1HK">
                                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="38"/>
-                                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                 <menu key="menu" id="CKg-Ak-Lav">
                                                                     <children>
@@ -207,7 +197,7 @@
                                                                     </children>
                                                                 </menu>
                                                                 <state key="normal" title="   알림 주기 설정   ">
-                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7D-rl-IsV">
@@ -250,10 +240,11 @@
                                     <constraint firstAttribute="trailing" secondItem="PLd-JZ-KbF" secondAttribute="trailing" id="DxH-Or-xdF"/>
                                     <constraint firstAttribute="trailing" secondItem="xXe-ev-uOu" secondAttribute="trailing" constant="33" id="E0a-rW-0V9"/>
                                     <constraint firstAttribute="bottom" secondItem="PLd-JZ-KbF" secondAttribute="bottom" id="Hk8-QG-7xz"/>
-                                    <constraint firstItem="hc5-bG-Tre" firstAttribute="centerX" secondItem="M6g-Uz-qSz" secondAttribute="centerX" id="JyY-W2-3uA"/>
                                     <constraint firstItem="xXe-ev-uOu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hc5-bG-Tre" secondAttribute="trailing" constant="8" symbolic="YES" id="Oob-38-ZnX"/>
                                     <constraint firstItem="xXe-ev-uOu" firstAttribute="top" secondItem="M6g-Uz-qSz" secondAttribute="top" constant="21" id="R9T-R6-177"/>
+                                    <constraint firstAttribute="trailing" secondItem="hc5-bG-Tre" secondAttribute="trailing" constant="148.66666666666669" id="kvy-2A-07e"/>
                                     <constraint firstItem="hc5-bG-Tre" firstAttribute="top" secondItem="M6g-Uz-qSz" secondAttribute="top" constant="24" id="nSq-Z5-hvf"/>
+                                    <constraint firstItem="hc5-bG-Tre" firstAttribute="leading" secondItem="M6g-Uz-qSz" secondAttribute="leading" constant="148.66666666666669" id="qd7-ta-Na8"/>
                                 </constraints>
                             </view>
                         </subviews>

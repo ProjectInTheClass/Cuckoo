@@ -157,9 +157,9 @@
 				7A7F87822AEF559C00F14B11 /* CuckooApp.swift */,
 				7A7F87842AEF559C00F14B11 /* ContentView.swift */,
 				A8BC23902AFA014B00A2F87F /* MainView.swift */,
+				7A67B4612B0A4A15009AE56C /* SettingsView.swift */,
 				7A7F87862AEF559D00F14B11 /* Assets.xcassets */,
 				7A7F87882AEF559D00F14B11 /* Preview Content */,
-				7A67B4612B0A4A15009AE56C /* SettingsView.swift */,
 			);
 			path = Cuckoo;
 			sourceTree = "<group>";
@@ -432,7 +432,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo.ShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.hyu2023.Cuckoo.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -456,7 +456,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo.ShareExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.hyu2023.Cuckoo.ShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -593,6 +593,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cuckoo/Preview Content\"";
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -623,6 +624,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cuckoo/Preview Content\"";
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -654,7 +656,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.CuckooTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.hyu2023.CuckooTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -673,7 +675,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.CuckooTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.hyu2023.CuckooTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -690,7 +692,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.CuckooUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.hyu2023.CuckooUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -707,7 +709,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.CuckooUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.hyu2023.CuckooUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;

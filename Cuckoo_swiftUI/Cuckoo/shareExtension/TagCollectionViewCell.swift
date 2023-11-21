@@ -19,6 +19,7 @@ class TagCollectionViewCell: UICollectionViewCell {
         //음영 바꾸기
         if(self.tagSelected){
             //음영 생성
+            backgroundColor = UIColor(named: "Black")
         }
         else{
             //음영 해제
@@ -41,10 +42,13 @@ class TagCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupUI() {
-        
+//        tagCellButton.layer.cornerRadius = 8 // Adjust the corner radius as needed
+//        tagCellButton.clipsToBounds = true
     }
 
     func configure(with tag: tags) {
-        
+        tagCellButton.setTitle(tag.tagtitle, for: .normal)
+        tagCellButton.backgroundColor = UIColor(named: tag.color)
+        tagCellButton.setTitleColor(.white, for: .normal)
     }
 }

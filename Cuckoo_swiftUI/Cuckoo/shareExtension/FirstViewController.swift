@@ -30,6 +30,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     var tagsData: [tags] = []//tags from db
     var alertPeriods: [AlertPeriod] = []
     var tagNum : Int = 0
+    var workDone : Bool = false
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tagCollectionView: UICollectionView!
@@ -39,7 +40,9 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var firstView: UIView!
     
     @IBAction func closeFirstView(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.hideExtensionWithCompletionHandler(completion: { _ in
+                self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
+        })
     }
     
     @IBAction func registerAndMove(_ sender: Any) {
@@ -77,7 +80,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         
         // Configure your initial tags
-        tagsData.append(tags(tagtitle: "태그 추가", color: "Red"))
+        tagsData.append(tags(tagtitle: "태그 추가", color: "System Red Color"))
         tagsData.append(tags(tagtitle: "메모", color: "Orange"))
         tagsData.append(tags(tagtitle: "개발", color: "Yellow"))
         
@@ -100,7 +103,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
                 ])
         
         // Register the custom tag cell
-        tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: "TagCell")
+        tagCollectionView.register(UINib(nibName: "TagCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TagCell")
 
         // Set the delegate and dataSource
         tagCollectionView.delegate = self
@@ -147,10 +150,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
 //    func close() {
 //        NotificationCenter.default.post(name: NSNotification.Name("close"), object: nil)
 //    }
-//    
-    func revealView(){
-        firstView.isHidden = false
-    }
+//
     
     @objc func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return tagsData.count
@@ -162,7 +162,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
             // Configure the cell with tag data
             let tag = tagsData[indexPath.item]
             cell.configure(with: tag)
-
+        
             return cell
     }
     
@@ -193,13 +193,24 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         alertPeriodButton.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
     }
     
+    func hideExtensionWithCompletionHandler(completion: @escaping (Bool) -> Void) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.navigationController?.view.transform = CGAffineTransform(translationX: 0, y:self.navigationController!.view.frame.size.height)
+        }, completion: completion)
+    }
+    
+    func shutAllView(){
+        self.hideExtensionWithCompletionHandler(completion: { _ in
+                self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
+        })
+    }
 }
 
 class SecondViewController: UIViewController{
     
     @IBAction func closeAllView(_ sender: Any) {
         dismiss(animated: true){
-            self.previousViewController?.revealView()
+            self.previousViewController?.shutAllView()
         }
     }
     
@@ -214,7 +225,6 @@ class SecondViewController: UIViewController{
         secondView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
 
     }
-    
 
 }
 
