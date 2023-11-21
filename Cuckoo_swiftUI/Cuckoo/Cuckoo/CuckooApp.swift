@@ -11,7 +11,7 @@ import SwiftUI
 struct CuckooApp: App {
     var body: some Scene {
         WindowGroup {
-            MemoDetailView()
+            MainView()
         }
     }
 }
