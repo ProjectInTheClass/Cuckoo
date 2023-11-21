@@ -15,8 +15,10 @@ struct MainView: View {
     @State private var text = "Initial Text"
     @State private var isEditing = false
     @State private var isPresentingMemoSheet = false
+    @State private var isPresentingSettingSheet = false
     @State private var newMemoTitle = ""
     @State private var newMemoDetails = ""
+    
 
     
     //메모들을 위한 item
@@ -56,7 +58,7 @@ struct MainView: View {
                         Text("\(itemCount)개의 메모")
                             .frame(width:110)
                             .padding([.leading],10)
-                            
+                        
                     }
                     
                 }
@@ -67,23 +69,26 @@ struct MainView: View {
                         .resizable()
                         .foregroundColor(.gray)
                         .frame(width: 30, height: 30)
-                        
+                    
                 }
                 Menu {
-                    Button("Cancel", action: {})
-                    Button("Add Memo", action: {
-                        isPresentingMemoSheet.toggle()
-                     })
+                    Button("Settings", action: {
+                        self.isPresentingSettingSheet.toggle()
+                    })
                 } label: {
                     Image(systemName: "ellipsis")
                         .frame(width:100)
                         .padding([.leading],65)
                         .padding([.trailing],0)
                 }
+                .sheet(isPresented: $isPresentingSettingSheet) {
+                    // Memo entry view
+                    SettingsView()
+                }
                 .sheet(isPresented: $isPresentingMemoSheet) {
-                                // Memo entry view
-                                AddMemoView()
-                            }
+                    // Memo entry view
+                    AddMemoView()
+                }
             }
             Section{
                 List{
@@ -114,10 +119,29 @@ struct MainView: View {
                         .padding(.bottom, 16)
                 }
             }
-        }
-        .tabItem {
-            Image(systemName: "1.circle")
-            Text("Main")
+            .overlay(
+                // Floating Action Button
+                Button(action: {
+                    // Add your button action here
+                    isPresentingMemoSheet.toggle()
+                }) {
+                    Image(systemName: "pencil")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.white)
+                        .padding()
+                }
+                .background(Color.gray)
+                .clipShape(Circle())
+                .padding()
+                .padding(.bottom, 16) // Adjust the bottom padding as needed
+                , alignment: .bottomTrailing
+            )
+//            .tabItem {
+//                Image(systemName: "1.circle")
+//                Text("Main")
+//            }
         }
     }
 }
@@ -126,4 +150,9 @@ struct MainView_PreViews: PreviewProvider {
     static var previews: some View {
         MainView()
     }
+}
+
+
+#Preview {
+    MainView()
 }
