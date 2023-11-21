@@ -7,14 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00A73DFB2B0C31D700B59084 /* AddMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73DFA2B0C31D700B59084 /* AddMemoViewModel.swift */; };
+		00A73DFD2B0C323800B59084 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73DFC2B0C323800B59084 /* Memo.swift */; };
+		00A73DFF2B0C324200B59084 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73DFE2B0C324200B59084 /* User.swift */; };
+		00A73E012B0C35D300B59084 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E002B0C35D300B59084 /* Tag.swift */; };
+		00A73E032B0C35F300B59084 /* MainContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E022B0C35F300B59084 /* MainContainerViewModel.swift */; };
+		00A73E052B0C37A600B59084 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E042B0C37A600B59084 /* MemoRepository.swift */; };
+		00A73E072B0C37CB00B59084 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E062B0C37CB00B59084 /* UserRepository.swift */; };
+		00A73E092B0C37DC00B59084 /* TagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E082B0C37DC00B59084 /* TagRepository.swift */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
 		7A7F878A2AEF559D00F14B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87892AEF559D00F14B11 /* Preview Assets.xcassets */; };
 		7A7F87942AEF559E00F14B11 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87932AEF559E00F14B11 /* CuckooTests.swift */; };
 		7A7F879E2AEF559E00F14B11 /* CuckooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */; };
 		7A7F87A02AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */; };
-		7D8183E12B007BF100702C5D /* MemoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8183E02B007BF100702C5D /* MemoDetailView.swift */; };
-		7D8183E22B0C4C1400702C5D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87842AEF559C00F14B11 /* ContentView.swift */; };
+		A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */; };
+		A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F12B09F2B300EB4F54 /* NavView.swift */; };
+		A82451F42B09F4CE00EB4F54 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F32B09F4CE00EB4F54 /* SettingsView.swift */; };
 		A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */; };
 		A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC23902AFA014B00A2F87F /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -37,9 +46,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00A73DFA2B0C31D700B59084 /* AddMemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewModel.swift; sourceTree = "<group>"; };
+		00A73DFC2B0C323800B59084 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		00A73DFE2B0C324200B59084 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		00A73E002B0C35D300B59084 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		00A73E022B0C35F300B59084 /* MainContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewModel.swift; sourceTree = "<group>"; };
+		00A73E042B0C37A600B59084 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
+		00A73E062B0C37CB00B59084 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		00A73E082B0C37DC00B59084 /* TagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepository.swift; sourceTree = "<group>"; };
 		7A7F877F2AEF559C00F14B11 /* Cuckoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuckoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F87822AEF559C00F14B11 /* CuckooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooApp.swift; sourceTree = "<group>"; };
-		7A7F87842AEF559C00F14B11 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7A7F87862AEF559D00F14B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A7F87892AEF559D00F14B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7A7F878F2AEF559E00F14B11 /* CuckooTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CuckooTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,7 +63,9 @@
 		7A7F87992AEF559E00F14B11 /* CuckooUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CuckooUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITests.swift; sourceTree = "<group>"; };
 		7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7D8183E02B007BF100702C5D /* MemoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailView.swift; sourceTree = "<group>"; };
+		A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
+		A82451F12B09F2B300EB4F54 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
+		A82451F32B09F4CE00EB4F54 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		A8BC23902AFA014B00A2F87F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +95,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00A73DF72B0C301200B59084 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A8BC23902AFA014B00A2F87F /* MainView.swift */,
+				A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */,
+				A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */,
+				A82451F12B09F2B300EB4F54 /* NavView.swift */,
+				A82451F32B09F4CE00EB4F54 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		00A73DF82B0C318600B59084 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				00A73DFA2B0C31D700B59084 /* AddMemoViewModel.swift */,
+				00A73E022B0C35F300B59084 /* MainContainerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		00A73DF92B0C319800B59084 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				00A73DFC2B0C323800B59084 /* Memo.swift */,
+				00A73DFE2B0C324200B59084 /* User.swift */,
+				00A73E002B0C35D300B59084 /* Tag.swift */,
+				00A73E042B0C37A600B59084 /* MemoRepository.swift */,
+				00A73E062B0C37CB00B59084 /* UserRepository.swift */,
+				00A73E082B0C37DC00B59084 /* TagRepository.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7A7F87762AEF559C00F14B11 = {
 			isa = PBXGroup;
 			children = (
@@ -100,13 +152,12 @@
 		7A7F87812AEF559C00F14B11 /* Cuckoo */ = {
 			isa = PBXGroup;
 			children = (
-				A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */,
+				00A73DF92B0C319800B59084 /* Models */,
+				00A73DF82B0C318600B59084 /* ViewModels */,
+				00A73DF72B0C301200B59084 /* Views */,
 				7A7F87822AEF559C00F14B11 /* CuckooApp.swift */,
-				7A7F87842AEF559C00F14B11 /* ContentView.swift */,
-				A8BC23902AFA014B00A2F87F /* MainView.swift */,
 				7A7F87862AEF559D00F14B11 /* Assets.xcassets */,
 				7A7F87882AEF559D00F14B11 /* Preview Content */,
-				7D8183E02B007BF100702C5D /* MemoDetailView.swift */,
 			);
 			path = Cuckoo;
 			sourceTree = "<group>";
@@ -266,10 +317,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A73E072B0C37CB00B59084 /* UserRepository.swift in Sources */,
+				A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */,
+				00A73E052B0C37A600B59084 /* MemoRepository.swift in Sources */,
+				00A73DFD2B0C323800B59084 /* Memo.swift in Sources */,
+				00A73E012B0C35D300B59084 /* Tag.swift in Sources */,
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
-				7D8183E22B0C4C1400702C5D /* ContentView.swift in Sources */,
+				A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */,
+				A82451F42B09F4CE00EB4F54 /* SettingsView.swift in Sources */,
+				00A73DFB2B0C31D700B59084 /* AddMemoViewModel.swift in Sources */,
+				00A73E092B0C37DC00B59084 /* TagRepository.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
-				7D8183E12B007BF100702C5D /* MemoDetailView.swift in Sources */,
+				00A73DFF2B0C324200B59084 /* User.swift in Sources */,
+				00A73E032B0C35F300B59084 /* MainContainerViewModel.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
