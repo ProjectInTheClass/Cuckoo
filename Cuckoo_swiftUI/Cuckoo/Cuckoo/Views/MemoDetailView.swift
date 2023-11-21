@@ -57,40 +57,66 @@ struct MemoDetailView: View {
                             .cornerRadius(10)
                             .padding(.horizontal, 30)
                             .padding(.vertical, 30)
-                        if isEditing {
-                            TextField("제목", text: $editedTitle)
-                                .font(.largeTitle)
-                                .padding(.horizontal, 30)
-                        }
-                        else {
-                            // 편집 모드가 아닐 때 일반 텍스트 표시
-                            Text(editedTitle)
-                                .font(.largeTitle)
-                                .padding(.horizontal, 30)
-                        }
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 10) {
-                                ForEach(tags, id: \.self) { tag in
-                                    TagView(tag: tag)
-                                }
+                        VStack(alignment: .leading){
+                            if isEditing {
+                                TextField("제목", text: $editedTitle)
+                                    .font(.largeTitle)
+                                    .padding(.horizontal, 30)
                             }
-                            
-                        }.padding(.horizontal, 30)
-                        
-                        Text("www.examplelink.com")
-                            .foregroundColor(.gray)
-                            .padding(.horizontal, 30)
-                        
-                        if isEditing {
-                            // 편집 모드일 때 편집 가능한 필드 사용
-                            
-                            TextField("코멘트", text: $editedComment)
+                            else {
+                                // 편집 모드가 아닐 때 일반 텍스트 표시
+                                Text(editedTitle)
+                                    .font(.largeTitle)
+                                    .padding(.horizontal, 30)
+                            }
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 10) {
+                                    ForEach(tags, id: \.self) { tag in
+                                        TagView(tag: tag)
+                                    }
+                                }
+                                
+                            }.padding(.horizontal, 30)
+                        }
+                        VStack(alignment: .leading){
+                            Text("메모 링크")
                                 .padding(.horizontal, 30)
-                        } else {
-                            // 편집 모드가 아닐 때 일반 텍스트 표시
-                            Text(editedComment)
+                            Text("www.examplelink.com")
+                                .foregroundColor(.gray)
                                 .padding(.horizontal, 30)
                         }
+                        VStack(alignment: .leading) {
+                                    Text("메모 내용")
+                                        .padding(.horizontal, 30)
+
+                                    ZStack(alignment: .bottomTrailing) {
+                                        if isEditing {
+                                            TextField("코멘트", text: $editedComment)
+                                                .padding(10) // TextField 내부 패딩
+                                                .frame(height: 100) // 상자의 높이를 지정
+                                                .background(
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                        .stroke(Color.gray, lineWidth: 1) // 테두리 색상 및 두께
+                                                )
+                                                .padding(.horizontal, 30)
+                                        } else {
+                                            Text(editedComment)
+                                                .padding(10) // Text 내부 패딩
+                                                .frame(height: 100) // 상자의 높이를 지정
+                                                .background(
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                        .stroke(Color.gray, lineWidth: 1) // 테두리 색상 및 두께
+                                                )
+                                                .padding(.horizontal, 30)
+                                        }
+
+                                        // 글자 수 표시
+                                        Text("\(editedComment.count) / 250")
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                            .padding(30)
+                                    }
+                                }
                         
                         
                         
