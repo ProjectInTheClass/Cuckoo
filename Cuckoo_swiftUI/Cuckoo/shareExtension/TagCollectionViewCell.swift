@@ -9,26 +9,23 @@ import UIKit
 
 // Custom UICollectionViewCell for tags
 class TagCollectionViewCell: UICollectionViewCell {
-    
-    var tagSelected : Bool = false
 
     @IBOutlet weak var tagCellButton: UIButton!
     
     @IBAction func changeTag(_ sender: Any){
-        self.tagSelected = !(self.tagSelected)
-        //음영 바꾸기
-        if(self.tagSelected){
-            //음영 생성
-            backgroundColor = UIColor(named: "Black")
-        }
-        else{
-            //음영 해제
-        }
+        isSelected = !isSelected
+        // Customize appearance when selected
+                if isSelected {
+                    tagCellButton.layer.borderColor = UIColor.black.cgColor
+//                    tagCellButton.layer.borderWidth = 2.0
+                } else {
+                    tagCellButton.layer.borderColor = UIColor.clear.cgColor
+//                    tagCellButton.layer.borderWidth = 0.0
+                }
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
     }
     
     override func awakeFromNib() {
@@ -38,17 +35,14 @@ class TagCollectionViewCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupUI()
-    }
-
-    private func setupUI() {
-//        tagCellButton.layer.cornerRadius = 8 // Adjust the corner radius as needed
-//        tagCellButton.clipsToBounds = true
     }
 
     func configure(with tag: tags) {
+        tagCellButton.isSelected = false
+        tagCellButton.layer.cornerRadius = 8 // Adjust the corner radius as needed
+        tagCellButton.clipsToBounds = true
         tagCellButton.setTitle(tag.tagtitle, for: .normal)
-        tagCellButton.backgroundColor = UIColor(named: tag.color)
-        tagCellButton.setTitleColor(.white, for: .normal)
+        tagCellButton.backgroundColor = tag.color
+        tagCellButton.setTitleColor(.black, for: .normal)
     }
 }

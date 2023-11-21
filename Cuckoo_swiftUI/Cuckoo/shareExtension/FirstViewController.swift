@@ -12,8 +12,8 @@ import UniformTypeIdentifiers
 
 class tags{
     var tagtitle : String
-    var color : String
-    init(tagtitle: String, color: String) {
+    var color : UIColor
+    init(tagtitle: String, color: UIColor) {
         self.tagtitle = tagtitle
         self.color = color
     }
@@ -29,7 +29,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     var tagsData: [tags] = []//tags from db
     var alertPeriods: [AlertPeriod] = []
-    var tagNum : Int = 0
+    var tagSelectedNum : Int = 0
     var workDone : Bool = false
     
     @IBOutlet weak var titleTextField: UITextField!
@@ -80,26 +80,21 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         
         // Configure your initial tags
-        tagsData.append(tags(tagtitle: "태그 추가", color: "System Red Color"))
-        tagsData.append(tags(tagtitle: "메모", color: "Orange"))
-        tagsData.append(tags(tagtitle: "개발", color: "Yellow"))
+        tagsData.append(tags(tagtitle: "태그 추가", color: .red))
+        tagsData.append(tags(tagtitle: "메모", color: .blue))
+        tagsData.append(tags(tagtitle: "개발", color: .green))
         
         tagsData.append(contentsOf: [
-                    tags(tagtitle: "태그1", color: "Green"),
-                    tags(tagtitle: "태그2", color: "Green"),
-                    tags(tagtitle: "태그3", color: "Green"),
-                    tags(tagtitle: "태그4", color: "Green"),
-                    tags(tagtitle: "태그5", color: "Green"),
-                    tags(tagtitle: "태그6", color: "Green"),
-                    tags(tagtitle: "태그7", color: "Green"),
-                    tags(tagtitle: "태그8", color: "Green"),
-                    tags(tagtitle: "태그9", color: "Green"),
-                    tags(tagtitle: "태그10", color: "Green"),
-                    tags(tagtitle: "태그11", color: "Green"),
-                    tags(tagtitle: "태그12", color: "Green"),
-                    tags(tagtitle: "태그13", color: "Green"),
-                    tags(tagtitle: "태그14", color: "Green"),
-                    tags(tagtitle: "태그15", color: "Green")
+                    tags(tagtitle: "태그1", color: .green),
+                    tags(tagtitle: "태그2", color: .green),
+                    tags(tagtitle: "태그3", color: .green),
+                    tags(tagtitle: "태그4", color: .green),
+                    tags(tagtitle: "태그5", color: .green),
+                    tags(tagtitle: "태그6", color: .green),
+                    tags(tagtitle: "태그7", color: .green),
+                    tags(tagtitle: "태그8", color: .green),
+                    tags(tagtitle: "태그9", color: .green),
+                    tags(tagtitle: "태그10", color:.green)
                 ])
         
         // Register the custom tag cell
@@ -199,10 +194,15 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         }, completion: completion)
     }
     
+    //second viewcontroller에서 'X' 누르면 종료
     func shutAllView(){
         self.hideExtensionWithCompletionHandler(completion: { _ in
                 self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
         })
+    }
+    
+    func countSelectedTags(){
+        //tagCollectionView의 Cell들의 Button이 selected 됐는지 확인
     }
 }
 

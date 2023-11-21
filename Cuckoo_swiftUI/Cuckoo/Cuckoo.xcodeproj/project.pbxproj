@@ -10,9 +10,10 @@
 		7A393A4D2B08E7B400B1E994 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A393A4B2B08E7B400B1E994 /* MainInterface.storyboard */; };
 		7A393A512B08E7B400B1E994 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A393A472B08E7B400B1E994 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A393A5A2B08F23500B1E994 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393A592B08F23500B1E994 /* FirstViewController.swift */; };
-		7A67B4622B0A4A15009AE56C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67B4612B0A4A15009AE56C /* SettingsView.swift */; };
 		7A67B4692B0ADE61009AE56C /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67B4672B0ADE61009AE56C /* TagCollectionViewCell.swift */; };
 		7A67B46A2B0ADE61009AE56C /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A67B4682B0ADE61009AE56C /* TagCollectionViewCell.xib */; };
+		7A67B46C2B0C9833009AE56C /* SettingsView_myAlertPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67B46B2B0C9833009AE56C /* SettingsView_myAlertPeriod.swift */; };
+		7A67B46E2B0CAC1F009AE56C /* SettingsView_myInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A67B46D2B0CAC1F009AE56C /* SettingsView_myInfo.swift */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87852AEF559C00F14B11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87842AEF559C00F14B11 /* ContentView.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
@@ -67,9 +68,10 @@
 		7A393A4C2B08E7B400B1E994 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		7A393A4E2B08E7B400B1E994 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A393A592B08F23500B1E994 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstViewController.swift; path = shareExtension/FirstViewController.swift; sourceTree = SOURCE_ROOT; };
-		7A67B4612B0A4A15009AE56C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7A67B4672B0ADE61009AE56C /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagCollectionViewCell.swift; path = shareExtension/TagCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		7A67B4682B0ADE61009AE56C /* TagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TagCollectionViewCell.xib; path = shareExtension/TagCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		7A67B46B2B0C9833009AE56C /* SettingsView_myAlertPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView_myAlertPeriod.swift; sourceTree = "<group>"; };
+		7A67B46D2B0CAC1F009AE56C /* SettingsView_myInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView_myInfo.swift; sourceTree = "<group>"; };
 		7A7F877F2AEF559C00F14B11 /* Cuckoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuckoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F87822AEF559C00F14B11 /* CuckooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooApp.swift; sourceTree = "<group>"; };
 		7A7F87842AEF559C00F14B11 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,7 +159,8 @@
 				7A7F87822AEF559C00F14B11 /* CuckooApp.swift */,
 				7A7F87842AEF559C00F14B11 /* ContentView.swift */,
 				A8BC23902AFA014B00A2F87F /* MainView.swift */,
-				7A67B4612B0A4A15009AE56C /* SettingsView.swift */,
+				7A67B46B2B0C9833009AE56C /* SettingsView_myAlertPeriod.swift */,
+				7A67B46D2B0CAC1F009AE56C /* SettingsView_myInfo.swift */,
 				7A7F87862AEF559D00F14B11 /* Assets.xcassets */,
 				7A7F87882AEF559D00F14B11 /* Preview Content */,
 			);
@@ -360,9 +363,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A67B4622B0A4A15009AE56C /* SettingsView.swift in Sources */,
+				7A67B46C2B0C9833009AE56C /* SettingsView_myAlertPeriod.swift in Sources */,
 				7A7F87852AEF559C00F14B11 /* ContentView.swift in Sources */,
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
+				7A67B46E2B0CAC1F009AE56C /* SettingsView_myInfo.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
 			);
