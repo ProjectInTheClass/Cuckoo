@@ -13,10 +13,10 @@ struct SettingsView: View {
             Text("Settings View")
                 .font(.largeTitle)
         }
-        .tabItem {
-            Image(systemName: "3.circle")
-            Text("Settings")
-        }
+//        .tabItem {
+//            Image(systemName: "3.circle")
+//            Text("Settings")
+//        }
     }
 }
 
