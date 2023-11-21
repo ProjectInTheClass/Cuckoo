@@ -25,12 +25,16 @@ struct MainContainerView: View {
             }
             Spacer()
             Image(systemName: imageName)
+                .resizable()
                 .font(.title)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 140, height: 94)
         }
-        .padding(16)
         .background(Color.white)
         .cornerRadius(10)
-        .shadow(radius: 4)
+        .frame(width: 330, height:104)
+        Divider()
+            .background(Color.black)
     }
 }
 
