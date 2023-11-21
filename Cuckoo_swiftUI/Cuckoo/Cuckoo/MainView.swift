@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+let paddingView = UIView(frame: CGRect(x:0,y:0, width:30,height:0))
+
 struct MainView: View {
     
     //title 수정용
     @State private var text = "Initial Text"
     @State private var isEditing = false
+    @State private var isPresentingMemoSheet = false
+    @State private var newMemoTitle = ""
+    @State private var newMemoDetails = ""
+
     
     //메모들을 위한 item
     let items: [Item] = [
@@ -23,43 +29,67 @@ struct MainView: View {
         // Add more items as needed
     ]
     
+    
+    var itemCount: Int {
+        return items.count
+    }
+    
     var body: some View {
         VStack{
-            HStack{
-                Spacer()
-                Image(systemName:"bell")
-            }
+            Image(systemName:"bell.circle.fill")
+                .resizable()
+                .frame(width: 45,height: 45)
+                .padding([.leading],300)
+                .padding([.top],14)
             //Title
-            HStack {
+            HStack(spacing:0) {
                 if isEditing {
                     TextField("Edit text", text: $text)
-                        .padding()
                         .border(Color.gray, width: 1)
                         .padding()
                 } else {
-                    Text(text)
-                        .padding()
-                        .frame(width: 200)
+                    VStack(alignment: .leading,spacing: 0){
+                        Text("득수의 메모장")
+                            .font(.system(size: 30))
+                            .frame(width: 200)
+                            .padding([.leading],10)
+                        Text("\(itemCount)개의 메모")
+                            .frame(width:110)
+                            .padding([.leading],10)
+                            
+                    }
+                    
                 }
                 Button(action: {
                     isEditing.toggle()
                 }) {
-                    Text(isEditing ? "Done" : "Edit")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(5)
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .foregroundColor(.gray)
+                        .frame(width: 30, height: 30)
+                        
                 }
                 Menu {
                     Button("Cancel", action: {})
+                    Button("Add Memo", action: {
+                        isPresentingMemoSheet.toggle()
+                     })
                 } label: {
                     Image(systemName: "ellipsis")
+                        .frame(width:100)
+                        .padding([.leading],65)
+                        .padding([.trailing],0)
                 }
+                .sheet(isPresented: $isPresentingMemoSheet) {
+                                // Memo entry view
+                                AddMemoView()
+                            }
             }
             Section{
                 List{
                     HStack{
                         TextField("Search",text:$text)
+                        
                         Image(systemName: "magnifyingglass")
                     }
                 }
@@ -68,14 +98,11 @@ struct MainView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(0..<10) { index in
-                        Button(action: {
-                            // Button action
-                        }) {
-                            Text("Button \(index + 1)")
-                                .padding()
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
+                        CardContent {
+                            HStack {
+                                TypeBubble("메모", "#b2b2b2")
+                                TypeBubble("기록", "#b2b2b2")
+                            }
                         }
                     }
                 }
@@ -87,6 +114,10 @@ struct MainView: View {
                         .padding(.bottom, 16)
                 }
             }
+        }
+        .tabItem {
+            Image(systemName: "1.circle")
+            Text("Main")
         }
     }
 }
