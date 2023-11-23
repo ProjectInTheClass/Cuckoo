@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SettingView: View {
-    @State private var isShowingDetailView = false
     init() {
             // To remove all separators including the actual ones:
             UITableView.appearance().separatorStyle = .none
@@ -17,38 +16,35 @@ struct SettingView: View {
             UITableView.appearance().backgroundColor = .clear // Use .clear to make it transparent
         }
     var body: some View {
-        VStack(alignment: .leading) {
-            if !isShowingDetailView {
-                            SettingHeaderView()
-                                .frame(height: 60)
-                                .frame(maxWidth: .infinity)
-                                .padding(.horizontal,30)
-                        }
+        
                 NavigationView {
                     
                     
                         // The list now has a clear color and will show the ZStack's background color.
                         List {
-                            // User Profile Section
-                            Section {
-                                NavigationLink(destination: UserProfileView(),isActive: $isShowingDetailView) {
+                            Section(header: SettingHeaderView()
+                                .padding(.bottom, 30)
+                                .padding(.horizontal, 20)
+                            ) {
+                                NavigationLink(destination: UserProfileView()) {
                                     SettingCellView(iconName: "person.crop.circle.fill", title: "경민의 메모장", subtitle: "내 정보 수정하기")
                                 }
+                                
                                 .listRowBackground(Color.gray.opacity(0.2))
                             }
                             
                             // Other Settings Sections
                             Section {
-                                NavigationLink(destination: SettingTagView(),isActive: $isShowingDetailView) {
+                                NavigationLink(destination: SettingTagView()) {
                                     Text("태그 관리")
                                 }
                                 
                                 .listRowBackground(Color.gray.opacity(0.2))
-                                NavigationLink(destination: AlarmSettingsView(),isActive: $isShowingDetailView) {
+                                NavigationLink(destination: AlarmSettingsView()) {
                                     Text("알람 주기/프리셋 설정")
                                 }
                                 .listRowBackground(Color.gray.opacity(0.2))
-                                NavigationLink(destination: KitSettingsView(),isActive: $isShowingDetailView) {
+                                NavigationLink(destination: KitSettingsView()) {
                                     Text("기타 설정")
                                 }
                                 .listRowBackground(Color.gray.opacity(0.2))
@@ -56,11 +52,11 @@ struct SettingView: View {
                             
                             // Logout or Additional Option
                             Section {
-                                NavigationLink(destination: LicenseInformationView(),isActive: $isShowingDetailView) {
+                                NavigationLink(destination: LicenseInformationView()) {
                                     Text("개인정보 처리 방침")
                                 }
                                 .listRowBackground(Color.gray.opacity(0.2))
-                                NavigationLink(destination: LicenseInformationView(),isActive: $isShowingDetailView) {
+                                NavigationLink(destination: LicenseInformationView()) {
                                     Text("문의 하기")
                                 }
                                 .listRowBackground(Color.gray.opacity(0.2))
@@ -80,7 +76,7 @@ struct SettingView: View {
                     
                 
             
-            }
+            
     }
 }
 struct SettingCellView: View {
