@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
+    @State private var isShowingDetailView = false
     init() {
             // To remove all separators including the actual ones:
             UITableView.appearance().separatorStyle = .none
@@ -17,12 +18,12 @@ struct SettingView: View {
         }
     var body: some View {
         VStack(alignment: .leading) {
-            SettingHeaderView()
-                .frame(height: 60)
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal,30)
-            
-           
+            if !isShowingDetailView {
+                            SettingHeaderView()
+                                .frame(height: 60)
+                                .frame(maxWidth: .infinity)
+                                .padding(.horizontal,30)
+                        }
                 NavigationView {
                     
                     
@@ -30,7 +31,7 @@ struct SettingView: View {
                         List {
                             // User Profile Section
                             Section {
-                                NavigationLink(destination: UserProfileView()) {
+                                NavigationLink(destination: UserProfileView(),isActive: $isShowingDetailView) {
                                     SettingCellView(iconName: "person.crop.circle.fill", title: "경민의 메모장", subtitle: "내 정보 수정하기")
                                 }
                                 .listRowBackground(Color.gray.opacity(0.2))
@@ -38,16 +39,16 @@ struct SettingView: View {
                             
                             // Other Settings Sections
                             Section {
-                                NavigationLink(destination: TagManagementView()) {
+                                NavigationLink(destination: SettingTagView(),isActive: $isShowingDetailView) {
                                     Text("태그 관리")
                                 }
                                 
                                 .listRowBackground(Color.gray.opacity(0.2))
-                                NavigationLink(destination: AlarmSettingsView()) {
+                                NavigationLink(destination: AlarmSettingsView(),isActive: $isShowingDetailView) {
                                     Text("알람 주기/프리셋 설정")
                                 }
                                 .listRowBackground(Color.gray.opacity(0.2))
-                                NavigationLink(destination: KitSettingsView()) {
+                                NavigationLink(destination: KitSettingsView(),isActive: $isShowingDetailView) {
                                     Text("기타 설정")
                                 }
                                 .listRowBackground(Color.gray.opacity(0.2))
@@ -55,11 +56,11 @@ struct SettingView: View {
                             
                             // Logout or Additional Option
                             Section {
-                                NavigationLink(destination: LicenseInformationView()) {
+                                NavigationLink(destination: LicenseInformationView(),isActive: $isShowingDetailView) {
                                     Text("개인정보 처리 방침")
                                 }
                                 .listRowBackground(Color.gray.opacity(0.2))
-                                NavigationLink(destination: LicenseInformationView()) {
+                                NavigationLink(destination: LicenseInformationView(),isActive: $isShowingDetailView) {
                                     Text("문의 하기")
                                 }
                                 .listRowBackground(Color.gray.opacity(0.2))
@@ -73,8 +74,9 @@ struct SettingView: View {
                                     .scrollContentBackground(.hidden)
                         
                     }
-                    .navigationTitle("설정")
+                    
                     .navigationBarHidden(true)
+                    .navigationViewStyle(StackNavigationViewStyle())
                     
                 
             

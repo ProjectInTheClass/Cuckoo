@@ -22,6 +22,7 @@
 		7A7F879E2AEF559E00F14B11 /* CuckooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */; };
 		7A7F87A02AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */; };
 		7D9EC3DD2B0F506D007E314B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EC3DC2B0F506D007E314B /* SettingView.swift */; };
+		7D9EC3DF2B0F5EE3007E314B /* SettingTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EC3DE2B0F5EE3007E314B /* SettingTagView.swift */; };
 		7DB9F2532B0CFDE10026D20A /* MemoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DB9F2522B0CFDE10026D20A /* MemoDetailView.swift */; };
 		A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */; };
 		A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F12B09F2B300EB4F54 /* NavView.swift */; };
@@ -66,6 +67,7 @@
 		7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITests.swift; sourceTree = "<group>"; };
 		7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7D9EC3DC2B0F506D007E314B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		7D9EC3DE2B0F5EE3007E314B /* SettingTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTagView.swift; sourceTree = "<group>"; };
 		7DB9F2522B0CFDE10026D20A /* MemoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailView.swift; sourceTree = "<group>"; };
 		A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
 		A82451F12B09F2B300EB4F54 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				A82451F32B09F4CE00EB4F54 /* SettingsView.swift */,
 				7DB9F2522B0CFDE10026D20A /* MemoDetailView.swift */,
 				7D9EC3DC2B0F506D007E314B /* SettingView.swift */,
+				7D9EC3DE2B0F5EE3007E314B /* SettingTagView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00A73E072B0C37CB00B59084 /* UserRepository.swift in Sources */,
+				7D9EC3DF2B0F5EE3007E314B /* SettingTagView.swift in Sources */,
 				A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */,
 				00A73E052B0C37A600B59084 /* MemoRepository.swift in Sources */,
 				7DB9F2532B0CFDE10026D20A /* MemoDetailView.swift in Sources */,
