@@ -64,8 +64,8 @@ struct SettingsView_myAlertPeriod: View {
             
             HStack {
                 Spacer()
-                Text("알림 주기/프리셋 설정")
-                    .frame(width: 250, height: 29)
+                Text("알림 주기 / 프리셋 설정")
+                    .frame(width: 270, height: 30)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
@@ -259,9 +259,13 @@ struct SettingsView_myAlertPeriod: View {
             let newPreset = freesetButton(emoji: newEmoji, alarmName: newAlarmName, time: formattedTime)
             freesetButtonList.append(newPreset)
             
+            //시간 순대로 나오도록
+            freesetButtonList.sort { $0.time < $1.time }
+            
+            //다음을 위해 초기화
             newEmoji = ""
             newAlarmName = ""
-            selectedHourIndex = 0
+            selectedHourIndex = 12
             selectedMinuteIndex = 0
         }
     
