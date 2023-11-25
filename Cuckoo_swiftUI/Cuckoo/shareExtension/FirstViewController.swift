@@ -30,7 +30,6 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     var tagsData: [tags] = []//tags from db
     var alertPeriods: [AlertPeriod] = []
     var tagSelectedNum : Int = 0
-    var workDone : Bool = false
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var tagCollectionView: UICollectionView!
@@ -51,6 +50,10 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         firstView.isHidden = true
         nextVC.previousViewController = self
+        
+        /*TODO 제목 겹칠시 로직 확정해야 됨!! */
+        nextVC.titleString = commentTextView.text
+        
 //        nextVC.modalPresentationStyle = .fullScreen
         present(nextVC, animated: true, completion: nil)
     }
@@ -208,10 +211,17 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
 
 class SecondViewController: UIViewController{
     
+    var titleString : String?
+    
     @IBAction func closeAllView(_ sender: Any) {
         dismiss(animated: true){
             self.previousViewController?.shutAllView()
         }
+    }
+    
+    @IBAction func moveToApp(_ sender: Any) {
+        //db에 previousViewController의
+        
     }
     
     @IBOutlet weak var secondView: UIView!
