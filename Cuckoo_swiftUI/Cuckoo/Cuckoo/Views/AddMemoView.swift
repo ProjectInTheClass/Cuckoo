@@ -230,7 +230,7 @@ struct InfoBubble: View {
     var title: String
     var body: some View {
         Text(title)
-            .font(.system(size: 12, weight: .medium))
+            .font(.system(size: 14, weight: .medium))
             .foregroundColor(.white)
             .padding(6)
             .background(Color.red)
@@ -260,7 +260,7 @@ extension Color {
 struct TextFormView: View {
     // Properties
     @State private var text: String = ""
-    @State private var placeholder: String = "(예 : 오늘 아침에 일어나서 중랑천 2.5km 뛰었음)"
+    @State private var placeholder: String = "메모 디테일한 내용을 작성해주세요."
     private let maxCharacterLimit = 500
 
     var body: some View {
