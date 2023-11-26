@@ -17,6 +17,12 @@ struct SettingsView_myInfo: View {
     //프로필 유저 이름용
     @State private var username: String = "득수"
     
+    // Temporary variable to store the new username
+    @State private var editedUsername = ""
+    
+    // Flag to control the display of the username editing pop-up
+    @State private var isEditUsernamePopoverPresented = false
+    
     //보유 메모수, 누적 알림
     @State private var memoCount: String = "10" // Placeholder value
     @State private var notificationCount: String = "999+" // Placeholder value
@@ -32,47 +38,70 @@ struct SettingsView_myInfo: View {
     var body: some View {
         VStack(spacing: 10) {
             
+            HeaderView().padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             //최상단 뒤로가기 버튼, 제목
             HStack {
-                Button(action: {
-                    // Back button action
-                }) {
-                    Image(systemName: "arrow.left")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.blue)
-                        .padding(.leading, 10)
-                }
-               
+                
                 Text("내 정보 수정하기")
                     .frame(width: 200, height: 29)
                     .font(.title)
                     .fontWeight(.bold)
             }.padding(.vertical, 20)
-                    
+            
             //이미지 찾아올 수 있음.
             ImagePicker(isImagePickerPresented: $isImagePickerPresented, selectedImage: $selectedImage)
-                            .onDisappear {
-                                // Handle the selected image here
-                                // For example, you can save it to your model or upload it to a server
-                            }
-                            .sheet(isPresented: $isImagePickerPresented) {
-                                ImagePickerView(selectedImage: $selectedImage)
-                            }
-                            .padding(.vertical, 20)
+                .onDisappear {
+                    // Handle the selected image here
+                    // For example, you can save it to your model or upload it to a server
+                }
+                .sheet(isPresented: $isImagePickerPresented) {
+                    ImagePickerView(selectedImage: $selectedImage)
+                }
+                .padding(.vertical, 20)
             
             //프로필(이름) 편집
             HStack {
                 Text("\(username)의 메모장")
-                                    .font(.title2)
+                    .font(.title2)
+                    .fontWeight(.bold)
                 
                 Button(action: {
-                    // username DB에서 받아와 쓰기
+                    isEditUsernamePopoverPresented.toggle()
                 }) {
                     Image(systemName: "pencil")
                         .foregroundColor(.gray)
+                }.popover(isPresented: $isEditUsernamePopoverPresented, arrowEdge: .bottom) {
+                    // Popover content for editing the username
+                    VStack {
+                        Text("사용자 이름 수정")
+                        TextField("미입력시 수정 사항 없음.", text: $editedUsername)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .frame(maxWidth: 200)
+                            .padding()
+                            
+                        
+                        HStack {
+                            Button("취소") {
+                                // Handle cancellation
+                                isEditUsernamePopoverPresented.toggle()
+                            }
+                            .padding()
+                            
+//                            Spacer()
+                            
+                            Button("확인") {
+                                // Handle username confirmation
+                                if !editedUsername.isEmpty {
+                                    username = editedUsername
+                                }
+                                isEditUsernamePopoverPresented.toggle()
+                            }
+                            .padding()
+                        }
+                    }
+                    .padding()
                 }
-            }.padding(.bottom, 30)
+            }.padding()
             
             //수치 정보 창
             HStack(spacing: 30) {
@@ -86,18 +115,18 @@ struct SettingsView_myInfo: View {
                 .padding(.vertical, 20)
             
             TagSectionView(
-                            tags: $tags,
-                            deleteTagAlert: $deleteTagAlert,
-                            tagOptionsSheet: $tagOptionsSheet,
-                            onDeleteTag: { tag in
-                                // Handle tag deletion
-                                showDeleteTagAlert(tag: tag)
-                            },
-                            onModifyTag: { tag in
-                                // Handle tag modification
-                                showTagOptions(tag: tag)
-                            }
-                        ).padding(.horizontal, 20)
+                tags: $tags,
+                deleteTagAlert: $deleteTagAlert,
+                tagOptionsSheet: $tagOptionsSheet,
+                onDeleteTag: { tag in
+                    // Handle tag deletion
+                    showDeleteTagAlert(tag: tag)
+                },
+                onModifyTag: { tag in
+                    // Handle tag modification
+                    showTagOptions(tag: tag)
+                }
+            ).padding(.horizontal, 20)
             
             //디바이더
             Divider()
@@ -178,15 +207,15 @@ struct TagSectionView: View {
     @Binding var tagOptionsSheet: ActionSheet?
     var onDeleteTag: (String) -> Void
     var onModifyTag: (String) -> Void
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text("등록 태그")
                     .font(.headline)
-
+                
                 Spacer()
-
+                
                 // Add Tag Button
                 Button(action: {
                     // Handle adding a new tag
@@ -195,37 +224,37 @@ struct TagSectionView: View {
                         .foregroundColor(.blue)
                 }
             }
-
+            
             // List of Tags => 아직 데이터 형식을 몰라서 일단
-//            List {
-//                ForEach(tags, id: \.self) { tag in
-//                    HStack {
-//                        Text(tag)
-//
-//                        Spacer()
-//
-//                        // Buttons for each tag
-//                        Button(action: {
-//                            // Handle tag options (modify, delete)
-//                            onModifyTag(tag)
-//                        }) {
-//                            Image(systemName: "ellipsis.circle")
-//                                .foregroundColor(.gray)
-//                        }
-//                        .actionSheet(tagOptionsSheet ?? ActionSheet(title: Text(""), buttons: []))
-//
-//                        Button(action: {
-//                            // Handle tag deletion
-//                            onDeleteTag(tag)
-//                        }) {
-//                            Image(systemName: "trash.circle")
-//                                .foregroundColor(.red)
-//                        }
-//                        .alert(deleteTagAlert ?? Alert(title: Text(""), message: Text(""), dismissButton: .default(Text(""))))
-//                    }
-//                }
-//            }
-//            .listStyle(PlainListStyle())
+            //            List {
+            //                ForEach(tags, id: \.self) { tag in
+            //                    HStack {
+            //                        Text(tag)
+            //
+            //                        Spacer()
+            //
+            //                        // Buttons for each tag
+            //                        Button(action: {
+            //                            // Handle tag options (modify, delete)
+            //                            onModifyTag(tag)
+            //                        }) {
+            //                            Image(systemName: "ellipsis.circle")
+            //                                .foregroundColor(.gray)
+            //                        }
+            //                        .actionSheet(tagOptionsSheet ?? ActionSheet(title: Text(""), buttons: []))
+            //
+            //                        Button(action: {
+            //                            // Handle tag deletion
+            //                            onDeleteTag(tag)
+            //                        }) {
+            //                            Image(systemName: "trash.circle")
+            //                                .foregroundColor(.red)
+            //                        }
+            //                        .alert(deleteTagAlert ?? Alert(title: Text(""), message: Text(""), dismissButton: .default(Text(""))))
+            //                    }
+            //                }
+            //            }
+            //            .listStyle(PlainListStyle())
         }
         .padding(.horizontal, 20)
     }
@@ -233,43 +262,43 @@ struct TagSectionView: View {
 
 struct ImagePickerView: UIViewControllerRepresentable {
     @Binding var selectedImage: Image?
-
+    
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
         @Binding var selectedImage: Image?
-
+        
         init(selectedImage: Binding<Image?>) {
             _selectedImage = selectedImage
         }
-
+        
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
             if let uiImage = info[.originalImage] as? UIImage {
                 selectedImage = Image(uiImage: uiImage)
             }
             picker.dismiss(animated: true, completion: nil)
         }
-
+        
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             picker.dismiss(animated: true, completion: nil)
         }
     }
-
+    
     func makeCoordinator() -> Coordinator {
         return Coordinator(selectedImage: $selectedImage)
     }
-
+    
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = context.coordinator
         return imagePicker
     }
-
+    
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
 }
 
 struct ImagePicker: View {
     @Binding var isImagePickerPresented: Bool
     @Binding var selectedImage: Image?
-
+    
     var body: some View {
         Button(action: {
             isImagePickerPresented.toggle()
@@ -299,6 +328,6 @@ struct ImagePicker: View {
 struct SettingsView_myInfo_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView_myInfo()
-//        SettingsView_myAlertPeriod()
+        //        SettingsView_myAlertPeriod()
     }
 }
