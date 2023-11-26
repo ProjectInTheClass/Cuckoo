@@ -40,7 +40,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     @IBAction func closeFirstView(_ sender: Any) {
         self.hideExtensionWithCompletionHandler(completion: { _ in
-                self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
+            self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
         })
     }
     
@@ -54,7 +54,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         /*TODO 제목 겹칠시 로직 확정해야 됨!! */
         nextVC.titleString = commentTextView.text
         
-//        nextVC.modalPresentationStyle = .fullScreen
+        //        nextVC.modalPresentationStyle = .fullScreen
         present(nextVC, animated: true, completion: nil)
     }
     
@@ -71,7 +71,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
                                 print("Failed to load URL")
                                 return
                             }
-
+                            
                             // Update the linkURL text
                             DispatchQueue.main.async {
                                 self.linkURL.text = urlString
@@ -88,25 +88,25 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         tagsData.append(tags(tagtitle: "개발", color: .green))
         
         tagsData.append(contentsOf: [
-                    tags(tagtitle: "태그1", color: .green),
-                    tags(tagtitle: "태그2", color: .green),
-                    tags(tagtitle: "태그3", color: .green),
-                    tags(tagtitle: "태그4", color: .green),
-                    tags(tagtitle: "태그5", color: .green),
-                    tags(tagtitle: "태그6", color: .green),
-                    tags(tagtitle: "태그7", color: .green),
-                    tags(tagtitle: "태그8", color: .green),
-                    tags(tagtitle: "태그9", color: .green),
-                    tags(tagtitle: "태그10", color:.green)
-                ])
+            tags(tagtitle: "태그1", color: .green),
+            tags(tagtitle: "태그2", color: .green),
+            tags(tagtitle: "태그3", color: .green),
+            tags(tagtitle: "태그4", color: .green),
+            tags(tagtitle: "태그5", color: .green),
+            tags(tagtitle: "태그6", color: .green),
+            tags(tagtitle: "태그7", color: .green),
+            tags(tagtitle: "태그8", color: .green),
+            tags(tagtitle: "태그9", color: .green),
+            tags(tagtitle: "태그10", color:.green)
+        ])
         
         // Register the custom tag cell
         tagCollectionView.register(UINib(nibName: "TagCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TagCell")
-
+        
         // Set the delegate and dataSource
         tagCollectionView.delegate = self
         tagCollectionView.dataSource = self
-
+        
         //design of view
         firstView.clipsToBounds = true
         /*
@@ -121,7 +121,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         // Configure the alertPeriodButton as a pulldown menu
         alertPeriodButton.layer.cornerRadius = 5
         alertPeriodButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
-    
+        
         // Initialize the array with default values
         alertPeriods = [
             AlertPeriod(title: "7일 주기", cornerRadius: 15),
@@ -134,34 +134,34 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
             layout.minimumInteritemSpacing = 8  // You can adjust the spacing between cells as needed
         }
         
-//        // at the end of viewDidLoad
-//        NotificationCenter.default.addObserver(forName: NSNotification.Name("close"), object: nil, queue: nil) { _ in
-//            self.close()
-//        }
-//
-//        // add this function to UIShareViewController
-//        func close() {
-//            extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
-//        }
+        //        // at the end of viewDidLoad
+        //        NotificationCenter.default.addObserver(forName: NSNotification.Name("close"), object: nil, queue: nil) { _ in
+        //            self.close()
+        //        }
+        //
+        //        // add this function to UIShareViewController
+        //        func close() {
+        //            extensionContext?.completeRequest(returningItems: [], completionHandler: nil)
+        //        }
     }
     
-//    func close() {
-//        NotificationCenter.default.post(name: NSNotification.Name("close"), object: nil)
-//    }
-//
+    //    func close() {
+    //        NotificationCenter.default.post(name: NSNotification.Name("close"), object: nil)
+    //    }
+    //
     
     @objc func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return tagsData.count
+        return tagsData.count
     }
-
+    
     @objc(collectionView:cellForItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCell", for: indexPath) as! TagCollectionViewCell
-
-            // Configure the cell with tag data
-            let tag = tagsData[indexPath.item]
-            cell.configure(with: tag)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TagCell", for: indexPath) as! TagCollectionViewCell
         
-            return cell
+        // Configure the cell with tag data
+        let tag = tagsData[indexPath.item]
+        cell.configure(with: tag)
+        
+        return cell
     }
     
     // 한 줄로 만드는데 영향을 주지는 못하고 있는 듯
@@ -200,7 +200,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     //second viewcontroller에서 'X' 누르면 종료
     func shutAllView(){
         self.hideExtensionWithCompletionHandler(completion: { _ in
-                self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
+            self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
         })
     }
     
@@ -213,6 +213,11 @@ class SecondViewController: UIViewController{
     
     var titleString : String?
     
+    enum AppError: Error {
+        case targetAppNotInstalled
+        case unableToOpenTargetApp
+    }
+    
     @IBAction func closeAllView(_ sender: Any) {
         dismiss(animated: true){
             self.previousViewController?.shutAllView()
@@ -220,12 +225,34 @@ class SecondViewController: UIViewController{
     }
     
     @IBAction func moveToApp(_ sender: Any) {
-        //db에 previousViewController의
-        
+//        // Replace "target-app://" with the actual URI scheme of the target app
+        let targetAppURL = URL(string: "CuckooApp://")!
+////        let mySceneDelegate = self.view.window?.windowScene.delegate
+//        
+        // Verify if the target app is installed
+//        if UIApplication.shared.canOpenURL(targetAppURL) {
+//            // Open the target app
+//            UIApplication.shared.open(targetAppURL, options: [:]) { success in
+//                if !success {
+//                    // Handle the case where the target app could not be opened
+//                    let error = AppError.unableToOpenTargetApp
+//                    self.showAlert(for: error)
+//                }
+//            }
+//        } else {
+//            // Handle the case where the target app is not installed
+//            let error = AppError.targetAppNotInstalled
+//            showAlert(for: error)
+//        }
+//        self.previousViewController?.hideExtensionWithCompletionHandler(completion: { _ in
+//            self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
+//        })
     }
     
     @IBOutlet weak var secondView: UIView!
+    
     var previousViewController : FirstViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -233,8 +260,36 @@ class SecondViewController: UIViewController{
         secondView.clipsToBounds = true
         secondView.layer.cornerRadius = 30
         secondView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
-
+        
     }
+    
+    func showAlert(for error: Error) {
+        var errorMessage: String
 
+        switch error {
+        case AppError.targetAppNotInstalled:
+            errorMessage = "Target app is not installed."
+        case AppError.unableToOpenTargetApp:
+            errorMessage = "Unable to open the target app."
+        default:
+            errorMessage = "Unknown error"
+        }
+
+        let alertController = UIAlertController(
+            title: "Error",
+            message: errorMessage,
+            preferredStyle: .alert
+        )
+
+        alertController.addAction(UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: nil
+        ))
+
+        // Present the alert
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
