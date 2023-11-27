@@ -113,12 +113,17 @@
 <br>
 <br>
 
-# 📚 사용 라이브러리
+# 📚 사용 라이브러리/툴
 
-## 🙌 팀 구조
+## 🙌 Front-end
+![Swift](https://img.shields.io/badge/Swift-F05138?style=for-the-badge&logo=swift&logoColor=white)
+![Xcode](https://img.shields.io/badge/Xcode-147EFB?style=for-the-badge&logo=xcode&logoColor=white)
 
+## 🐚 Back-end
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![VSCode](https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
 
 <br>
 <br>
@@ -127,13 +132,13 @@
 # 📖 디렉토리 구조
 
 ```bash
-# 이하 내용은 예시입니다. 실제로 정해지면 수정할 계획입니다.
-
 |-- Cuckoo (Project)
     |
-    |-- Cuckoo
-    |       |-- App
-    |       |-- Server
+    |-- Cuckoo_swiftUI
+    |       ...
+    |       |-- Models
+    |       |-- ViewModels
+    |       |-- Views
     |
     |-- Sandbox
     |       |-- (추후 추가)
