@@ -21,11 +21,11 @@ struct MainView: View {
     
     //메모들을 위한 item
     let items: [Item] = [
-        Item(title: "Item 1", details: ["Detail 1", "Detail 2", "Detail 3"], imageName: "arrow.right.circle"),
-        Item(title: "Item 2", details: ["Detail A", "Detail B", "Detail C"], imageName: "arrow.right.circle"),
-        Item(title: "Item 3", details: ["Detail A", "Detail B", "Detail C"], imageName: "arrow.right.circle"),
-        Item(title: "Item 4", details: ["Detail A", "Detail B", "Detail C"], imageName: "arrow.right.circle"),
-        Item(title: "Item 5", details: ["Detail A", "Detail B", "Detail C"], imageName: "arrow.right.circle"),
+        Item(title: "Item 1", detail: "manywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanyword",tag: "Tech",timeAgo: "·2 days ago", memoURL: "www.naver.com", imageName: "arrow.right.circle"),
+        Item(title: "Item 2", detail: "Detail A", tag: "Tech",timeAgo: "·2 days ago", memoURL: "www.naver.com",imageName: "arrow.right.circle"),
+        Item(title: "Item 3", detail: "Detail A\nDetail B\nDetail C",tag: "Tech",timeAgo: "·2 days ago", memoURL: "www.naver.com", imageName: "arrow.right.circle"),
+        Item(title: "Item 4", detail: "Detail A\nDetail B\nDetail C",tag: "Tech",timeAgo: "·2 days ago", memoURL: "www.naver.com", imageName: "arrow.right.circle"),
+        Item(title: "Item 5", detail: "Detail A\nDetail B\nDetail C",tag: "Tech",timeAgo: "·2 days ago", memoURL: "www.naver.com", imageName: "arrow.right.circle"),
         // Add more items as needed
     ]
     
@@ -114,9 +114,10 @@ struct MainView: View {
                 }
             }
             Spacer()
+          
             ScrollView{
                 ForEach(items, id: \.title) { item in
-                    MainContainerView(title: item.title, details: item.details, imageName: item.imageName)
+                    MainContainerView(title: item.title, detail: item.detail, tag: item.tag, timeAgo: item.timeAgo, memoURL: item.memoURL, imageName: item.imageName)
                         .padding(.bottom, 16)
                 }
             }

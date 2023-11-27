@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */; };
+		00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */; };
+		00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D932B143E51004C3345 /* MemoDetailView.swift */; };
+		00652D962B143E70004C3345 /* SettingTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D952B143E70004C3345 /* SettingTagView.swift */; };
+		00652D982B143E84004C3345 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D972B143E84004C3345 /* SettingView.swift */; };
+		00652D9A2B143F73004C3345 /* SettingAlarmPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D992B143F73004C3345 /* SettingAlarmPeriodView.swift */; };
+		00652D9C2B143FAE004C3345 /* SettingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D9B2B143FAE004C3345 /* SettingProfileView.swift */; };
+		00652DA02B1440BC004C3345 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D9F2B1440BC004C3345 /* Dummy.swift */; };
+		00652DA22B1443AB004C3345 /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652DA12B1443AB004C3345 /* functions.swift */; };
 		00A73DFB2B0C31D700B59084 /* AddMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73DFA2B0C31D700B59084 /* AddMemoViewModel.swift */; };
 		00A73DFD2B0C323800B59084 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73DFC2B0C323800B59084 /* Memo.swift */; };
 		00A73DFF2B0C324200B59084 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73DFE2B0C324200B59084 /* User.swift */; };
@@ -15,6 +24,8 @@
 		00A73E052B0C37A600B59084 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E042B0C37A600B59084 /* MemoRepository.swift */; };
 		00A73E072B0C37CB00B59084 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E062B0C37CB00B59084 /* UserRepository.swift */; };
 		00A73E092B0C37DC00B59084 /* TagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E082B0C37DC00B59084 /* TagRepository.swift */; };
+		00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E0A2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift */; };
+		00A73E0F2B0C583900B59084 /* ViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E0E2B0C583900B59084 /* ViewComponents.swift */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
 		7A7F878A2AEF559D00F14B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87892AEF559D00F14B11 /* Preview Assets.xcassets */; };
@@ -23,7 +34,6 @@
 		7A7F87A02AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */; };
 		A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */; };
 		A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F12B09F2B300EB4F54 /* NavView.swift */; };
-		A82451F42B09F4CE00EB4F54 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F32B09F4CE00EB4F54 /* SettingsView.swift */; };
 		A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */; };
 		A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC23902AFA014B00A2F87F /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +56,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2_Init_AddAlarmPresetView.swift; sourceTree = "<group>"; };
+		00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3_Init_AddInfoConfirmView.swift; sourceTree = "<group>"; };
+		00652D932B143E51004C3345 /* MemoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailView.swift; sourceTree = "<group>"; };
+		00652D952B143E70004C3345 /* SettingTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTagView.swift; sourceTree = "<group>"; };
+		00652D972B143E84004C3345 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		00652D992B143F73004C3345 /* SettingAlarmPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmPeriodView.swift; sourceTree = "<group>"; };
+		00652D9B2B143FAE004C3345 /* SettingProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProfileView.swift; sourceTree = "<group>"; };
+		00652D9F2B1440BC004C3345 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
+		00652DA12B1443AB004C3345 /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functions.swift; sourceTree = "<group>"; };
 		00A73DFA2B0C31D700B59084 /* AddMemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewModel.swift; sourceTree = "<group>"; };
 		00A73DFC2B0C323800B59084 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		00A73DFE2B0C324200B59084 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -54,6 +73,8 @@
 		00A73E042B0C37A600B59084 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
 		00A73E062B0C37CB00B59084 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		00A73E082B0C37DC00B59084 /* TagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepository.swift; sourceTree = "<group>"; };
+		00A73E0A2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1_Init_AddNameAndTagView.swift; sourceTree = "<group>"; };
+		00A73E0E2B0C583900B59084 /* ViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponents.swift; sourceTree = "<group>"; };
 		7A7F877F2AEF559C00F14B11 /* Cuckoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuckoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F87822AEF559C00F14B11 /* CuckooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooApp.swift; sourceTree = "<group>"; };
 		7A7F87862AEF559D00F14B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,7 +86,6 @@
 		7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
 		A82451F12B09F2B300EB4F54 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
-		A82451F32B09F4CE00EB4F54 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		A8BC23902AFA014B00A2F87F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,14 +115,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00652D9D2B144047004C3345 /* SettingViews */ = {
+			isa = PBXGroup;
+			children = (
+				00652D952B143E70004C3345 /* SettingTagView.swift */,
+				00652D972B143E84004C3345 /* SettingView.swift */,
+				00652D992B143F73004C3345 /* SettingAlarmPeriodView.swift */,
+				00652D9B2B143FAE004C3345 /* SettingProfileView.swift */,
+			);
+			path = SettingViews;
+			sourceTree = "<group>";
+		};
+		00652D9E2B14408B004C3345 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				00A73E0E2B0C583900B59084 /* ViewComponents.swift */,
+				00652D9F2B1440BC004C3345 /* Dummy.swift */,
+				00652DA12B1443AB004C3345 /* functions.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		00A73DF72B0C301200B59084 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				00652D9E2B14408B004C3345 /* Components */,
+				00652D9D2B144047004C3345 /* SettingViews */,
+				00A73E0C2B0C519100B59084 /* InitialViews */,
 				A8BC23902AFA014B00A2F87F /* MainView.swift */,
 				A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */,
 				A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */,
 				A82451F12B09F2B300EB4F54 /* NavView.swift */,
-				A82451F32B09F4CE00EB4F54 /* SettingsView.swift */,
+				00652D932B143E51004C3345 /* MemoDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,6 +171,16 @@
 				00A73E082B0C37DC00B59084 /* TagRepository.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		00A73E0C2B0C519100B59084 /* InitialViews */ = {
+			isa = PBXGroup;
+			children = (
+				00A73E0A2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift */,
+				00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */,
+				00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */,
+			);
+			path = InitialViews;
 			sourceTree = "<group>";
 		};
 		7A7F87762AEF559C00F14B11 = {
@@ -317,19 +371,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00A73E0F2B0C583900B59084 /* ViewComponents.swift in Sources */,
+				00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */,
 				00A73E072B0C37CB00B59084 /* UserRepository.swift in Sources */,
+				00652D982B143E84004C3345 /* SettingView.swift in Sources */,
 				A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */,
 				00A73E052B0C37A600B59084 /* MemoRepository.swift in Sources */,
+				00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */,
 				00A73DFD2B0C323800B59084 /* Memo.swift in Sources */,
 				00A73E012B0C35D300B59084 /* Tag.swift in Sources */,
+				00652D962B143E70004C3345 /* SettingTagView.swift in Sources */,
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
+				00652DA22B1443AB004C3345 /* functions.swift in Sources */,
 				A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */,
-				A82451F42B09F4CE00EB4F54 /* SettingsView.swift in Sources */,
 				00A73DFB2B0C31D700B59084 /* AddMemoViewModel.swift in Sources */,
+				00652D9C2B143FAE004C3345 /* SettingProfileView.swift in Sources */,
 				00A73E092B0C37DC00B59084 /* TagRepository.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
+				00652DA02B1440BC004C3345 /* Dummy.swift in Sources */,
+				00652D9A2B143F73004C3345 /* SettingAlarmPeriodView.swift in Sources */,
 				00A73DFF2B0C324200B59084 /* User.swift in Sources */,
+				00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */,
 				00A73E032B0C35F300B59084 /* MainContainerViewModel.swift in Sources */,
+				00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
