@@ -23,7 +23,7 @@ struct NavView: View {
                     Text("ADD")
                 }
             
-            SettingsView()
+            SettingView()
                 .tabItem {
                     Image(systemName: "3.circle")
                     Text("Final")
