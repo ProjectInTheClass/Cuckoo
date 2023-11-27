@@ -13,9 +13,17 @@ import UniformTypeIdentifiers
 class tags{
     var tagtitle : String
     var color : UIColor
+    var numofMemo : Int = 0
+    
     init(tagtitle: String, color: UIColor) {
         self.tagtitle = tagtitle
         self.color = color
+    }
+    
+    init(tagtitle: String, color: UIColor, numofMemo: Int) {
+        self.tagtitle = tagtitle
+        self.color = color
+        self.numofMemo = numofMemo
     }
 }
 
@@ -244,9 +252,9 @@ class SecondViewController: UIViewController{
 //            let error = AppError.targetAppNotInstalled
 //            showAlert(for: error)
 //        }
-//        self.previousViewController?.hideExtensionWithCompletionHandler(completion: { _ in
-//            self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
-//        })
+        self.previousViewController?.hideExtensionWithCompletionHandler(completion: { _ in
+            self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
+        })
     }
     
     @IBOutlet weak var secondView: UIView!

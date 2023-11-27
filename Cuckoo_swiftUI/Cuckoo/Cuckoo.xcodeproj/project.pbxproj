@@ -22,6 +22,7 @@
 		7A7F879E2AEF559E00F14B11 /* CuckooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */; };
 		7A7F87A02AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */; };
 		7AD714F12B124D0200786BC0 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD714F02B124D0200786BC0 /* HeaderView.swift */; };
+		7AD714F62B133B1E00786BC0 /* tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD714F52B133B1E00786BC0 /* tags.swift */; };
 		A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */; };
 		A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC23902AFA014B00A2F87F /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7AD714F02B124D0200786BC0 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		7AD714F22B1253DB00786BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7AD714F52B133B1E00786BC0 /* tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tags.swift; sourceTree = "<group>"; };
 		A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		A8BC23902AFA014B00A2F87F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +170,7 @@
 				7A7F87862AEF559D00F14B11 /* Assets.xcassets */,
 				7A7F87882AEF559D00F14B11 /* Preview Content */,
 				7AD714F02B124D0200786BC0 /* HeaderView.swift */,
+				7AD714F52B133B1E00786BC0 /* tags.swift */,
 			);
 			path = Cuckoo;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				7A7F87852AEF559C00F14B11 /* ContentView.swift in Sources */,
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
 				7A67B46E2B0CAC1F009AE56C /* SettingsView_myInfo.swift in Sources */,
+				7AD714F62B133B1E00786BC0 /* tags.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
 				7AD714F12B124D0200786BC0 /* HeaderView.swift in Sources */,

@@ -51,6 +51,12 @@ struct SettingsView_myAlertPeriod: View {
     @State private var selectedPresets: Set<freesetButton> = []
     @State private var freesetButtonList: [freesetButton]
     
+    @State private var selectedReminderPeriod = "1일"
+    @State private var isReminderPeriodPopoverPresented = false
+    
+    @State private var isMultiplierPopoverPresented = false
+    @State private var selectedMultiplier = 2
+    
     @State private var isDeleteConfirmationPresented = false
     
     init(freesetButtonList: [freesetButton]) {
@@ -81,24 +87,73 @@ struct SettingsView_myAlertPeriod: View {
                 }
                 HStack(alignment: .center) {
                     Spacer()
-                    Button("1일 주기") {
+                    Button("\(selectedReminderPeriod) 주기") {
                         // Handle button tap
+                        isReminderPeriodPopoverPresented.toggle()
                     }
                     .font(.headline)
                     .padding(EdgeInsets(top: 20, leading: 40, bottom: 20, trailing: 40))
                     .background(.thickMaterial)
                     .foregroundColor(.black)
                     .cornerRadius(10)
+                    .popover(isPresented: $isReminderPeriodPopoverPresented) {
+                        VStack {
+                            Text("알림 주기 선택")
+                                .font(.headline)
+                                .padding()
+                            
+                            // Add the Picker code here to select the reminder period
+                            Picker("알림 주기", selection: $selectedReminderPeriod) {
+                                ForEach(["1일", "2일", "3일", "4일", "5일", "6일", "1주", "2주", "3주", "4주", "8주"], id: \.self) { period in
+                                    Text("\(period)")
+                                }
+                            }
+                            .pickerStyle(WheelPickerStyle())
+                            .padding()
+                            
+                            Button("확인") {
+                                // Handle the selected reminder period
+                                // You can update your UI or perform other actions here
+                                isReminderPeriodPopoverPresented.toggle()
+                            }
+                            .padding()
+                        }
+                    }
+                    
                     
                     Spacer()
-                    Button("2일 주기") {
+                    Button("\(selectedMultiplier)배수 증가") {
                         // Handle button tap
+                        isMultiplierPopoverPresented.toggle()
                     }
                     .font(.headline)
                     .padding(EdgeInsets(top: 20, leading: 40, bottom: 20, trailing: 40))
                     .background(.thickMaterial)
                     .foregroundColor(.black)
                     .cornerRadius(10)
+                    .popover(isPresented: $isMultiplierPopoverPresented) {
+                        VStack {
+                            Text("배수 선택")
+                                .font(.headline)
+                                .padding()
+                            
+                            // Add the Picker code here to select the multiplier
+                            Picker("배수", selection: $selectedMultiplier) {
+                                ForEach(1...7, id: \.self) { multiplier in
+                                    Text("\(multiplier)")
+                                }
+                            }
+                            .pickerStyle(WheelPickerStyle())
+                            .padding()
+                            
+                            Button("확인") {
+                                // Handle the selected multiplier
+                                // You can update your UI or perform other actions here
+                                isMultiplierPopoverPresented.toggle()
+                            }
+                            .padding()
+                        }
+                    }
                     
                     Spacer()
                 }.padding([.top, .bottom], 20)
@@ -210,7 +265,7 @@ struct SettingsView_myAlertPeriod: View {
                     
                     Text("시")
                         .font(.headline)
-//                        .padding(.horizontal)
+                    //                        .padding(.horizontal)
                     
                     Picker("분", selection: $selectedMinuteIndex) {
                         ForEach(0..<60, id: \.self) { minute in
@@ -222,7 +277,7 @@ struct SettingsView_myAlertPeriod: View {
                     
                     Text("분")
                         .font(.headline)
-//                        .padding(.horizontal)
+                    //                        .padding(.horizontal)
                 }
                 
                 HStack {
@@ -250,23 +305,23 @@ struct SettingsView_myAlertPeriod: View {
     }
     
     func addNewPreset() {
-            let hour = selectedHourIndex
-            let minute = selectedMinuteIndex
-            let period = hour < 12 ? "AM" : "PM"
-            let formattedTime = String(format: "%02d:%02d %@", hour % 12, minute, period)
-            
-            let newPreset = freesetButton(emoji: newEmoji, alarmName: newAlarmName, time: formattedTime)
-            freesetButtonList.append(newPreset)
-            
-            //시간 순대로 나오도록
-            freesetButtonList.sort { $0.time < $1.time }
-            
-            //다음을 위해 초기화
-            newEmoji = ""
-            newAlarmName = ""
-            selectedHourIndex = 12
-            selectedMinuteIndex = 0
-        }
+        let hour = selectedHourIndex
+        let minute = selectedMinuteIndex
+        let period = hour < 12 ? "AM" : "PM"
+        let formattedTime = String(format: "%02d:%02d %@", hour % 12, minute, period)
+        
+        let newPreset = freesetButton(emoji: newEmoji, alarmName: newAlarmName, time: formattedTime)
+        freesetButtonList.append(newPreset)
+        
+        //시간 순대로 나오도록
+        freesetButtonList.sort { $0.time < $1.time }
+        
+        //다음을 위해 초기화
+        newEmoji = ""
+        newAlarmName = ""
+        selectedHourIndex = 12
+        selectedMinuteIndex = 0
+    }
     
     func deleteSelectedPresets() {
         freesetButtonList.removeAll { selectedPresets.contains($0) }
@@ -299,6 +354,4 @@ struct SettingsView_myAlertPeriod_Previews: PreviewProvider {
         SettingsView_myAlertPeriod(freesetButtonList: freesetButtonList)
     }
 }
-
-
 

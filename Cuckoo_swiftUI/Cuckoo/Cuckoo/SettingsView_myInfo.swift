@@ -28,7 +28,7 @@ struct SettingsView_myInfo: View {
     @State private var notificationCount: String = "999+" // Placeholder value
     
     // Tags array fetched from the database (replace this with your actual data)
-    @State private var tags: [String] = ["Tag1", "Tag2", "Tag3"]
+    @State private var tags: [String : Int] = ["메모" : 8, "개발관련" : 2, "유튜브" : 1]
     // Alert for confirming tag deletion
     @State private var deleteTagAlert: Alert?
     // ActionSheet for tag options (modify, delete)
@@ -78,7 +78,7 @@ struct SettingsView_myInfo: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(maxWidth: 200)
                             .padding()
-                            
+                        
                         
                         HStack {
                             Button("취소") {
@@ -87,7 +87,7 @@ struct SettingsView_myInfo: View {
                             }
                             .padding()
                             
-//                            Spacer()
+                            //                            Spacer()
                             
                             Button("확인") {
                                 // Handle username confirmation
@@ -115,17 +115,7 @@ struct SettingsView_myInfo: View {
                 .padding(.vertical, 20)
             
             TagSectionView(
-                tags: $tags,
-                deleteTagAlert: $deleteTagAlert,
-                tagOptionsSheet: $tagOptionsSheet,
-                onDeleteTag: { tag in
-                    // Handle tag deletion
-                    showDeleteTagAlert(tag: tag)
-                },
-                onModifyTag: { tag in
-                    // Handle tag modification
-                    showTagOptions(tag: tag)
-                }
+                tags: $tags
             ).padding(.horizontal, 20)
             
             //디바이더
@@ -140,41 +130,41 @@ struct SettingsView_myInfo: View {
     
     //태그 관리용 함수
     // Function to show an alert for confirming tag deletion
-    private func showDeleteTagAlert(tag: String) {
-        deleteTagAlert = Alert(
-            title: Text("Delete Tag"),
-            message: Text("Are you sure you want to delete the tag '\(tag)'?"),
-            primaryButton: .default(Text("Cancel")),
-            secondaryButton: .destructive(Text("Delete"), action: {
-                // Handle tag deletion here (remove from the tags array or your data source)
-                tags.removeAll { $0 == tag }
-            })
-        )
-    }
+//    private func showDeleteTagAlert(tag: String) {
+//        deleteTagAlert = Alert(
+//            title: Text("Delete Tag"),
+//            message: Text("Are you sure you want to delete the tag '\(tag)'?"),
+//            primaryButton: .default(Text("Cancel")),
+//            secondaryButton: .destructive(Text("Delete"), action: {
+//                // Handle tag deletion here (remove from the tags array or your data source)
+//                tags.removeAll { $0 == tag }
+//            })
+//        )
+//    }
     
     // Function to show an action sheet for tag options (modify, delete)
-    private func showTagOptions(tag: String) {
-        tagOptionsSheet = ActionSheet(
-            title: Text("Tag Options"),
-            buttons: [
-                .default(Text("Modify"), action: {
-                    // Handle tag modification here (show another alert for editing the tag name)
-                    showModifyTagAlert(tag: tag)
-                }),
-                .destructive(Text("Delete"), action: {
-                    // Show alert for confirming tag deletion
-                    showDeleteTagAlert(tag: tag)
-                }),
-                .cancel()
-            ]
-        )
-    }
+//    private func showTagOptions(tag: String) {
+//        tagOptionsSheet = ActionSheet(
+//            title: Text("Tag Options"),
+//            buttons: [
+//                .default(Text("Modify"), action: {
+//                    // Handle tag modification here (show another alert for editing the tag name)
+//                    showModifyTagAlert(tag: tag)
+//                }),
+//                .destructive(Text("Delete"), action: {
+//                    // Show alert for confirming tag deletion
+//                    showDeleteTagAlert(tag: tag)
+//                }),
+//                .cancel()
+//            ]
+//        )
+//    }
     
     // Function to show an alert for modifying the tag name
-    private func showModifyTagAlert(tag: String) {
-        // You can use a TextField in the alert to let the user input a new tag name
-        // Handle the modification based on user input
-    }
+//    private func showModifyTagAlert(tag: String) {
+//        // You can use a TextField in the alert to let the user input a new tag name
+//        // Handle the modification based on user input
+//    }
 }
 
 struct RoundedStatsView: View {
@@ -202,61 +192,46 @@ struct RoundedStatsView: View {
 }
 
 struct TagSectionView: View {
-    @Binding var tags: [String]
-    @Binding var deleteTagAlert: Alert?
-    @Binding var tagOptionsSheet: ActionSheet?
-    var onDeleteTag: (String) -> Void
-    var onModifyTag: (String) -> Void
-    
+    @Binding var tags: [String : Int]
     var body: some View {
+        
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text("등록 태그")
+                Text("태그 정보")
                     .font(.headline)
-                
                 Spacer()
                 
-                // Add Tag Button
-                Button(action: {
-                    // Handle adding a new tag
-                }) {
-                    Text("태그 추가")
-                        .foregroundColor(.blue)
-                }
             }
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(tags.sorted(by: { $0.key < $1.key }), id: \.key) { tag, numOfMemo in
+                        SettingsView_myInfo_Tag(tagName: tag, numOfMemo: numOfMemo)
+                    }
+                }
+                .padding(.vertical, 10)
+            }
+            .frame(height: 40)
             
-            // List of Tags => 아직 데이터 형식을 몰라서 일단
-            //            List {
-            //                ForEach(tags, id: \.self) { tag in
-            //                    HStack {
-            //                        Text(tag)
-            //
-            //                        Spacer()
-            //
-            //                        // Buttons for each tag
-            //                        Button(action: {
-            //                            // Handle tag options (modify, delete)
-            //                            onModifyTag(tag)
-            //                        }) {
-            //                            Image(systemName: "ellipsis.circle")
-            //                                .foregroundColor(.gray)
-            //                        }
-            //                        .actionSheet(tagOptionsSheet ?? ActionSheet(title: Text(""), buttons: []))
-            //
-            //                        Button(action: {
-            //                            // Handle tag deletion
-            //                            onDeleteTag(tag)
-            //                        }) {
-            //                            Image(systemName: "trash.circle")
-            //                                .foregroundColor(.red)
-            //                        }
-            //                        .alert(deleteTagAlert ?? Alert(title: Text(""), message: Text(""), dismissButton: .default(Text(""))))
-            //                    }
-            //                }
-            //            }
-            //            .listStyle(PlainListStyle())
         }
         .padding(.horizontal, 20)
+    }
+}
+
+struct SettingsView_myInfo_Tag: View {
+    
+    let tagName: String
+    let numOfMemo : Int
+    
+    var body: some View {
+        HStack{
+            Text(tagName + " : " + String(numOfMemo) + " (개)")
+                .padding(.vertical, 10)
+                .padding(.horizontal, 15)
+                .background(Color.gray.opacity(0.4))
+                .cornerRadius(15)
+                .fontWeight(.bold)
+        }
+        
     }
 }
 
@@ -331,3 +306,5 @@ struct SettingsView_myInfo_Previews: PreviewProvider {
         //        SettingsView_myAlertPeriod()
     }
 }
+
+
