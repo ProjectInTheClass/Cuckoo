@@ -114,7 +114,8 @@ struct MainView: View {
                 }
             }
             Spacer()
-            ScrollView(){
+          
+            ScrollView{
                 ForEach(items, id: \.title) { item in
                     MainContainerView(title: item.title, detail: item.detail, tag: item.tag, timeAgo: item.timeAgo, memoURL: item.memoURL, imageName: item.imageName)
                         .padding(.bottom, 16)
@@ -140,7 +141,6 @@ struct MainView: View {
                     .padding(.bottom, 16) // Adjust the bottom padding as needed
                 , alignment: .bottomTrailing
             )
-            
         }.padding(.horizontal, 30)
     }
 }
