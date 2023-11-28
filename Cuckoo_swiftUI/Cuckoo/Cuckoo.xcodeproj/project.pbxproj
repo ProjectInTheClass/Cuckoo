@@ -16,7 +16,11 @@
 		7A7F87A02AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */; };
 		A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */; };
 		A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F12B09F2B300EB4F54 /* NavView.swift */; };
+<<<<<<< Updated upstream
 		A82451F42B09F4CE00EB4F54 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F32B09F4CE00EB4F54 /* SettingsView.swift */; };
+=======
+		A82451F62B1563B000EB4F54 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F52B1563B000EB4F54 /* AlarmView.swift */; };
+>>>>>>> Stashed changes
 		A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */; };
 		A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC23902AFA014B00A2F87F /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -51,7 +55,11 @@
 		7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
 		A82451F12B09F2B300EB4F54 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		A82451F32B09F4CE00EB4F54 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+=======
+		A82451F52B1563B000EB4F54 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		A8BC23902AFA014B00A2F87F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +89,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+<<<<<<< Updated upstream
+=======
+		00652D9D2B144047004C3345 /* SettingViews */ = {
+			isa = PBXGroup;
+			children = (
+				00652D952B143E70004C3345 /* SettingTagView.swift */,
+				00652D972B143E84004C3345 /* SettingView.swift */,
+				00652D992B143F73004C3345 /* SettingAlarmPeriodView.swift */,
+				00652D9B2B143FAE004C3345 /* SettingProfileView.swift */,
+			);
+			path = SettingViews;
+			sourceTree = "<group>";
+		};
+		00652D9E2B14408B004C3345 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				00A73E0E2B0C583900B59084 /* ViewComponents.swift */,
+				00652D9F2B1440BC004C3345 /* Dummy.swift */,
+				00652DA12B1443AB004C3345 /* functions.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		00A73DF72B0C301200B59084 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				00652D9E2B14408B004C3345 /* Components */,
+				00652D9D2B144047004C3345 /* SettingViews */,
+				00A73E0C2B0C519100B59084 /* InitialViews */,
+				A8BC23902AFA014B00A2F87F /* MainView.swift */,
+				A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */,
+				A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */,
+				A82451F12B09F2B300EB4F54 /* NavView.swift */,
+				00652D932B143E51004C3345 /* MemoDetailView.swift */,
+				A82451F52B1563B000EB4F54 /* AlarmView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		00A73DF82B0C318600B59084 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				00A73DFA2B0C31D700B59084 /* AddMemoViewModel.swift */,
+				00A73E022B0C35F300B59084 /* MainContainerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		00A73DF92B0C319800B59084 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				00A73DFC2B0C323800B59084 /* Memo.swift */,
+				00A73DFE2B0C324200B59084 /* User.swift */,
+				00A73E002B0C35D300B59084 /* Tag.swift */,
+				00A73E042B0C37A600B59084 /* MemoRepository.swift */,
+				00A73E062B0C37CB00B59084 /* UserRepository.swift */,
+				00A73E082B0C37DC00B59084 /* TagRepository.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		00A73E0C2B0C519100B59084 /* InitialViews */ = {
+			isa = PBXGroup;
+			children = (
+				00A73E0A2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift */,
+				00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */,
+				00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */,
+			);
+			path = InitialViews;
+			sourceTree = "<group>";
+		};
+>>>>>>> Stashed changes
 		7A7F87762AEF559C00F14B11 = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +355,11 @@
 				A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */,
 				7A7F87852AEF559C00F14B11 /* ContentView.swift in Sources */,
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
+<<<<<<< Updated upstream
+=======
+				00652DA22B1443AB004C3345 /* functions.swift in Sources */,
+				A82451F62B1563B000EB4F54 /* AlarmView.swift in Sources */,
+>>>>>>> Stashed changes
 				A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */,
 				A82451F42B09F4CE00EB4F54 /* SettingsView.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
