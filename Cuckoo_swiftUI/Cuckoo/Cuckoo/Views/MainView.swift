@@ -35,116 +35,117 @@ struct MainView: View {
     }
     
     var body: some View {
-        
-        VStack(spacing:10){
-            HStack{
-                Spacer()
-                Image(systemName:"gearshape.circle.fill")
-                    .resizable()
-                    .frame(width: 45,height: 45)
-                    .foregroundColor(.gray)
-                    .padding(.trailing,10)
-                Image(systemName:"bell.circle.fill")
-                    .resizable()
-                    .frame(width: 45,height: 45)
-                    .foregroundColor(.gray)
+        NavigationView{
+            VStack(spacing:10){
+                HStack{
+                    Spacer()
+                    NavigationLink(destination:SettingView()){
+                        Image(systemName:"gearshape.circle.fill")
+                            .resizable()
+                            .frame(width: 45,height: 45)
+                            .foregroundColor(.gray)
+                            .padding(.trailing,10)
+                    }
+                    NavigationLink(destination: AlarmView()){
+                        Image(systemName:"bell.circle.fill")
+                            .resizable()
+                            .frame(width: 45,height: 45)
+                            .foregroundColor(.gray)
+                    }
+                }
                 
-            }
-
-
-            //Title
-            VStack{
-                HStack(spacing:0) {
-                    if isEditing {
-                        TextField("Edit text", text: $text)
-                            .border(Color.gray, width: 1)
-                            .padding()
-                    } else {
-                        VStack(alignment: .leading,spacing: 0){
-                            Text("득수의 메모장")
-                                .font(.system(size: 30, weight: .heavy))
-                                .lineSpacing(130)
-                                .kerning(-0.03)
-                                .multilineTextAlignment(.leading)
-                            Text("\(itemCount)개의 메모")
-                                .font(.system(size:12, weight: .regular))
-                                .lineSpacing(52)
-                                .kerning(0)
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(Color(red: 0.70, green: 0.70, blue: 0.70))
+                
+                //Title
+                VStack{
+                    HStack(spacing:0) {
+                        if isEditing {
+                            TextField("Edit text", text: $text)
+                                .border(Color.gray, width: 1)
+                                .padding()
+                        } else {
+                            VStack(alignment: .leading,spacing: 0){
+                                Text("득수의 메모장")
+                                    .font(.system(size: 30, weight: .heavy))
+                                    .lineSpacing(130)
+                                    .kerning(-0.03)
+                                    .multilineTextAlignment(.leading)
+                                Text("\(itemCount)개의 메모")
+                                    .font(.system(size:12, weight: .regular))
+                                    .lineSpacing(52)
+                                    .kerning(0)
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(Color(red: 0.70, green: 0.70, blue: 0.70))
+                            }
+                            
                         }
+                        Spacer()
+                    }
+                }
+                Spacer()
+                CardContent {
+                    // TextEditor의 스크롤 가능한 영역 설정
+                    HStack(spacing: 0){
+                        TextField("", text: $searchContent, axis: .vertical)
+                            .font(.system(size: 12, weight: .medium))
+                            .padding(.leading, 25)
+                            .padding(10)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 36, alignment: .top) // 가로길이 고정을 위해 최소 너비를 0, 최대 너비를 무한으로 설정합니다.
+                            .background(.black.opacity(0.1)) // 배경색 설정
+                            .cornerRadius(10) // 코너 반경 설정
+                        
+                        
                         
                     }
-                    Spacer()
-                }
-            }
-            Spacer()
-            CardContent {
-                // TextEditor의 스크롤 가능한 영역 설정
-                HStack(spacing: 0){
-                    TextField("", text: $searchContent, axis: .vertical)
-                        .font(.system(size: 12, weight: .medium))
-                        .padding(.leading, 25)
-                        .padding(10)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 36, alignment: .top) // 가로길이 고정을 위해 최소 너비를 0, 최대 너비를 무한으로 설정합니다.
-                        .background(.black.opacity(0.1)) // 배경색 설정
-                        .cornerRadius(10) // 코너 반경 설정
-                        
-                        
+                    .overlay(Image(systemName: "magnifyingglass")
+                        .padding(.leading, 10)
+                        .foregroundColor(.gray)
+                             , alignment: .leading)
+                    
                     
                 }
-                .overlay(Image(systemName: "magnifyingglass")
-                    .padding(.leading, 10)
-                    .foregroundColor(.gray)
-                    , alignment: .leading)
                 
-
-            }
-            Spacer()
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    ForEach(0..<10) { index in
-                        CardContent {
-                            HStack {
-                                TypeBubble("메모", "#b2b2b2")
-                                TypeBubble("기록", "#b2b2b2")
+                Spacer()
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(0..<10) { index in
+                            CardContent {
+                                HStack {
+                                    TypeBubble("메모", "#b2b2b2")
+                                    TypeBubble("기록", "#b2b2b2")
+                                }
                             }
                         }
                     }
                 }
-            }
-            Spacer()
-          
-            ScrollView{
-                ForEach(items, id: \.title) { item in
-                    MainContainerView(title: item.title, detail: item.detail, tag: item.tag, timeAgo: item.timeAgo, memoURL: item.memoURL, imageName: item.imageName)
-                        .padding(.bottom, 16)
+                
+                Spacer()
+                ScrollView(){
+                    ForEach(items, id: \.title) { item in
+                        MainContainerView(title: item.title, detail: item.detail, tag: item.tag, timeAgo: item.timeAgo, memoURL: item.memoURL, imageName: item.imageName)
+                            .padding(.bottom, 16)
+                    }
                 }
-            }
-            .scrollIndicators(.hidden)
-            .overlay(
-                // Floating Action Button
-                Button(action: {
-                    // Add your button action here
-                    isPresentingMemoSheet.toggle()
-                }) {
-                    Image(systemName: "pencil")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
+                .scrollIndicators(.hidden)
+                .overlay(
+                    // Floating Action Button
+                    NavigationLink(destination:AddMemoView()){
+                        Image(systemName: "pencil")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                            .padding()
+                    }
+                        .background(Color.gray)
+                        .clipShape(Circle())
                         .padding()
-                }
-                    .background(Color.gray)
-                    .clipShape(Circle())
-                    .padding()
-                    .padding(.bottom, 16) // Adjust the bottom padding as needed
-                , alignment: .bottomTrailing
-            )
+                        .padding(.bottom, 16) // Adjust the bottom padding as needed
+                    , alignment: .bottomTrailing
+                )
+            }
         }.padding(.horizontal, 30)
     }
 }
-
 
 
 struct MainView_PreViews: PreviewProvider {

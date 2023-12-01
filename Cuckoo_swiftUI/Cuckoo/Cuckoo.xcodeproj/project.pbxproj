@@ -34,6 +34,7 @@
 		7A7F87A02AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */; };
 		A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */; };
 		A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F12B09F2B300EB4F54 /* NavView.swift */; };
+		A82451F82B17470500EB4F54 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F72B17470500EB4F54 /* AlarmView.swift */; };
 		A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */; };
 		A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC23902AFA014B00A2F87F /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,7 @@
 		7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
 		A82451F12B09F2B300EB4F54 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
+		A82451F72B17470500EB4F54 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		A8BC23902AFA014B00A2F87F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +149,7 @@
 				A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */,
 				A82451F12B09F2B300EB4F54 /* NavView.swift */,
 				00652D932B143E51004C3345 /* MemoDetailView.swift */,
+				A82451F72B17470500EB4F54 /* AlarmView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				00652D962B143E70004C3345 /* SettingTagView.swift in Sources */,
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
 				00652DA22B1443AB004C3345 /* functions.swift in Sources */,
+				A82451F82B17470500EB4F54 /* AlarmView.swift in Sources */,
 				A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */,
 				00A73DFB2B0C31D700B59084 /* AddMemoViewModel.swift in Sources */,
 				00652D9C2B143FAE004C3345 /* SettingProfileView.swift in Sources */,
