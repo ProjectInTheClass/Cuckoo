@@ -98,11 +98,14 @@ struct SettingCellView: View {
     }
 }
 struct SettingHeaderView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         HStack {
-            Button(action: {}) {
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
                 Image(systemName: "chevron.left")
-                    
                     .foregroundColor(.black)
             }
             Spacer()
@@ -111,11 +114,11 @@ struct SettingHeaderView: View {
                 .foregroundColor(Color.black.opacity(0.80))
             Spacer()
         }
-        
     }
-    
-    
 }
+
+
+
 
 // Placeholder Views for the Navigation Destinations
 struct UserProfileView: View {

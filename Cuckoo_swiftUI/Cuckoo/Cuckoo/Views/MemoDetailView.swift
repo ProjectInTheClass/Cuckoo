@@ -316,47 +316,40 @@ struct MemoDetailView: View {
     @State private var showDeleteAlert = false
     @State private var showActionButtons = false
     @State private var selectedReminder = "7일"
+    @StateObject var viewModel: MemoDetailViewModel
     // Constants
     let reminderOptions = ["없음", "7일", "14일", "21일"]
     let tags = ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5"]
 
     var body: some View {
-        ZStack {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    MemoDetailHeaderView()
-                        .frame(height: 60)
-                        .frame(maxWidth: .infinity)
-                    MemoImageView()
-                    MemoTitleView(isEditing: $isEditing, editedTitle: $editedTitle)
-                    TagsView(tags: tags)
-                    MemoLinkView(link: "www.examplelink.com")
-                    MemoContentView(isEditing: $isEditing, editedComment: $editedComment)
-                    ReminderPickerView(selectedReminder: $selectedReminder, reminderOptions: reminderOptions)
-                    MemoInfoView()
+            ZStack {
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        // 각 서브뷰에 ViewModel 바인딩
+                        MemoDetailHeaderView()
+                        MemoImageView()
+                        MemoTitleView(isEditing: $viewModel.isEditing, editedTitle: $viewModel.memo.title)
+                        TagsView(tags: viewModel.memo.tags)
+                        MemoLinkView(link: viewModel.memo.link)
+                        MemoContentView(isEditing: $viewModel.isEditing, editedComment: $viewModel.memo.content)
+                        ReminderPickerView(selectedReminder: $viewModel.selectedReminder, reminderOptions: viewModel.reminderOptions)
+                        MemoInfoView(/*lastEdited: viewModel.memo.lastEdited*/)
+                    }
+                    .padding(.horizontal, 30)
                 }
-                .padding(.horizontal, 30)
+                EditButtonView(isEditing: $viewModel.isEditing, showActionButtons: $viewModel.showActionButtons, showDeleteAlert: $viewModel.showDeleteAlert, saveChanges: viewModel.saveChanges, deleteMemo: viewModel.deleteMemo)
             }
-                EditButtonView(
-                    isEditing: $isEditing,
-                    showActionButtons: $showActionButtons,
-                    showDeleteAlert: $showDeleteAlert,
-                    saveChanges: saveChanges,
-                    deleteMemo: deleteMemo
+            .alert(isPresented: $viewModel.showDeleteAlert) {
+                Alert(
+                    title: Text("삭제 확인"),
+                    message: Text("이 메모를 삭제하시겠습니까?"),
+                    primaryButton: .destructive(Text("삭제")) {
+                        viewModel.deleteMemo()
+                    },
+                    secondaryButton: .cancel()
                 )
-            
+            }
         }
-        .alert(isPresented: $showDeleteAlert) {
-            Alert(
-                title: Text("삭제 확인"),
-                message: Text("이 메모를 삭제하시겠습니까?"),
-                primaryButton: .destructive(Text("삭제")) {
-                    deleteMemo()
-                },
-                secondaryButton: .cancel()
-            )
-        }
-    }
     
     func saveChanges() {
         // Implement your save changes logic here
@@ -375,7 +368,14 @@ struct MemoDetailView: View {
 
 struct MemoDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MemoDetailView()
+        // 더미 데이터 생성
+        let dummyMemo = Memo(title: "Sample Memo", content: "This is a sample memo.", tags: ["Sample", "Test"], link: "www.example.com", lastEdited: Date())
+
+        // 더미 데이터를 사용하여 ViewModel 인스턴스 생성
+        let viewModel = MemoDetailViewModel(memo: dummyMemo)
+
+        // 생성된 ViewModel을 사용하여 MemoDetailView 렌더링
+        MemoDetailView(viewModel: viewModel)
     }
-    
 }
+
