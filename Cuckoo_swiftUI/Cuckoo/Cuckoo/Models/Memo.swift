@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Memo: Identifiable {
+    var id = UUID()
+    var title: String
+    var content: String
+    var tags: [String]
+    var link: String
+    var lastEdited: Date
+}
