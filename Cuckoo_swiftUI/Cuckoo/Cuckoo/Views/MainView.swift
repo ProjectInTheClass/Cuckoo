@@ -39,6 +39,7 @@ struct MainView: View {
                 
                 // Search Bar & Tag
                 MainViewSearchFilter()
+                Spacer()
                 
                 // Body
                 ScrollView(){
@@ -52,7 +53,7 @@ struct MainView: View {
                             imageName: item.imageName
                         ).padding(.bottom, 15)
                     }
-                }.padding(.top, 10)
+                }
                 .scrollIndicators(.hidden)
                 .overlay(
                     AddMemoFloatingButton(),
@@ -136,37 +137,38 @@ struct MainViewSearchFilter: View {
     
     var body: some View {
         // TextEditor의 스크롤 가능한 영역 설정
-        HStack(spacing: 0){
-            TextField("", text: $searchContent, axis: .vertical)
-                .font(.system(size: 12, weight: .medium))
-                .padding(.leading, 25)
-                .padding(10)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 36, alignment: .top) // 가로길이 고정을 위해 최소 너비를 0, 최대 너비를 무한으로 설정합니다.
-                .background(.black.opacity(0.1)) // 배경색 설정
-                .cornerRadius(10) // 코너 반경 설정
-            
-            
-            
-        }
-        .overlay(Image(systemName: "magnifyingglass")
-            .padding(.leading, 10)
-            .foregroundColor(.gray)
-                 , alignment: .leading)
+        VStack(spacing: 18) {
+            HStack(spacing: 0){
+                TextField("", text: $searchContent, axis: .vertical)
+                    .font(.system(size: 14, weight: .medium))
+                    .padding(.leading, 25)
+                    .padding(10)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 36, alignment: .top)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.defaultPure, lineWidth: 1))
+                
+            }
+            .overlay(Image(systemName: "magnifyingglass")
+                .padding(.leading, 10)
+                .foregroundColor(.gray)
+                     , alignment: .leading)
         
-        
-        Spacer()
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 10) {
-                ForEach(0..<10) { index in
-                    CardContent {
-                        HStack {
-                            TypeBubble("메모", "#b2b2b2")
-                            TypeBubble("기록", "#b2b2b2")
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(0..<10) { index in
+                        CardContent {
+                            HStack {
+                                TypeBubble("메모", "#b2b2b2")
+                                TypeBubble("기록", "#b2b2b2")
+                            }
                         }
                     }
                 }
             }
         }
+        
     }
 }
 
