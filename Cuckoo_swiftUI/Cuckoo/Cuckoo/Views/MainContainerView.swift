@@ -16,15 +16,22 @@ struct MainContainerView: View {
     let imageName: String
 
     var body: some View {
+        
         HStack {
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 3) {
+                // TODO: [동우] Color 일괄 변경 필요
+                // TODO: [동우] width 값 fix값 뺄 수 있는지 확인
                 Text(title)
-                    .font(.system(size:14, weight:.bold))
+                    .font(.system(size:16, weight:.bold))
                     .frame(maxWidth: 133, alignment: .leading)
+                
+                // TODO: [동우] Color 일괄 변경 필요
                 Text(detail)
-                    .font(.system(size:12, weight: .regular))
+                    .font(.system(size:10, weight: .regular))
                     .frame(maxWidth: 133,maxHeight: 60, alignment: .topLeading)
                     .foregroundColor(Color(red: 0.70, green: 0.70, blue: 0.70))
+                
+                // TODO: [동우] Color 일괄 변경 필요
                 VStack(alignment: .leading, spacing: 0){
                     HStack(spacing:0){
                         Text(tag)
@@ -44,17 +51,17 @@ struct MainContainerView: View {
                 
             }
             Spacer()
-            Image(systemName: imageName)
+            // TODO: [동우] Default image 넣게끔 (Figma 참고)
+            Image(systemName: "square.fill")
                 .resizable()
                 .font(.title)
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 140, height: 94)
+                .cornerRadius(20)
         }
         .background(Color.white)
-        .cornerRadius(10)
-        .frame(width: 330, height:104)
+        .frame(maxWidth: .infinity)
         Divider()
-            .background(Color.black)
     }
 }
 
