@@ -12,7 +12,3 @@ struct AlarmView: View {
         Text("AlarmALARMAlarmALARMAlarmALARMAlarmALARMAlarmALARMAlarmALARM")
     }
 }
-
-#Preview {
-    AlarmView()
-}
