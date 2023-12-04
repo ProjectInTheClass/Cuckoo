@@ -70,9 +70,9 @@ struct SettingView: View {
                                     .scrollContentBackground(.hidden)
                         
                     }
-                    
-                    .navigationBarHidden(true)
-                    .navigationViewStyle(StackNavigationViewStyle())
+                    .navigationBarBackButtonHidden(true)
+//                    .navigationBarHidden(true)
+//                    .navigationViewStyle(StackNavigationViewStyle())
                     
                 
             
