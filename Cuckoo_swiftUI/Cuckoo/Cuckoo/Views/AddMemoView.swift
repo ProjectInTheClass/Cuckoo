@@ -8,22 +8,12 @@
 import SwiftUI
 import Combine
 
-struct AddMemoHeaderView: View {
-    var body: some View {
-        VStack {
-                Spacer()
-                Text("메모 등록")
-                .font(.system(size: 20, weight: .bold))
-                    .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
-        }
-    }
-}
 
 struct AddMemoView: View {
     var body: some View {
         NavigationView{
             VStack {
-                AddMemoHeaderView()
+                HeaderView(title: "메모 등록")
                     .frame(height: 60)
                     .frame(maxWidth: .infinity)
                 
@@ -49,10 +39,7 @@ struct AddMemoView: View {
                     .frame(maxWidth: .infinity)
             }
         }
-        .tabItem {
-            Image(systemName: "2.circle")
-            Text("ADDMEMO")
-        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -111,7 +98,7 @@ struct MemoContentFormView: View {
                     
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }
 
