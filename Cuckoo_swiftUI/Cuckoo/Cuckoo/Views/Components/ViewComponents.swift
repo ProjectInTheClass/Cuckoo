@@ -13,12 +13,20 @@ struct HeaderView: View {
     var title: String;
     
     var body: some View {
-        VStack {
-                Spacer()
-                Text(title)
+        HStack {
+            Spacer()
+            Text(title)
                 .font(.system(size: 20, weight: .bold))
-                    .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
-        }
+                .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
+            
+            Spacer()
+        }.overlay(
+            Button(action: {}) {
+                Image(systemName: "chevron.left")
+                
+                    .foregroundColor(.black)
+            }.padding(.leading, 30),
+            alignment: .leading)
     }
 }
 
