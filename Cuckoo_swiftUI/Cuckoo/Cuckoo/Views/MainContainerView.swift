@@ -66,16 +66,32 @@ struct MainContainerView: View {
             
             VStack {
                 
-                if memo.thumbURL != nil {
-                    AsyncImage(url: memo.thumbURL) { image in
-                        image
-                            .resizable()
-                            .scaledToFill() // 또는 scaledToFill() 사용
-                            .frame(height: 94)
-                    } placeholder: {
-                        ProgressView()
-                    }
-                    .frame(width: 140, height: 94)
+                MemoThumbnailImageView(memo: memo)
+                
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+struct MemoThumbnailImageView: View {
+    var memo: Memo
+    
+    var width: CGFloat = 140
+    var height: CGFloat = 94
+    
+    var body: some View {
+        if memo.thumbURL != nil {
+            AsyncImage(url: memo.thumbURL) { image in
+                image
+                    .resizable()
+                    .scaledToFill() // 또는 scaledToFill() 사용
+                    .frame(height: height)
+            } placeholder: {
+                Image("DefaultPreview")
+                    .resizable()
+                    .scaledToFill() // 또는 scaledToFill() 사용
+                    .frame(height: height)
                     .background(Color.cardBackground)
                     .cornerRadius(20)
                     .overlay(
@@ -83,29 +99,35 @@ struct MainContainerView: View {
                             .stroke(Color.defaultPure, lineWidth: 1)
                             .opacity(0.5)
                     )
-
-                    
-                } else {
-                    Image("DefaultPreview")
-                        .resizable()
-                        .frame(width: 140, height: 94)
-                        .scaledToFill() // 또는 scaledToFill() 사용
-                        .background(Color.cardBackground)
-                        .cornerRadius(20)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.defaultPure, lineWidth: 1)
-                                .opacity(0.5)
-                        )
-
-                }
-                
-                
             }
+            .frame(width: width, height: height)
+            .background(Color.cardBackground)
+            .cornerRadius(20)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.defaultPure, lineWidth: 1)
+                    .opacity(0.5)
+            )
+
+            
+        } else {
+            Image("DefaultPreview")
+                .resizable()
+                .scaledToFill() // 또는 scaledToFill() 사용
+                .frame(width: width, height: height)
+                .background(Color.cardBackground)
+                .cornerRadius(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.defaultPure, lineWidth: 1)
+                        .opacity(0.5)
+                )
+
         }
-        .frame(maxWidth: .infinity)
+        
     }
 }
+
 
 struct Item {
     let id: Int

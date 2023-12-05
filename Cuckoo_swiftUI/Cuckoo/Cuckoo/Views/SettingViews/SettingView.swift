@@ -66,7 +66,7 @@ struct SettingProfileListView: View {
         }
         .padding(.horizontal, 30)
         .frame(height: 80)
-        .background(Color.cardBackground)
+        .background(.thickMaterial)
     }
 }
 
@@ -92,7 +92,7 @@ struct SettingListView<T: View>: View {
             }
             .padding(.horizontal, 30)
             .frame(height: 60)
-            .background(Color.cardBackground)
+            .background(.thickMaterial)
         }
     }
 }

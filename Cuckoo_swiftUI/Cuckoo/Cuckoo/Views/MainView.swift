@@ -128,8 +128,6 @@ struct MainView: View {
                             
                             Divider()
                         }
-                        
-                        
                     }
                 }
                 .scrollIndicators(.hidden)
@@ -167,14 +165,14 @@ struct MainViewHeader: View {
                     Image(systemName:"gearshape.circle.fill")
                         .resizable()
                         .frame(width: 45,height: 45)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.cuckooNormalGray)
                         .padding(.trailing,10)
                 }
                 NavigationLink(destination: AlarmView()){
                     Image(systemName:"bell.circle.fill")
                         .resizable()
                         .frame(width: 45,height: 45)
-                        .foregroundColor(.gray)
+                        .foregroundColor(Color.cuckooNormalGray)
                 }
             }
             Spacer()
@@ -263,10 +261,9 @@ struct AddMemoFloatingButton: View {
                 .foregroundColor(.white)
                 .padding()
         }
-            .background(Color.gray)
-            .clipShape(Circle())
-            .padding()
-            .padding(.bottom, 16) // Adjust the bottom padding as needed
+        .background(Color.cuckooNormalGray)
+        .clipShape(Circle())
+        .padding(.bottom, 16) // Adjust the bottom padding as needed
         
     }
 }

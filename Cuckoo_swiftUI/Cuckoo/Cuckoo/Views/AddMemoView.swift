@@ -82,11 +82,17 @@ struct MemoContentFormView: View {
                 // TextEditor의 스크롤 가능한 영역 설정
                 VStack(alignment: .leading, spacing: 0){
                     TextField("메모 디테일한 내용을 작성해주세요.", text: $memoContent, axis: .vertical)
-                        .font(.system(size: 12, weight: .medium))
-                        .padding(10)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 120, alignment: .top) // 가로길이 고정을 위해 최소 너비를 0, 최대 너비를 무한으로 설정합니다.
-                        .background(.black.opacity(0.1)) // 배경색 설정
+                        .font(.system(size: 14, weight: .medium))
+                        .padding(15)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 140, alignment: .top) // 가로길이 고정을 위해 최소 너비를 0, 최대 너비를 무한으로 설정합니다.
+                        .background(Color.cardBackground) // 배경색 설정
                         .cornerRadius(10) // 코너 반경 설정
+                        .onReceive(memoContent.publisher.collect()) {
+                            // 입력된 텍스트 길이 확인
+                            if $0.count > maxCharacterLimit {
+                                memoContent = String($0.prefix(maxCharacterLimit))
+                            }
+                        }
                     
                     HStack {
                         Spacer()
@@ -99,7 +105,7 @@ struct MemoContentFormView: View {
                     
                 }.onAppear (perform : UIApplication.shared.hideKeyboard)
             }
-        }.navigationBarBackButtonHidden(true)
+        }
     }
 }
 

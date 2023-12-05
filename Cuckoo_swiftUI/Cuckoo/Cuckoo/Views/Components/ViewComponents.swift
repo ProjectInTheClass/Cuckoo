@@ -122,7 +122,8 @@ import SwiftUI
 
 extension Color {
     static let alertAccent = Color(red: 1.00, green: 0.31, blue: 0.31)
-    static let cardBackground = Color(red: 0.98, green: 0.96, blue: 0.90)
+    static let cardBackground = Color(red: 0.8705, green: 0.8705, blue: 0.8705)
+
     static let blockDark = Color(red: 0.29, green: 0.29, blue: 0.27)
     static let blockDarker = Color(red: 0.49, green: 0.48, blue: 0.45)
     static let defaultPure = Color(red: 0.78, green: 0.76, blue: 0.72)
