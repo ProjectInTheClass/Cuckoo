@@ -8,7 +8,7 @@
 import SwiftUI
 
 class GlobalState: ObservableObject {
-    @Published var isRegistered: Bool = true
+    @Published var isRegistered: Bool = false
 }
 
 @main
