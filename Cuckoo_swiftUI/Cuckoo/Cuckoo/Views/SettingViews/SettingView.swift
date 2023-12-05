@@ -19,14 +19,14 @@ struct SettingView: View {
                 
                 
                 HStack {
-                    NavigationLink(destination: UserProfileView()) {
-                        SettingProfileView(title: "경민의 메모장")
+                    NavigationLink(destination: SettingsProfileView()) {
+                        SettingProfileListView(title: "경민의 메모장")
                     }
                 }
                 
                 VStack(spacing: 0) {
-                    SettingListView(title: "태그 관리") { AddTagFormView() }
-                    SettingListView(title: "알람 주기/프리셋 설정") { AlarmSettingsView() }
+                    SettingListView(title: "태그 관리") { SettingTagView() }
+                    SettingListView(title: "알람 주기/프리셋 설정") { SettingAlarmPresetView() }
                     SettingListView(title: "기타 설정") { KitSettingsView() }
                 }
                 
@@ -44,7 +44,7 @@ struct SettingView: View {
     }
 }
 
-struct SettingProfileView: View {
+struct SettingProfileListView: View {
     var title: String
     
     var body: some View {
@@ -98,25 +98,6 @@ struct SettingListView<T: View>: View {
 }
 
 
-
-// Placeholder Views for the Navigation Destinations
-struct UserProfileView: View {
-    var body: some View {
-        Text("User Profile")
-    }
-}
-
-struct TagManagementView: View {
-    var body: some View {
-        Text("Tag Management")
-    }
-}
-
-struct AlarmSettingsView: View {
-    var body: some View {
-        Text("Alarm Settings")
-    }
-}
 
 struct KitSettingsView: View {
     var body: some View {

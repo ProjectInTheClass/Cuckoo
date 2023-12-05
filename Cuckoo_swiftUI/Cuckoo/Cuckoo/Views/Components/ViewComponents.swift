@@ -16,26 +16,29 @@ struct HeaderView: View {
     @SwiftUI.Environment(\.dismiss) var dismiss
 
     var body: some View {
-        HStack {
-            // 뒤로 가기 버튼
+        VStack {
             Spacer()
-            Text(title)
-                .font(.system(size: 20, weight: .bold))
-                .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
-
-            Spacer()
-        }.overlay(alignment: .leading) {
-            if isRoot {
-                //
-            } else {
-                Button(action: {
-                    // 뒤로 가기 액션
-                    dismiss()
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
+            HStack {
+                // 뒤로 가기 버튼
+                Spacer()
+                Text(title)
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
+                
+                Spacer()
+            }.overlay(alignment: .leading) {
+                if isRoot {
+                    //
+                } else {
+                    Button(action: {
+                        // 뒤로 가기 액션
+                        dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.black)
+                    }
+                    .padding(.leading, 30)
                 }
-                .padding(.leading, 30)
             }
         }
     }

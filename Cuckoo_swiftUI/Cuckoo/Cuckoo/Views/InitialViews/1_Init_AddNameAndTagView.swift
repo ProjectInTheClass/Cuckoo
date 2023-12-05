@@ -93,7 +93,7 @@ struct AddNameView: View {
                     HStack {
                         Spacer()
                         
-                        TextField("메모장 이름", text: $userName)
+                        TextField("", text: $userName)
                             .focused($isEditing)
                             .font(.system(size: 20, weight: .heavy))
                             .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))

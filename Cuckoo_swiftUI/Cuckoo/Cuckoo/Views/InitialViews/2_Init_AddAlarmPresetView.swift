@@ -20,17 +20,15 @@ struct Init_AddAlarmPresetView: View {
     
     var body: some View {
             VStack {
-                HeaderView(
-                    title: "알람 주기를 설정해주세요."
-                )
+                HeaderView(title: "알람 주기를 설정해주세요.")
                     .frame(height: 60)
                     .frame(maxWidth: .infinity)
                 
-                VStack(alignment: .center, spacing: 30) {
+                VStack(alignment: .leading, spacing: 30) {
                     AddAlarmTermView()
                             
                     if showAddPresetForm {
-                        AddAlarmPresetView(presetButtonList: presetButtonList)
+                        AddAlarmPresetView()
                     }
                 }
                 .padding(.top, 30)
@@ -52,13 +50,16 @@ struct Init_AddAlarmPresetView: View {
                     .frame(height: 120)
                     .frame(maxWidth: .infinity)
                     .onTapGesture {
-                        if !showAddPresetForm {
-                            self.showAddPresetForm.toggle()
-                            self.buttonText = "알림 정보 등록 완료"
-                            self.headerTitle = "프리셋을 추가해주세요!"
-                        } else {
-                            // 다른 화면으로 이동
-                            self.navigateToNextScreen = true
+                        withAnimation {
+                            
+                            if !showAddPresetForm {
+                                self.showAddPresetForm.toggle()
+                                self.buttonText = "알림 정보 등록 완료"
+                                self.headerTitle = "프리셋을 추가해주세요!"
+                            } else {
+                                // 다른 화면으로 이동
+                                self.navigateToNextScreen = true
+                            }
                         }
                     }
                 
@@ -96,28 +97,80 @@ struct AddAlarmTermHeaderView: View {
 }
 
 struct AddAlarmTermBodyView: View {
+    @State private var selectedReminderPeriod = "1일"
+    @State private var isReminderPeriodPopoverPresented = false
+    
+    @State private var selectedMultiplier = 2
+    @State private var isMultiplierPopoverPresented = false
+    
+    let PeriodOptions = ["1일", "2일", "3일", "4일", "5일", "6일", "1주", "2주", "3주", "4주", "8주"]
+    
     var body: some View {
         HStack(alignment: .center) {
-//                        Spacer()
-            Button("1일 주기") {
+            Button("\(selectedReminderPeriod) 주기") {
                 // Handle button tap
+                isReminderPeriodPopoverPresented.toggle()
             }
             .font(.headline)
             .padding(EdgeInsets(top: 15, leading: 40, bottom: 15, trailing: 40))
             .background(.thickMaterial)
             .foregroundColor(.black)
             .cornerRadius(10)
+            .popover(isPresented: $isReminderPeriodPopoverPresented) {
+                VStack {
+                    Text("알림 주기 선택")
+                        .font(.headline)
+                        .padding()
+                    
+                    // Add the Picker code here to select the reminder period
+                    Picker("알림 주기", selection: $selectedReminderPeriod) {
+                        ForEach(PeriodOptions, id: \.self) { period in
+                            Text("\(period)")
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    .padding()
+                    
+                    Button("확인") {
+                        isReminderPeriodPopoverPresented.toggle()
+                    }
+                }
+            }
+            
             
             Spacer()
-            Button("2배수 증가") {
+            Button("\(selectedMultiplier)배수 증가") {
                 // Handle button tap
+                isMultiplierPopoverPresented.toggle()
             }
             .font(.headline)
             .padding(EdgeInsets(top: 15, leading: 40, bottom: 15, trailing: 40))
             .background(.thickMaterial)
             .foregroundColor(.black)
             .cornerRadius(10)
-            
+            .popover(isPresented: $isMultiplierPopoverPresented) {
+                VStack {
+                    Text("배수 선택")
+                        .font(.headline)
+                        .padding()
+                    
+                    // Add the Picker code here to select the multiplier
+                    Picker("배수", selection: $selectedMultiplier) {
+                        ForEach(1...7, id: \.self) { multiplier in
+                            Text("\(multiplier)")
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    .padding()
+                    
+                    Button("확인") {
+                        // Handle the selected multiplier
+                        // You can update your UI or perform other actions here
+                        isMultiplierPopoverPresented.toggle()
+                    }
+                    .padding()
+                }
+            }
             Spacer()
         }
     }
@@ -143,14 +196,8 @@ struct AddAlarmPresetView: View {
     @State private var newTime = ""
     @State private var selectedHourIndex = 12
     @State private var selectedMinuteIndex = 0
-    @State private var presetButtonList: [presetButton]
-    
     
     @State private var isDeleteConfirmationPresented = false
-    
-    init(presetButtonList: [presetButton]) {
-        _presetButtonList = State(initialValue: presetButtonList)
-    }
     
     var body: some View {
         Section {
@@ -169,18 +216,46 @@ struct AddAlarmPresetView: View {
                 }
                 .overlay(
                     HStack(spacing: 10) {
-                        // TODO : Handling click event
-                        Image(systemName: "plus.circle")
-                            .symbolRenderingMode(.monochrome)
-                            .font(.system(size:30, weight: .regular))
-                            .foregroundStyle(.gray)
+                        // Add "New Alarm Preset"
                         
-                        Image(systemName: "trash.circle")
-                            .symbolRenderingMode(.monochrome)
-                            .font(.system(size:30))
-                            .foregroundStyle(selectedPresets.isEmpty ?
-                                             Color(red: 0.7, green: 0.7, blue: 0.7)
-                                           : Color(red: 0, green: 0, blue: 0).opacity(0.80))
+                        Button {
+                            isAddPopoverPresented.toggle()
+                        } label: {
+                            Image(systemName: "plus.circle")
+                                .symbolRenderingMode(.monochrome)
+                                .font(.system(size:30, weight: .regular))
+                                .foregroundStyle(.gray)
+                        }
+                        
+                        
+                        
+                        
+                        // Delete "Selected Alarm Preset"
+                        
+                        Button {
+                            if selectedPresets.isEmpty {
+                                showAlert(title: "알림", message: "선택된 프리셋이 없습니다.")
+                            } else {
+                                isDeleteConfirmationPresented.toggle()
+                            }
+                        } label: {
+                            Image(systemName: "trash.circle")
+                                .symbolRenderingMode(.monochrome)
+                                .font(.system(size:30))
+                                .foregroundStyle(selectedPresets.isEmpty ?
+                                                 Color(red: 0.7, green: 0.7, blue: 0.7)
+                                               : Color(red: 0, green: 0, blue: 0).opacity(0.80))
+                        }
+                        .alert(isPresented: $isDeleteConfirmationPresented) {
+                            Alert(
+                                title: Text("삭제 확인"),
+                                message: Text("선택된 프리셋을 삭제하시겠습니까?"),
+                                primaryButton: .destructive(Text("확인")) {
+                                    deleteSelectedPresets()
+                                },
+                                secondaryButton: .cancel(Text("취소"))
+                            )
+                        }
                     },
                     alignment: .trailing
                 )
@@ -211,7 +286,7 @@ struct AddAlarmPresetView: View {
                             .buttonStyle(NotificationButtonStyle(selected: selectedPresets.contains(button)))
 //                            Divider()
                         }
-                    }
+                    }.padding(.vertical, 10)
                 }
             }
         }.popover(isPresented: $isAddPopoverPresented) {
@@ -233,9 +308,6 @@ struct AddAlarmPresetView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                 
-                //                TextField("시간", text: $newTime)
-                //                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                //                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                 HStack {
                     Picker("시", selection: $selectedHourIndex) {
                         ForEach(0..<24, id: \.self) { hour in
@@ -247,7 +319,6 @@ struct AddAlarmPresetView: View {
                     
                     Text("시")
                         .font(.headline)
-                    //                        .padding(.horizontal)
                     
                     Picker("분", selection: $selectedMinuteIndex) {
                         ForEach(0..<60, id: \.self) { minute in
@@ -259,7 +330,6 @@ struct AddAlarmPresetView: View {
                     
                     Text("분")
                         .font(.headline)
-                    //                        .padding(.horizontal)
                 }
                 
                 HStack {
