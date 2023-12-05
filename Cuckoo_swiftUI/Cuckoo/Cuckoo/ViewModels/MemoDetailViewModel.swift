@@ -32,12 +32,12 @@ class MemoDetailViewModel: ObservableObject {
         showDeleteAlert.toggle()
     }
 
-    func updateMemo(title: String, content: String, tags: [String], link: String) {
+    func updateMemo(title: String, comment: String, tags: [String], link: URL?) {
         memo.title = title
-        memo.content = content
-        memo.tags = tags
-        memo.link = link
-        memo.lastEdited = Date()
+                memo.comment = comment // comment로 변경
+                memo.url = link // URL 처리 추가
+                
+        
         // Save changes to the database or send to the server
     }
 
