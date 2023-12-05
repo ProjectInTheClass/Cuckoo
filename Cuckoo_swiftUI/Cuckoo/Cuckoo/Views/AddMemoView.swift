@@ -23,14 +23,17 @@ struct AddMemoView: View {
                     MemoTypeFormView()
                         .frame(maxWidth: .infinity)
                     
+                    MemoUrlTypeFormView()
+                        .frame(maxWidth: .infinity)
+                    
                     MemoContentFormView()
                         .frame(maxWidth: .infinity)
                     
                     MemoAlarmIntervalFormView()
                         .frame(maxWidth: .infinity)
                     
-                    MemoPreView()
-                        .frame(maxWidth: .infinity)
+//                    MemoPreView()
+//                        .frame(maxWidth: .infinity)
                 }
                 .padding(.top, 30)
                 .padding(.horizontal, 30)
@@ -66,6 +69,38 @@ struct MemoTypeFormView: View {
         }
     }
 }
+
+struct MemoUrlTypeFormView: View {
+    @State private var link: String = ""
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            CardTitleText(title: "메모 링크 (Optional)")
+            CardContent {
+                TextField("링크 입력해주세요!", text: $link)
+                    .font(.system(size: 12, weight: .medium))
+                    .underline()
+                    .lineLimit(1)
+                    .truncationMode(.tail)
+                    .foregroundColor(Color.cuckooNormalGray)
+                    .onTapGesture {
+                        pasteFromClipboard()
+                    }
+            }
+        }
+    }
+
+    private func pasteFromClipboard() {
+        if let clipboardString = UIPasteboard.general.string {
+            // 클립보드의 문자열이 유효한 URL인지 확인
+            if URL(string: clipboardString) != nil {
+                link = clipboardString
+            }
+        }
+    }
+}
+
+
 
 struct MemoContentFormView: View {
     @State private var memoContent: String = "" // 사용자가 입력할 내용을 저장할 상태 변수입니다.
@@ -110,6 +145,8 @@ struct MemoContentFormView: View {
 }
 
 struct MemoAlarmIntervalFormView: View {
+    @State var isEditing: Bool = true
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             VStack(alignment: .leading, spacing: 3) {
@@ -125,9 +162,7 @@ struct MemoAlarmIntervalFormView: View {
                   .foregroundColor(Color(red: 0.7, green: 0.7, blue: 0.7))
             }
             CardContent {
-                // 비워두기
-                Text("")
-                // TODO
+                PickerView(isEditing: $isEditing)
             }
         }
     }
@@ -192,7 +227,7 @@ struct CardTitleText: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 16, weight: .bold))
                 .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
             
             Spacer()
