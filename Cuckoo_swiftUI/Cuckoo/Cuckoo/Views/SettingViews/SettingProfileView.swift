@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct SettingsView_myInfo: View {
+struct SettingsProfileView: View {
     
     //프로필 사진 용
     @State private var isImagePickerPresented: Bool = false
@@ -292,9 +292,8 @@ struct ImagePicker: View {
 }
 
 
-struct SettingsView_myInfo_Previews: PreviewProvider {
+struct SettingsProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView_myInfo()
-        //        SettingsView_myAlertPeriod()
+        SettingsProfileView()
     }
 }

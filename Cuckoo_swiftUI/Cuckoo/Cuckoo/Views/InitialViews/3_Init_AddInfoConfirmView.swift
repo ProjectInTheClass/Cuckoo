@@ -50,7 +50,7 @@ struct Init_AddInfoConfirmView: View {
                                 BarDivider()
                                 BarDivider()
                             
-                                AddAlarmPresetView(presetButtonList: presetButtonList)
+                                AddAlarmPresetView()
                                     .frame(maxWidth: .infinity)
                             }
                             .padding(.top, 30)
