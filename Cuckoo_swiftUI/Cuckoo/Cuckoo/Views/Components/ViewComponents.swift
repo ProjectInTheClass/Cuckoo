@@ -135,6 +135,7 @@ extension Color {
     static let cuckooCarrot = Color(red: 0.52, green: 0.30, blue: 0.11)
     static let cuckooBrown = Color(red: 0.38, green: 0.23, blue: 0.17)
     static let cuckooDeepGray = Color(red: 0.35, green: 0.35, blue: 0.35)
+    static let cuckooNormalGray = Color(red: 0.7, green: 0.7, blue: 0.7)
     static let cuckooLightGray = Color(red: 0.85, green: 0.85, blue: 0.85)
     static let backgroundCandidate = Color(red: 1.00, green: 0.99, blue: 0.96)
 }
