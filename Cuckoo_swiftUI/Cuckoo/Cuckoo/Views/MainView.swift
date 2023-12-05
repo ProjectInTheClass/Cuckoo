@@ -16,13 +16,32 @@ struct MainView: View {
     @State private var newMemoDetails = ""
     
     //메모들을 위한 item
+    // TODO : <og:preview> tag에서 미리보기 이미지 떼오는 hook
     let items: [Item] = [
-        Item(title: "Item 1", detail: "manywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanywordmanyword",tag: "Tech",timeAgo: "·2 days ago", memoURL: "www.naver.com", imageName: "arrow.right.circle"),
-        Item(title: "Item 2", detail: "Detail A", tag: "Tech",timeAgo: "·2 days ago", memoURL: "www.naver.com",imageName: "arrow.right.circle"),
-        Item(title: "Item 3", detail: "Detail A\nDetail B\nDetail C",tag: "Tech",timeAgo: "·2 days ago", memoURL: "www.naver.com", imageName: "arrow.right.circle"),
-        Item(title: "Item 4", detail: "Detail A\nDetail B\nDetail C",tag: "Tech",timeAgo: "·2 days ago", memoURL: "www.naver.com", imageName: "arrow.right.circle"),
-        Item(title: "Item 5", detail: "Detail A\nDetail B\nDetail C",tag: "Tech",timeAgo: "·2 days ago", memoURL: "www.naver.com", imageName: "arrow.right.circle"),
-        // Add more items as needed
+        Item(
+            title: "PM 스터디 그것이 알고싶다",
+            detail: "우아한 형제들 Tech 블로그 나중에 꼭 챙겨보기!",
+            tag: "Tech",
+            timeAgo: "2 days ago",
+            memoURL: "https://www.naver.com",
+            thumbURL: "https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"
+        ),
+        Item(
+            title: "오늘 할일",
+            detail: "1. 방 옷 정리하기\n2. 동사무소 16시 이전에 들렸다오기\n3. 소모임 관련 Notion 페이지 손보기",
+            tag: "메모",
+            timeAgo: "2 days ago",
+            memoURL: "",
+            thumbURL: ""
+        ),
+        Item(
+            title: "Velog",
+            detail: "내가 보려고 정리한 기술 블로그 모음(2022)",
+            tag: "Tech",
+            timeAgo: "1 week ago",
+            memoURL: "https://velog.io/@esthevely/%EB%82%B4%EA%B0%80-%EB%B3%B4%EB%A0%A4%EA%B3%A0-%EC%A0%95%EB%A6%AC%ED%95%9C-%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%AA%A8%EC%9D%8C2022",
+            thumbURL: "https://velog.velcdn.com/images/esthevely/post/af9eda09-5d6e-464b-91e7-ad14fa2d1e3f/tumblr_nn2mjjJKzq1utwqnuo1_500.gif"
+        )
     ]
     
     
@@ -50,7 +69,7 @@ struct MainView: View {
                             tag: item.tag,
                             timeAgo: item.timeAgo,
                             memoURL: item.memoURL,
-                            imageName: item.imageName
+                            thumbURL: item.thumbURL
                         ).padding(.bottom, 15)
                     }
                 }
