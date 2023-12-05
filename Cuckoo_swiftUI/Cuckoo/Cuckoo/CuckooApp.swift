@@ -7,11 +7,23 @@
 
 import SwiftUI
 
+class GlobalState: ObservableObject {
+    @Published var isRegistered: Bool = false
+}
+
 @main
 struct CuckooApp: App {
+    @StateObject var globalState = GlobalState()
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
+            if globalState.isRegistered {
+                MainView()
+                    .environmentObject(globalState)
+            } else {
+                Init_AddNameAndTagView()
+                    .environmentObject(globalState)
+            }
         }
     }
 }

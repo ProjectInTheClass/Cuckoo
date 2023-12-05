@@ -17,59 +17,64 @@ struct SettingView: View {
         }
     var body: some View {
         
-                NavigationView {
+        NavigationView {
+            VStack {
+                Section {
+                    HeaderView(title: "설정")
+                        .frame(height: 60)
+                }
+                List {
                     
-                    
-                        // The list now has a clear color and will show the ZStack's background color.
-                        List {
-                            Section(header: SettingHeaderView()
-                                .padding(.bottom, 30)
-                                .padding(.horizontal, 20)
-                            ) {
-                                NavigationLink(destination: UserProfileView()) {
-                                    SettingCellView(iconName: "person.crop.circle.fill", title: "경민의 메모장", subtitle: "내 정보 수정하기")
-                                }
-                                
-                                .listRowBackground(Color.gray.opacity(0.2))
+                    // Other Settings Sections
+                    VStack(spacing: 10) {
+                        VStack {
+                            NavigationLink(destination: UserProfileView()) {
+                                SettingCellView(iconName: "person.crop.circle.fill", title: "경민의 메모장", subtitle: "내 정보 수정하기")
                             }
-                            
-                            // Other Settings Sections
-                            Section {
-                                NavigationLink(destination: SettingTagView()) {
-                                    Text("태그 관리")
-                                }
-                                
-                                .listRowBackground(Color.gray.opacity(0.2))
-                                NavigationLink(destination: AlarmSettingsView()) {
-                                    Text("알람 주기/프리셋 설정")
-                                }
-                                .listRowBackground(Color.gray.opacity(0.2))
-                                NavigationLink(destination: KitSettingsView()) {
-                                    Text("기타 설정")
-                                }
-                                .listRowBackground(Color.gray.opacity(0.2))
-                            }
-                            
-                            // Logout or Additional Option
-                            Section {
-                                NavigationLink(destination: LicenseInformationView()) {
-                                    Text("개인정보 처리 방침")
-                                }
-                                .listRowBackground(Color.gray.opacity(0.2))
-                                NavigationLink(destination: LicenseInformationView()) {
-                                    Text("문의 하기")
-                                }
-                                .listRowBackground(Color.gray.opacity(0.2))
-                                
-                            }
-                            
                         }
                         
-                        .listStyle(GroupedListStyle())
-                        .background(.white)
-                                    .scrollContentBackground(.hidden)
+                        
+                    }.listRowBackground(Color.gray.opacity(0.2))
+                    
+                    Section {
+                        VStack {
+                            NavigationLink(destination: SettingTagView()) {
+                                Text("태그 관리")
+                            }
+                            
+                            .listRowBackground(Color.gray.opacity(0.2))
+                            NavigationLink(destination: AlarmSettingsView()) {
+                                Text("알람 주기/프리셋 설정")
+                            }
+                            .listRowBackground(Color.gray.opacity(0.2))
+                            NavigationLink(destination: KitSettingsView()) {
+                                Text("기타 설정")
+                            }
+                            
+                        }.listRowBackground(Color.gray.opacity(0.2))
+                    }
+                    
+                    // Logout or Additional Option
+                    Section {
+                        NavigationLink(destination: LicenseInformationView()) {
+                            Text("개인정보 처리 방침")
+                        }
+                        .listRowBackground(Color.gray.opacity(0.2))
+                        NavigationLink(destination: LicenseInformationView()) {
+                            Text("문의 하기")
+                        }
+                        .listRowBackground(Color.gray.opacity(0.2))
                         
                     }
+                    
+                }
+                
+                .listStyle(GroupedListStyle())
+                .background(.white)
+                .scrollContentBackground(.hidden)
+                
+            }
+        }
                     .navigationBarBackButtonHidden(true)
 //                    .navigationBarHidden(true)
 //                    .navigationViewStyle(StackNavigationViewStyle())

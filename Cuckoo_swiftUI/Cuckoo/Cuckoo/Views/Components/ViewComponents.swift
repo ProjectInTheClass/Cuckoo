@@ -8,34 +8,44 @@
 import SwiftUI
 import Combine
 
-
 struct HeaderView: View {
-    var title: String;
-    
+    var title: String = ""
+    var isRoot: Bool = false
+
+    // 현재 뷰를 닫는 데 사용됩니다.
+    @SwiftUI.Environment(\.dismiss) var dismiss
+
     var body: some View {
         HStack {
+            // 뒤로 가기 버튼
             Spacer()
             Text(title)
                 .font(.system(size: 20, weight: .bold))
                 .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
-            
+
             Spacer()
-        }.overlay(
-            Button(action: {}) {
-                Image(systemName: "chevron.left")
-                
-                    .foregroundColor(.black)
-            }.padding(.leading, 30),
-            alignment: .leading)
+        }.overlay(alignment: .leading) {
+            if isRoot {
+                //
+            } else {
+                Button(action: {
+                    // 뒤로 가기 액션
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.black)
+                }
+                .padding(.leading, 30)
+            }
+        }
     }
 }
-
 
 struct BarDivider: View {
   var body: some View {
     Rectangle()
       .foregroundColor(.clear)
-      .frame(width: .infinity, height: 0.2)
+      .frame(height: 0.2)
       .overlay(
         Rectangle()
           .stroke(
@@ -131,3 +141,23 @@ extension Color {
  Rectangle()
      .fill(Color.cuckooLightGray)
  */
+
+
+// 이하는 키보드 숨기기용
+
+extension UIApplication {
+    func hideKeyboard() {
+        guard let window = windows.first else { return }
+        let tapRecognizer = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
+        tapRecognizer.cancelsTouchesInView = false
+        tapRecognizer.delegate = self
+        window.addGestureRecognizer(tapRecognizer)
+    }
+ }
+ 
+extension UIApplication: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+}
+
