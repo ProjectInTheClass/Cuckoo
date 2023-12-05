@@ -24,8 +24,8 @@ struct MainView: View {
             userId: 1,
             title: "PM 스터디 그것이 알고싶다",
             comment: "우아한 형제들 Tech 블로그 나중에 꼭 챙겨보기!",
-            url: URL(string: "https://www.naver.com"),
-            thumbURL: URL(string: "https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"),
+            url: URL(string: "https://techblog.woowahan.com/13977/"),
+            thumbURL: URL(string: "https://techblog.woowahan.com/wp-content/uploads/2021/06/screenshot.jpg"),
             notificationCycle: 7, // 예시 값
             notificationTime: ["09:00 AM", "03:00 PM"], // 예시 시간들
             notificationStatus: "Active", // 예시 상태

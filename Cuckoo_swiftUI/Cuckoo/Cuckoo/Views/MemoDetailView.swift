@@ -62,7 +62,7 @@ struct MemoDetailView: View {
                     )
                     
                     MemoInfoView(/*lastEdited: viewModel.memo.lastEdited*/)
-                }
+                }.padding(.bottom, 20)
             }.padding(.horizontal, 30)
             
             
@@ -228,14 +228,6 @@ struct ReminderPickerView: View {
     
     let reminderOptions: [String]
     
-    @State private var selectedReminderPeriod = "1일"
-    @State private var isReminderPeriodPopoverPresented = false
-    
-    @State private var selectedMultiplier = 2
-    @State private var isMultiplierPopoverPresented = false
-    
-    let PeriodOptions = ["1일", "2일", "3일", "4일", "5일", "6일", "1주", "2주", "3주", "4주", "8주"]
-    
     
     var body: some View {
         
@@ -253,82 +245,99 @@ struct ReminderPickerView: View {
                   .foregroundColor(Color(red: 0.7, green: 0.7, blue: 0.7))
             }
             CardContent {
-                HStack(alignment: .center) {
-                    Button("\(selectedReminderPeriod) 주기") {
-                        // Handle button tap
-                        if isEditing {
-                            isReminderPeriodPopoverPresented.toggle()
-                        }
-                            
-                    }
-                    .font(.headline)
-                    .padding(EdgeInsets(top: 15, leading: 40, bottom: 15, trailing: 40))
-                    .background(.thickMaterial)
-                    .foregroundColor(.black)
-                    .cornerRadius(10)
-                    .popover(isPresented: $isReminderPeriodPopoverPresented) {
-                        VStack {
-                            Text("알림 주기 선택")
-                                .font(.headline)
-                                .padding()
-                            
-                            // Add the Picker code here to select the reminder period
-                            Picker("알림 주기", selection: $selectedReminderPeriod) {
-                                ForEach(PeriodOptions, id: \.self) { period in
-                                    Text("\(period)")
-                                }
-                            }
-                            .pickerStyle(WheelPickerStyle())
-                            .padding()
-                            
-                            Button("확인") {
-                                isReminderPeriodPopoverPresented.toggle()
-                            }
-                        }
-                    }
-                    
-                    
-                    Spacer()
-                    Button("\(selectedMultiplier)배수 증가") {
-                        if isEditing {
-                            isMultiplierPopoverPresented.toggle()
-                        }
-                    }
-                    .font(.headline)
-                    .padding(EdgeInsets(top: 15, leading: 40, bottom: 15, trailing: 40))
-                    .background(.thickMaterial)
-                    .foregroundColor(.black)
-                    .cornerRadius(10)
-                    .popover(isPresented: $isMultiplierPopoverPresented) {
-                        VStack {
-                            Text("배수 선택")
-                                .font(.headline)
-                                .padding()
-                            
-                            // Add the Picker code here to select the multiplier
-                            Picker("배수", selection: $selectedMultiplier) {
-                                ForEach(1...7, id: \.self) { multiplier in
-                                    Text("\(multiplier)")
-                                }
-                            }
-                            .pickerStyle(WheelPickerStyle())
-                            .padding()
-                            
-                            Button("확인") {
-                                // Handle the selected multiplier
-                                // You can update your UI or perform other actions here
-                                isMultiplierPopoverPresented.toggle()
-                            }
-                            .padding()
-                        }
-                    }
-                    Spacer()
-                }
+                PickerView(isEditing: $isEditing)
             }
         }
     }
     
 }
+
+struct PickerView: View {
+    @Binding var isEditing: Bool
+    
+    @State private var selectedReminderPeriod = "1일"
+    @State private var isReminderPeriodPopoverPresented = false
+    
+    @State private var selectedMultiplier = 2
+    @State private var isMultiplierPopoverPresented = false
+    
+    let PeriodOptions = ["1일", "2일", "3일", "4일", "5일", "6일", "1주", "2주", "3주", "4주", "8주"]
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            Button("\(selectedReminderPeriod) 주기") {
+                // Handle button tap
+                if isEditing {
+                    isReminderPeriodPopoverPresented.toggle()
+                }
+                    
+            }
+            .font(.headline)
+            .padding(EdgeInsets(top: 15, leading: 40, bottom: 15, trailing: 40))
+            .background(.thickMaterial)
+            .foregroundColor(.black)
+            .cornerRadius(10)
+            .popover(isPresented: $isReminderPeriodPopoverPresented) {
+                VStack {
+                    Text("알림 주기 선택")
+                        .font(.headline)
+                        .padding()
+                    
+                    // Add the Picker code here to select the reminder period
+                    Picker("알림 주기", selection: $selectedReminderPeriod) {
+                        ForEach(PeriodOptions, id: \.self) { period in
+                            Text("\(period)")
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    .padding()
+                    
+                    Button("확인") {
+                        isReminderPeriodPopoverPresented.toggle()
+                    }
+                }
+            }
+            
+            
+            Spacer()
+            Button("\(selectedMultiplier)배수 증가") {
+                if isEditing {
+                    isMultiplierPopoverPresented.toggle()
+                }
+            }
+            .font(.headline)
+            .padding(EdgeInsets(top: 15, leading: 40, bottom: 15, trailing: 40))
+            .background(.thickMaterial)
+            .foregroundColor(.black)
+            .cornerRadius(10)
+            .popover(isPresented: $isMultiplierPopoverPresented) {
+                VStack {
+                    Text("배수 선택")
+                        .font(.headline)
+                        .padding()
+                    
+                    // Add the Picker code here to select the multiplier
+                    Picker("배수", selection: $selectedMultiplier) {
+                        ForEach(1...7, id: \.self) { multiplier in
+                            Text("\(multiplier)")
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    .padding()
+                    
+                    Button("확인") {
+                        // Handle the selected multiplier
+                        // You can update your UI or perform other actions here
+                        isMultiplierPopoverPresented.toggle()
+                    }
+                    .padding()
+                }
+            }
+            Spacer()
+        }
+    }
+}
+
 
 struct MemoInfoView: View{
     var body: some View{
