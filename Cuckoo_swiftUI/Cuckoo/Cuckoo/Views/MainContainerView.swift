@@ -8,48 +8,52 @@
 import SwiftUI
 
 struct MainContainerView: View {
-    let title: String
-    let detail: String
-    let tag: String
-    let timeAgo: String
-    let memoURL: String
-    let thumbURL: String
-
-    @State var image: Image?
-        
+    
+    var memo: Memo
+    
+    var tag: String
+    var timeAgo: String
+    
+    init(memo: Memo) {
+        self.memo = memo
+        self.timeAgo = "2 days ago" // TODO : 현재 Date랑 차이를 통해, now(5분미만), n minutes ago,  n hour(s) ago, day(s) ago, week(s) ago 중 하나로 나타내야함.
+        self.tag = "전체" // TODO : MemoTag에서, memo_id 기준으로 검색 후에 나오는 tag id중 가장 처음거로
+    }
+    
     var body: some View {
         
         HStack {
-            VStack(alignment: .leading, spacing: 5) {
-                // TODO: [동우] Color 일괄 변경 필요
-                // TODO: [동우] width 값 fix값 뺄 수 있는지 확인
-                Text(title)
-                    .font(.system(size:16, weight:.bold))
-                    .frame(alignment: .leading)
-                    .lineLimit(1) // 한 줄로 제한
-                    .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
-                
-                // TODO: [동우] Color 일괄 변경 필요
-                Text(detail)
-                    .font(.system(size:10, weight: .regular))
-                    .frame(maxWidth: 160, maxHeight: 60, alignment: .topLeading)
-                    .foregroundColor(Color(red: 0.70, green: 0.70, blue: 0.70))
-                
+            VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(memo.title)
+                        .font(.system(size:18, weight:.bold))
+                        .foregroundColor(Color.black)
+                        .lineLimit(1) // 한 줄로 제한
+                        .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
+                    
+                    Text(memo.comment)
+                        .font(.system(size:12, weight: .regular))
+                        .foregroundColor(Color.cuckooNormalGray)
+                        .frame(maxWidth: 160, alignment: .leading)
+                        .lineLimit(3)
+                        .multilineTextAlignment(.leading)
+                        .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
+                    
+                }
                 
                 Spacer()
                 
-                // TODO: [동우] Color 일괄 변경 필요
                 VStack(alignment: .leading, spacing: 0){
                     HStack(spacing:0){
                         Text("\(tag) · \(timeAgo)")
-                            .font(.system(size: 8, weight:.light))
-                            .foregroundColor(Color(red: 0.70, green: 0.70, blue: 0.70))
+                            .font(.system(size: 10, weight:.light))
+                            .foregroundColor(Color.cuckooNormalGray)
                     }
-                    if memoURL != "" {
-                        Text(memoURL)
-                            .font(.system(size: 8, weight:.light))
+                    if memo.url != nil {
+                        Text(memo.url?.absoluteString ?? "")
+                            .font(.system(size: 10, weight:.light))
                             .underline()
-                            .foregroundColor(Color(red: 0.70, green: 0.70, blue: 0.70))
+                            .foregroundColor(Color.cuckooNormalGray)
                             .frame(maxWidth:160, alignment:.leading)
                             .lineLimit(1) // 한 줄로 제한
                             .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
@@ -59,19 +63,35 @@ struct MainContainerView: View {
                 
             }
             Spacer()
-            // TODO: [동우] Default image 넣게끔 (Figma 참고)
+            
             VStack {
                 
-                if thumbURL != "" {
-                    AsyncImage(url: URL(string: thumbURL)) { image in
-                        image
-                            .resizable()
-                            .scaledToFill() // 또는 scaledToFill() 사용
-                            .frame(height: 94)
-                    } placeholder: {
-                        ProgressView()
-                    }
-                    .frame(width: 140, height: 94)
+                MemoThumbnailImageView(memo: memo)
+                
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+struct MemoThumbnailImageView: View {
+    var memo: Memo
+    
+    var width: CGFloat = 140
+    var height: CGFloat = 94
+    
+    var body: some View {
+        if memo.thumbURL != nil {
+            AsyncImage(url: memo.thumbURL) { image in
+                image
+                    .resizable()
+                    .scaledToFill() // 또는 scaledToFill() 사용
+                    .frame(height: height)
+            } placeholder: {
+                Image("DefaultPreview")
+                    .resizable()
+                    .scaledToFill() // 또는 scaledToFill() 사용
+                    .frame(height: height)
                     .background(Color.cardBackground)
                     .cornerRadius(20)
                     .overlay(
@@ -79,30 +99,35 @@ struct MainContainerView: View {
                             .stroke(Color.defaultPure, lineWidth: 1)
                             .opacity(0.5)
                     )
-
-                    
-                } else {
-                    Image("DefaultPreview")
-                        .resizable()
-                        .frame(width: 140, height: 94)
-                        .scaledToFill() // 또는 scaledToFill() 사용
-                        .background(Color.cardBackground)
-                        .cornerRadius(20)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.defaultPure, lineWidth: 1)
-                                .opacity(0.5)
-                        )
-
-                }
-                
-                
             }
+            .frame(width: width, height: height)
+            .background(Color.cardBackground)
+            .cornerRadius(20)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.defaultPure, lineWidth: 1)
+                    .opacity(0.5)
+            )
+
+            
+        } else {
+            Image("DefaultPreview")
+                .resizable()
+                .scaledToFill() // 또는 scaledToFill() 사용
+                .frame(width: width, height: height)
+                .background(Color.cardBackground)
+                .cornerRadius(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.defaultPure, lineWidth: 1)
+                        .opacity(0.5)
+                )
+
         }
-        .frame(maxWidth: .infinity)
-        Divider()
+        
     }
 }
+
 
 struct Item {
     let id: Int

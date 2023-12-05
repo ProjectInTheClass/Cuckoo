@@ -19,9 +19,6 @@
 		00A73DFD2B0C323800B59084 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73DFC2B0C323800B59084 /* Memo.swift */; };
 		00A73DFF2B0C324200B59084 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73DFE2B0C324200B59084 /* User.swift */; };
 		00A73E012B0C35D300B59084 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E002B0C35D300B59084 /* Tag.swift */; };
-		00A73E052B0C37A600B59084 /* MemoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E042B0C37A600B59084 /* MemoRepository.swift */; };
-		00A73E072B0C37CB00B59084 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E062B0C37CB00B59084 /* UserRepository.swift */; };
-		00A73E092B0C37DC00B59084 /* TagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E082B0C37DC00B59084 /* TagRepository.swift */; };
 		00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E0A2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift */; };
 		00A73E0F2B0C583900B59084 /* ViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E0E2B0C583900B59084 /* ViewComponents.swift */; };
 		00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */; };
@@ -73,9 +70,6 @@
 		00A73DFC2B0C323800B59084 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		00A73DFE2B0C324200B59084 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00A73E002B0C35D300B59084 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		00A73E042B0C37A600B59084 /* MemoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoRepository.swift; sourceTree = "<group>"; };
-		00A73E062B0C37CB00B59084 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
-		00A73E082B0C37DC00B59084 /* TagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepository.swift; sourceTree = "<group>"; };
 		00A73E0A2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1_Init_AddNameAndTagView.swift; sourceTree = "<group>"; };
 		00A73E0E2B0C583900B59084 /* ViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponents.swift; sourceTree = "<group>"; };
 		00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingAlarmPresetView.swift; sourceTree = "<group>"; };
@@ -178,9 +172,6 @@
 				00A73DFC2B0C323800B59084 /* Memo.swift */,
 				00A73DFE2B0C324200B59084 /* User.swift */,
 				00A73E002B0C35D300B59084 /* Tag.swift */,
-				00A73E042B0C37A600B59084 /* MemoRepository.swift */,
-				00A73E062B0C37CB00B59084 /* UserRepository.swift */,
-				00A73E082B0C37DC00B59084 /* TagRepository.swift */,
 				7D8DE4BC2B1EAF95004502FF /* MemoTag.swift */,
 				7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */,
 				7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */,
@@ -388,11 +379,9 @@
 			files = (
 				00A73E0F2B0C583900B59084 /* ViewComponents.swift in Sources */,
 				00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */,
-				00A73E072B0C37CB00B59084 /* UserRepository.swift in Sources */,
 				00652D982B143E84004C3345 /* SettingView.swift in Sources */,
 				7D8DE4BD2B1EAF95004502FF /* MemoTag.swift in Sources */,
 				A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */,
-				00A73E052B0C37A600B59084 /* MemoRepository.swift in Sources */,
 				00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */,
 				00A73DFD2B0C323800B59084 /* Memo.swift in Sources */,
 				00A73E012B0C35D300B59084 /* Tag.swift in Sources */,
@@ -404,7 +393,6 @@
 				A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */,
 				00A73DFB2B0C31D700B59084 /* AddMemoViewModel.swift in Sources */,
 				00652D9C2B143FAE004C3345 /* SettingProfileView.swift in Sources */,
-				00A73E092B0C37DC00B59084 /* TagRepository.swift in Sources */,
 				7D8DE4C12B1EB0A6004502FF /* NotificationLog.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
 				7D8DE4BF2B1EB078004502FF /* AlarmPreset.swift in Sources */,
