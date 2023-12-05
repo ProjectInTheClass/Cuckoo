@@ -91,16 +91,14 @@ struct TagView: View {
 
 // Link View
 struct MemoLinkView: View {
-    var link: String
-    
+    var link: URL? // URL? 타입으로 변경
+
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("메모 링크")
-            Text(link)
+            Text(link?.absoluteString ?? "") // URL을 문자열로 표시
                 .foregroundColor(.gray)
-            
         }
-        
         .padding(.bottom, 30)
     }
 }
@@ -108,7 +106,7 @@ struct MemoLinkView: View {
 // Content View
 struct MemoContentView: View {
     @Binding var isEditing: Bool
-    @Binding var editedComment: String
+    @Binding var Comment: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -122,7 +120,7 @@ struct MemoContentView: View {
                 
                 if isEditing {
                     // 여러 줄의 코멘트를 입력받을 TextEditor
-                    TextEditor(text: $editedComment)
+                    TextEditor(text: $Comment)
                         .padding(4) // TextEditor 내부 패딩
                         .frame(minHeight: 100) // TextEditor의 최소 높이를 지정
                         .cornerRadius(8) // 모서리를 둥글게
@@ -136,7 +134,7 @@ struct MemoContentView: View {
                 } else {
                     // 편집 모드가 아닐 때 일반 텍스트 표시
                     HStack {
-                        Text(editedComment)
+                        Text(Comment)
                             .foregroundColor(Color.gray.opacity(1.0))
                             .padding(4)
                         Spacer() // 이 Spacer로 인해 Text 뷰는 왼쪽에 정렬됩니다.
@@ -149,7 +147,7 @@ struct MemoContentView: View {
                 
                 // 글자 수 표시 (편집 모드일 때만)
                 if isEditing {
-                    Text("\(editedComment.count) / 250")
+                    Text("\(Comment.count) / 250")
                         .font(.caption)
                         .foregroundColor(.gray)
                         .padding(.trailing, 35)
@@ -329,9 +327,9 @@ struct MemoDetailView: View {
                         MemoDetailHeaderView()
                         MemoImageView()
                         MemoTitleView(isEditing: $viewModel.isEditing, editedTitle: $viewModel.memo.title)
-                        TagsView(tags: viewModel.memo.tags)
-                        MemoLinkView(link: viewModel.memo.link)
-                        MemoContentView(isEditing: $viewModel.isEditing, editedComment: $viewModel.memo.content)
+                        TagsView(tags: tags)
+                        MemoLinkView(link: viewModel.memo.url)
+                        MemoContentView(isEditing: $viewModel.isEditing, Comment: $viewModel.memo.comment)
                         ReminderPickerView(selectedReminder: $viewModel.selectedReminder, reminderOptions: viewModel.reminderOptions)
                         MemoInfoView(/*lastEdited: viewModel.memo.lastEdited*/)
                     }
@@ -369,7 +367,22 @@ struct MemoDetailView: View {
 struct MemoDetailView_Previews: PreviewProvider {
     static var previews: some View {
         // 더미 데이터 생성
-        let dummyMemo = Memo(title: "Sample Memo", content: "This is a sample memo.", tags: ["Sample", "Test"], link: "www.example.com", lastEdited: Date())
+        let dummyMemo = Memo(
+            id: 1, // id 추가 (예시로 1을 사용)
+            userId: 1, // userId 추가 (예시로 1을 사용)
+            title: "Sample Memo",
+            comment:"This is a sample memo.",
+            url: URL(string: "https://www.example.com"),
+            notificationCycle: 7, // 예시 값
+            notificationTime: ["09:00 AM", "03:00 PM"], // 예시 시간들
+            notificationStatus: "Active", // 예시 상태
+            notificationCount: 3, // 예시 횟수
+            isPinned: false, // 예시 고정 상태
+            createdAt: Date(),
+            updatedAt: Date(),
+            remainingNotificationTime: Date() // 예시 남은 알림 시간
+        )
+
 
         // 더미 데이터를 사용하여 ViewModel 인스턴스 생성
         let viewModel = MemoDetailViewModel(memo: dummyMemo)
