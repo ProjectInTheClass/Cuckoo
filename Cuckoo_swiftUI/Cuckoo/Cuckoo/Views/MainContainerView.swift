@@ -74,6 +74,12 @@ struct MainContainerView: View {
                     .frame(width: 140, height: 94)
                     .background(Color.cardBackground)
                     .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.defaultPure, lineWidth: 1)
+                            .opacity(0.5)
+                    )
+
                     
                 } else {
                     Image("DefaultPreview")
@@ -82,6 +88,12 @@ struct MainContainerView: View {
                         .scaledToFill() // 또는 scaledToFill() 사용
                         .background(Color.cardBackground)
                         .cornerRadius(20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.defaultPure, lineWidth: 1)
+                                .opacity(0.5)
+                        )
+
                 }
                 
                 
@@ -93,6 +105,7 @@ struct MainContainerView: View {
 }
 
 struct Item {
+    let id: Int
     let title: String
     let detail: String
     let tag: String

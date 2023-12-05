@@ -19,6 +19,7 @@ struct MainView: View {
     // TODO : <og:preview> tag에서 미리보기 이미지 떼오는 hook
     let items: [Item] = [
         Item(
+            id: 1,
             title: "PM 스터디 그것이 알고싶다",
             detail: "우아한 형제들 Tech 블로그 나중에 꼭 챙겨보기!",
             tag: "Tech",
@@ -27,6 +28,7 @@ struct MainView: View {
             thumbURL: "https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png"
         ),
         Item(
+            id: 2,
             title: "오늘 할일",
             detail: "1. 방 옷 정리하기\n2. 동사무소 16시 이전에 들렸다오기\n3. 소모임 관련 Notion 페이지 손보기",
             tag: "메모",
@@ -35,12 +37,31 @@ struct MainView: View {
             thumbURL: ""
         ),
         Item(
+            id: 3,
             title: "Velog",
             detail: "내가 보려고 정리한 기술 블로그 모음(2022)",
             tag: "Tech",
             timeAgo: "1 week ago",
             memoURL: "https://velog.io/@esthevely/%EB%82%B4%EA%B0%80-%EB%B3%B4%EB%A0%A4%EA%B3%A0-%EC%A0%95%EB%A6%AC%ED%95%9C-%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%AA%A8%EC%9D%8C2022",
             thumbURL: "https://velog.velcdn.com/images/esthevely/post/af9eda09-5d6e-464b-91e7-ad14fa2d1e3f/tumblr_nn2mjjJKzq1utwqnuo1_500.gif"
+        ),
+        Item(
+            id: 4,
+            title: "Github",
+            detail: "클린코드 스터디",
+            tag: "Tech",
+            timeAgo: "2 weeks ago",
+            memoURL: "https://github.com/Yooii-Studios/Clean-Code",
+            thumbURL: "https://opengraph.githubassets.com/d3065dfb6924c24f6f7ff79247bb370fccdf88295c564036ddfd3c5a19c29057/Yooii-Studios/Clean-Code"
+        ),
+        Item(
+            id: 5,
+            title: "Velog",
+            detail: "참고하려고 하는 TIL 관련 게시글!",
+            tag: "Tech",
+            timeAgo: "2 weeks ago",
+            memoURL: "https://velog.io/@moonstar/TIL-22.12.29",
+            thumbURL: "https://images.velog.io/velog.png"
         )
     ]
     
@@ -62,7 +83,7 @@ struct MainView: View {
                 
                 // Body
                 ScrollView(){
-                    ForEach(items, id: \.title) { item in
+                    ForEach(items, id: \.id) { item in
                         MainContainerView(
                             title: item.title,
                             detail: item.detail,
@@ -165,7 +186,8 @@ struct MainViewSearchFilter: View {
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 36, alignment: .top)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.defaultPure, lineWidth: 1))
+                            .stroke(Color.defaultPure, lineWidth: 1)).opacity(0.5)
+                    
                 
             }
             .onAppear (perform : UIApplication.shared.hideKeyboard)
