@@ -8,120 +8,94 @@
 import SwiftUI
 
 struct SettingView: View {
-    init() {
-            // To remove all separators including the actual ones:
-            UITableView.appearance().separatorStyle = .none
-
-            // To set the background color of UITableView:
-            UITableView.appearance().backgroundColor = .clear // Use .clear to make it transparent
-        }
+    
     var body: some View {
-        
-        NavigationView {
-            VStack {
-                Section {
-                    HeaderView(title: "설정")
-                        .frame(height: 60)
-                }
-                List {
-                    
-                    // Other Settings Sections
-                    VStack(spacing: 10) {
-                        VStack {
-                            NavigationLink(destination: UserProfileView()) {
-                                SettingCellView(iconName: "person.crop.circle.fill", title: "경민의 메모장", subtitle: "내 정보 수정하기")
-                            }
-                        }
-                        
-                        
-                    }.listRowBackground(Color.gray.opacity(0.2))
-                    
-                    Section {
-                        VStack {
-                            NavigationLink(destination: SettingTagView()) {
-                                Text("태그 관리")
-                            }
-                            
-                            .listRowBackground(Color.gray.opacity(0.2))
-                            NavigationLink(destination: AlarmSettingsView()) {
-                                Text("알람 주기/프리셋 설정")
-                            }
-                            .listRowBackground(Color.gray.opacity(0.2))
-                            NavigationLink(destination: KitSettingsView()) {
-                                Text("기타 설정")
-                            }
-                            
-                        }.listRowBackground(Color.gray.opacity(0.2))
+        VStack {
+            VStack(spacing: 20) {
+                
+                HeaderView(title: "설정")
+                    .frame(height: 60)
+                    .frame(maxWidth: .infinity)
+                
+                
+                HStack {
+                    NavigationLink(destination: UserProfileView()) {
+                        SettingProfileView(title: "경민의 메모장")
                     }
-                    
-                    // Logout or Additional Option
-                    Section {
-                        NavigationLink(destination: LicenseInformationView()) {
-                            Text("개인정보 처리 방침")
-                        }
-                        .listRowBackground(Color.gray.opacity(0.2))
-                        NavigationLink(destination: LicenseInformationView()) {
-                            Text("문의 하기")
-                        }
-                        .listRowBackground(Color.gray.opacity(0.2))
-                        
-                    }
-                    
                 }
                 
-                .listStyle(GroupedListStyle())
-                .background(.white)
-                .scrollContentBackground(.hidden)
+                VStack(spacing: 0) {
+                    SettingListView(title: "태그 관리") { AddTagFormView() }
+                    SettingListView(title: "알람 주기/프리셋 설정") { AlarmSettingsView() }
+                    SettingListView(title: "기타 설정") { KitSettingsView() }
+                }
+                
+                VStack(spacing: 0) {
+                    
+                    SettingListView(title: "개인정보 처리 방침") { LicenseInformationView() }
+                    SettingListView(title: "문의 하기") { LicenseInformationView() }
+                }
+                
+                Spacer()
                 
             }
         }
-                    .navigationBarBackButtonHidden(true)
-//                    .navigationBarHidden(true)
-//                    .navigationViewStyle(StackNavigationViewStyle())
-                    
-                
-            
-            
+        .navigationBarBackButtonHidden(true)
     }
 }
-struct SettingCellView: View {
-    let iconName: String
-    let title: String
-    let subtitle: String
 
+struct SettingProfileView: View {
+    var title: String
+    
     var body: some View {
         HStack {
-            Image(systemName: iconName)
+            Image(systemName: "person.circle.fill")
+                .resizable()
+                .frame(width:45, height:45)
                 .foregroundColor(.gray)
             VStack(alignment: .leading) {
                 Text(title)
-                Text(subtitle)
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(Color.black.opacity(0.80))
+                Text("내 정보 수정하기")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
+            
+            Spacer()
         }
+        .padding(.horizontal, 30)
+        .frame(height: 80)
+        .background(Color.cardBackground)
     }
 }
-struct SettingHeaderView: View {
-    @Environment(\.presentationMode) var presentationMode
 
+
+//
+struct SettingListView<T: View>: View {
+    var title: String
+    var dest: () -> T
+    
+    init(title: String, @ViewBuilder dest: @escaping () -> T) {
+        self.title = title
+        self.dest = dest
+    }
+    
     var body: some View {
-        HStack {
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "chevron.left")
-                    .foregroundColor(.black)
+        NavigationLink(destination: dest()) {
+            HStack {
+                Text(title)
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(Color.black.opacity(0.80))
+                
+                Spacer()
             }
-            Spacer()
-            Text("설정")
-                .font(.system(size: 20, weight: .bold))
-                .foregroundColor(Color.black.opacity(0.80))
-            Spacer()
+            .padding(.horizontal, 30)
+            .frame(height: 60)
+            .background(Color.cardBackground)
         }
     }
 }
-
 
 
 
