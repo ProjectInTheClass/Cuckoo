@@ -139,7 +139,7 @@ struct MainViewSearchFilter: View {
         // TextEditor의 스크롤 가능한 영역 설정
         VStack(spacing: 18) {
             HStack(spacing: 0){
-                TextField("", text: $searchContent, axis: .vertical)
+                TextField("검색어를 입력해주세요!", text: $searchContent)
                     .font(.system(size: 14, weight: .medium))
                     .padding(.leading, 25)
                     .padding(10)
@@ -149,6 +149,7 @@ struct MainViewSearchFilter: View {
                             .stroke(Color.defaultPure, lineWidth: 1))
                 
             }
+            .onAppear (perform : UIApplication.shared.hideKeyboard)
             .overlay(Image(systemName: "magnifyingglass")
                 .padding(.leading, 10)
                 .foregroundColor(.gray)

@@ -18,9 +18,10 @@ struct Init_AddInfoConfirmView: View {
     @State private var scrollViewHeight: CGFloat = 0
     @State private var contentHeight: CGFloat = 0
     @Namespace var bottomID
+    
+    @EnvironmentObject var globalState: GlobalState
 
     var body: some View {
-        NavigationView {
             ScrollViewReader { scrollViewProxy in
                 VStack {
                     HeaderView(title: headerTitle)
@@ -29,63 +30,66 @@ struct Init_AddInfoConfirmView: View {
 
                     
                     ScrollView(.vertical, showsIndicators: false) {
-                        VStack(alignment: .center, spacing: 30) {
-                            AddNameView()
-                                .frame(maxWidth: .infinity)
+                        VStack(spacing: 0) {
                             
-                            BarDivider()
+                            VStack(alignment: .center, spacing: 30) {
+                                AddNameView()
+                                    .frame(maxWidth: .infinity)
+                                
+                                BarDivider()
 
-                            AddTagFormView()
-                                .frame(maxWidth: .infinity)
+                                AddTagFormView()
+                                    .frame(maxWidth: .infinity)
+                                
+                                BarDivider()
+                                BarDivider()
+                                
+                                AddAlarmTermView()
+                                    .frame(maxWidth: .infinity)
+                                
+                                BarDivider()
+                                BarDivider()
                             
-                            BarDivider()
-                            BarDivider()
-                            
-                            AddAlarmTermView()
-                                .frame(maxWidth: .infinity)
-                            
-                            BarDivider()
-                            BarDivider()
-                        
-                            AddAlarmPresetView(presetButtonList: presetButtonList)
-                                .frame(maxWidth: .infinity)
-                            
-//                            GeometryReader { proxy in
-//                                let offset = proxy.frame(in: .named("scroll")).minY
-//                                Color.clear.preference(key: ViewOffsetKey.self, value: offset)
-//                            }
-                        }
-                        .padding(.top, 30)
-                        .padding(.horizontal, 30)
-                        .padding(.bottom, 120)
-                        .frame(maxWidth: .infinity)
-                        
-                    }.coordinateSpace(name: "scroll")
-                        .onPreferenceChange(ViewOffsetKey.self) { value in
-                            print(value)
-                        }
+                                AddAlarmPresetView(presetButtonList: presetButtonList)
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .padding(.top, 30)
+                            .padding(.horizontal, 30)
+                            .padding(.bottom, 120)
+                            .frame(maxWidth: .infinity)
 
-                    NavigationLink(destination: MainView(), isActive: $navigateToNextScreen) {
-                        EmptyView()
+                            
+                            
+                            Color.clear.frame(height:0).id(bottomID)
+                        }
                     }
-
-                    
-                }.navigationBarBackButtonHidden(true)
+                }
                 .overlay(
-                    
                     VStack{
                         Spacer()
                         ConfirmFixedButton(confirmMessage: buttonText)
                             .frame(height: 120)
                             .frame(maxWidth: .infinity)
                             .onTapGesture {
-                                navigateToNextScreen = true // 다음 화면으로 이동
+                                withAnimation {
+                                    scrollViewProxy.scrollTo(bottomID, anchor: .top)
+                                    
+                                    if !navigateToNextScreen {
+                                        navigateToNextScreen = true;
+                                    } else {
+                                        withAnimation {
+                                            globalState.isRegistered = true;
+                                        }
+                                    }
+
+                                }
+                                
+                                
                             }
                         
                     }, alignment: .leading)
                 
             }.navigationBarBackButtonHidden(true)
-        }.navigationBarBackButtonHidden(true)
     }
 }
 

@@ -19,7 +19,7 @@ struct Init_AddNameAndTagView: View {
         NavigationView {
             VStack {
                 // 헤더 제목을 상태 변수로 변경
-                HeaderView(title: headerTitle)
+                HeaderView(title: headerTitle, isRoot: true)
                     .frame(height: 60)
                     .frame(maxWidth: .infinity)
                 
@@ -41,7 +41,10 @@ struct Init_AddNameAndTagView: View {
                 .frame(maxWidth: .infinity)
                 Spacer()
                 
-                NavigationLink(destination: Init_AddAlarmPresetView(), isActive: $navigateToNextScreen) {
+                NavigationLink(
+                    destination: Init_AddAlarmPresetView(),
+                    isActive: $navigateToNextScreen
+                ) {
                     EmptyView()
                 }
 
@@ -51,7 +54,9 @@ struct Init_AddNameAndTagView: View {
                     .frame(maxWidth: .infinity)
                     .onTapGesture {
                         if !showAddTagForm {
-                            self.showAddTagForm.toggle()
+                            withAnimation {
+                                self.showAddTagForm.toggle()
+                            }
                             self.buttonText = "태그 추가 완료"
                             self.headerTitle = "태그를 추가해주세요!"
                         } else {

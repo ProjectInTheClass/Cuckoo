@@ -10,8 +10,10 @@ import Combine
 
 
 struct AddMemoView: View {
+    
+    @SwiftUI.Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        NavigationView{
             VStack {
                 HeaderView(title: "메모 등록")
                     .frame(height: 60)
@@ -38,8 +40,7 @@ struct AddMemoView: View {
                     .frame(height: 60)
                     .frame(maxWidth: .infinity)
             }
-        }
-        .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -96,7 +97,7 @@ struct MemoContentFormView: View {
                             .padding(.trailing, 15)
                     }
                     
-                }
+                }.onAppear (perform : UIApplication.shared.hideKeyboard)
             }
         }.navigationBarBackButtonHidden(true)
     }

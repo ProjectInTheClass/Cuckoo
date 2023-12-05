@@ -19,9 +19,10 @@ struct Init_AddAlarmPresetView: View {
 
     
     var body: some View {
-        NavigationView {
             VStack {
-                HeaderView(title: "알람 주기를 설정해주세요.")
+                HeaderView(
+                    title: "알람 주기를 설정해주세요."
+                )
                     .frame(height: 60)
                     .frame(maxWidth: .infinity)
                 
@@ -39,7 +40,10 @@ struct Init_AddAlarmPresetView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: Init_AddInfoConfirmView(), isActive: $navigateToNextScreen) {
+                NavigationLink(
+                    destination: Init_AddInfoConfirmView(),
+                    isActive: $navigateToNextScreen
+                ) {
                     EmptyView()
                 }
                 
@@ -59,7 +63,6 @@ struct Init_AddAlarmPresetView: View {
                     }
                 
             }.navigationBarBackButtonHidden(true)
-        }.navigationBarBackButtonHidden(true)
         
     }
 }
