@@ -79,42 +79,21 @@ struct MemoThumbnailImageView: View {
     
     var width: CGFloat = 140
     var height: CGFloat = 94
-    
-    var body: some View {
-        if memo.thumbURL != nil {
-            AsyncImage(url: memo.thumbURL) { image in
-                image
-                    .resizable()
-                    .scaledToFill() // 또는 scaledToFill() 사용
-                    .frame(height: height)
-            } placeholder: {
-                Image("DefaultPreview")
-                    .resizable()
-                    .scaledToFill() // 또는 scaledToFill() 사용
-                    .frame(height: height)
-                    .background(Color.cardBackground)
-                    .cornerRadius(20)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.defaultPure, lineWidth: 1)
-                            .opacity(0.5)
-                    )
-            }
-            .frame(width: width, height: height)
-            .background(Color.cardBackground)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.defaultPure, lineWidth: 1)
-                    .opacity(0.5)
-            )
 
-            
-        } else {
-            Image("DefaultPreview")
-                .resizable()
-                .scaledToFill() // 또는 scaledToFill() 사용
-                .frame(width: width, height: height)
+    var body: some View {
+        ZStack {
+            if let thumbURL = memo.thumbURL {
+                AsyncImage(url: thumbURL) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: width, height: height)
+                } placeholder: {
+                    Image("DefaultPreview")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: width, height: height)
+                }
                 .background(Color.cardBackground)
                 .cornerRadius(20)
                 .overlay(
@@ -123,10 +102,31 @@ struct MemoThumbnailImageView: View {
                         .opacity(0.5)
                 )
 
+                // 링크 추가
+                if let linkURL = memo.url {
+                    Link(destination: linkURL) {
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .frame(width: width, height: height)
+                    }
+                }
+            } else {
+                Image("DefaultPreview")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: width, height: height)
+                    .background(Color.cardBackground)
+                    .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.defaultPure, lineWidth: 1)
+                            .opacity(0.5)
+                    )
+            }
         }
-        
     }
 }
+
 
 
 struct Item {

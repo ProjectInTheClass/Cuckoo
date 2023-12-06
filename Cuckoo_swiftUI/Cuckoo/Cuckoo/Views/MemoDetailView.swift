@@ -156,13 +156,18 @@ struct MemoLinkView: View {
                     
                     Spacer()
                 }
-                // TODO :: 수정기능?
-                Text(link?.absoluteString ?? "")
-                  .font(.system(size: 12, weight: .medium))
-                  .underline()
-                  .lineLimit(1)
-                  .truncationMode(/*@START_MENU_TOKEN@*/.tail/*@END_MENU_TOKEN@*/)
-                  .foregroundColor(Color.cuckooNormalGray)
+                if let url = link {
+                               Link(url.absoluteString, destination: url)
+                                   .font(.system(size: 12, weight: .medium))
+                                   .underline()
+                                   .lineLimit(1)
+                                   .truncationMode(.tail)
+                                   .foregroundColor(Color.gray)
+                           } else {
+                               Text("")
+                                   .font(.system(size: 12, weight: .medium))
+                                   .foregroundColor(Color.gray)
+                           }
             }
         }
     }
