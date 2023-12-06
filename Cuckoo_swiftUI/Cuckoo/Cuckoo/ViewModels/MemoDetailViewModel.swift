@@ -65,5 +65,6 @@ class MemoDetailViewModel: ObservableObject {
             let relatedTagIds = relatedMemoTags.map { $0.tagId }
             tags = allTags.filter { relatedTagIds.contains($0.id) }
         }
+    
 
 }
