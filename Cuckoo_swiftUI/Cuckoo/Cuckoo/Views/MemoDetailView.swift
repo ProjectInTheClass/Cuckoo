@@ -11,15 +11,12 @@ import SwiftUI
 struct MemoDetailView: View {
     // State variables
     @State private var isEditing = false
-    @State private var editedTitle = "HYU LMS"
-    @State private var editedComment = "기존 코멘트"
     @State private var showDeleteAlert = false
     @State private var showActionButtons = false
     @State private var selectedReminder = "7일"
     @StateObject var viewModel: MemoDetailViewModel
     // Constants
     let reminderOptions = ["없음", "7일", "14일", "21일"]
-    let tags = ["Tag1", "Tag2", "Tag3", "Tag4", "Tag5"]
 
     var body: some View {
         VStack {
@@ -130,10 +127,11 @@ struct TagsView: View {
             HStack {
                 ForEach(tags) { tag in
                     Text(tag.name)
-                        .font(.caption)
+                        .font(.caption.weight(.bold))
+                        .foregroundColor(.white)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 5)
-                        .background(Color.gray.opacity(0.2))
+                        .background(Color.fromHex(tag.color))
                         .foregroundColor(.black)
                         .cornerRadius(15)
                 }
