@@ -43,7 +43,7 @@ struct MemoDetailView: View {
                             editedTitle: $viewModel.memo.title
                         )
                         
-                        TagsView(tags: tags)
+                        TagsView(tags: dummyTags)
                     }
                     
                     if viewModel.memo.url != nil {
@@ -123,13 +123,13 @@ struct MemoTitleView: View {
 
 // Tags View
 struct TagsView: View {
-    let tags: [String]
+    let tags: [Tag]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(tags, id: \.self) { tag in
-                    Text(tag)
+                ForEach(tags) { tag in
+                    Text(tag.name)
                         .font(.caption)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 5)

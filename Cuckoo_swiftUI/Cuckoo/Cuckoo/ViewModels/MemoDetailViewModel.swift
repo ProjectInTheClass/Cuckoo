@@ -9,16 +9,20 @@ import Foundation
 
 class MemoDetailViewModel: ObservableObject {
     @Published var memo: Memo
+    @Published var tags: [Tag] = []
+    @Published var memoTags: [MemoTag] = []
     @Published var isEditing = false
     @Published var showActionButtons = false
     @Published var showDeleteAlert = false
     @Published var selectedReminder: String // 선택된 알람 주기를 저장
     let reminderOptions = ["없음", "7일", "14일", "21일", "30일"]
 
-    init(memo: Memo) {
-        self.memo = memo
-        self.selectedReminder = "" // 초기화 필요
-    }
+    init(memo: Memo, tags: [Tag] = [], memoTags: [MemoTag] = []) {
+            self.memo = memo
+            self.tags = tags
+            self.memoTags = memoTags
+            self.selectedReminder = ""
+        }
 
     func toggleEditing() {
         isEditing.toggle()
@@ -49,4 +53,12 @@ class MemoDetailViewModel: ObservableObject {
     func deleteMemo() {
         // Delete the memo from the database or server
     }
+    
+    func updateTags(forMemo memoId: Int, withTagIds tagIds: [Int]) {
+            memoTags = tagIds.map { MemoTag(memoId: memoId, tagId: $0) }
+        }
+
+        func loadTags() {
+            
+        }
 }
