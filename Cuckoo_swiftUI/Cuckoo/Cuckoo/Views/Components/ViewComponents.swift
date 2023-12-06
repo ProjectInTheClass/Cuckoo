@@ -139,6 +139,35 @@ extension Color {
     static let cuckooNormalGray = Color(red: 0.7, green: 0.7, blue: 0.7)
     static let cuckooLightGray = Color(red: 0.85, green: 0.85, blue: 0.85)
     static let backgroundCandidate = Color(red: 1.00, green: 0.99, blue: 0.96)
+    
+    func toHex() -> String? {
+            let uiColor = UIColor(self)
+            var red: CGFloat = 0
+            var green: CGFloat = 0
+            var blue: CGFloat = 0
+            var alpha: CGFloat = 0
+
+            uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+            let rgb: Int = (Int)(red*255)<<16 | (Int)(green*255)<<8 | (Int)(blue*255)<<0
+
+            return String(format:"#%06x", rgb)
+        }
+    
+    static func fromHex(_ hex: String) -> Color {
+            var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+            hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+
+            var rgb: UInt64 = 0
+
+            Scanner(string: hexSanitized).scanHexInt64(&rgb)
+
+            let red = Double((rgb & 0xFF0000) >> 16) / 255.0
+            let green = Double((rgb & 0x00FF00) >> 8) / 255.0
+            let blue = Double(rgb & 0x0000FF) / 255.0
+
+            return Color(red: red, green: green, blue: blue)
+        }
 }
 
 /*
