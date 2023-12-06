@@ -43,7 +43,7 @@ struct MemoDetailView: View {
                             editedTitle: $viewModel.memo.title
                         )
                         
-                        TagsView(tags: dummyTags)
+                        TagsView(tags: viewModel.tags)
                     }
                     
                     if viewModel.memo.url != nil {
