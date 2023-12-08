@@ -31,6 +31,7 @@
 		7D8DE4BD2B1EAF95004502FF /* MemoTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4BC2B1EAF95004502FF /* MemoTag.swift */; };
 		7D8DE4BF2B1EB078004502FF /* AlarmPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */; };
 		7D8DE4C12B1EB0A6004502FF /* NotificationLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */; };
+		7D9AB3CE2B2295AE00B00C09 /* SettingTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */; };
 		7DF6B4D22B1B204800B64CC0 /* MemoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6B4D12B1B204800B64CC0 /* MemoDetailViewModel.swift */; };
 		7DF6B4D42B1B26E800B64CC0 /* MainContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */; };
 		A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */; };
@@ -85,6 +86,7 @@
 		7D8DE4BC2B1EAF95004502FF /* MemoTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTag.swift; sourceTree = "<group>"; };
 		7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPreset.swift; sourceTree = "<group>"; };
 		7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLog.swift; sourceTree = "<group>"; };
+		7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTagViewModel.swift; sourceTree = "<group>"; };
 		7DF6B4D12B1B204800B64CC0 /* MemoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailViewModel.swift; sourceTree = "<group>"; };
 		7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewModel.swift; sourceTree = "<group>"; };
 		A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				00A73DFA2B0C31D700B59084 /* AddMemoViewModel.swift */,
 				7DF6B4D12B1B204800B64CC0 /* MemoDetailViewModel.swift */,
 				7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */,
+				7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */,
 				00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */,
 				00A73DFD2B0C323800B59084 /* Memo.swift in Sources */,
+				7D9AB3CE2B2295AE00B00C09 /* SettingTagViewModel.swift in Sources */,
 				00A73E012B0C35D300B59084 /* Tag.swift in Sources */,
 				00652D962B143E70004C3345 /* SettingTagView.swift in Sources */,
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
