@@ -81,7 +81,7 @@ struct MainViewHeader: View {
                         .foregroundColor(Color.cuckooNormalGray)
                         .padding(.trailing,10)
                 }
-                NavigationLink(destination: AlarmView()){
+                NavigationLink(destination: NotificationLogView()){
                     Image(systemName:"bell.circle.fill")
                         .resizable()
                         .frame(width: 45,height: 45)
