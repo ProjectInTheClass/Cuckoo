@@ -37,7 +37,6 @@
 		7DF6B4D22B1B204800B64CC0 /* MemoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6B4D12B1B204800B64CC0 /* MemoDetailViewModel.swift */; };
 		7DF6B4D42B1B26E800B64CC0 /* MainContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */; };
 		A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */; };
-		A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F12B09F2B300EB4F54 /* NavView.swift */; };
 		A82451F82B17470500EB4F54 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F72B17470500EB4F54 /* AlarmView.swift */; };
 		A84350DE2B2369B5006CDD60 /* MemoDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84350DD2B2369B5006CDD60 /* MemoDummy.swift */; };
 		A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */; };
@@ -102,7 +101,6 @@
 		7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewModel.swift; sourceTree = "<group>"; };
 		864F1656EB714D9F80CDCE23 /* Pods-CuckooTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CuckooTests.release.xcconfig"; path = "Target Support Files/Pods-CuckooTests/Pods-CuckooTests.release.xcconfig"; sourceTree = "<group>"; };
 		A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
-		A82451F12B09F2B300EB4F54 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
 		A82451F72B17470500EB4F54 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		A84350DD2B2369B5006CDD60 /* MemoDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDummy.swift; sourceTree = "<group>"; };
 		A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 				A8BC23902AFA014B00A2F87F /* MainView.swift */,
 				A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */,
 				A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */,
-				A82451F12B09F2B300EB4F54 /* NavView.swift */,
 				00652D932B143E51004C3345 /* MemoDetailView.swift */,
 				A82451F72B17470500EB4F54 /* AlarmView.swift */,
 			);
@@ -535,7 +532,6 @@
 				00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */,
 				00652D982B143E84004C3345 /* SettingView.swift in Sources */,
 				7D8DE4BD2B1EAF95004502FF /* MemoTag.swift in Sources */,
-				A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */,
 				00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */,
 				00A73DFD2B0C323800B59084 /* Memo.swift in Sources */,
 				7D9AB3CE2B2295AE00B00C09 /* SettingTagViewModel.swift in Sources */,
@@ -655,6 +651,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				q = "";
 			};
 			name = Debug;
 		};
@@ -711,6 +708,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
+				q = "";
 			};
 			name = Release;
 		};
