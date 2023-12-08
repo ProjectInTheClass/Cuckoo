@@ -85,10 +85,12 @@ struct AddNameView: View {
             CardContent {
                 VStack(spacing: 20) {
                     // TODO: 나중에 이미지 업로드 가능하게 변경 (Profile Image)
-                    Image(systemName: "circle.fill")
+                    Image("DefaultPreview")
                         .resizable()
-                        .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.30))
+                        .scaledToFill()
                         .frame(width: 140, height: 140)
+                        .cornerRadius(70)
+                        .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.30))
                     
                     HStack {
                         Spacer()

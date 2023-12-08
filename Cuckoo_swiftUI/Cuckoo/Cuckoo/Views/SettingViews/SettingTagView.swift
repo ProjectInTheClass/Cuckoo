@@ -13,35 +13,36 @@ struct SettingTagView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            SettingTagHeaderView()
+            HeaderView(title: "태그 관리")
                 .frame(height: 60)
                 .frame(maxWidth: .infinity)
-            Text("등록 태그")
-                .font(.system(size: 25, weight: .bold))
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    ForEach(tags, id: \.self) { tag in
-                        SetTagView(tagName: tag)
-                    }
-                    Button(action: {
-                        addTag()
-                    }) {
-                        Image(systemName: "plus.circle.fill")
-                            .foregroundColor(.gray)
-                            .font(.system(size: 20))
-                    }
-                    .padding(.vertical, 5)
-                    .padding(.horizontal, 10)
-                    .background(Color.gray.opacity(0.4))
-                    .cornerRadius(15)
+                
+                VStack(alignment: .leading) {
+                    Text("등록 태그")
+                        .font(.system(size: 25, weight: .bold))
+                        HStack(spacing: 10) {
+                            ForEach(tags, id: \.self) { tag in
+                                SetTagView(tagName: tag)
+                            }
+                            Button(action: {
+                                addTag()
+                            }) {
+                                Image(systemName: "plus.circle.fill")
+                                    .foregroundColor(.gray)
+                                    .font(.system(size: 20))
+                            }
+                            .padding(.vertical, 5)
+                            .padding(.horizontal, 10)
+                            .background(Color.gray.opacity(0.4))
+                            .cornerRadius(15)
+                        }
                 }
-                .padding(.vertical, 10)
             }
-            .frame(height: 40)
+            .padding(.horizontal,30)
             
             Spacer()
         }
-        .padding(.horizontal,30)
         .navigationBarHidden(true)
     }
     
