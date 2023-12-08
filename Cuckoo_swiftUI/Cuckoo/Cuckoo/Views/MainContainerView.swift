@@ -35,7 +35,7 @@ struct MainContainerView: View {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 5) {
                     if(memo.isPinned){
-                        HStack{
+                        HStack(spacing: 3){
                             RotatedImageView()
                             Text(memo.title)
                                 .font(.system(size:18, weight:.bold))

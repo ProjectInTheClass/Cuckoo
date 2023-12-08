@@ -155,17 +155,19 @@ struct MemoLinkView: View {
                     Spacer()
                 }
                 if let url = link {
-                               Link(url.absoluteString, destination: url)
-                                   .font(.system(size: 12, weight: .medium))
-                                   .underline()
-                                   .lineLimit(1)
-                                   .truncationMode(.tail)
-                                   .foregroundColor(Color.gray)
-                           } else {
-                               Text("")
-                                   .font(.system(size: 12, weight: .medium))
-                                   .foregroundColor(Color.gray)
-                           }
+                    Link(destination: url) {
+                        Text(url.absoluteString)
+                            .font(.system(size: 12, weight: .medium))
+                            .underline()
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                            .foregroundColor(Color.gray)
+                    }
+                } else {
+                    Text("")
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundColor(Color.gray)
+                }
             }
         }
     }
