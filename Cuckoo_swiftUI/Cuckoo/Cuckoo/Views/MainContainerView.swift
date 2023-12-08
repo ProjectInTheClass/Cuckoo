@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+//pinpoint
+struct RotatedImageView: View {
+    var body: some View {
+        Image(systemName: "pin.fill")
+            .foregroundColor(Color.black)
+            .rotationEffect(Angle(degrees: 45))
+    }
+}
+
 struct MainContainerView: View {
     
     var memo: Memo
@@ -25,11 +34,23 @@ struct MainContainerView: View {
         HStack {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(memo.title)
-                        .font(.system(size:18, weight:.bold))
-                        .foregroundColor(Color.black)
-                        .lineLimit(1) // 한 줄로 제한
-                        .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
+                    if(memo.isPinned){
+                        HStack{
+                            RotatedImageView()
+                            Text(memo.title)
+                                .font(.system(size:18, weight:.bold))
+                                .foregroundColor(Color.black)
+                                .lineLimit(1) // 한 줄로 제한
+                                .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
+                        }
+                    }else{
+                        Text(memo.title)
+                            .font(.system(size:18, weight:.bold))
+                            .foregroundColor(Color.black)
+                            .lineLimit(1) // 한 줄로 제한
+                            .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
+                    }
+
                     
                     Text(memo.comment)
                         .font(.system(size:12, weight: .regular))

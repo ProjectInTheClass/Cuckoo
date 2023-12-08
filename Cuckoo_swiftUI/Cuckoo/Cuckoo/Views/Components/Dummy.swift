@@ -18,3 +18,4 @@ var presetButtonList: [presetButton] = [
 ]
 
 var EmojiList : [String] = ["🍔","🛌","⚽️","📚","🔔", "🌄", "🏙️", "🌆", "🌃"]
+
