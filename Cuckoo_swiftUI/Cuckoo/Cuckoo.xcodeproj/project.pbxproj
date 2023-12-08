@@ -22,6 +22,8 @@
 		00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E0A2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift */; };
 		00A73E0F2B0C583900B59084 /* ViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E0E2B0C583900B59084 /* ViewComponents.swift */; };
 		00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */; };
+		04CD305975F21353FD0F5627 /* Pods_Cuckoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D17E4E921EDF35CCA729DB3 /* Pods_Cuckoo.framework */; };
+		0FE0BE856E1BDC805AE22CF2 /* Pods_CuckooTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE8C1C48BFF2CFB3C647D07 /* Pods_CuckooTests.framework */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
 		7A7F878A2AEF559D00F14B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87892AEF559D00F14B11 /* Preview Assets.xcassets */; };
@@ -39,6 +41,7 @@
 		A82451F82B17470500EB4F54 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F72B17470500EB4F54 /* AlarmView.swift */; };
 		A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */; };
 		A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC23902AFA014B00A2F87F /* MainView.swift */; };
+		E9162AADA89D798FE43F3AB9 /* Pods_Cuckoo_CuckooUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C7CE151D2A140C5259F384F /* Pods_Cuckoo_CuckooUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,13 @@
 		00A73E0A2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1_Init_AddNameAndTagView.swift; sourceTree = "<group>"; };
 		00A73E0E2B0C583900B59084 /* ViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponents.swift; sourceTree = "<group>"; };
 		00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingAlarmPresetView.swift; sourceTree = "<group>"; };
+		0AE8C1C48BFF2CFB3C647D07 /* Pods_CuckooTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CuckooTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E4B153FD83B73FD01D844F2 /* Pods-Cuckoo-CuckooUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuckoo-CuckooUITests.release.xcconfig"; path = "Target Support Files/Pods-Cuckoo-CuckooUITests/Pods-Cuckoo-CuckooUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4629B32463E2A9976AA36570 /* Pods-Cuckoo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuckoo.release.xcconfig"; path = "Target Support Files/Pods-Cuckoo/Pods-Cuckoo.release.xcconfig"; sourceTree = "<group>"; };
+		4C7CE151D2A140C5259F384F /* Pods_Cuckoo_CuckooUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cuckoo_CuckooUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51837B20EF5EBF8E47D56222 /* Pods-Cuckoo-CuckooUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuckoo-CuckooUITests.debug.xcconfig"; path = "Target Support Files/Pods-Cuckoo-CuckooUITests/Pods-Cuckoo-CuckooUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5D17E4E921EDF35CCA729DB3 /* Pods_Cuckoo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cuckoo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AA721CC5902FC1B3145AF41 /* Pods-Cuckoo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuckoo.debug.xcconfig"; path = "Target Support Files/Pods-Cuckoo/Pods-Cuckoo.debug.xcconfig"; sourceTree = "<group>"; };
 		7A7F877F2AEF559C00F14B11 /* Cuckoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuckoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F87822AEF559C00F14B11 /* CuckooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooApp.swift; sourceTree = "<group>"; };
 		7A7F87862AEF559D00F14B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -89,11 +99,13 @@
 		7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTagViewModel.swift; sourceTree = "<group>"; };
 		7DF6B4D12B1B204800B64CC0 /* MemoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailViewModel.swift; sourceTree = "<group>"; };
 		7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewModel.swift; sourceTree = "<group>"; };
+		864F1656EB714D9F80CDCE23 /* Pods-CuckooTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CuckooTests.release.xcconfig"; path = "Target Support Files/Pods-CuckooTests/Pods-CuckooTests.release.xcconfig"; sourceTree = "<group>"; };
 		A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
 		A82451F12B09F2B300EB4F54 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
 		A82451F72B17470500EB4F54 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		A8BC23902AFA014B00A2F87F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		D79DAC789CBEB3978A2A5675 /* Pods-CuckooTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CuckooTests.debug.xcconfig"; path = "Target Support Files/Pods-CuckooTests/Pods-CuckooTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CD305975F21353FD0F5627 /* Pods_Cuckoo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE0BE856E1BDC805AE22CF2 /* Pods_CuckooTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9162AADA89D798FE43F3AB9 /* Pods_Cuckoo_CuckooUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +207,29 @@
 			path = InitialViews;
 			sourceTree = "<group>";
 		};
+		672C56B125C41E1391F496DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D17E4E921EDF35CCA729DB3 /* Pods_Cuckoo.framework */,
+				4C7CE151D2A140C5259F384F /* Pods_Cuckoo_CuckooUITests.framework */,
+				0AE8C1C48BFF2CFB3C647D07 /* Pods_CuckooTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		71F80CFC4C0B32F28DA267F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6AA721CC5902FC1B3145AF41 /* Pods-Cuckoo.debug.xcconfig */,
+				4629B32463E2A9976AA36570 /* Pods-Cuckoo.release.xcconfig */,
+				51837B20EF5EBF8E47D56222 /* Pods-Cuckoo-CuckooUITests.debug.xcconfig */,
+				1E4B153FD83B73FD01D844F2 /* Pods-Cuckoo-CuckooUITests.release.xcconfig */,
+				D79DAC789CBEB3978A2A5675 /* Pods-CuckooTests.debug.xcconfig */,
+				864F1656EB714D9F80CDCE23 /* Pods-CuckooTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7A7F87762AEF559C00F14B11 = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +237,8 @@
 				7A7F87922AEF559E00F14B11 /* CuckooTests */,
 				7A7F879C2AEF559E00F14B11 /* CuckooUITests */,
 				7A7F87802AEF559C00F14B11 /* Products */,
+				71F80CFC4C0B32F28DA267F1 /* Pods */,
+				672C56B125C41E1391F496DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -257,9 +297,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A7F87A32AEF559E00F14B11 /* Build configuration list for PBXNativeTarget "Cuckoo" */;
 			buildPhases = (
+				79CC8ED51068A566C06530EB /* [CP] Check Pods Manifest.lock */,
 				7A7F877B2AEF559C00F14B11 /* Sources */,
 				7A7F877C2AEF559C00F14B11 /* Frameworks */,
 				7A7F877D2AEF559C00F14B11 /* Resources */,
+				C2B2D02881437A37FAD9FFBB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -274,6 +316,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A7F87A62AEF559E00F14B11 /* Build configuration list for PBXNativeTarget "CuckooTests" */;
 			buildPhases = (
+				D20F4227A4BC2F3D308F9195 /* [CP] Check Pods Manifest.lock */,
 				7A7F878B2AEF559E00F14B11 /* Sources */,
 				7A7F878C2AEF559E00F14B11 /* Frameworks */,
 				7A7F878D2AEF559E00F14B11 /* Resources */,
@@ -292,9 +335,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A7F87A92AEF559E00F14B11 /* Build configuration list for PBXNativeTarget "CuckooUITests" */;
 			buildPhases = (
+				E5E8AEF1EB3A25466B2D1588 /* [CP] Check Pods Manifest.lock */,
 				7A7F87952AEF559E00F14B11 /* Sources */,
 				7A7F87962AEF559E00F14B11 /* Frameworks */,
 				7A7F87972AEF559E00F14B11 /* Resources */,
+				FB773AEE3C9EF4376A10BCCB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,6 +419,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79CC8ED51068A566C06530EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cuckoo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2B2D02881437A37FAD9FFBB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cuckoo/Pods-Cuckoo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cuckoo/Pods-Cuckoo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cuckoo/Pods-Cuckoo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D20F4227A4BC2F3D308F9195 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CuckooTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5E8AEF1EB3A25466B2D1588 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cuckoo-CuckooUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB773AEE3C9EF4376A10BCCB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cuckoo-CuckooUITests/Pods-Cuckoo-CuckooUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cuckoo-CuckooUITests/Pods-Cuckoo-CuckooUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cuckoo-CuckooUITests/Pods-Cuckoo-CuckooUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7A7F877B2AEF559C00F14B11 /* Sources */ = {
@@ -564,6 +712,7 @@
 		};
 		7A7F87A42AEF559E00F14B11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AA721CC5902FC1B3145AF41 /* Pods-Cuckoo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -572,6 +721,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Cuckoo/Preview Content\"";
 				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -594,6 +744,7 @@
 		};
 		7A7F87A52AEF559E00F14B11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4629B32463E2A9976AA36570 /* Pods-Cuckoo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -602,6 +753,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Cuckoo/Preview Content\"";
 				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -624,6 +776,7 @@
 		};
 		7A7F87A72AEF559E00F14B11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D79DAC789CBEB3978A2A5675 /* Pods-CuckooTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -643,6 +796,7 @@
 		};
 		7A7F87A82AEF559E00F14B11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 864F1656EB714D9F80CDCE23 /* Pods-CuckooTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -662,6 +816,7 @@
 		};
 		7A7F87AA2AEF559E00F14B11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51837B20EF5EBF8E47D56222 /* Pods-Cuckoo-CuckooUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -679,6 +834,7 @@
 		};
 		7A7F87AB2AEF559E00F14B11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E4B153FD83B73FD01D844F2 /* Pods-Cuckoo-CuckooUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
