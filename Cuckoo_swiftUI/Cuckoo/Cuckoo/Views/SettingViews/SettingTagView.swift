@@ -6,11 +6,9 @@ struct SettingTagView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            SettingTagHeaderView()
+            HeaderView(title: "태그 관리")
                 .frame(height: 60)
                 .frame(maxWidth: .infinity)
-            Text("등록 태그")
-                .font(.system(size: 25, weight: .bold))
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(viewModel.tags) { tag in
@@ -18,12 +16,10 @@ struct SettingTagView: View {
                     }
                     addButton()
                 }
-                .padding(.vertical, 10)
             }
             .frame(height: 40)
             Spacer()
         }
-        .padding(.horizontal,30)
         .navigationBarHidden(true)
     }
     

@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct NotificationLog : Identifiable{
+struct NotificationLog : Identifiable {
     var id: Int
-        var userId: Int
-        var memoId: Int
-        var sentAt: Date
-        // … include other properties as needed
+    var userId: Int
+    var memoIdList: [Int] // 관련 memo ID
+    var sentAt: String // detail한 Date -> TODO :: Date() 로 바꿔야함!!!
+    var sentTerm: String // "아침 시간대", "저녁 시간대" 등
 }
