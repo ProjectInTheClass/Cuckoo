@@ -84,18 +84,18 @@
 
 **테스트 (only UI)**
 
-- [ ]  화면 전체 연결 테스트
-- [ ]  버튼 및 로직 연결 테스트 (Add Memo, Edit + Share extension 등)
+- [x]  화면 전체 연결 테스트
+- [x]  버튼 및 로직 연결 테스트 (Add Memo, Edit + Share extension 등)
 
 **Model & ViewModel - 1 (Data fetch & Logic 초기 구현)**
 
 > *이 시기에 와서 역할 분담 할 예정*
 > 
-- [ ]  초기 화면 Model 분리 및 ViewModel 작성 (Logic부분 빼고)
-- [ ]  홈 화면 Model 분리 &
-- [ ]  메모 등록 화면 Model 분리 &
+- [x]  초기 화면 Model 분리 및 ViewModel 작성 (Logic부분 빼고)
+- [x]  홈 화면 Model 분리 &
+- [x]  메모 등록 화면 Model 분리 &
     - [ ]  상태값 관리 필요
-- [ ]  메모 수정 화면 Model 분리
+- [x]  메모 수정 화면 Model 분리
     - [ ]  상태값 관리 필요
 
 **Model & ViewModel - 2 (Data fetch & Logic 구현 완료)**

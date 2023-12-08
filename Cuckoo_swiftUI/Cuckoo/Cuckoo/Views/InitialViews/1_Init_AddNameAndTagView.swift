@@ -112,19 +112,19 @@ struct AddNameView: View {
 }
 
 // 태그를 나타내는 구조체 정의
-struct Tag: Hashable {
+struct Tag_init: Hashable {
     var name: String
     var color: String
 }
 
 struct AddTagFormView: View {
-    @State private var tags: [Tag] = [
-        Tag(name: "전체", color: "#b2b2b2"),
-        Tag(name: "메모", color: "#b2b2b2"),
-        Tag(name: "메모1", color: "#b2b2b2"),
-        Tag(name: "메모2", color: "#b2b2b2"),
-        Tag(name: "메모3", color: "#b2b2b2"),
-        Tag(name: "메모4", color: "#b2b2b2"),
+    @State private var tags: [Tag_init] = [
+        Tag_init(name: "전체", color: "#b2b2b2"),
+        Tag_init(name: "메모", color: "#b2b2b2"),
+        Tag_init(name: "메모1", color: "#b2b2b2"),
+        Tag_init(name: "메모2", color: "#b2b2b2"),
+        Tag_init(name: "메모3", color: "#b2b2b2"),
+        Tag_init(name: "메모4", color: "#b2b2b2"),
         // 추가 태그는 여기에
     ]
     

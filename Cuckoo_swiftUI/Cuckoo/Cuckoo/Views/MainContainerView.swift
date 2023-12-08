@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+//pinpoint
+struct RotatedImageView: View {
+    var body: some View {
+        Image(systemName: "pin.fill")
+            .foregroundColor(Color.black)
+            .rotationEffect(Angle(degrees: 45))
+    }
+}
+
 struct MainContainerView: View {
     
     var memo: Memo
@@ -25,11 +34,23 @@ struct MainContainerView: View {
         HStack {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(memo.title)
-                        .font(.system(size:18, weight:.bold))
-                        .foregroundColor(Color.black)
-                        .lineLimit(1) // 한 줄로 제한
-                        .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
+                    if(memo.isPinned){
+                        HStack(spacing: 3){
+                            RotatedImageView()
+                            Text(memo.title)
+                                .font(.system(size:18, weight:.bold))
+                                .foregroundColor(Color.black)
+                                .lineLimit(1) // 한 줄로 제한
+                                .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
+                        }
+                    }else{
+                        Text(memo.title)
+                            .font(.system(size:18, weight:.bold))
+                            .foregroundColor(Color.black)
+                            .lineLimit(1) // 한 줄로 제한
+                            .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
+                    }
+
                     
                     Text(memo.comment)
                         .font(.system(size:12, weight: .regular))
@@ -79,42 +100,21 @@ struct MemoThumbnailImageView: View {
     
     var width: CGFloat = 140
     var height: CGFloat = 94
-    
-    var body: some View {
-        if memo.thumbURL != nil {
-            AsyncImage(url: memo.thumbURL) { image in
-                image
-                    .resizable()
-                    .scaledToFill() // 또는 scaledToFill() 사용
-                    .frame(height: height)
-            } placeholder: {
-                Image("DefaultPreview")
-                    .resizable()
-                    .scaledToFill() // 또는 scaledToFill() 사용
-                    .frame(height: height)
-                    .background(Color.cardBackground)
-                    .cornerRadius(20)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.defaultPure, lineWidth: 1)
-                            .opacity(0.5)
-                    )
-            }
-            .frame(width: width, height: height)
-            .background(Color.cardBackground)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.defaultPure, lineWidth: 1)
-                    .opacity(0.5)
-            )
 
-            
-        } else {
-            Image("DefaultPreview")
-                .resizable()
-                .scaledToFill() // 또는 scaledToFill() 사용
-                .frame(width: width, height: height)
+    var body: some View {
+        ZStack {
+            if let thumbURL = memo.thumbURL {
+                AsyncImage(url: thumbURL) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: width, height: height)
+                } placeholder: {
+                    Image("DefaultPreview")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: width, height: height)
+                }
                 .background(Color.cardBackground)
                 .cornerRadius(20)
                 .overlay(
@@ -123,10 +123,31 @@ struct MemoThumbnailImageView: View {
                         .opacity(0.5)
                 )
 
+                // 링크 추가
+                if let linkURL = memo.url {
+                    Link(destination: linkURL) {
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .frame(width: width, height: height)
+                    }
+                }
+            } else {
+                Image("DefaultPreview")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: width, height: height)
+                    .background(Color.cardBackground)
+                    .cornerRadius(20)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.defaultPure, lineWidth: 1)
+                            .opacity(0.5)
+                    )
+            }
         }
-        
     }
 }
+
 
 
 struct Item {
