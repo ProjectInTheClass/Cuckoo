@@ -11,6 +11,12 @@
 		00133EBB2B2451530035AB70 /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00133EB92B2451530035AB70 /* MemoViewModel.swift */; };
 		00133EBC2B2451530035AB70 /* AlarmPresetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00133EBA2B2451530035AB70 /* AlarmPresetViewModel.swift */; };
 		0022CB232B1FA9A900EC6A66 /* NotificationLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022CB222B1FA9A900EC6A66 /* NotificationLogView.swift */; };
+		0043A2BD2B247D1F0094A2E7 /* MemoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043A2BC2B247D1F0094A2E7 /* MemoAPI.swift */; };
+		0043A2BF2B247D290094A2E7 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043A2BE2B247D290094A2E7 /* UserAPI.swift */; };
+		0043A2C12B247D540094A2E7 /* TagAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043A2C02B247D540094A2E7 /* TagAPI.swift */; };
+		0043A2C32B247D630094A2E7 /* AlarmPresetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043A2C22B247D630094A2E7 /* AlarmPresetAPI.swift */; };
+		0043A2C52B247D6D0094A2E7 /* NotiLogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043A2C42B247D6D0094A2E7 /* NotiLogAPI.swift */; };
+		0043A2C72B247FC50094A2E7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043A2C62B247FC50094A2E7 /* NetworkManager.swift */; };
 		00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */; };
 		00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */; };
 		00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D932B143E51004C3345 /* MemoDetailView.swift */; };
@@ -30,7 +36,6 @@
 		0FE0BE856E1BDC805AE22CF2 /* Pods_CuckooTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE8C1C48BFF2CFB3C647D07 /* Pods_CuckooTests.framework */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
-		7A7F878A2AEF559D00F14B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87892AEF559D00F14B11 /* Preview Assets.xcassets */; };
 		7A7F87942AEF559E00F14B11 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87932AEF559E00F14B11 /* CuckooTests.swift */; };
 		7A7F879E2AEF559E00F14B11 /* CuckooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */; };
 		7A7F87A02AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */; };
@@ -68,7 +73,14 @@
 		00133EB12B24128E0035AB70 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		00133EB92B2451530035AB70 /* MemoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
 		00133EBA2B2451530035AB70 /* AlarmPresetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmPresetViewModel.swift; sourceTree = "<group>"; };
+		00133EBD2B2456EF0035AB70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0022CB222B1FA9A900EC6A66 /* NotificationLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLogView.swift; sourceTree = "<group>"; };
+		0043A2BC2B247D1F0094A2E7 /* MemoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAPI.swift; sourceTree = "<group>"; };
+		0043A2BE2B247D290094A2E7 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		0043A2C02B247D540094A2E7 /* TagAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAPI.swift; sourceTree = "<group>"; };
+		0043A2C22B247D630094A2E7 /* AlarmPresetAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPresetAPI.swift; sourceTree = "<group>"; };
+		0043A2C42B247D6D0094A2E7 /* NotiLogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiLogAPI.swift; sourceTree = "<group>"; };
+		0043A2C62B247FC50094A2E7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2_Init_AddAlarmPresetView.swift; sourceTree = "<group>"; };
 		00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3_Init_AddInfoConfirmView.swift; sourceTree = "<group>"; };
 		00652D932B143E51004C3345 /* MemoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailView.swift; sourceTree = "<group>"; };
@@ -142,6 +154,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0043A2B82B247CE10094A2E7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0043A2BB2B247D120094A2E7 /* API */,
+				0043A2C62B247FC50094A2E7 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0043A2BB2B247D120094A2E7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0043A2BC2B247D1F0094A2E7 /* MemoAPI.swift */,
+				0043A2BE2B247D290094A2E7 /* UserAPI.swift */,
+				0043A2C02B247D540094A2E7 /* TagAPI.swift */,
+				0043A2C22B247D630094A2E7 /* AlarmPresetAPI.swift */,
+				0043A2C42B247D6D0094A2E7 /* NotiLogAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		00652D9D2B144047004C3345 /* SettingViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +297,8 @@
 		7A7F87812AEF559C00F14B11 /* Cuckoo */ = {
 			isa = PBXGroup;
 			children = (
+				0043A2B82B247CE10094A2E7 /* Network */,
+				00133EBD2B2456EF0035AB70 /* Info.plist */,
 				00A73DF92B0C319800B59084 /* Models */,
 				00A73DF82B0C318600B59084 /* ViewModels */,
 				00A73DF72B0C301200B59084 /* Views */,
@@ -408,7 +443,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A7F878A2AEF559D00F14B11 /* Preview Assets.xcassets in Resources */,
 				7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,12 +571,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0043A2C72B247FC50094A2E7 /* NetworkManager.swift in Sources */,
 				00A73E0F2B0C583900B59084 /* ViewComponents.swift in Sources */,
 				00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */,
 				00652D982B143E84004C3345 /* SettingView.swift in Sources */,
 				7D8DE4BD2B1EAF95004502FF /* MemoTag.swift in Sources */,
+				0043A2BF2B247D290094A2E7 /* UserAPI.swift in Sources */,
 				00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */,
+				0043A2C12B247D540094A2E7 /* TagAPI.swift in Sources */,
 				00A73DFD2B0C323800B59084 /* Memo.swift in Sources */,
+				0043A2C32B247D630094A2E7 /* AlarmPresetAPI.swift in Sources */,
+				0043A2C52B247D6D0094A2E7 /* NotiLogAPI.swift in Sources */,
 				7D9AB3CE2B2295AE00B00C09 /* SettingTagViewModel.swift in Sources */,
 				00A73E012B0C35D300B59084 /* Tag.swift in Sources */,
 				00652D962B143E70004C3345 /* SettingTagView.swift in Sources */,
@@ -560,6 +599,7 @@
 				00133EBB2B2451530035AB70 /* MemoViewModel.swift in Sources */,
 				00133EBC2B2451530035AB70 /* AlarmPresetViewModel.swift in Sources */,
 				A84350DE2B2369B5006CDD60 /* MemoDummy.swift in Sources */,
+				0043A2BD2B247D1F0094A2E7 /* MemoAPI.swift in Sources */,
 				00652DA02B1440BC004C3345 /* Dummy.swift in Sources */,
 				00A73DFF2B0C324200B59084 /* User.swift in Sources */,
 				00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */,
@@ -737,6 +777,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cuckoo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -770,6 +811,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cuckoo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

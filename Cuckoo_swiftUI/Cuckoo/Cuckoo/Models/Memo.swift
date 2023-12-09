@@ -48,3 +48,43 @@ struct Memo: Identifiable {
         self.updatedAt = updatedAt ?? Date()
     }
 }
+
+// Codable
+
+struct CreateMemoRequest: Codable {
+    let type, identifier: String
+    let isPinned: Bool
+    let title, comment: String
+    let url: String
+    let notiCycle, notiPreset, notiCount: Int
+
+    enum CodingKeys: String, CodingKey {
+        case type, identifier, isPinned, title, comment, url
+        case notiCycle = "noti_cycle"
+        case notiPreset = "noti_preset"
+        case notiCount = "noti_count"
+    }
+}
+
+struct LoadMemoResponseElement: Codable {
+    let id, userID: Int
+    let title, comment: String
+    let url: String
+    let thumbURL: String
+    let notiCycle, notiPreset, notiCount, isPinned: Int
+    let createdAt, updatedAt: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userID = "user_id"
+        case title, comment, url, thumbURL
+        case notiCycle = "noti_cycle"
+        case notiPreset = "noti_preset"
+        case notiCount = "noti_count"
+        case isPinned = "is_pinned"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}
+
+typealias LoadMemoResponse = [LoadMemoResponseElement]

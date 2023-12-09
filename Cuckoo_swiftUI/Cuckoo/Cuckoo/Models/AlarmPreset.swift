@@ -23,3 +23,13 @@ struct AlarmPreset : Identifiable{
         self.created_at = created_at ?? Date()
     }
 }
+
+struct CreateAlarmPresetRequest: Codable {
+    let type, identifier, name, icon: String
+    let alarmTime: String
+
+    enum CodingKeys: String, CodingKey {
+        case type, identifier, name, icon
+        case alarmTime = "alarm_time"
+    }
+}
