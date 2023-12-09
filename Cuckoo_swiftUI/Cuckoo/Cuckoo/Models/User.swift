@@ -14,7 +14,7 @@ struct User: Identifiable {
     var createdAt: Date
     // ... include other properties as needed
     
-    init(_ id: Int,_  username: String, _ uuid: UUID?,_ createdAt: Date?) {
+    init(id: Int, username: String, uuid: UUID?, createdAt: Date?) {
         self.id = id
         self.username = username
         self.uuid = uuid! // UUID 생성

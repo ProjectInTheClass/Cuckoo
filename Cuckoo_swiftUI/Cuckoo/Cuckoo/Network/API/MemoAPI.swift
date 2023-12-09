@@ -9,7 +9,7 @@ import Moya
 
 enum MemoAPI {
     case createMemo(params: CreateMemoRequest)
-    case loadMemo(params: Identifier)
+    case loadMemo(type: String, identifier: String)
     case updateMemo(type: String, identifier: String, memo_id: Int, title: String?, comment: String?, url: URL?, thumbURL: URL?, noti_cycle: Int?, noti_preset: Int?)
     case deleteMemo(type: String, identifier: String, memo_id: Int)
 }
@@ -43,8 +43,10 @@ extension MemoAPI: TargetType {
         case .createMemo(let params):
             return .requestJSONEncodable(params)
             
-        case .loadMemo(let params):
-            return .requestJSONEncodable(params)
+        case .loadMemo(let type, let identifier):
+            let params: [String: Any] = ["type": type, "identifier": identifier]
+            
+            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
             
         case .updateMemo(let type, let identifier, let memo_id, let title, let comment, let url, let thumbURL, let noti_cycle, let noti_preset):
             var parameters: [String: Any] = ["type": type, "identifier": identifier]

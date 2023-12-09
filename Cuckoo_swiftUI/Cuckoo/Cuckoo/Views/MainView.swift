@@ -89,18 +89,24 @@ struct MainViewHeader: View {
             }
             Spacer()
         }.frame(height: 80)
-            .onAppear {
-                NetworkManager.shared.memo_provider.request(.loadMemo(type: "uuid", identifier: "86be72a7-9cae-42e1-ab57-b6d7a0df07b3")) { result in
-                    switch result {
-                    case .success(let response):
-                        print("Response data: \(response.data)")
-                    case .failure(let error):
-                        print("네트워크 에러: \(error)")
-                    }
-                }
-            }
+//            .onAppear {
+//                NetworkManager.shared.memo_provider.request(.loadMemo(
+//                    type: "uuid", identifier: "86be72a7-9cae-42e1-ab57-b6d7a0df07b3"
+//                )) { result in
+//                    switch result {
+//                    case .success(let response):
+//                        guard let loadMemoResponse = try? JSONDecoder().decode(LoadMemoResponse.self, from: response.data) else{ return
+//                        }
+//                        
+//                        
+//                        print("Response data: \(loadMemoResponse[0].thumbURL)")
+//                    case .failure(let error):
+//                        print("네트워크 에러: \(error)")
+//                    }
+//                }
+//            }
         
-        
+
         //Title
         VStack{
             HStack(spacing:0) {

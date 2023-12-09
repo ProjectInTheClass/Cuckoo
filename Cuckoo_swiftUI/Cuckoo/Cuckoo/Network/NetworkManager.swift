@@ -12,7 +12,7 @@ import Moya
 
 class NetworkManager {
     static let shared = NetworkManager()
-    let memo_provider = MoyaProvider<MemoAPI>()
+    let memo_provider = MoyaProvider<MemoAPI>()//(plugins:[loggerPlugin])
 
     // 공통 네트워크 요청 로직
 }
@@ -33,10 +33,4 @@ extension TargetType {
     var validationType: ValidationType {
         return .successCodes
     }
-}
-
-// Codable
-
-struct Identifier: Codable {
-    let type, identifier: String
 }

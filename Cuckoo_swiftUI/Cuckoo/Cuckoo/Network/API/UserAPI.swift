@@ -23,7 +23,7 @@ extension UserAPI: TargetType {
     var task: Task {
         switch self {
         case .createUser(let username):
-            var params = ["username": username]
+            let params = ["username": username]
             return .requestJSONEncodable(params)
         }
     }
