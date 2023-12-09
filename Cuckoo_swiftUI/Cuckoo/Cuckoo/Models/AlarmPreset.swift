@@ -9,9 +9,17 @@ import Foundation
 
 struct AlarmPreset : Identifiable{
     var id: Int
-        var userId: Int
-        var presetName: String
-        var presetIcon: String // Assuming icon is stored as a string
-        var presetValue: String // The schema is not clear on the type, assuming a string
-        // ... include other properties as needed
+    var preset_name: String
+    var preset_icon: String
+    var preset_time: String
+    var created_at: Date
+    
+    init(id: Int? = 1, preset_name: String, preset_icon: String, preset_time: String, created_at: Date? = Date()) {
+        self.id = id ?? 1
+        self.preset_icon = preset_icon
+        self.preset_name = preset_name
+        self.preset_time = preset_time
+        
+        self.created_at = created_at ?? Date()
+    }
 }
