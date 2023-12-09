@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00133EB22B24128E0035AB70 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00133EB12B24128E0035AB70 /* UserProfileViewModel.swift */; };
 		0022CB232B1FA9A900EC6A66 /* NotificationLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022CB222B1FA9A900EC6A66 /* NotificationLogView.swift */; };
 		00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */; };
 		00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00133EB12B24128E0035AB70 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		0022CB222B1FA9A900EC6A66 /* NotificationLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLogView.swift; sourceTree = "<group>"; };
 		00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2_Init_AddAlarmPresetView.swift; sourceTree = "<group>"; };
 		00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3_Init_AddInfoConfirmView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				7DF6B4D12B1B204800B64CC0 /* MemoDetailViewModel.swift */,
 				7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */,
 				7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */,
+				00133EB12B24128E0035AB70 /* UserProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				00652D9C2B143FAE004C3345 /* SettingProfileView.swift in Sources */,
 				7D8DE4C12B1EB0A6004502FF /* NotificationLog.swift in Sources */,
 				0022CB232B1FA9A900EC6A66 /* NotificationLogView.swift in Sources */,
+				00133EB22B24128E0035AB70 /* UserProfileViewModel.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
 				7D8DE4BF2B1EB078004502FF /* AlarmPreset.swift in Sources */,
 				A84350DE2B2369B5006CDD60 /* MemoDummy.swift in Sources */,

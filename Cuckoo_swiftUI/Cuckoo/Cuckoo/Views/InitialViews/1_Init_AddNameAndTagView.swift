@@ -77,7 +77,7 @@ struct Init_AddNameAndTagView_Previews: PreviewProvider {
 
 // Components
 struct AddNameView: View {
-    @State private var userName: String = "메모장 이름"
+    @State private var userName: String = "__의 메모장"
     @FocusState private var isEditing: Bool
 
     var body: some View {
@@ -104,6 +104,7 @@ struct AddNameView: View {
                         
                         Spacer()
                     }
+                    .onAppear (perform : UIApplication.shared.hideKeyboard)
                 }
             }
             
