@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00133EB42B241E0E0035AB70 /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00133EB32B241E0E0035AB70 /* MemoViewModel.swift */; };
+		00133EB62B2426240035AB70 /* AlarmPresetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00133EB52B2426240035AB70 /* AlarmPresetViewModel.swift */; };
+		00133EB82B242CFF0035AB70 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00133EB72B242CFF0035AB70 /* UserProfileViewModel.swift */; };
 		0022CB232B1FA9A900EC6A66 /* NotificationLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022CB222B1FA9A900EC6A66 /* NotificationLogView.swift */; };
 		00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */; };
 		00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */; };
@@ -62,6 +65,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00133EB32B241E0E0035AB70 /* MemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
+		00133EB52B2426240035AB70 /* AlarmPresetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPresetViewModel.swift; sourceTree = "<group>"; };
+		00133EB72B242CFF0035AB70 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		0022CB222B1FA9A900EC6A66 /* NotificationLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLogView.swift; sourceTree = "<group>"; };
 		00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2_Init_AddAlarmPresetView.swift; sourceTree = "<group>"; };
 		00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3_Init_AddInfoConfirmView.swift; sourceTree = "<group>"; };
@@ -180,6 +186,9 @@
 				7DF6B4D12B1B204800B64CC0 /* MemoDetailViewModel.swift */,
 				7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */,
 				7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */,
+				00133EB32B241E0E0035AB70 /* MemoViewModel.swift */,
+				00133EB52B2426240035AB70 /* AlarmPresetViewModel.swift */,
+				00133EB72B242CFF0035AB70 /* UserProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -536,6 +545,7 @@
 				00A73DFD2B0C323800B59084 /* Memo.swift in Sources */,
 				7D9AB3CE2B2295AE00B00C09 /* SettingTagViewModel.swift in Sources */,
 				00A73E012B0C35D300B59084 /* Tag.swift in Sources */,
+				00133EB42B241E0E0035AB70 /* MemoViewModel.swift in Sources */,
 				00652D962B143E70004C3345 /* SettingTagView.swift in Sources */,
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
 				00652DA22B1443AB004C3345 /* functions.swift in Sources */,
@@ -544,6 +554,7 @@
 				00A73DFB2B0C31D700B59084 /* AddMemoViewModel.swift in Sources */,
 				00652D9C2B143FAE004C3345 /* SettingProfileView.swift in Sources */,
 				7D8DE4C12B1EB0A6004502FF /* NotificationLog.swift in Sources */,
+				00133EB82B242CFF0035AB70 /* UserProfileViewModel.swift in Sources */,
 				0022CB232B1FA9A900EC6A66 /* NotificationLogView.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
 				7D8DE4BF2B1EB078004502FF /* AlarmPreset.swift in Sources */,
@@ -553,6 +564,7 @@
 				00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */,
 				00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
+				00133EB62B2426240035AB70 /* AlarmPresetViewModel.swift in Sources */,
 				7DF6B4D42B1B26E800B64CC0 /* MainContainerViewModel.swift in Sources */,
 				00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */,
 			);
