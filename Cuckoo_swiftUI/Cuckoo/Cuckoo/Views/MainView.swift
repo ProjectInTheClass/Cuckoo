@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct MainView: View {
     
     //title 수정용

@@ -443,13 +443,9 @@ struct MemoDetailView_Previews: PreviewProvider {
             url: URL(string: "https://www.example.com"),
             thumbURL: URL(string: "https://www.example.com"),
             notificationCycle: 7, // 예시 값
-            notificationTime: ["09:00 AM", "03:00 PM"], // 예시 시간들
-            notificationStatus: "Active", // 예시 상태
+            notificationPreset: 2,
             notificationCount: 3, // 예시 횟수
-            isPinned: false, // 예시 고정 상태
-            createdAt: Date(),
-            updatedAt: Date(),
-            remainingNotificationTime: Date() // 예시 남은 알림 시간
+            isPinned: false // 예시 고정 상태
         )
 
 

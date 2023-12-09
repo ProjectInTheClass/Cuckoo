@@ -25,7 +25,7 @@ struct SettingTagView: View {
     
     func addButton() -> some View {
         Button(action: {
-            viewModel.addTag(name: "새 태그", color: "#FFFFFF") // Example call
+//            viewModel.addTag(name: "새 태그", color: "#FFFFFF") // Example call
         }) {
             Image(systemName: "plus.circle.fill")
                 .foregroundColor(.gray)
