@@ -33,11 +33,11 @@
 		7D8DE4C12B1EB0A6004502FF /* NotificationLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */; };
 		7D9AB3CE2B2295AE00B00C09 /* SettingTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */; };
 		7DF6B4D22B1B204800B64CC0 /* MemoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6B4D12B1B204800B64CC0 /* MemoDetailViewModel.swift */; };
-		7DF6B4D42B1B26E800B64CC0 /* MainContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */; };
 		A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */; };
 		A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F12B09F2B300EB4F54 /* NavView.swift */; };
 		A82451F82B17470500EB4F54 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451F72B17470500EB4F54 /* AlarmView.swift */; };
 		A84350DE2B2369B5006CDD60 /* MemoDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84350DD2B2369B5006CDD60 /* MemoDummy.swift */; };
+		A84350E02B2372F5006CDD60 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84350DF2B2372F5006CDD60 /* MainViewModel.swift */; };
 		A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */; };
 		A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC23902AFA014B00A2F87F /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -89,11 +89,11 @@
 		7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLog.swift; sourceTree = "<group>"; };
 		7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTagViewModel.swift; sourceTree = "<group>"; };
 		7DF6B4D12B1B204800B64CC0 /* MemoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailViewModel.swift; sourceTree = "<group>"; };
-		7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerViewModel.swift; sourceTree = "<group>"; };
 		A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
 		A82451F12B09F2B300EB4F54 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
 		A82451F72B17470500EB4F54 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		A84350DD2B2369B5006CDD60 /* MemoDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDummy.swift; sourceTree = "<group>"; };
+		A84350DF2B2372F5006CDD60 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		A8BC23902AFA014B00A2F87F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,8 +166,8 @@
 			children = (
 				00A73DFA2B0C31D700B59084 /* AddMemoViewModel.swift */,
 				7DF6B4D12B1B204800B64CC0 /* MemoDetailViewModel.swift */,
-				7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */,
 				7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */,
+				A84350DF2B2372F5006CDD60 /* MainViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -390,6 +390,7 @@
 				A82451F22B09F2B300EB4F54 /* NavView.swift in Sources */,
 				00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */,
 				00A73DFD2B0C323800B59084 /* Memo.swift in Sources */,
+				A84350E02B2372F5006CDD60 /* MainViewModel.swift in Sources */,
 				7D9AB3CE2B2295AE00B00C09 /* SettingTagViewModel.swift in Sources */,
 				00A73E012B0C35D300B59084 /* Tag.swift in Sources */,
 				00652D962B143E70004C3345 /* SettingTagView.swift in Sources */,
@@ -409,7 +410,6 @@
 				00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */,
 				00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
-				7DF6B4D42B1B26E800B64CC0 /* MainContainerViewModel.swift in Sources */,
 				00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

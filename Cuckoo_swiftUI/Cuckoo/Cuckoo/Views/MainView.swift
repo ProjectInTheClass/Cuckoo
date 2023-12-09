@@ -9,14 +9,16 @@ import SwiftUI
 
 
 struct MainView: View {
-    
+    @StateObject var viewModel = MainViewModel()
     //title 수정용
     @State private var isPresentingMemoSheet = false
+    @State private var searchContent: String = ""
+    
     
     // TODO : <og:preview> tag에서 미리보기 이미지 떼오는 hook
     
     var itemCount: Int {
-        return items.count
+        return viewModel.filteredMemos.count
     }
     
     var body: some View {
@@ -27,12 +29,13 @@ struct MainView: View {
                 Spacer()
                 
                 // Search Bar & Tag
-                MainViewSearchFilter()
+                MainViewSearchFilter(searchContent: $searchContent){
+                    viewModel.filterMemos(searchingText: searchContent)
+                }
                 Spacer()
                 
-                // Body
                 ScrollView {
-                    ForEach(items, id: \.id) { item in
+                    ForEach(viewModel.filteredMemos, id: \.id) { item in
                         VStack(alignment: .leading) {
                             NavigationLink(destination: MemoDetailView(viewModel: MemoDetailViewModel(memo: item))) {
                                 MainContainerView(memo: item)
@@ -60,7 +63,6 @@ struct MainView_PreViews: PreviewProvider {
         MainView()
     }
 }
-
 
 // Components
 
@@ -122,13 +124,15 @@ struct MainViewHeader: View {
 }
 
 struct MainViewSearchFilter: View {
-    @State private var searchContent: String = "" // 사용자가 입력할 내용을 저장할 상태 변수입니다.
+    @Binding var searchContent : String // 사용자가 입력할 내용을 저장할 상태 변수입니다.
+    var onCommit: () -> Void
+    
     
     var body: some View {
         // TextEditor의 스크롤 가능한 영역 설정
         VStack(spacing: 18) {
             HStack(spacing: 0){
-                TextField("검색어를 입력해주세요!", text: $searchContent)
+                TextField("검색어를 입력해주세요!", text: $searchContent,onCommit: onCommit)
                     .font(.system(size: 14, weight: .medium))
                     .padding(.leading, 25)
                     .padding(10)
