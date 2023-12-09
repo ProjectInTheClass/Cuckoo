@@ -27,5 +27,16 @@ let dummyTags = [
     Tag(id: 10, name: "태그10", color: Color.cuckooLightGray.toHex() ?? "#D3D3D3", memoCount: 4)
 ]
 
+// Codable
 
+struct CreateTagRequest: Codable {
+    let type, identifier, name, color: String
+}
 
+struct LoadTagResponseElement: Codable {
+    let id: Int
+    let name, color: String
+    let memoCount: Int
+}
+
+typealias LoadTagResponse = [LoadTagResponseElement]

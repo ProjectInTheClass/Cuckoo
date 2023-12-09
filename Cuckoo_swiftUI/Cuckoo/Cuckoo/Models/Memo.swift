@@ -48,3 +48,20 @@ struct Memo: Identifiable {
         self.updatedAt = updatedAt ?? Date()
     }
 }
+
+// Codable
+
+struct CreateMemoRequest: Codable {
+    let type, identifier: String
+    let isPinned: Bool
+    let title, comment: String
+    let url: String
+    let notiCycle, notiPreset, notiCount: Int
+
+    enum CodingKeys: String, CodingKey {
+        case type, identifier, isPinned, title, comment, url
+        case notiCycle = "noti_cycle"
+        case notiPreset = "noti_preset"
+        case notiCount = "noti_count"
+    }
+}
