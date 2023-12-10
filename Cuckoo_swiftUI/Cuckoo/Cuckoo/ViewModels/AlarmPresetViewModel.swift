@@ -69,10 +69,10 @@ class AlarmPresetViewModel: ObservableObject {
                 self?.presets = alarmPresets
             }
         }
-        
     }
     
-    func getAlarmPresetList() -> [AlarmPreset] {
+    func getAlarmPresetList(uuid: String) -> [AlarmPreset] {
+        self.browseAlarmPresetFromServer(uuid: uuid)
         return self.presets
     }
     
