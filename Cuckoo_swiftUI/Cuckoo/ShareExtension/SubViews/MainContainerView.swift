@@ -57,7 +57,7 @@ struct MainContainerView: View {
                 
             }
             
-                AsyncImage(url: URL(string: memoURL), content: {image in
+            AsyncImage(url: URL(string: "http://dksu-dev.shop:8081/thumb?baseURL=" + memoURL), content: {image in
                     image.resizable()
                         .font(.title)
                         .aspectRatio(contentMode: .fill)
