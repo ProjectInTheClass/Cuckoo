@@ -5,7 +5,7 @@
 //  Created by DKSU on 12/9/23.
 //
 
-import Moya
+import Moya 
 
 enum AlarmPresetAPI {
     case createAlarmPreset(params: CreateAlarmPresetRequest)
@@ -14,7 +14,7 @@ enum AlarmPresetAPI {
     case deleteAlarmPreset(type: String, identifier: String, preset_id: Int)
 }
 
-extension AlarmPresetAPI {
+extension AlarmPresetAPI : TargetType{//TargetType으로 만들어줌.
     var path: String {
         switch self {
         case .createAlarmPreset, .loadAlarmPreset:
