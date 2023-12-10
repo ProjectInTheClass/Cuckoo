@@ -9,7 +9,7 @@ struct SecondSharedView: View {
     @Binding var memoContent: String
     
     @State private var registrationCompleted = false
-    var linkURL : String
+    var linkURL : String?
     
     
     var body: some View {
@@ -36,9 +36,8 @@ struct SecondSharedView: View {
                     detail: memoContent,
                     tag: selectedTags.isEmpty ? "" : "태그 : " + (String(selectedTags.first!.title) + (selectedTags.count > 1 ? " 외 \(selectedTags.count - 1)개 / " : " / ")),
                     timeAgo: "방금",//TODO : 방금이라고 표시할 기준도 마련
-                    memoURL: linkURL,
-                    image: image
-                )
+                    memoURL: linkURL!,
+                    image: image                )
                 .padding()
                 
                 Divider()

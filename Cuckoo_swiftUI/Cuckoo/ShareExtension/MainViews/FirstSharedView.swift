@@ -33,17 +33,24 @@ struct FirstSharedView: View {
     @State private var selectedTags: Set<TypeBubble> = [] //고른 태그 집합
     @State private var tagButtonList: [TypeBubble] //모든 태그 리스트
     
+    @State private var presetPopup = false
+    @State private var directSetPopup = false
+    
+    @State private var selectedPresets: Set<presetButton> = []
+    @State private var presetButtonList: [presetButton]
+    
     @State private var showAlert = false
     @State private var showEmptyTitleAlert = false//제목 무조건 0자 이상, 제목 중복 없어야 하면 나중에 추가 구현
     @State private var showTagAlert = false//태그 1개 이상 선택 안할시
     
     
     // ContentView의 initializer 추가
-    init(linkURL: String, image: UIImage, onClose: @escaping () -> Void, tagButtonList: [TypeBubble]) {
+    init(linkURL: String, image: UIImage, onClose: @escaping () -> Void, tagButtonList: [TypeBubble], presetButtonList: [presetButton]) {
         self.linkURL = linkURL
         self.image = image
         self.onClose = onClose
         self.tagButtonList = tagButtonList
+        self.presetButtonList = presetButtonList
     }
     
     var body: some View {
@@ -269,12 +276,86 @@ struct FirstSharedView: View {
                             .foregroundColor(.black)
                             .cornerRadius(10)
                             .popover(isPresented: $isReminderPeriodPopoverPresented) {
-                                VStack {
-                                    Text("알림 주기 선택")
-                                        .font(.headline)
-                                        .padding()
+                                VStack{
+                                    HStack{
+                                        Spacer()
+                                        Text("주기 설정")
+                                            .fontWeight(.bold)
+                                        Button(action: {isReminderPeriodPopoverPresented.toggle()}
+                                        ){
+                                            Image(systemName: "xmark")
+                                                .foregroundColor(.black)
+                                        }
+                                    }
+                                    Button(action: {presetPopup.toggle()}){
+                                        Text("프리셋 선택")
+                                    }
+                                    Button(action: {directSetPopup.toggle()}){
+                                        Text("직접 설정")
+                                    }
                                     
-                                    // Add the Picker code here to select the reminder period
+                                }.popover(isPresented: $presetPopup, content: {
+                                    
+                                    VStack{
+                                        //제목
+                                        VStack(alignment: .leading) {
+                                            Text("이때 알림을 받고 싶어요")
+                                                .font(.footnote)
+                                                .foregroundColor(.gray)
+                                        }
+                                        
+                                        // 프리셋 스크롤 리스트
+                                        ScrollView(.vertical, showsIndicators: true) {
+                                            VStack(spacing: 10) {
+                                                ForEach(presetButtonList, id: \.alarmName) { button in
+                                                    Button(action: {
+                                                        // Handle button tap
+                                                        if selectedPresets.contains(button) {
+                                                            selectedPresets.remove(button)
+                                                        } else {
+                                                            selectedPresets.insert(button)
+                                                        }
+                                                    }) {
+                                                        HStack {
+                                                            Text(button.emoji)
+                                                                .font(.title)
+                                                            Text(button.alarmName)
+                                                                .font(.headline)
+                                                            Spacer()
+                                                            Text(button.time)
+                                                                .font(.subheadline)
+                                                        }
+                                                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                                                    }
+                                                    .frame(maxHeight: 60)
+                                                    .buttonStyle(NotificationButtonStyle(selected: selectedPresets.contains(button)))
+                                                }
+                                            }
+                                            .padding([.top, .bottom], 10)
+                                        }
+                                        
+                                        //주기 설정
+                                        Picker("알림 주기", selection: $selectedReminderPeriod) {
+                                            ForEach(["1일", "2일", "3일", "4일", "5일", "6일", "1주", "2주", "3주", "4주", "8주"], id: \.self) { period in
+                                                Text("\(period)")
+                                            }
+                                        }
+                                        .pickerStyle(WheelPickerStyle())
+                                        .padding()
+                                        
+                                        //선택 버튼
+                                        Button(action: {presetPopup.toggle()}){
+                                            Text("확인")
+                                        }
+                                    }
+                                    
+                                })
+                                .popover(isPresented: $directSetPopup, content: {
+                                    
+                                    //시작 시간 설정
+                                    
+                                    
+                                    //주기 설정
                                     Picker("알림 주기", selection: $selectedReminderPeriod) {
                                         ForEach(["1일", "2일", "3일", "4일", "5일", "6일", "1주", "2주", "3주", "4주", "8주"], id: \.self) { period in
                                             Text("\(period)")
@@ -283,13 +364,32 @@ struct FirstSharedView: View {
                                     .pickerStyle(WheelPickerStyle())
                                     .padding()
                                     
-                                    Button("확인") {
-                                        // Handle the selected reminder period
-                                        // You can update your UI or perform other actions here
-                                        isReminderPeriodPopoverPresented.toggle()
+                                    //선택 버튼
+                                    Button(action: {presetPopup.toggle()}){
+                                        Text("확인")
                                     }
-                                    .padding()
-                                }.fixedSize(horizontal: false, vertical: true)
+                                })
+                                //                                VStack {
+                                //                                    Text("알림 주기 선택")
+                                //                                        .font(.headline)
+                                //                                        .padding()
+                                //
+                                //                                    // Add the Picker code here to select the reminder period
+                                //                                    Picker("알림 주기", selection: $selectedReminderPeriod) {
+                                //                                        ForEach(["1일", "2일", "3일", "4일", "5일", "6일", "1주", "2주", "3주", "4주", "8주"], id: \.self) { period in
+                                //                                            Text("\(period)")
+                                //                                        }
+                                //                                    }
+                                //                                    .pickerStyle(WheelPickerStyle())
+                                //                                    .padding()
+                                //
+                                //                                    Button("확인") {
+                                //                                        // Handle the selected reminder period
+                                //                                        // You can update your UI or perform other actions here
+                                //                                        isReminderPeriodPopoverPresented.toggle()
+                                //                                    }
+                                //                                    .padding()
+                                //                                }.fixedSize(horizontal: false, vertical: true)
                             }
                             
                             Spacer()

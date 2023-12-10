@@ -57,19 +57,19 @@ struct MainContainerView: View {
                 
             }
             
-//                AsyncImage(url: URL(string: memoURL), content: {image in
-//                    image.resizable()
-//                        .font(.title)
-//                        .aspectRatio(contentMode: .fill)
-//                    .frame(maxWidth: 140, maxHeight: 94)}, placeholder: {
-//                        ProgressView()
-//                    })
+                AsyncImage(url: URL(string: memoURL), content: {image in
+                    image.resizable()
+                        .font(.title)
+                        .aspectRatio(contentMode: .fill)
+                    .frame(maxWidth: 140, maxHeight: 94)}, placeholder: {
+                        ProgressView()
+                    })
 //
-            Image(uiImage: image)
-                .resizable()
-                .font(.title)
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 140, height: 94)
+//            Image(uiImage: image)
+//                .resizable()
+//                .font(.title)
+//                .aspectRatio(contentMode: .fill)
+//                .frame(width: 140, height: 94)
             //            Image(systemName: imageName)
             //                .resizable()
             //                .font(.title)

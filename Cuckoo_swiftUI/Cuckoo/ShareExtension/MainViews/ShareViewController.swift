@@ -43,7 +43,7 @@ class ShareViewController: UIViewController {
                                                 self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
                                             }
                                         }
-                                    }, tagButtonList: dummyTagList))
+                                    }, tagButtonList: dummyTagList, presetButtonList: presetButtonList))
 
                                     let swiftUIView = vc.view!
                                     swiftUIView.translatesAutoresizingMaskIntoConstraints = false
