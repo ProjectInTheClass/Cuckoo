@@ -58,7 +58,9 @@ struct MemoDetailView: View {
                         reminderOptions: viewModel.reminderOptions
                     )
                     
-                    MemoInfoView(/*lastEdited: viewModel.memo.lastEdited*/)
+                    // MemoDetailView에서 MemoInfoView 호출 부분
+                    MemoInfoView(createdAt: viewModel.memo.createdAt, updatedAt: viewModel.memo.updatedAt)
+
                 }.padding(.bottom, 20)
             }.padding(.horizontal, 30)
             
@@ -345,6 +347,8 @@ struct PickerView: View {
 
 
 struct MemoInfoView: View{
+    let createdAt: String
+    let updatedAt: String
     var body: some View{
         VStack(alignment: .leading, spacing: 3) {
             Text("메모 정보")
@@ -353,10 +357,10 @@ struct MemoInfoView: View{
             
             
             VStack {
-                Text("생성 일자: 2023.10.21")
+                Text("생성 일자: \(createdAt)")
                     .font(.footnote)
                     .foregroundColor(.gray)
-                Text("수정 일자: 2023.10.21")
+                Text("수정 일자: \(updatedAt)")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
