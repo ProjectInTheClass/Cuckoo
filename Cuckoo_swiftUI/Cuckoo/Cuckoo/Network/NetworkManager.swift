@@ -6,15 +6,15 @@
 //
 
 import Moya
-import Foundation 
+import Foundation
 
-//let loggerConfig = NetworkLoggerPlugin.Configuration(logOptions: .verbose)
-//let loggerPlugin = NetworkLoggerPlugin(configuration: loggerConfig)
+let loggerConfig = NetworkLoggerPlugin.Configuration(logOptions: .verbose)
+let loggerPlugin = NetworkLoggerPlugin(configuration: loggerConfig)
 
 class NetworkManager {
     static let shared = NetworkManager()
     let memo_provider = MoyaProvider<MemoAPI>()//(plugins:[loggerPlugin])
-    let preset_provider = MoyaProvider<AlarmPresetAPI>()//TargetType extension 만들어줌.
+    let preset_provider = MoyaProvider<AlarmPresetAPI>(plugins:[loggerPlugin])//TargetType extension 만들어줌.
 
     // 공통 네트워크 요청 로직
 }

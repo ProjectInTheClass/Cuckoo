@@ -6,6 +6,7 @@
 //
 
 import Moya 
+import Foundation
 
 enum AlarmPresetAPI {
     case createAlarmPreset(params: CreateAlarmPresetRequest)

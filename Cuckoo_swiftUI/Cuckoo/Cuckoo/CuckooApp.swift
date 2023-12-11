@@ -13,6 +13,7 @@ class GlobalState: ObservableObject {
 
 @main
 struct CuckooApp: App {
+    
     @StateObject var globalState = GlobalState()
     
     var body: some Scene {
@@ -20,6 +21,7 @@ struct CuckooApp: App {
             if globalState.isRegistered {
                 MainView()
                     .environmentObject(globalState)
+                    
             } else {
                 Init_AddNameAndTagView()
                     .environmentObject(globalState)

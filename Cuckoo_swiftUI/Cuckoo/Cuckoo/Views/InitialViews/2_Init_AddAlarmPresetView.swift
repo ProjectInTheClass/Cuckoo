@@ -16,7 +16,7 @@ struct Init_AddAlarmPresetView: View {
     @State private var buttonText = "알림주기 등록 완료"
     @State private var headerTitle = "알림 주기를 설정해주세요!"
     @State private var navigateToNextScreen = false
-    
+    @ObservedObject var alarmPresetViewModel = AlarmPresetViewModel.shared
     
     var body: some View {
         VStack {
@@ -189,7 +189,7 @@ struct AddAlarmTermView: View {
 
 struct AddAlarmPresetView: View {
     
-    @ObservedObject private var viewModel = AlarmPresetViewModel()
+    @ObservedObject var alarmPresetViewModel = AlarmPresetViewModel.shared
     
     @State private var selectedPresets: Set<presetButton> = []
     @State private var isAddPopoverPresented = false
@@ -204,11 +204,6 @@ struct AddAlarmPresetView: View {
     @State private var isDeleteConfirmationPresented = false
     
     init(){
-        //불러와서 넣기
-//        viewModel.browseAlarmPresetFromServer(uuid: tmp_uuid) /*Accessing StateObject's object without being installed on a View. This will create a new instance each time.*/
-        presetButtonList = convertToPresetButtons(alarmPresets: viewModel.getAlarmPresetList(uuid: tmp_uuid))
-        //문제 발생
-        presetButtonList.sort { $0.time < $1.time }
     }
     
     //불러와서
@@ -307,7 +302,15 @@ struct AddAlarmPresetView: View {
                     }.padding(.vertical, 10)
                 }
             }
-        }.popover(isPresented: $isAddPopoverPresented) {
+        }
+        .onAppear(){
+            //불러와서 넣기
+            alarmPresetViewModel.browseAlarmPresetFromServer(uuid: "019cc414-42f5-46b8-a245-ed1a19ac9a24") /*Accessing StateObject's object without being installed on a View. This will create a new instance each time.*/
+            presetButtonList = convertToPresetButtons(alarmPresets: alarmPresetViewModel.getAlarmPresetList(uuid: tmp_uuid))
+            //문제 발생
+            presetButtonList.sort { $0.time < $1.time }
+        }
+        .popover(isPresented: $isAddPopoverPresented) {
             VStack(alignment: .center, spacing: 20) {
                 Text("새로운 프리셋 추가")
                     .font(.headline)
@@ -375,8 +378,7 @@ struct AddAlarmPresetView: View {
     }
     
     func updatePreset(){
-        viewModel.browseAlarmPresetFromServer(uuid: tmp_uuid)
-        
+        alarmPresetViewModel.browseAlarmPresetFromServer(uuid: tmp_uuid)
         
     }
     
@@ -392,12 +394,12 @@ struct AddAlarmPresetView: View {
         let formattedTime = String(format: "%02d:%02d %@", hour % 12, minute, period)
         
         // Use the AlarmPresetViewModel to add the new alarm preset
-        viewModel.addAlarmPreset(uuid: "YOUR_USER_UUID", name: newAlarmName, icon: newEmoji, time: formattedTime) { result in
+        alarmPresetViewModel.addAlarmPreset(uuid: tmp_uuid, name: newAlarmName, icon: newEmoji, time: formattedTime) { result in
             switch result {
             case .success(let message):
                 print(message) // Handle success
                 updatePreset()
-                presetButtonList = convertToPresetButtons(alarmPresets: viewModel.getAlarmPresetList(uuid: tmp_uuid))
+                presetButtonList = convertToPresetButtons(alarmPresets: alarmPresetViewModel.getAlarmPresetList(uuid: tmp_uuid))
             case .failure(let error):
                 showAlert(title: "Error", message: error.localizedDescription) // Handle error
             }
@@ -437,10 +439,10 @@ struct AddAlarmPresetView: View {
     func deleteSelectedPresets() {
         // Create an array to store the successfully deleted preset ids
         var successfullyDeletedIds: [Int] = []
-
+        
         // Use the AlarmPresetViewModel to delete selected alarm presets
         for preset in selectedPresets {
-            viewModel.deleteAlarmPreset(uuid: "YOUR_USER_UUID", preset_id: preset.preset_id) { result in
+            alarmPresetViewModel.deleteAlarmPreset(uuid: "YOUR_USER_UUID", preset_id: preset.preset_id) { result in
                 switch result {
                 case .success(let message):
                     print(message) // Handle success
@@ -450,12 +452,12 @@ struct AddAlarmPresetView: View {
                 }
             }
         }
-
+        
         // Remove only the successfully deleted presets locally
         presetButtonList.removeAll { successfullyDeletedIds.contains($0.preset_id) }
         selectedPresets.removeAll()
     }
-
+    
     
     //    func deleteSelectedPresets() {
     //        presetButtonList.removeAll { selectedPresets.contains($0) }

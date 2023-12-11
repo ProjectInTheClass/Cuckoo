@@ -34,6 +34,7 @@
 		00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */; };
 		04CD305975F21353FD0F5627 /* Pods_Cuckoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D17E4E921EDF35CCA729DB3 /* Pods_Cuckoo.framework */; };
 		0FE0BE856E1BDC805AE22CF2 /* Pods_CuckooTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE8C1C48BFF2CFB3C647D07 /* Pods_CuckooTests.framework */; };
+		7A0601A62B26AD6700055EBB /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0601A52B26AD6700055EBB /* LocalNotification.swift */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
 		7A7F87942AEF559E00F14B11 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87932AEF559E00F14B11 /* CuckooTests.swift */; };
@@ -103,6 +104,7 @@
 		51837B20EF5EBF8E47D56222 /* Pods-Cuckoo-CuckooUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuckoo-CuckooUITests.debug.xcconfig"; path = "Target Support Files/Pods-Cuckoo-CuckooUITests/Pods-Cuckoo-CuckooUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5D17E4E921EDF35CCA729DB3 /* Pods_Cuckoo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cuckoo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AA721CC5902FC1B3145AF41 /* Pods-Cuckoo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuckoo.debug.xcconfig"; path = "Target Support Files/Pods-Cuckoo/Pods-Cuckoo.debug.xcconfig"; sourceTree = "<group>"; };
+		7A0601A52B26AD6700055EBB /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		7A7F877F2AEF559C00F14B11 /* Cuckoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuckoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F87822AEF559C00F14B11 /* CuckooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooApp.swift; sourceTree = "<group>"; };
 		7A7F87862AEF559D00F14B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -272,6 +274,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		7A0601A42B26AD4900055EBB /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				7A0601A52B26AD6700055EBB /* LocalNotification.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		7A7F87762AEF559C00F14B11 = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +307,7 @@
 		7A7F87812AEF559C00F14B11 /* Cuckoo */ = {
 			isa = PBXGroup;
 			children = (
+				7A0601A42B26AD4900055EBB /* Notification */,
 				0043A2B82B247CE10094A2E7 /* Network */,
 				00133EBD2B2456EF0035AB70 /* Info.plist */,
 				00A73DF92B0C319800B59084 /* Models */,
@@ -605,6 +616,7 @@
 				00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */,
 				00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
+				7A0601A62B26AD6700055EBB /* LocalNotification.swift in Sources */,
 				7DF6B4D42B1B26E800B64CC0 /* MainContainerViewModel.swift in Sources */,
 				00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */,
 			);

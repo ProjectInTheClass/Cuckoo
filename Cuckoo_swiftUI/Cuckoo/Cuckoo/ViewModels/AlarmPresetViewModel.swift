@@ -9,8 +9,8 @@ import Foundation
 import Moya
 
 class AlarmPresetViewModel: ObservableObject {
-    
-    @Published private var presets: [AlarmPreset]
+    static let shared = AlarmPresetViewModel()
+    @Published var presets: [AlarmPreset]
     
     enum AlarmPresetError: String, Error {
         case presetNameExists = "Preset name already exists"
@@ -25,9 +25,9 @@ class AlarmPresetViewModel: ObservableObject {
     }
     
     private func requestUserPreset(uuid: String, completion: @escaping ([AlarmPreset]?) -> Void) {
-        NetworkManager.shared.preset_provider.request(.loadAlarmPreset(
-            type: "uuid", identifier: uuid
-        )) { result in
+        NetworkManager.shared.preset_provider.request(
+            .loadAlarmPreset(type: "uuid", identifier: uuid)
+        ) { result in
             switch result {
             case .success(let response):
                 do {
@@ -55,7 +55,7 @@ class AlarmPresetViewModel: ObservableObject {
     
     
     
-    func browseAlarmPresetFromServer(uuid: String!) {
+    func browseAlarmPresetFromServer(uuid: String) {
         //        /// TODO : 서버에서 사용자 Preset 불러오기
         //        let response: [AlarmPreset] = requestUserPreset(uuid: uuid)
         //
