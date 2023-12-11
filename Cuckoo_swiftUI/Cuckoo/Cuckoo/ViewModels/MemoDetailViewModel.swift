@@ -39,12 +39,10 @@ class MemoDetailViewModel: ObservableObject {
     }
 
     func updateMemo(title: String, comment: String, tags: [String], link: URL?) {
-        memo.title = title
-                memo.comment = comment // comment로 변경
-                memo.url = link // URL 처리 추가
+//        memo.title = title
+//                memo.comment = comment // comment로 변경
+//                memo.url = link // URL 처리 추가
                 
-        
-        // Save changes to the database or send to the server
     }
 
     func saveChanges() {

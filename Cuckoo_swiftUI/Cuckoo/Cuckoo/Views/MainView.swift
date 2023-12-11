@@ -11,11 +11,12 @@ struct MainView: View {
     
     //title 수정용
     @State private var isPresentingMemoSheet = false
+    @ObservedObject var memoViewModel = MemoViewModel.shared
     
     // TODO : <og:preview> tag에서 미리보기 이미지 떼오는 hook
     
     var itemCount: Int {
-        return items.count
+        return MemoViewModel.shared.memos.count
     }
     
     var body: some View {
@@ -31,17 +32,20 @@ struct MainView: View {
                 
                 // Body
                 ScrollView {
-                    ForEach(items, id: \.id) { item in
-                        VStack(alignment: .leading) {
-                            NavigationLink(destination: MemoDetailView(viewModel: MemoDetailViewModel(memo: item))) {
-                                MainContainerView(memo: item)
-                            }.padding(.vertical, 15)
-                            
-                            
-                            Divider()
-                        }
-                    }
-                }
+                                   ForEach(memoViewModel.memos, id: \.id) { memo in
+                                       VStack(alignment: .leading) {
+                                           NavigationLink(destination: MemoDetailView(viewModel: MemoDetailViewModel(memo: memo))) {
+                                               MainContainerView(memo: memo)
+                                           }.padding(.vertical, 15)
+
+                                           Divider()
+                                       }
+                                   }
+                               }
+                               .onAppear {
+                                   memoViewModel.browseMemosFromServer(uuid: "86be72a7-9cae-42e1-ab57-b6d7a0df07b3")
+                               }
+                
                 .scrollIndicators(.hidden)
                 .overlay(
                     AddMemoFloatingButton(),
