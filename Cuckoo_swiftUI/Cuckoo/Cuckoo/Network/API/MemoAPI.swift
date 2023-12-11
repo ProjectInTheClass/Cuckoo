@@ -48,17 +48,17 @@ extension MemoAPI: TargetType {
             
             return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
             
-        case .updateMemo(let type, let identifier, let memo_id, let title, let comment, let url, let thumbURL, let noti_cycle, let noti_preset):
+        case .updateMemo(let type, let identifier, _, let title, let comment, let url, let thumbURL, let noti_cycle, let noti_preset):
             var parameters: [String: Any] = ["type": type, "identifier": identifier]
+            var bodyParams: [String: Any] = [:]
+            if let title = title { bodyParams["title"] = title }
+            if let comment = comment { bodyParams["comment"] = comment }
+            if let url = url?.absoluteString { bodyParams["url"] = url }
+            if let thumbURL = thumbURL?.absoluteString { bodyParams["thumbURL"] = thumbURL }
+            if let noti_cycle = noti_cycle { bodyParams["noti_cycle"] = noti_cycle }
+            if let noti_preset = noti_preset { bodyParams["noti_preset"] = noti_preset }
 
-            if let title = title { parameters["title"] = title }
-            if let comment = comment { parameters["comment"] = comment }
-            if let url = url?.absoluteString { parameters["url"] = url }
-            if let thumbURL = thumbURL?.absoluteString { parameters["thumbURL"] = thumbURL }
-            if let noti_cycle = noti_cycle { parameters["noti_cycle"] = noti_cycle }
-            if let noti_preset = noti_preset { parameters["noti_preset"] = noti_preset }
-
-            return .requestCompositeParameters(bodyParameters: parameters, bodyEncoding: JSONEncoding.default, urlParameters: ["memo_id": memo_id])
+            return .requestCompositeParameters(bodyParameters: bodyParams, bodyEncoding: JSONEncoding.default, urlParameters: parameters)
 
             
         case .deleteMemo(let type, let identifier, _):
