@@ -8,12 +8,15 @@
 import SwiftUI
 import Combine
 
+let defaults = UserDefaults.standard
+
 struct Init_AddNameAndTagView: View {
     // 상태 관리를 위한 변수 추가
     @State private var showAddTagForm = false
     @State private var buttonText = "프로필 입력 완료!"
     @State private var headerTitle = "누구인지 알려주세요!"
     @State private var navigateToNextScreen = false
+    
 
     var body: some View {
         NavigationView {
@@ -25,7 +28,7 @@ struct Init_AddNameAndTagView: View {
                 
                 VStack(alignment: .center, spacing: 30) {
                     AddNameView()
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity)//임시처리
                     
                     BarDivider()
 
@@ -56,6 +59,11 @@ struct Init_AddNameAndTagView: View {
                         if !showAddTagForm {
                             withAnimation {
                                 self.showAddTagForm.toggle()
+                                
+                                //여기서 userAPI 쓴다고 생각
+                                var key : String = "CUCKOO_UUID"
+                                
+                                //defaults.setValue(UUID.self, forKey: key) => userAPI로 받은 uuid를 userDefaults에 저장
                             }
                             self.buttonText = "태그 추가 완료"
                             self.headerTitle = "태그를 추가해주세요!"
@@ -64,6 +72,9 @@ struct Init_AddNameAndTagView: View {
                             self.navigateToNextScreen = true
                         }
                     }
+                
+                    
+                    
             }
         }
     }
@@ -80,6 +91,10 @@ struct AddNameView: View {
     @State private var userName: String = "__의 메모장"
     @FocusState private var isEditing: Bool
 
+    func getUserName() -> String{
+        return userName
+    }
+    
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
             CardContent {

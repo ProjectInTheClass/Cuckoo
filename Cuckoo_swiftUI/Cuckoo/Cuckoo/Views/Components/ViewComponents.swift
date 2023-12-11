@@ -87,11 +87,12 @@ struct presetButton : Hashable{// Hash=> 기억해두자
     var emoji : String
     var alarmName : String
     var time : String
-    
-    init(emoji: String, alarmName: String, time: String) {
+    var preset_id : Int
+    init(emoji: String, alarmName: String, time: String, preset_id : Int) {
         self.emoji = emoji
         self.alarmName = alarmName
         self.time = time
+        self.preset_id = preset_id
     }
     
     // Implementing the Hashable protocol => 기억해두자
@@ -99,6 +100,7 @@ struct presetButton : Hashable{// Hash=> 기억해두자
         hasher.combine(emoji)
         hasher.combine(alarmName)
         hasher.combine(time)
+        hasher.combine(preset_id)
     }
 }
 

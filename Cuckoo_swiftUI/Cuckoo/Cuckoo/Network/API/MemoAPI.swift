@@ -6,6 +6,7 @@
 //
 
 import Moya
+import Foundation
 
 enum MemoAPI {
     case createMemo(params: CreateMemoRequest)

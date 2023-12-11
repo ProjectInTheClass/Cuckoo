@@ -4,8 +4,9 @@
 //
 //  Created by 김경민 on 2023/12/05.
 //
-
+ 
 import Foundation
+import Moya
 
 struct AlarmPreset : Identifiable{
     var id: Int
@@ -24,6 +25,23 @@ struct AlarmPreset : Identifiable{
     }
 }
 
+
+struct LoadAlarmPresetResponseElement: Codable {
+    let id: Int
+    let name, icon, alarmTime, createdAt:String
+    let updatedAt: String
+    
+    enum CodingKeys: String, CodingKey{
+        case id, name, icon
+        case alarmTime = "alarm_time"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}
+
+typealias LoadAlarmPresetResponse = [LoadAlarmPresetResponseElement]
+
+
 struct CreateAlarmPresetRequest: Codable {
     let type, identifier, name, icon: String
     let alarmTime: String
@@ -32,4 +50,8 @@ struct CreateAlarmPresetRequest: Codable {
         case type, identifier, name, icon
         case alarmTime = "alarm_time"
     }
+}
+
+struct AlarmPresetResponse : Codable {
+    let msg : String
 }
