@@ -34,7 +34,7 @@ struct MainContainerView: View {
         HStack {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 5) {
-                    if(memo.isPinned){
+                    if(memo.isPinned==1){
                         HStack(spacing: 3){
                             RotatedImageView()
                             Text(memo.title)
@@ -70,8 +70,8 @@ struct MainContainerView: View {
                             .font(.system(size: 10, weight:.light))
                             .foregroundColor(Color.cuckooNormalGray)
                     }
-                    if memo.url != nil {
-                        Text(memo.url?.absoluteString ?? "")
+                    if memo.url != "" {
+                        Text(memo.url ?? "")
                             .font(.system(size: 10, weight:.light))
                             .underline()
                             .foregroundColor(Color.cuckooNormalGray)
@@ -103,8 +103,8 @@ struct MemoThumbnailImageView: View {
 
     var body: some View {
         ZStack {
-            if let thumbURL = memo.thumbURL {
-                AsyncImage(url: thumbURL) { image in
+            if memo.thumbURL != "" {
+                AsyncImage(url: URL(string:memo.thumbURL)) { image in
                     image
                         .resizable()
                         .scaledToFill()
@@ -124,8 +124,8 @@ struct MemoThumbnailImageView: View {
                 )
 
                 // 링크 추가
-                if let linkURL = memo.url {
-                    Link(destination: linkURL) {
+                if memo.url != "" {
+                    Link(destination: URL(string: memo.url)!) {
                         Rectangle()
                             .foregroundColor(.clear)
                             .frame(width: width, height: height)

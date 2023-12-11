@@ -7,48 +7,38 @@
 
 import Foundation
 
-struct Memo: Identifiable {
-    var id: Int
-    var userId: Int
-    var title: String
-    var comment: String
-    var url: URL?
-    var thumbURL: URL?
-    var notificationCycle: Int
-    var notificationPreset: Int
-    var notificationCount: Int
-    var isPinned: Bool
-    var createdAt: Date
-    var updatedAt: Date
 
-    init(id: Int,
-         userId: Int,
-         title: String,
-         comment: String,
-         url: URL? = nil,
-         thumbURL: URL? = nil,
-         notificationCycle: Int,
-         notificationPreset: Int,
-         notificationCount: Int? = 0,
-         isPinned: Bool = false,
-         createdAt: Date? = nil,
-         updatedAt: Date? = nil) {
-        
-        self.id = id
-        self.userId = userId
-        self.title = title
-        self.comment = comment
-        self.url = url
-        self.thumbURL = thumbURL
-        self.notificationCycle = notificationCycle
-        self.notificationPreset = notificationPreset
-        self.notificationCount = notificationCount!
-        self.isPinned = isPinned
-        self.createdAt = createdAt ?? Date()
-        self.updatedAt = updatedAt ?? Date()
+struct Memo: Codable {
+    var id, userID: Int
+    var title, comment: String
+    var url: String
+    var thumbURL: String
+    var notiCycle, notiPreset, notiCount, isPinned: Int
+    var createdAt, updatedAt: String
+//    let tag: [Tag]
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userID = "user_id"
+        case title, comment, url, thumbURL
+        case notiCycle = "noti_cycle"
+        case notiPreset = "noti_preset"
+        case notiCount = "noti_count"
+        case isPinned = "is_pinned"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+//        case tag
     }
 }
 
+// MARK: - Tag
+//struct Tag: Codable {
+//    let id: Int
+//    let name, color: String
+//    let memoCount: Int
+//}
+
+typealias MemoList = [Memo]
 // Codable
 
 struct CreateMemoRequest: Codable {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 class GlobalState: ObservableObject {
-    @Published var isRegistered: Bool = false
+    @Published var isRegistered: Bool = true
 }
 
 @main
@@ -29,3 +29,4 @@ struct CuckooApp: App {
         }
     }
 }
+

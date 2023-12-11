@@ -44,7 +44,7 @@ struct MemoDetailView: View {
                     }
                     
                     if viewModel.memo.url != nil {
-                        MemoLinkView(link: viewModel.memo.url)
+                        MemoLinkView(link: URL(string: viewModel.memo.url))
                     }
                     
                     MemoContentView(
@@ -58,7 +58,9 @@ struct MemoDetailView: View {
                         reminderOptions: viewModel.reminderOptions
                     )
                     
-                    MemoInfoView(/*lastEdited: viewModel.memo.lastEdited*/)
+                    // MemoDetailView에서 MemoInfoView 호출 부분
+                    MemoInfoView(createdAt: viewModel.memo.createdAt, updatedAt: viewModel.memo.updatedAt)
+
                 }.padding(.bottom, 20)
             }.padding(.horizontal, 30)
             
@@ -345,6 +347,8 @@ struct PickerView: View {
 
 
 struct MemoInfoView: View{
+    let createdAt: String
+    let updatedAt: String
     var body: some View{
         VStack(alignment: .leading, spacing: 3) {
             Text("메모 정보")
@@ -353,10 +357,10 @@ struct MemoInfoView: View{
             
             
             VStack {
-                Text("생성 일자: 2023.10.21")
+                Text("생성 일자: \(createdAt)")
                     .font(.footnote)
                     .foregroundColor(.gray)
-                Text("수정 일자: 2023.10.21")
+                Text("수정 일자: \(updatedAt)")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
@@ -432,28 +436,28 @@ struct EditButtonView: View {
     }
 }
 
-struct MemoDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        // 더미 데이터 생성
-        let dummyMemo = Memo(
-            id: 1, // id 추가 (예시로 1을 사용)
-            userId: 1, // userId 추가 (예시로 1을 사용)
-            title: "Sample Memo",
-            comment:"This is a sample memo.",
-            url: URL(string: "https://www.example.com"),
-            thumbURL: URL(string: "https://www.example.com"),
-            notificationCycle: 7, // 예시 값
-            notificationPreset: 2,
-            notificationCount: 3, // 예시 횟수
-            isPinned: false // 예시 고정 상태
-        )
-
-
-        // 더미 데이터를 사용하여 ViewModel 인스턴스 생성
-        let viewModel = MemoDetailViewModel(memo: dummyMemo)
-
-        // 생성된 ViewModel을 사용하여 MemoDetailView 렌더링
-        MemoDetailView(viewModel: viewModel)
-    }
-}
+//struct MemoDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        // 더미 데이터 생성
+//        let dummyMemo = Memo(
+//            id: 1, // id 추가 (예시로 1을 사용)
+//            userId: 1, // userId 추가 (예시로 1을 사용)
+//            title: "Sample Memo",
+//            comment:"This is a sample memo.",
+//            url: URL(string: "https://www.example.com"),
+//            thumbURL: URL(string: "https://www.example.com"),
+//            notificationCycle: 7, // 예시 값
+//            notificationPreset: 2,
+//            notificationCount: 3, // 예시 횟수
+//            isPinned: 0 // 예시 고정 상태
+//        )
+//
+//
+//        // 더미 데이터를 사용하여 ViewModel 인스턴스 생성
+//        let viewModel = MemoDetailViewModel(memo: dummyMemo)
+//
+//        // 생성된 ViewModel을 사용하여 MemoDetailView 렌더링
+//        MemoDetailView(viewModel: viewModel)
+//    }
+//}
 

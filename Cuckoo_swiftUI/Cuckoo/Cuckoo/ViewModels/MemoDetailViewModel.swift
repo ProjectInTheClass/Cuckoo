@@ -16,6 +16,7 @@ class MemoDetailViewModel: ObservableObject {
     @Published var showActionButtons = false
     @Published var showDeleteAlert = false
     @Published var selectedReminder: String // 선택된 알람 주기를 저장
+    private let memoViewModel = MemoViewModel.shared
     let reminderOptions = ["없음", "7일", "14일", "21일", "30일"]
 
     init(memo: Memo, allTags: [Tag] = dummyTags, memoTags: [MemoTag] = dummyMemoTags) {
@@ -39,12 +40,10 @@ class MemoDetailViewModel: ObservableObject {
     }
 
     func updateMemo(title: String, comment: String, tags: [String], link: URL?) {
-        memo.title = title
-                memo.comment = comment // comment로 변경
-                memo.url = link // URL 처리 추가
+//        memo.title = title
+//                memo.comment = comment // comment로 변경
+//                memo.url = link // URL 처리 추가
                 
-        
-        // Save changes to the database or send to the server
     }
 
     func saveChanges() {
@@ -53,7 +52,7 @@ class MemoDetailViewModel: ObservableObject {
     }
 
     func deleteMemo() {
-        // Delete the memo from the database or server
+        MemoViewModel.shared.deleteMemo(uuid: "86be72a7-9cae-42e1-ab57-b6d7a0df07b3", memoId: memo.id)
     }
     
     func updateTags(forMemo memoId: Int, withTagIds tagIds: [Int]) {
