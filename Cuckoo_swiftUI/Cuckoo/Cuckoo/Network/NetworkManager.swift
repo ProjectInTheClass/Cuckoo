@@ -7,8 +7,8 @@
 
 import Moya
 
-// let loggerConfig = NetworkLoggerPlugin.Configuration(logOptions: .verbose)
-// let loggerPlugin = NetworkLoggerPlugin(configuration: loggerConfig)
+let loggerConfig = NetworkLoggerPlugin.Configuration(logOptions: .verbose)
+let loggerPlugin = NetworkLoggerPlugin(configuration: loggerConfig)
 
 class NetworkManager {
     static let shared = NetworkManager()
