@@ -40,16 +40,23 @@ class MemoDetailViewModel: ObservableObject {
     }
 
     func updateMemo(title: String, comment: String, tags: [String], link: URL?) {
-//        memo.title = title
-//                memo.comment = comment // comment로 변경
-//                memo.url = link // URL 처리 추가
                 
     }
 
     func saveChanges() {
-        // 실제 변경 사항을 저장하는 로직
-        // 예: updateMemo(...)를 호출하여 데이터베이스에 저장
+        MemoViewModel.shared.updateMemo(
+            uuid: "86be72a7-9cae-42e1-ab57-b6d7a0df07b3",
+            memoId: memo.id,
+            title: memo.title,
+            comment: memo.comment,
+            url: memo.url,
+            thumbURL: memo.thumbURL,
+            notificationCycle: memo.notiCycle,
+            notificationPreset: memo.notiPreset
+        )
     }
+
+
 
     func deleteMemo() {
         MemoViewModel.shared.deleteMemo(uuid: "86be72a7-9cae-42e1-ab57-b6d7a0df07b3", memoId: memo.id)

@@ -69,8 +69,19 @@ class MemoViewModel: ObservableObject {
     }
     
     
-    func updateMemo(uuid: String, memoId: Int, title: String?, comment: String?, url: URL?, thumbURL: URL?, notificationCycle: Int?, notificationPreset: Int?) {
-        NetworkManager.shared.memo_provider.request(.updateMemo(type: "uuid", identifier: uuid, memo_id: memoId, title: title, comment: comment, url: url, thumbURL: thumbURL, noti_cycle: notificationCycle, noti_preset: notificationPreset)) { result in
+    func updateMemo(uuid: String, memoId: Int, title: String?, comment: String?, url: String?, thumbURL: String?, notificationCycle: Int?, notificationPreset: Int?) {
+        NetworkManager.shared.memo_provider.request(
+            .updateMemo(
+                type: "uuid",
+                identifier: uuid,
+                memo_id: memoId,
+                title: title,
+                comment: comment,
+                url: URL(string: url ?? "")?.absoluteURL,
+                thumbURL: URL(string: thumbURL ?? "")?.absoluteURL,
+                noti_cycle: notificationCycle,
+                noti_preset: notificationPreset)
+        ) { result in
             switch result {
             case .success(let response):
                 do {
@@ -87,6 +98,8 @@ class MemoViewModel: ObservableObject {
                 print("Error updating memo: \(error)")
             }
         }
+    
+
         
         //    func addMemo(
         //        uuid: String!,
