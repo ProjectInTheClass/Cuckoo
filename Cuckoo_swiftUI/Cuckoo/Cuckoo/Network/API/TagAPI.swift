@@ -6,6 +6,7 @@
 //
 
 import Moya
+import Foundation
 
 enum TagAPI {
     case createTag(params: CreateTagRequest)

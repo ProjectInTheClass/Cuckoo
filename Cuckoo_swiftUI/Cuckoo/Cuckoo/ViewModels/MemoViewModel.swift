@@ -98,8 +98,9 @@ class MemoViewModel: ObservableObject {
                 print("Error updating memo: \(error)")
             }
         }
-    
-
+    }
+        
+        
         
         //    func addMemo(
         //        uuid: String!,
@@ -176,17 +177,16 @@ class MemoViewModel: ObservableObject {
         //    }
         
         
-    }
-    func deleteMemo(uuid: String, memoId: Int) {
-        NetworkManager.shared.memo_provider.request(.deleteMemo(type: "uuid", identifier: uuid, memo_id: memoId)) { result in
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    self.memos.removeAll(where: { $0.id == memoId })
+        func deleteMemo(uuid: String, memoId: Int) {
+            NetworkManager.shared.memo_provider.request(.deleteMemo(type: "uuid", identifier: uuid, memo_id: memoId)) { result in
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        self.memos.removeAll(where: { $0.id == memoId })
+                    }
+                case .failure(let error):
+                    print("Error deleting memo: \(error)")
                 }
-            case .failure(let error):
-                print("Error deleting memo: \(error)")
             }
         }
     }
-}

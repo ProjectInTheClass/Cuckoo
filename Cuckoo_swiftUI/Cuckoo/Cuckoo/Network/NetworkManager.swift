@@ -13,6 +13,7 @@ let loggerPlugin = NetworkLoggerPlugin(configuration: loggerConfig)
 class NetworkManager {
     static let shared = NetworkManager()
     let memo_provider = MoyaProvider<MemoAPI>(plugins:[loggerPlugin])
+    let preset_provider = MoyaProvider<AlarmPresetAPI>(plugins:[loggerPlugin])
 
     // 공통 네트워크 요청 로직
 }
