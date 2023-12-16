@@ -11,7 +11,6 @@
     <entity name="MemoEntity" representedClassName="MemoEntity" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" defaultValueString="새 메모 내용"/>
         <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isPinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="noti_count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noti_cycle" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -34,7 +33,6 @@
     </entity>
     <entity name="TagEntity" representedClassName="TagEntity" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String"/>
-        <attribute name="memo_count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="tag_memo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MemoEntity" inverseName="memo_tag" inverseEntity="MemoEntity"/>
         <relationship name="tag_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="user_tag" inverseEntity="UserEntity"/>

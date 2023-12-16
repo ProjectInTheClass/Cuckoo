@@ -54,7 +54,6 @@ class TagViewModel: ObservableObject {
         let newTag = TagEntity(context: self.container.viewContext)
         newTag.name = name
         newTag.color = color
-        newTag.memo_count = 0
         
         save()
         fetchTag()

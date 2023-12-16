@@ -90,13 +90,10 @@ class MemoViewModel: ObservableObject {
                 for tag in tags {
                     newMemo.addToMemo_tag(tag)
                     tag.addToTag_memo(newMemo)
-                    tag.memo_count += 1
                 }
 
                 newMemo.created_at = Date()
                 newMemo.updated_at = Date()
-                
-                print("ADDED MEMO : \(newMemo)")
                 
                 self.save()
                 self.fetchMemo()
@@ -192,7 +189,10 @@ class MemoViewModel: ObservableObject {
             }
             
             if let tags = tags {
-                memoToEdit.tags = tags
+                for tag in tags {
+                    memoToEdit.addToMemo_tag(tag)
+                    tag.addToTag_memo(memoToEdit)
+                }
             }
             
             if let url = url {

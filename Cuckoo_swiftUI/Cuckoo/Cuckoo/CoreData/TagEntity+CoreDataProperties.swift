@@ -17,7 +17,6 @@ extension TagEntity {
     }
 
     @NSManaged public var color: String
-    @NSManaged public var memo_count: Int32
     @NSManaged public var name: String
     @NSManaged public var tag_memo: NSSet?
     @NSManaged public var tag_user: UserEntity?

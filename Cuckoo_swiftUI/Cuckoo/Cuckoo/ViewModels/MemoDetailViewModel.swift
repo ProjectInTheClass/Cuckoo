@@ -25,11 +25,14 @@ class MemoDetailViewModel: ObservableObject {
     
     init(memoID: NSManagedObjectID, memo: MemoEntity) {
         self.memo = memo
-        self.tags = memo.tags
         self.isEditing = false
         self.showDeleteAlert = false
         self.showActionButtons = false
         self.selectedReminder = "7일"
+        
+        if let tagSet = memo.memo_tag as? Set<TagEntity> {
+            self.tags = Array(tagSet)
+        }
     }
 
     func toggleEditing() {
@@ -44,8 +47,7 @@ class MemoDetailViewModel: ObservableObject {
         showDeleteAlert.toggle()
     }
     
-    func saveChanges() {
-        // TODO :: Memo Core data 테스트를 위해 임시 주석
+    func saveChanges() {        
         MemoViewModel.shared.editMemo(
             memoId: memo.objectID,
             title: memo.title,
@@ -53,7 +55,7 @@ class MemoDetailViewModel: ObservableObject {
             url: memo.url,
             noti_cycle: Int(memo.noti_cycle),
             noti_preset: memo.noti_preset,
-            tags: memo.tags
+            tags: tags
         )
     }
 

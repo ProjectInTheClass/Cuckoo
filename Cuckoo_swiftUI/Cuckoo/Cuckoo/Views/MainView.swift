@@ -68,8 +68,15 @@ struct MainView: View {
                                         noti_count: memo.noti_count
                                     )
                                 ) {
+                                    
                                     MainContainerView(
-                                        title: memo.title, comment: memo.comment, url: memo.url, thumbURL: memo.thumbURL, isPinned: memo.isPinned
+                                        memo: memo,
+                                        title: memo.title,
+                                        comment: memo.comment,
+                                        url: memo.url,
+                                        thumbURL: memo.thumbURL,
+                                        isPinned: memo.isPinned,
+                                        created_at: memo.created_at
                                     )
                                 }.padding(.vertical, 15)
                                 
@@ -179,8 +186,6 @@ struct MainViewSearchFilter: View {
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.defaultPure, lineWidth: 1)).opacity(0.5)
-                    
-                
             }
             .onAppear (perform : UIApplication.shared.hideKeyboard)
             .overlay(Image(systemName: "magnifyingglass")

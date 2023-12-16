@@ -40,7 +40,7 @@ struct MemoDetailView: View {
             ScrollView(.vertical, showsIndicators:false) {
                 VStack(alignment: .leading, spacing: 40) {
                     MemoThumbnailImageView(
-                        width: .infinity,
+                        width: UIScreen.main.bounds.width - 60,
                         height: 150,
                         thumbURL: thumbURL,
                         url: url
@@ -151,8 +151,6 @@ struct TagsView: View {
                     }
                 }
             }
-        }.onAppear {
-            print(tags)
         }
     }
 }

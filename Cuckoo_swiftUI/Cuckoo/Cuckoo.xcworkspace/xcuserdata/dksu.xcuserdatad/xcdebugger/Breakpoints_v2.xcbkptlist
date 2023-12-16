@@ -20,53 +20,5 @@
             landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4579638E-E771-478F-AAB3-DBD2BB238B8A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Cuckoo/ViewModels/MemoViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "4579638E-E771-478F-AAB3-DBD2BB238B8A - 300ec0030d956f5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[4] = Value Promoted from Box&gt; of closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in Cuckoo.MemoViewModel.addMemo(title: Swift.String, comment: Swift.String, url: Swift.Optional&lt;Foundation.URL&gt;, notificationCycle: Swift.Int, notificationPreset: Swift.Optional&lt;Swift.Int&gt;, isPinned: Swift.Bool, tags: Swift.Array&lt;Cuckoo.TagEntity&gt;) -&gt; ()"
-                  moduleName = "Cuckoo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "3136">
-               </Location>
-               <Location
-                  uuid = "4579638E-E771-478F-AAB3-DBD2BB238B8A - 300ec0030d956d6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[4] = Value Promoted from Box&gt; of closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in Cuckoo.MemoViewModel.addMemo(title: Swift.String, comment: Swift.String, url: Swift.Optional&lt;Foundation.URL&gt;, notificationCycle: Swift.Int, notificationPreset: Swift.Optional&lt;Swift.Int&gt;, isPinned: Swift.Bool, tags: Swift.Array&lt;Cuckoo.TagEntity&gt;) -&gt; ()"
-                  moduleName = "Cuckoo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "2792">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
