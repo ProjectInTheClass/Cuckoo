@@ -58,22 +58,6 @@ class MemoViewModel: ObservableObject {
     
     
     private func requestUserMemos(uuid: String) {
-//        NetworkManager.shared.memo_provider.request(.loadMemo(type: "uuid", identifier: uuid)) { result in
-//            switch result {
-//            case .success(let response):
-//                do {
-//                    let memos = try JSONDecoder().decode([Memo].self, from: response.data)
-//                    DispatchQueue.main.async {
-//                        self.memos = memos
-//                    }
-//                    print(memos)
-//                } catch {
-//                    print("Error decoding memos: \(error)")
-//                }
-//            case .failure(let error):
-//                print("Error loading memos: \(error)")
-//            }
-//        }
         fetchMemo()
     }
     

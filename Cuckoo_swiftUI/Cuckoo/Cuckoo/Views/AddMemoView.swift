@@ -42,6 +42,16 @@ struct AddMemoView: View {
                 AddMemoFooterView()
                     .frame(height: 60)
                     .frame(maxWidth: .infinity)
+                    .onTapGesture {
+                        MemoViewModel.shared.addMemo(
+                            title: "테스트 등록",
+                            comment: "테스트 등록 내용",
+                            url: URL(string: "https://festa.io/events/4457"),
+                            thumbURL: URL(string: ""),
+                            notificationCycle: 1,
+                            isPinned: false
+                        )
+                    }
             }
             .navigationBarBackButtonHidden(true)
     }
