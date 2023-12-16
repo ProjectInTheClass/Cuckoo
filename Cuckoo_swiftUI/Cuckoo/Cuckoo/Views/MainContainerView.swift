@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 //pinpoint
 struct RotatedImageView: View {
@@ -17,34 +18,32 @@ struct RotatedImageView: View {
 }
 
 struct MainContainerView: View {
+    @ObservedObject var memoViewModel = MemoViewModel.shared
+    var tag: String = "2 days ago"
+    var timeAgo: String = "전체"
     
-    var memo: MemoEntity
-    
-    var tag: String
-    var timeAgo: String
-    
-    init(memo: MemoEntity) {
-        self.memo = memo
-        self.timeAgo = "2 days ago" // TODO : 현재 Date랑 차이를 통해, now(5분미만), n minutes ago,  n hour(s) ago, day(s) ago, week(s) ago 중 하나로 나타내야함.
-        self.tag = "전체" // TODO : MemoTag에서, memo_id 기준으로 검색 후에 나오는 tag id중 가장 처음거로
-    }
+    var title: String
+    var comment: String
+    var url: URL?
+    var thumbURL : URL?
+    var isPinned: Bool
     
     var body: some View {
         
         HStack {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 5) {
-                    if(memo.isPinned){
+                    if(isPinned){
                         HStack(spacing: 3){
                             RotatedImageView()
-                            Text(memo.title ?? "")
+                            Text(title)
                                 .font(.system(size:18, weight:.bold))
                                 .foregroundColor(Color.black)
                                 .lineLimit(1) // 한 줄로 제한
                                 .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
                         }
                     }else{
-                        Text(memo.title ?? "")
+                        Text(title)
                             .font(.system(size:18, weight:.bold))
                             .foregroundColor(Color.black)
                             .lineLimit(1) // 한 줄로 제한
@@ -52,7 +51,7 @@ struct MainContainerView: View {
                     }
 
                     
-                    Text(memo.comment ?? "")
+                    Text(comment)
                         .font(.system(size:12, weight: .regular))
                         .foregroundColor(Color.cuckooNormalGray)
                         .frame(maxWidth: 160, alignment: .leading)
@@ -70,7 +69,7 @@ struct MainContainerView: View {
                             .font(.system(size: 10, weight:.light))
                             .foregroundColor(Color.cuckooNormalGray)
                     }
-                    if let url = memo.url {
+                    if let url = url {
                         Text(url.absoluteString)
                             .font(.system(size: 10, weight:.light))
                             .underline()
@@ -87,7 +86,7 @@ struct MainContainerView: View {
             
             VStack {
                 
-                MemoThumbnailImageView(memo: memo)
+                MemoThumbnailImageView(thumbURL: thumbURL, url: url)
                 
             }
         }
@@ -96,14 +95,16 @@ struct MainContainerView: View {
 }
 
 struct MemoThumbnailImageView: View {
-    var memo: MemoEntity
-    
+//    var memo: MemoEntity
     var width: CGFloat = 140
     var height: CGFloat = 94
+    var thumbURL: URL?
+    var url: URL?
 
+    
     var body: some View {
         ZStack {
-            if let thumbURL = memo.thumbURL {
+            if let thumbURL = thumbURL {
                 AsyncImage(url: thumbURL) { image in
                     image
                         .resizable()
@@ -124,7 +125,7 @@ struct MemoThumbnailImageView: View {
                 )
 
                 // 링크 추가
-                if let url = memo.url {
+                if let url = url {
                     Link(destination: url) {
                         Rectangle()
                             .foregroundColor(.clear)
@@ -147,16 +148,3 @@ struct MemoThumbnailImageView: View {
         }
     }
 }
-
-
-
-struct Item {
-    let id: Int
-    let title: String
-    let detail: String
-    let tag: String
-    let timeAgo: String
-    let memoURL: String
-    let thumbURL: String
-}
-
