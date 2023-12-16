@@ -9,6 +9,7 @@ import Foundation
 import Moya
 
 class AlarmPresetViewModel: ObservableObject {
+    
     static let shared = AlarmPresetViewModel()
     @Published var presets: [AlarmPreset]
     

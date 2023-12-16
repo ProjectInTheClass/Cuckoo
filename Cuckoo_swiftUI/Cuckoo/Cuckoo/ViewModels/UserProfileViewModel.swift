@@ -8,6 +8,8 @@ import SwiftUI
 import CoreData
 
 class UserProfileViewModel: ObservableObject {
+    
+    static var userProfile = UserProfileViewModel()
     @Published var user: User
     @Published var profileImage: UIImage?
 
@@ -20,7 +22,6 @@ class UserProfileViewModel: ObservableObject {
             // UUID가 없는 경우, 빈 User 객체 초기화
             self.user = User(id: 1, username: "", uuid: UUID(), createdAt: Date())
         }
-
     }
 
     func createUser(username: String) {
@@ -28,7 +29,7 @@ class UserProfileViewModel: ObservableObject {
         self.user = User(id: serverResponse.id, username: username, uuid: serverResponse.uuid, createdAt: serverResponse.createdAt)
 
         // UserDefaults에 UUID 저장
-        UserDefaults.standard.set(self.user.uuid.uuidString, forKey: "userUUID")
+        UserDefaults.standard.set(self.user.uuid, forKey: "user_UUID")
     }
 
     func getUUID() -> UUID {

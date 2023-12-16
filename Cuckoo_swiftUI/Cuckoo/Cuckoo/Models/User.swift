@@ -8,6 +8,7 @@
 import Foundation
 
 struct User: Identifiable {
+    
     var id: Int // Assuming id is an integer
     var username: String
     var uuid: UUID
@@ -20,4 +21,5 @@ struct User: Identifiable {
         self.uuid = uuid! // UUID 생성
         self.createdAt = createdAt!// 현재 날짜/시간으로 초기화
     }
+    
 }
