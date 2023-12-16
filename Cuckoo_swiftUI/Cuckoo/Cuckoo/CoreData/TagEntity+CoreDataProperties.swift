@@ -2,7 +2,7 @@
 //  TagEntity+CoreDataProperties.swift
 //  
 //
-//  Created by DKSU on 12/14/23.
+//  Created by DKSU on 12/17/23.
 //
 //
 
@@ -16,9 +16,8 @@ extension TagEntity {
         return NSFetchRequest<TagEntity>(entityName: "TagEntity")
     }
 
-    @NSManaged public var color: String?
-    @NSManaged public var memo_count: Int32
-    @NSManaged public var name: String?
+    @NSManaged public var color: String
+    @NSManaged public var name: String
     @NSManaged public var tag_memo: NSSet?
     @NSManaged public var tag_user: UserEntity?
 

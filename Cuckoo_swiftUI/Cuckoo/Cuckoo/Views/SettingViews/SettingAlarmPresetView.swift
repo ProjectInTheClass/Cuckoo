@@ -18,20 +18,18 @@ struct SettingAlarmPresetView: View {
     @State private var selectedMinuteIndex = 0
     @State private var selectedPresets: Set<presetButton> = []
     
-    @State private var selectedReminderPeriod = "1일"
+    @State private var selectedReminderPeriod = 1
     @State private var isReminderPeriodPopoverPresented = false
     
     @State private var isMultiplierPopoverPresented = false
-    @State private var selectedMultiplier = 2
+    @State private var selectedMultiplier = 1
     
     @State private var isDeleteConfirmationPresented = false
     
-    @EnvironmentObject public var viewModel : AlarmPresetViewModel
     
     
     var body: some View {
         VStack {
-            
             HeaderView(title: "알람 주기 / 프리셋 설정")
                 .frame(height: 60)
                 .frame(maxWidth: .infinity)
@@ -39,9 +37,10 @@ struct SettingAlarmPresetView: View {
             VStack(alignment: .leading, spacing: 30) {
                 VStack(spacing: 20) {
                     AddAlarmTermHeaderView()
-                    AddAlarmTermBodyView()
+                    AddAlarmTermBodyView(
+                        selectedReminderPeriod: $selectedReminderPeriod, selectedMultiplier: $selectedMultiplier
+                    )
                     AddAlarmPresetView()
-                        .environmentObject(viewModel)
                 }.padding(.horizontal, 30)
             }.padding(.vertical, 20)
             

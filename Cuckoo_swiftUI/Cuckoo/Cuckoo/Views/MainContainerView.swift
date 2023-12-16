@@ -19,14 +19,61 @@ struct RotatedImageView: View {
 
 struct MainContainerView: View {
     @ObservedObject var memoViewModel = MemoViewModel.shared
-    var tag: String = "2 days ago"
-    var timeAgo: String = "전체"
-    
     var title: String
     var comment: String
     var url: URL?
     var thumbURL : URL?
     var isPinned: Bool
+    var tag: String = ""
+    var timeAgo: String = ""
+    
+    init(memo: MemoEntity, title: String, comment: String, url: URL?, thumbURL:URL?, isPinned:Bool, created_at: Date?) {
+        self.title = title
+        self.comment = comment
+        self.url = url
+        self.thumbURL = thumbURL
+        self.isPinned = isPinned
+        
+        
+        if let tagSet = memo.memo_tag as? Set<TagEntity> {
+            let tagList: [TagEntity] = Array(tagSet)
+            
+            if tagList.isEmpty {
+
+                self.tag = ""
+            } else {
+                
+                self.tag = tagList[0].name
+            }
+                
+        }
+        
+        if let created_at = created_at {
+            self.timeAgo = getTimeDelta(targetTime: created_at)
+        } else {
+            self.timeAgo = "오래 전"
+        }
+    }
+    
+    private func getTimeDelta(targetTime: Date) -> String {
+        let calendar = Calendar.current
+        let now = Date()
+        let components = calendar.dateComponents([.minute, .hour, .day, .month, .year], from: targetTime, to: now)
+
+        if let year = components.year, year > 0 {
+            return "\(year)년 전"
+        } else if let month = components.month, month > 0 {
+            return "\(month)달 전"
+        } else if let day = components.day, day > 0 {
+            return "\(day)일 전"
+        } else if let hour = components.hour, hour > 0 {
+            return "\(hour)시간 전"
+        } else if let minute = components.minute, minute > 0 {
+            return "\(minute)분 전"
+        } else {
+            return "방금 전"
+        }
+    }
     
     var body: some View {
         
@@ -79,33 +126,30 @@ struct MainContainerView: View {
                             .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
                     }
                 }
-
-                
-            }
+            } // VStack
             Spacer()
             
             VStack {
                 
-                MemoThumbnailImageView(thumbURL: thumbURL, url: url)
+                MemoThumbnailImageView(width: 140, height: 94, thumbURL: thumbURL, url: url)
                 
             }
-        }
+        } // HStack
         .frame(maxWidth: .infinity)
     }
 }
 
 struct MemoThumbnailImageView: View {
-//    var memo: MemoEntity
-    var width: CGFloat = 140
-    var height: CGFloat = 94
+    var width: CGFloat // 외부에서 설정하는 값
+    var height: CGFloat // 외부에서 설정하는 값
     var thumbURL: URL?
     var url: URL?
 
-    
     var body: some View {
         ZStack {
             if let thumbURL = thumbURL {
                 AsyncImage(url: thumbURL) { image in
+                    
                     image
                         .resizable()
                         .scaledToFill()
@@ -124,7 +168,6 @@ struct MemoThumbnailImageView: View {
                         .opacity(0.5)
                 )
 
-                // 링크 추가
                 if let url = url {
                     Link(destination: url) {
                         Rectangle()

@@ -2,7 +2,7 @@
 //  AlarmPresetEntity+CoreDataProperties.swift
 //  
 //
-//  Created by DKSU on 12/14/23.
+//  Created by DKSU on 12/17/23.
 //
 //
 
@@ -16,10 +16,10 @@ extension AlarmPresetEntity {
         return NSFetchRequest<AlarmPresetEntity>(entityName: "AlarmPresetEntity")
     }
 
-    @NSManaged public var alarm_time: String?
+    @NSManaged public var alarm_time: String
     @NSManaged public var created_at: Date?
-    @NSManaged public var icon: String?
-    @NSManaged public var name: String?
+    @NSManaged public var icon: String
+    @NSManaged public var name: String
     @NSManaged public var updated_at: Date?
     @NSManaged public var preset_memo: NSSet?
 

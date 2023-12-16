@@ -27,7 +27,7 @@ struct SettingView: View {
                 VStack(spacing: 0) {
                     SettingListView(title: "태그 관리") { SettingTagView() }
                     SettingListView(title: "알람 주기/프리셋 설정") { SettingAlarmPresetView() }
-                    SettingListView(title: "기타 설정") { KitSettingsView() }
+//                    SettingListView(title: "기타 설정") { KitSettingsView() }
                 }
                 
                 VStack(spacing: 0) {

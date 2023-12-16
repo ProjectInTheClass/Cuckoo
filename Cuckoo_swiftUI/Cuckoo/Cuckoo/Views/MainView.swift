@@ -9,7 +9,10 @@ import SwiftUI
 
 struct MainView: View {
     @ObservedObject var memoViewModel = MemoViewModel.shared
+    @ObservedObject var tagViewModel = TagViewModel.shared
     let context = CoreDataManager.shared.persistentContainer.viewContext
+    
+
 
     var body: some View {
         NavigationView {
@@ -19,47 +22,93 @@ struct MainView: View {
                 Spacer()
 
                 // Search Bar & Tag
-                MainViewSearchFilter()
-                Spacer()
-
+                // TODO:: Tag에 의한 filtering먼저 적용 -> 이후 남아있는 memo들에 대해 키워드를 포함하는 memo만 보이게끔
+                // 검색어가 없다면 전부를 보여주게끔 해야함.
+                MainViewSearchFilter(
+                    searchKeyword: $memoViewModel.searchKeyword,
+                    selectedTags: $memoViewModel.selectedTags,
+                    tags: tagViewModel.tags, // Assuming you have a way to get the list of tags
+                    onFilterChange: { newKeyword, newSelectedTags in
+                        memoViewModel.updateFilterCriteria(selectedTags: newSelectedTags, searchKeyword: newKeyword)
+                    }
+                )
+                
                 // Body
-                ScrollView {
-                    ForEach(memoViewModel.memos, id: \.self) { memo in
-                        VStack(alignment: .leading) {
-                            NavigationLink(
-                                destination: MemoDetailView(
-                                    viewModel: MemoDetailViewModel(
-                                        memoID: memo.objectID,
-                                        memo: memo
-                                    ),
-                                    title: memo.title,
-                                    comment: memo.comment,
-                                    url: memo.url,
-                                    thumbURL: memo.thumbURL,
-                                    noti_cycle: memo.noti_cycle,
-                                    noti_preset: memo.noti_preset,
-                                    noti_count: memo.noti_count
-                                )
-                            ) {
-                                MainContainerView(
-                                    title: memo.title, comment: memo.comment, url: memo.url, thumbURL: memo.thumbURL, isPinned: memo.isPinned
-                                )
-                            }.padding(.vertical, 15)
+                ZStack {
+                    VStack(alignment: .center) {
+                        HStack {
+                            Spacer()
+                            Image(.defaultPreview)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width:300, height:300)
+                                .cornerRadius(5000)
+                                .opacity(0.10)
                             
-                            Divider()
+                            Spacer()
+                        }
+                        .padding(.bottom, 30)
+                        if memoViewModel.memos.isEmpty {
+                            Text("메모를 추가해주세요!")
+                                .font(.system(size: 20, weight: .medium))
+                                .foregroundColor(Color.cuckooLightGray.opacity(0.75))
+                        }
+                        
+                        Spacer()
+                        
+                    }.padding(30)
+                    
+                    
+                    ScrollView {
+                        // TODO :: 선택된 Tag들 중 하나라도 해당되는 Memo만 View하도록 Filtering
+                        // Filtering 된 Memo만 볼 수 있게끔 해야함
+                        ForEach(memoViewModel.filteredMemos, id: \.self) { memo in
+                            VStack(alignment: .leading) {
+                                NavigationLink(
+                                    destination: MemoDetailView(
+                                        viewModel: MemoDetailViewModel(
+                                            memoID: memo.objectID,
+                                            memo: memo
+                                        ),
+                                        title: memo.title,
+                                        comment: memo.comment,
+                                        url: memo.url,
+                                        thumbURL: memo.thumbURL,
+                                        noti_cycle: memo.noti_cycle,
+                                        noti_preset: memo.memo_preset,
+                                        noti_count: memo.noti_count
+                                    )
+                                ) {
+                                    
+                                    MainContainerView(
+                                        memo: memo,
+                                        title: memo.title,
+                                        comment: memo.comment,
+                                        url: memo.url,
+                                        thumbURL: memo.thumbURL,
+                                        isPinned: memo.isPinned,
+                                        created_at: memo.created_at
+                                    )
+                                }.padding(.vertical, 15)
+                                
+                                Divider()
+                            }
                         }
                     }
-                }.onAppear {
-                    memoViewModel.browseMemos() // Refresh memos list when MainView appears
-                }
-                
-                .scrollIndicators(.hidden)
-                .overlay(
-                    AddMemoFloatingButton(),
-                    alignment: .bottomTrailing
-                )
+                    .padding(.horizontal, 30)
+                    .onAppear {
+                        memoViewModel.browseMemos() // Refresh memos list when MainView appears
+                    }
+                    .scrollIndicators(.hidden)
+                    
+                    
+                } // ZStack
             }
             .padding(.horizontal, 30)
+            .overlay(
+                AddMemoFloatingButton(),
+                alignment: .bottomTrailing
+            )
         }
     }
 }
@@ -89,7 +138,7 @@ struct MainViewHeader: View {
                         .resizable()
                         .frame(width: 45,height: 45)
                         .foregroundColor(Color.cuckooNormalGray)
-                        .padding(.trailing,10)
+                        .padding(.trailing, 10)
                 }
                 NavigationLink(destination: NotificationLogView()){
                     Image(systemName:"bell.circle.fill")
@@ -132,22 +181,30 @@ struct MainViewHeader: View {
 }
 
 struct MainViewSearchFilter: View {
-    @State private var searchContent: String = "" // 사용자가 입력할 내용을 저장할 상태 변수입니다.
+    @ObservedObject var memoViewModel = MemoViewModel.shared
+    @Binding var searchKeyword: String
+    @Binding var selectedTags: Set<TagEntity>
+    @State var isInit: Bool = true
+    
+    var tags: [TagEntity]
+    var onFilterChange: (String, Set<TagEntity>) -> Void
+    
     
     var body: some View {
         // TextEditor의 스크롤 가능한 영역 설정
         VStack(spacing: 18) {
             HStack(spacing: 0){
-                TextField("검색어를 입력해주세요!", text: $searchContent)
+                TextField("검색어를 입력해주세요!", text: $searchKeyword, onEditingChanged: { isEditing in
+                    onFilterChange(searchKeyword, selectedTags)
+                })
                     .font(.system(size: 14, weight: .medium))
                     .padding(.leading, 25)
                     .padding(10)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 36, alignment: .top)
+                
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.defaultPure, lineWidth: 1)).opacity(0.5)
-                    
-                
             }
             .onAppear (perform : UIApplication.shared.hideKeyboard)
             .overlay(Image(systemName: "magnifyingglass")
@@ -158,18 +215,42 @@ struct MainViewSearchFilter: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    ForEach(0..<10) { index in
-                        CardContent {
-                            HStack {
-                                TypeBubble("메모", "#b2b2b2")
-                                TypeBubble("기록", "#b2b2b2")
+                    ForEach(tags, id: \.self) { tag in
+                        TagBubbleView(tag: tag, isSelected: isSelected(tag: tag))
+                            .onTapGesture {
+                                withAnimation(Animation.easeInOut(duration: 0.3)) {
+                                    toggleTagSelection(tag: tag)
+                                    memoViewModel.browseMemos()
+                                }
                             }
-                        }
                     }
+                }
+            }
+        }.onAppear {
+            if isInit {
+                isInit = false
+                for tag in tags {
+                    selectedTags.insert(tag)
                 }
             }
         }
         
+    }
+    
+    
+    private func isSelected(tag: TagEntity) -> Bool {
+        return selectedTags.contains(tag)
+    }
+    private func toggleTagSelection(tag: TagEntity) {
+        if selectedTags.contains(tag) {
+            selectedTags.remove(tag)
+        } else {
+            selectedTags.insert(tag)
+        }
+    }
+    
+    private func applyFilters() {
+        onFilterChange(searchKeyword, selectedTags)
     }
 }
 
@@ -186,6 +267,7 @@ struct AddMemoFloatingButton: View {
         }
         .background(Color.cuckooNormalGray)
         .clipShape(Circle())
+        .padding(.trailing, 60)
         .padding(.bottom, 16) // Adjust the bottom padding as needed
         
     }

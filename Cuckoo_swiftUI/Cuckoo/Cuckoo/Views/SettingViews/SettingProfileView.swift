@@ -39,12 +39,14 @@ struct SettingsProfileView: View {
         VStack(spacing: 10) {
             
             //최상단 뒤로가기 버튼, 제목
+            HeaderView(title:"프로필 설정")
+                .frame(height: 60)
             
             //이미지 찾아올 수 있음.
             ImagePicker(isImagePickerPresented: $isImagePickerPresented, selectedImage: $selectedImage)
                 .onDisappear {
                     // Handle the selected image here
-                    // For example, you can save it to your model or upload it to a server
+                    
                 }
                 .sheet(isPresented: $isImagePickerPresented) {
                     ImagePickerView(selectedImage: $selectedImage)
@@ -116,47 +118,10 @@ struct SettingsProfileView: View {
                 .padding(.vertical, 20)
             
             Spacer()
-        }
+        }.navigationBarBackButtonHidden(true)
         .padding(.vertical, 20)
     }
     
-    //태그 관리용 함수
-    // Function to show an alert for confirming tag deletion
-//    private func showDeleteTagAlert(tag: String) {
-//        deleteTagAlert = Alert(
-//            title: Text("Delete Tag"),
-//            message: Text("Are you sure you want to delete the tag '\(tag)'?"),
-//            primaryButton: .default(Text("Cancel")),
-//            secondaryButton: .destructive(Text("Delete"), action: {
-//                // Handle tag deletion here (remove from the tags array or your data source)
-//                tags.removeAll { $0 == tag }
-//            })
-//        )
-//    }
-    
-    // Function to show an action sheet for tag options (modify, delete)
-//    private func showTagOptions(tag: String) {
-//        tagOptionsSheet = ActionSheet(
-//            title: Text("Tag Options"),
-//            buttons: [
-//                .default(Text("Modify"), action: {
-//                    // Handle tag modification here (show another alert for editing the tag name)
-//                    showModifyTagAlert(tag: tag)
-//                }),
-//                .destructive(Text("Delete"), action: {
-//                    // Show alert for confirming tag deletion
-//                    showDeleteTagAlert(tag: tag)
-//                }),
-//                .cancel()
-//            ]
-//        )
-//    }
-    
-    // Function to show an alert for modifying the tag name
-//    private func showModifyTagAlert(tag: String) {
-//        // You can use a TextField in the alert to let the user input a new tag name
-//        // Handle the modification based on user input
-//    }
 }
 
 struct RoundedStatsView: View {

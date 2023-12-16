@@ -14,8 +14,8 @@ struct MemoDetailView: View {
     @State private var isEditing = false
     @State private var showDeleteAlert = false
     @State private var showActionButtons = false
-    @State private var selectedReminder = "7일"
     @StateObject var viewModel: MemoDetailViewModel
+    @ObservedObject var presetViewModel = AlarmPresetViewModel.shared
     
     var title: String
     var comment: String
@@ -40,7 +40,7 @@ struct MemoDetailView: View {
             ScrollView(.vertical, showsIndicators:false) {
                 VStack(alignment: .leading, spacing: 40) {
                     MemoThumbnailImageView(
-                        width: .infinity,
+                        width: UIScreen.main.bounds.width - 60,
                         height: 150,
                         thumbURL: thumbURL,
                         url: url
@@ -52,7 +52,7 @@ struct MemoDetailView: View {
                             editedTitle: $viewModel.memo.title
                         )
                         
-                        TagsView(tags: viewModel.tags)
+                        TagsView(tags: $viewModel.tags)
                     }
                     
                     MemoLinkView(
@@ -65,10 +65,10 @@ struct MemoDetailView: View {
                         Comment: $viewModel.memo.comment
                     )
                     
-                    ReminderPickerView(
+                    MemoAlarmPresetFormView(
+                        presetList: $presetViewModel.presets,
                         selectedReminder: $viewModel.selectedReminder,
-                        isEditing: $viewModel.isEditing,
-                        reminderOptions: viewModel.reminderOptions
+                        isEditing: $viewModel.isEditing
                     )
                     
                     // MemoDetailView에서 MemoInfoView 호출 부분
@@ -133,20 +133,22 @@ struct MemoTitleView: View {
 
 // Tags View
 struct TagsView: View {
-    let tags: [Tag]
+    @Binding var tags: [TagEntity]?
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(tags) { tag in
-                    Text(tag.name)
-                        .font(.caption.weight(.bold))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(Color.fromHex(tag.color))
-                        .foregroundColor(.black)
-                        .cornerRadius(15)
+                if let tags = tags {
+                    ForEach(tags, id: \.self) { tag in
+                        Text(tag.name)
+                            .font(.caption.weight(.bold))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(Color.fromHex(tag.color))
+                            .foregroundColor(.black)
+                            .cornerRadius(15)
+                    }
                 }
             }
         }
