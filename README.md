@@ -94,20 +94,20 @@
 - [x]  초기 화면 Model 분리 및 ViewModel 작성 (Logic부분 빼고)
 - [x]  홈 화면 Model 분리 &
 - [x]  메모 등록 화면 Model 분리 &
-    - [ ]  상태값 관리 필요
+    - [x]  상태값 관리 필요
 - [x]  메모 수정 화면 Model 분리
-    - [ ]  상태값 관리 필요
+    - [x]  상태값 관리 필요
 
 **Model & ViewModel - 2 (Data fetch & Logic 구현 완료)**
 
-- [ ]  초기 화면 진입 정보 다루기 & 기기 서버 등록 Logic
-- [ ]  홈 화면 Data 띄우는 Logic
-- [ ]  메모 등록 관련 요청 Logic
-- [ ]  메모 수정 관련 요청 Logic
+- [x]  초기 화면 진입 정보 다루기 & 기기 서버 등록 Logic
+- [x]  홈 화면 Data 띄우는 Logic
+- [x]  메모 등록 관련 요청 Logic
+- [x]  메모 수정 관련 요청 Logic
 
-**통합 테스트 (Full Logic) (11/28 오프라인)**
+**통합 테스트 (Full Logic)**
 
-- [ ]  (유저플로우 정의대로) 전체 기능 테스트
+- [x]  (유저플로우 정의대로) 전체 기능 테스트
 
 <br>
 <br>
