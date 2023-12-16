@@ -41,6 +41,7 @@
 		7A7F87942AEF559E00F14B11 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87932AEF559E00F14B11 /* CuckooTests.swift */; };
 		7A7F879E2AEF559E00F14B11 /* CuckooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */; };
 		7A7F87A02AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */; };
+		7D8857832B27E78800BD8D82 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8857822B27E78800BD8D82 /* TagViewModel.swift */; };
 		7D8DE4BD2B1EAF95004502FF /* MemoTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4BC2B1EAF95004502FF /* MemoTag.swift */; };
 		7D8DE4BF2B1EB078004502FF /* AlarmPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */; };
 		7D8DE4C12B1EB0A6004502FF /* NotificationLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */; };
@@ -116,6 +117,7 @@
 		7A7F87992AEF559E00F14B11 /* CuckooUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CuckooUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITests.swift; sourceTree = "<group>"; };
 		7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7D8857822B27E78800BD8D82 /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		7D8DE4BC2B1EAF95004502FF /* MemoTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTag.swift; sourceTree = "<group>"; };
 		7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPreset.swift; sourceTree = "<group>"; };
 		7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLog.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				7DF6B4D32B1B26E800B64CC0 /* MainContainerViewModel.swift */,
 				7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */,
 				00133EB12B24128E0035AB70 /* UserProfileViewModel.swift */,
+				7D8857822B27E78800BD8D82 /* TagViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				7A0601A62B26AD6700055EBB /* LocalNotification.swift in Sources */,
 				7DF6B4D42B1B26E800B64CC0 /* MainContainerViewModel.swift in Sources */,
 				00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */,
+				7D8857832B27E78800BD8D82 /* TagViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
