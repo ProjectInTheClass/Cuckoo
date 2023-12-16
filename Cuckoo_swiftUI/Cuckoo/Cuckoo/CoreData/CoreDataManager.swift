@@ -13,6 +13,7 @@ class CoreDataManager {
     
     lazy var persistentContainer: NSPersistentContainer = {
             let container = NSPersistentContainer(name: "CoreDataContainer")
+        
             container.loadPersistentStores { (description, error) in
                 if let error = error {
                     print("ERROR LOADING CORE DATA. \(error)")
@@ -20,6 +21,7 @@ class CoreDataManager {
                     print("SUCCESSFULLY LOADED CORE DATA. \(description)")
                 }
             }
+        
             return container
     }()
     

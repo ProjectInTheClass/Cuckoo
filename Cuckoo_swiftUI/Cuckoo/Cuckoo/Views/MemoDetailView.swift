@@ -22,7 +22,7 @@ struct MemoDetailView: View {
     var url: URL?
     var thumbURL: URL?
     var noti_cycle: Int32
-    var noti_preset: AlarmPresetEntity?
+    var noti_preset: String?
     var noti_count: Int32
     
     @SwiftUI.Environment(\.dismiss) var dismiss
@@ -52,7 +52,7 @@ struct MemoDetailView: View {
                             editedTitle: $viewModel.memo.title
                         )
                         
-                        TagsView(tags: viewModel.tags)
+                        TagsView(tags: $viewModel.tags)
                     }
                     
                     MemoLinkView(
@@ -133,22 +133,26 @@ struct MemoTitleView: View {
 
 // Tags View
 struct TagsView: View {
-    let tags: [Tag]
+    @Binding var tags: [TagEntity]?
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(tags) { tag in
-                    Text(tag.name)
-                        .font(.caption.weight(.bold))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(Color.fromHex(tag.color))
-                        .foregroundColor(.black)
-                        .cornerRadius(15)
+                if let tags = tags {
+                    ForEach(tags, id: \.self) { tag in
+                        Text(tag.name)
+                            .font(.caption.weight(.bold))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(Color.fromHex(tag.color))
+                            .foregroundColor(.black)
+                            .cornerRadius(15)
+                    }
                 }
             }
+        }.onAppear {
+            print(tags)
         }
     }
 }

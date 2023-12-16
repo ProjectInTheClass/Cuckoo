@@ -46,22 +46,22 @@ struct Init_AddAlarmPresetView: View {
             }
             
             
-            ConfirmFixedButton(confirmMessage: buttonText)
-                .frame(height: 120)
-                .frame(maxWidth: .infinity)
-                .onTapGesture {
-                    withAnimation {
-                        
-                        if !showAddPresetForm {
-                            self.showAddPresetForm.toggle()
-                            self.buttonText = "알림 정보 등록 완료"
-                            self.headerTitle = "프리셋을 추가해주세요!"
-                        } else {
-                            // 다른 화면으로 이동
-                            self.navigateToNextScreen = true
-                        }
+            ConfirmFixedButton(confirmMessage: buttonText, logic: {
+                
+                withAnimation {
+                    
+                    if !showAddPresetForm {
+                        self.showAddPresetForm.toggle()
+                        self.buttonText = "알림 정보 등록 완료"
+                        self.headerTitle = "프리셋을 추가해주세요!"
+                    } else {
+                        // 다른 화면으로 이동
+                        self.navigateToNextScreen = true
                     }
                 }
+            })
+                .frame(height: 120)
+                .frame(maxWidth: .infinity)
             
         }.navigationBarBackButtonHidden(true)
         

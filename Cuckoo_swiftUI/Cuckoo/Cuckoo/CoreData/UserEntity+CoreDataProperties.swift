@@ -2,7 +2,7 @@
 //  UserEntity+CoreDataProperties.swift
 //  
 //
-//  Created by DKSU on 12/14/23.
+//  Created by DKSU on 12/17/23.
 //
 //
 
@@ -17,7 +17,7 @@ extension UserEntity {
     }
 
     @NSManaged public var created_at: Date?
-    @NSManaged public var username: String?
+    @NSManaged public var username: String
     @NSManaged public var user_memo: NSSet?
     @NSManaged public var user_tag: NSSet?
 

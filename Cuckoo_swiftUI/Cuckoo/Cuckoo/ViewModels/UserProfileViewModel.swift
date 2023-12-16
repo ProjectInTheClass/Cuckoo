@@ -12,7 +12,7 @@ class UserProfileViewModel: ObservableObject {
     @Published var profileImage: UIImage?
 
     init() {
-        if let uuidString = UserDefaults.standard.string(forKey: "user_UUID"),
+        if let uuidString = UserDefaults.standard.string(forKey: "username"),
            let uuid = UUID(uuidString: uuidString) {
             // UserDefaults에서 불러온 UUID로 User 초기화
             self.user = User(id: 1, username: "", uuid: uuid, createdAt: Date())

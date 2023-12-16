@@ -14,6 +14,7 @@ class AddMemoViewModel: ObservableObject {
     @Published var memoContent: String = ""
     @Published var selectedReminder: String = ""
     @Published var isEditing: Bool = true
+    @Published var tags: [TagEntity] = [] // tags를 [TagEntity]로 변경
     private let memoViewModel = MemoViewModel.shared
     
     func addNewMemo() {
@@ -26,7 +27,8 @@ class AddMemoViewModel: ObservableObject {
             url: url, // 메모 URL
             notificationCycle: 0, // 알림 주기, 예시로 0 사용
             notificationPreset: 0, // 알림 프리셋, 예시로 0 사용
-            isPinned: false // 고정 여부, 예시로 false 사용
+            isPinned: false, // 고정 여부, 예시로 false 사용
+            tags: tags // [TagEntity]를 NSSet으로 변환하여 사용
         )
     }
 

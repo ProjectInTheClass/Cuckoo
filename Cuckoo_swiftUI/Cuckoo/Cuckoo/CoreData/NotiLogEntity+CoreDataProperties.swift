@@ -2,7 +2,7 @@
 //  NotiLogEntity+CoreDataProperties.swift
 //  
 //
-//  Created by DKSU on 12/14/23.
+//  Created by DKSU on 12/17/23.
 //
 //
 
@@ -16,8 +16,8 @@ extension NotiLogEntity {
         return NSFetchRequest<NotiLogEntity>(entityName: "NotiLogEntity")
     }
 
-    @NSManaged public var related_memo: MemoEntity?
-    @NSManaged public var related_preset: AlarmPresetEntity?
+    @NSManaged public var related_memo: UUID?
+    @NSManaged public var related_preset: String?
     @NSManaged public var sent_at: Date?
     @NSManaged public var log_memo: NSOrderedSet?
     @NSManaged public var log_preset: AlarmPresetEntity?

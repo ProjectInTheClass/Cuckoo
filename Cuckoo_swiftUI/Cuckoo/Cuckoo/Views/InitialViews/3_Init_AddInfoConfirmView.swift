@@ -67,26 +67,23 @@ struct Init_AddInfoConfirmView: View {
                 .overlay(
                     VStack{
                         Spacer()
-                        ConfirmFixedButton(confirmMessage: buttonText)
+                        ConfirmFixedButton(confirmMessage: buttonText, logic: {
+                            withAnimation {
+                                scrollViewProxy.scrollTo(bottomID, anchor: .top)
+                                
+                                if !navigateToNextScreen {
+                                    navigateToNextScreen = true;
+                                } else {
+                                    withAnimation {
+                                        globalState.isRegistered = true;
+                                    }
+                                }
+
+                            }
+                            
+                        })
                             .frame(height: 120)
                             .frame(maxWidth: .infinity)
-                            .onTapGesture {
-                                withAnimation {
-                                    scrollViewProxy.scrollTo(bottomID, anchor: .top)
-                                    
-                                    if !navigateToNextScreen {
-                                        navigateToNextScreen = true;
-                                    } else {
-                                        withAnimation {
-                                            globalState.isRegistered = true;
-                                        }
-                                    }
-
-                                }
-                                
-                                
-                            }
-                        
                     }, alignment: .leading)
                 
             }.navigationBarBackButtonHidden(true)

@@ -52,26 +52,25 @@ struct Init_AddNameAndTagView: View {
                 }
 
                 // 버튼 클릭 시 액션 추가
-                ConfirmFixedButton(confirmMessage: buttonText)
+                ConfirmFixedButton(confirmMessage: buttonText, logic: {
+                    if !showAddTagForm {
+                        withAnimation {
+                            self.showAddTagForm.toggle()
+                            
+                            //여기서 userAPI 쓴다고 생각
+                            var key : String = "CUCKOO_UUID"
+                            
+                            //defaults.setValue(UUID.self, forKey: key) => userAPI로 받은 uuid를 userDefaults에 저장
+                        }
+                        self.buttonText = "태그 추가 완료"
+                        self.headerTitle = "태그를 추가해주세요!"
+                    } else {
+                        // 다른 화면으로 이동
+                        self.navigateToNextScreen = true
+                    }
+                })
                     .frame(height: 120)
                     .frame(maxWidth: .infinity)
-                    .onTapGesture {
-                        if !showAddTagForm {
-                            withAnimation {
-                                self.showAddTagForm.toggle()
-                                
-                                //여기서 userAPI 쓴다고 생각
-                                var key : String = "CUCKOO_UUID"
-                                
-                                //defaults.setValue(UUID.self, forKey: key) => userAPI로 받은 uuid를 userDefaults에 저장
-                            }
-                            self.buttonText = "태그 추가 완료"
-                            self.headerTitle = "태그를 추가해주세요!"
-                        } else {
-                            // 다른 화면으로 이동
-                            self.navigateToNextScreen = true
-                        }
-                    }
                 
                     
                     

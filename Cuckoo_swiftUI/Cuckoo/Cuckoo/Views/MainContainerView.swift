@@ -79,9 +79,7 @@ struct MainContainerView: View {
                             .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
                     }
                 }
-
-                
-            }
+            } // VStack
             Spacer()
             
             VStack {
@@ -89,7 +87,7 @@ struct MainContainerView: View {
                 MemoThumbnailImageView(thumbURL: thumbURL, url: url)
                 
             }
-        }
+        } // HStack
         .frame(maxWidth: .infinity)
     }
 }

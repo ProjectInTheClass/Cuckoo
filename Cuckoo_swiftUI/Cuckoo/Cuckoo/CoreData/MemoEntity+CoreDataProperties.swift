@@ -2,7 +2,7 @@
 //  MemoEntity+CoreDataProperties.swift
 //  
 //
-//  Created by DKSU on 12/14/23.
+//  Created by DKSU on 12/17/23.
 //
 //
 
@@ -21,8 +21,7 @@ extension MemoEntity {
     @NSManaged public var isPinned: Bool
     @NSManaged public var noti_count: Int32
     @NSManaged public var noti_cycle: Int32
-    @NSManaged public var noti_preset: AlarmPresetEntity?
-    @NSManaged public var tags: [TagEntity]?
+    @NSManaged public var noti_preset: String?
     @NSManaged public var thumbURL: URL?
     @NSManaged public var title: String
     @NSManaged public var updated_at: Date?

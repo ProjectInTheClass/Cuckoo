@@ -11,6 +11,7 @@ import Combine
 
 struct AddMemoView: View {
     @StateObject private var viewModel = AddMemoViewModel()
+    
     @SwiftUI.Environment(\.dismiss) var dismiss
     @State var isEditing: Bool = true
     
@@ -21,7 +22,7 @@ struct AddMemoView: View {
                     .frame(maxWidth: .infinity)
                 
                 VStack(alignment: .leading, spacing: 30) {
-                    MemoTypeFormView(memoType: $viewModel.memoType)
+                    MemoTypeFormView(selectedTags: $viewModel.tags)
                         .frame(maxWidth: .infinity)
                     
                     MemoTitleFormView(
@@ -65,23 +66,53 @@ struct AddMemoView_Previews: PreviewProvider {
 }
 
 // Components
-
 struct MemoTypeFormView: View {
-    @Binding var memoType: String
+    @StateObject private var tagViewModel = TagViewModel.shared
+    @Binding var selectedTags: [TagEntity]
+    
+    @State var isEnabled: Bool = true
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             CardTitleText(title: "메모 타입")
             CardContent {
-                HStack {
-                    TypeBubble("메모", "#b2b2b2")
-                    TypeBubble("기록", "#b2b2b2")
-                    InfoBubble(title: "5+")
+                ScrollView(.horizontal, showsIndicators:false) {
+                    
+                        HStack {
+                            ForEach(selectedTags, id: \.self) { tag in
+                                Button {
+                                    withAnimation {
+                                        if let index = selectedTags.firstIndex(of: tag) {
+                                            selectedTags.remove(at: index) // 선택된 태그 제거
+                                            isEnabled = selectedTags.count != tagViewModel.tags.count
+                                        }
+                                    }
+                                } label: {
+                                    TagBubbleView(tag: tag)
+                                }
+                            }
+                            Menu {
+                                ForEach(tagViewModel.tags, id: \.self) { tag in
+                                    
+                                    Button(tag.name) {
+                                        if !selectedTags.contains(tag) {
+                                            selectedTags.append(tag) // 중복되지 않는 경우에만 선택된 태그에 추가
+                                            isEnabled = selectedTags.count != tagViewModel.tags.count
+                                        }
+                                    }.disabled(selectedTags.contains(tag))
+                                }
+                            } label: {
+                                AddButton(isEnabled: $isEnabled)
+                            }
+                        }
                 }
+                
             }
         }
     }
 }
+
+
 
 struct MemoTitleFormView: View {
     @Binding var isEditing: Bool

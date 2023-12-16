@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @ObservedObject var memoViewModel = MemoViewModel.shared
+    @ObservedObject var tagViewModel = TagViewModel.shared
     let context = CoreDataManager.shared.persistentContainer.viewContext
 
     var body: some View {
@@ -19,47 +20,77 @@ struct MainView: View {
                 Spacer()
 
                 // Search Bar & Tag
-                MainViewSearchFilter()
-                Spacer()
+                MainViewSearchFilter(
+                    tags: tagViewModel.tags
+                )
 
                 // Body
-                ScrollView {
-                    ForEach(memoViewModel.memos, id: \.self) { memo in
-                        VStack(alignment: .leading) {
-                            NavigationLink(
-                                destination: MemoDetailView(
-                                    viewModel: MemoDetailViewModel(
-                                        memoID: memo.objectID,
-                                        memo: memo
-                                    ),
-                                    title: memo.title,
-                                    comment: memo.comment,
-                                    url: memo.url,
-                                    thumbURL: memo.thumbURL,
-                                    noti_cycle: memo.noti_cycle,
-                                    noti_preset: memo.noti_preset,
-                                    noti_count: memo.noti_count
-                                )
-                            ) {
-                                MainContainerView(
-                                    title: memo.title, comment: memo.comment, url: memo.url, thumbURL: memo.thumbURL, isPinned: memo.isPinned
-                                )
-                            }.padding(.vertical, 15)
+                ZStack {
+                    VStack(alignment: .center) {
+                        HStack {
+                            Spacer()
+                            Image(.defaultPreview)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width:300, height:300)
+                                .cornerRadius(5000)
+                                .opacity(0.10)
                             
-                            Divider()
+                            Spacer()
+                        }
+                        .padding(.bottom, 30)
+                        if memoViewModel.memos.isEmpty {
+                            Text("메모를 추가해주세요!")
+                                .font(.system(size: 20, weight: .medium))
+                                .foregroundColor(Color.cuckooLightGray.opacity(0.75))
+                        }
+                        
+                        Spacer()
+                        
+                    }.padding(30)
+                    
+                    
+                    ScrollView {
+                        ForEach(memoViewModel.memos, id: \.self) { memo in
+                            VStack(alignment: .leading) {
+                                NavigationLink(
+                                    destination: MemoDetailView(
+                                        viewModel: MemoDetailViewModel(
+                                            memoID: memo.objectID,
+                                            memo: memo
+                                        ),
+                                        title: memo.title,
+                                        comment: memo.comment,
+                                        url: memo.url,
+                                        thumbURL: memo.thumbURL,
+                                        noti_cycle: memo.noti_cycle,
+                                        noti_preset: memo.noti_preset,
+                                        noti_count: memo.noti_count
+                                    )
+                                ) {
+                                    MainContainerView(
+                                        title: memo.title, comment: memo.comment, url: memo.url, thumbURL: memo.thumbURL, isPinned: memo.isPinned
+                                    )
+                                }.padding(.vertical, 15)
+                                
+                                Divider()
+                            }
                         }
                     }
-                }.onAppear {
-                    memoViewModel.browseMemos() // Refresh memos list when MainView appears
-                }
-                
-                .scrollIndicators(.hidden)
-                .overlay(
-                    AddMemoFloatingButton(),
-                    alignment: .bottomTrailing
-                )
+                    .padding(.horizontal, 30)
+                    .onAppear {
+                        memoViewModel.browseMemos() // Refresh memos list when MainView appears
+                    }
+                    .scrollIndicators(.hidden)
+                    
+                    
+                } // ZStack
             }
             .padding(.horizontal, 30)
+            .overlay(
+                AddMemoFloatingButton(),
+                alignment: .bottomTrailing
+            )
         }
     }
 }
@@ -89,7 +120,7 @@ struct MainViewHeader: View {
                         .resizable()
                         .frame(width: 45,height: 45)
                         .foregroundColor(Color.cuckooNormalGray)
-                        .padding(.trailing,10)
+                        .padding(.trailing, 10)
                 }
                 NavigationLink(destination: NotificationLogView()){
                     Image(systemName:"bell.circle.fill")
@@ -133,6 +164,8 @@ struct MainViewHeader: View {
 
 struct MainViewSearchFilter: View {
     @State private var searchContent: String = "" // 사용자가 입력할 내용을 저장할 상태 변수입니다.
+    var tags: [TagEntity] = []
+    
     
     var body: some View {
         // TextEditor의 스크롤 가능한 영역 설정
@@ -158,13 +191,8 @@ struct MainViewSearchFilter: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    ForEach(0..<10) { index in
-                        CardContent {
-                            HStack {
-                                TypeBubble("메모", "#b2b2b2")
-                                TypeBubble("기록", "#b2b2b2")
-                            }
-                        }
+                    ForEach(tags, id: \.self) { tag in
+                        TagBubbleView(tag: tag)
                     }
                 }
             }
@@ -186,6 +214,7 @@ struct AddMemoFloatingButton: View {
         }
         .background(Color.cuckooNormalGray)
         .clipShape(Circle())
+        .padding(.trailing, 50)
         .padding(.bottom, 16) // Adjust the bottom padding as needed
         
     }

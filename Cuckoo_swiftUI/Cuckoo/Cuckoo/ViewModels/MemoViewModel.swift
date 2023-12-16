@@ -51,20 +51,21 @@ class MemoViewModel: ObservableObject {
         save()
     }
     
-    // TODO :: Memo -> MemoEntity 전환 중 반환값 임시 교체
     func getMemoList() -> [MemoEntity] {
         return self.memos
     }
 
     
-    // 3. ADD CORE DATA (참고용!!!)
-    func addMemo(title: String, comment: String, url: URL?, notificationCycle: Int, notificationPreset: Int? = nil, isPinned: Bool) {
+    // 3. ADD CORE DATA
+    func addMemo(title: String, comment: String, url: URL?, notificationCycle: Int, notificationPreset: Int? = nil, isPinned: Bool, tags: [TagEntity]) {
         guard let url = url else {
             // URL이 nil인 경우 처리
             return
         }
         
-        getThumbURL(from: url) { result in
+        getThumbURL(from: url) { [weak self] result in
+            guard let self = self else { return }
+
             var thumbURLString: String?
             
             switch result {
@@ -79,11 +80,23 @@ class MemoViewModel: ObservableObject {
                 let newMemo = MemoEntity(context: self.container.viewContext)
                 newMemo.title = title
                 newMemo.comment = comment
-                newMemo.url = url
+                newMemo.url = URL(string: url.absoluteString)
                 newMemo.thumbURL = thumbURLString != nil ? URL(string: thumbURLString!) : nil
                 newMemo.noti_cycle = Int32(notificationCycle)
                 newMemo.noti_preset = nil // 필요한 로직 구현
                 newMemo.isPinned = isPinned
+
+                // 태그 설정 및 연관 관계 처리
+                for tag in tags {
+                    newMemo.addToMemo_tag(tag)
+                    tag.addToTag_memo(newMemo)
+                    tag.memo_count += 1
+                }
+
+                newMemo.created_at = Date()
+                newMemo.updated_at = Date()
+                
+                print("ADDED MEMO : \(newMemo)")
                 
                 self.save()
                 self.fetchMemo()
@@ -156,26 +169,32 @@ class MemoViewModel: ObservableObject {
         comment: String?,
         url: URL? = nil,
         noti_cycle: Int?,
-        noti_preset: AlarmPresetEntity?)
+        noti_preset: String?,
+        tags: [TagEntity]?
+    )
     {
         let context = container.viewContext
         if let memoToEdit = context.object(with: memoId) as? MemoEntity {
             if let title = title {
                 memoToEdit.title = title
             }
-
+            
             if let comment = comment {
                 memoToEdit.comment = comment
             }
-
+            
             if let noti_cycle = noti_cycle {
                 memoToEdit.noti_cycle = Int32(noti_cycle)
             }
-
+            
             if let noti_preset = noti_preset {
-                 memoToEdit.noti_preset = noti_preset
+                memoToEdit.noti_preset = noti_preset
             }
-
+            
+            if let tags = tags {
+                memoToEdit.tags = tags
+            }
+            
             if let url = url {
                 // URL이 변경된 경우, 썸네일 URL도 업데이트
                 getThumbURL(from: url) { result in

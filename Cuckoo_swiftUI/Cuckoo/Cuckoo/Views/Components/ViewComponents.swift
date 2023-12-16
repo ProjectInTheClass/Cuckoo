@@ -61,19 +61,24 @@ struct BarDivider: View {
 
 struct ConfirmFixedButton: View {
     var confirmMessage: String
+    var logic : () -> Void
     
     var body: some View {
         VStack {
+            Button {
+                logic()
+            }label: {
                 Text(confirmMessage)
-                .font(.system(size: 20, weight: .bold))
-                .foregroundColor(.white)
-        }
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(.white)
+                
+            }}
         .frame(maxWidth: .infinity)
         .padding(15)
         .background(.purple)
         .cornerRadius(15)
         .padding(.horizontal, 30)
-
+        
     }
 }
 

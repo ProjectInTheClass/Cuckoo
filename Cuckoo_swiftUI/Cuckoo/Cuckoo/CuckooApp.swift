@@ -13,7 +13,6 @@ class GlobalState: ObservableObject {
 
 @main
 struct CuckooApp: App {
-    
     @StateObject var globalState = GlobalState()
     
     var body: some Scene {

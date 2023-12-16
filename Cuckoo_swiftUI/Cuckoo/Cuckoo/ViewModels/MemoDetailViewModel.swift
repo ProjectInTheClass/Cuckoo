@@ -11,8 +11,7 @@ import CoreData
 
 class MemoDetailViewModel: ObservableObject {
     @Published var memo: MemoEntity
-    @Published var allTags: [Tag] = []
-    @Published var tags: [Tag] = []
+    @Published var tags: [TagEntity]? = [] // 메모가 갖고있는 태그들임
     @Published var isEditing = false
     @Published var showActionButtons = false
     @Published var showDeleteAlert = false
@@ -26,8 +25,7 @@ class MemoDetailViewModel: ObservableObject {
     
     init(memoID: NSManagedObjectID, memo: MemoEntity) {
         self.memo = memo
-        self.allTags = []
-        self.tags = []
+        self.tags = memo.tags
         self.isEditing = false
         self.showDeleteAlert = false
         self.showActionButtons = false
@@ -54,25 +52,13 @@ class MemoDetailViewModel: ObservableObject {
             comment: memo.comment,
             url: memo.url,
             noti_cycle: Int(memo.noti_cycle),
-            noti_preset: memo.noti_preset
+            noti_preset: memo.noti_preset,
+            tags: memo.tags
         )
     }
-
-
 
     func deleteMemo() {
         MemoViewModel.shared.deleteMemo(memoId: memo.objectID)
     }
-    
-
-    private func loadTagsForMemo(memoId: Int) {
-        // 메모와 연관된 태그 로드
-        tagViewModel.loadTagsForMemo(memoId: memoId)
-        // 결과를 관찰하여 tags 배열 업데이트
-        tagViewModel.$tags.receive(on: RunLoop.main).sink { [weak self] loadedTags in
-            self?.tags = loadedTags
-        }.store(in: &cancellables)
-    }
-    
 
 }

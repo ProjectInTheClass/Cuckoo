@@ -11,11 +11,11 @@
     <entity name="MemoEntity" representedClassName="MemoEntity" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" defaultValueString="새 메모 내용"/>
         <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isPinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="noti_count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noti_cycle" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="noti_preset" optional="YES" attributeType="Transformable" customClassName="AlarmPresetEntity"/>
-        <attribute name="tags" optional="YES" attributeType="Transformable" customClassName="[TagEntity]"/>
+        <attribute name="noti_preset" optional="YES" attributeType="String" valueTransformerName="TagEntityTransformer" defaultValueString="" customClassName="AlarmPresetEntity"/>
         <attribute name="thumbURL" optional="YES" attributeType="URI" defaultValueString=""/>
         <attribute name="title" attributeType="String"/>
         <attribute name="updated_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -26,8 +26,8 @@
         <relationship name="memo_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="user_memo" inverseEntity="UserEntity"/>
     </entity>
     <entity name="NotiLogEntity" representedClassName="NotiLogEntity" syncable="YES">
-        <attribute name="related_memo" optional="YES" attributeType="Transformable" customClassName="MemoEntity"/>
-        <attribute name="related_preset" optional="YES" attributeType="Transformable" customClassName="AlarmPresetEntity"/>
+        <attribute name="related_memo" optional="YES" attributeType="UUID" valueTransformerName="NSSecureUnarchiveFromData" usesScalarValueType="NO" customClassName="MemoEntity"/>
+        <attribute name="related_preset" optional="YES" attributeType="String" valueTransformerName=""/>
         <attribute name="sent_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="log_memo" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MemoEntity" inverseName="memo_log" inverseEntity="MemoEntity"/>
         <relationship name="log_preset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlarmPresetEntity"/>
