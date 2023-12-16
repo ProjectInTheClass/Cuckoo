@@ -16,7 +16,12 @@ class MemoViewModel: ObservableObject {
     let container: NSPersistentContainer = CoreDataManager.shared.persistentContainer
 
     @Published var memos: [MemoEntity] = []
+    @Published var filteredMemos: [MemoEntity] = []  // This will hold the filtered list of memos
 
+    @Published var selectedTags: Set<TagEntity> = []
+    @Published var searchKeyword: String = ""
+
+    
     init() {
         fetchMemo()
     }
@@ -29,6 +34,7 @@ class MemoViewModel: ObservableObject {
         
         do {
             self.memos = try container.viewContext.fetch(request)
+            applyFilters()
         } catch {
             print("ERROR FETCHING CORE DATA: \(error)")
         }
@@ -50,11 +56,6 @@ class MemoViewModel: ObservableObject {
         self.fetchMemo()
         save()
     }
-    
-    func getMemoList() -> [MemoEntity] {
-        return self.memos
-    }
-
     
     // 3. ADD CORE DATA
     func addMemo(title: String, comment: String, url: URL?, notificationCycle: Int, notificationPreset: Int? = nil, isPinned: Bool, tags: [TagEntity]) {
@@ -239,7 +240,29 @@ class MemoViewModel: ObservableObject {
         }
     }
     
-    // extra
+    // 이하 Filtering 기능
     
+    func updateFilterCriteria(selectedTags: Set<TagEntity>, searchKeyword: String) {
+        self.selectedTags = selectedTags
+        self.searchKeyword = searchKeyword
+        applyFilters()
+    }
+    
+    // Method to apply filters based on the current criteria
+    private func applyFilters() {
+        filteredMemos = memos.filter { memo in
+            let memoTags = memo.memo_tag as? Set<TagEntity> ?? Set()
+            let matchesTags = selectedTags.isEmpty || !memoTags.isDisjoint(with: selectedTags)
+            
+            if !searchKeyword.isEmpty {
+                return matchesTags && (memo.title.contains(searchKeyword) || memo.comment.contains(searchKeyword))
+            }
+            
+            return matchesTags
+        }
+        
+    }
+    
+
 
 }

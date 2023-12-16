@@ -189,29 +189,18 @@ struct AddAlarmTermView: View {
 
 struct AddAlarmPresetView: View {
     
-    @ObservedObject var alarmPresetViewModel = AlarmPresetViewModel.shared
+    @ObservedObject var viewModel = AlarmPresetViewModel.shared
     
-    @State private var selectedPresets: Set<presetButton> = []
+    @State private var selectedPresets: Set<AlarmPresetEntity> = []
     @State private var isAddPopoverPresented = false
     @State private var newEmoji = ""
     @State private var newAlarmName = ""
     @State private var newTime = ""
     @State private var selectedHourIndex = 12
     @State private var selectedMinuteIndex = 0
-    
-    var tmp_uuid = "019cc414-42f5-46b8-a245-ed1a19ac9a24"
-    
+        
     @State private var isDeleteConfirmationPresented = false
-    
-    init(){
-    }
-    
-    //불러와서
-    func convertToPresetButtons(alarmPresets: [AlarmPreset]) -> [presetButton] {
-        return alarmPresets.map { preset in
-            return presetButton(emoji: preset.preset_icon, alarmName: preset.preset_name, time: preset.preset_time, preset_id: preset.id)
-        }
-    }
+    @State private var emptyNameOrIcon = false
     
     var body: some View {
         Section {
@@ -237,27 +226,22 @@ struct AddAlarmPresetView: View {
                         } label: {
                             Image(systemName: "plus.circle")
                                 .symbolRenderingMode(.monochrome)
-                                .font(.system(size:30, weight: .regular))
-                                .foregroundStyle(.gray)
+                                .font(.system(size:30, weight: .light))
+                                .foregroundStyle(Color.cuckooDeepGray)
                         }
                         
                         
-                        
-                        // Delete "Selected Alarm Preset"
-                        
                         Button {
-                            if selectedPresets.isEmpty {
-                                showAlert(title: "알림", message: "선택된 프리셋이 없습니다.")
-                            } else {
+                            if !selectedPresets.isEmpty {
                                 isDeleteConfirmationPresented.toggle()
                             }
                         } label: {
                             Image(systemName: "trash.circle")
                                 .symbolRenderingMode(.monochrome)
-                                .font(.system(size:30))
+                                .font(.system(size:30, weight: .light))
                                 .foregroundStyle(selectedPresets.isEmpty ?
-                                                 Color(red: 0.7, green: 0.7, blue: 0.7)
-                                                 : Color(red: 0, green: 0, blue: 0).opacity(0.80))
+                                                 Color.cuckooLightGray
+                                                 : Color.cuckooDeepGray)
                         }
                         .alert(isPresented: $isDeleteConfirmationPresented) {
                             Alert(
@@ -275,29 +259,49 @@ struct AddAlarmPresetView: View {
                 
                 ScrollView(.vertical, showsIndicators: true) {
                     VStack(spacing: 10) {
-                        ForEach(presetButtonList, id: \.alarmName) { button in
-                            Button(action: {
-                                // Handle button tap
-                                if selectedPresets.contains(button) {
-                                    selectedPresets.remove(button)
-                                } else {
-                                    selectedPresets.insert(button)
-                                }
-                            }) {
+                        if viewModel.presets.isEmpty {
+                            VStack(alignment: .center) {
                                 HStack {
-                                    Text(button.emoji)
-                                        .font(.title)
-                                    Text(button.alarmName)
-                                        .font(.headline)
                                     Spacer()
-                                    Text(button.time)
-                                        .font(.subheadline)
+                                    Image(.defaultPreview)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width:250, height:250)
+                                        .cornerRadius(5000)
+                                        .opacity(0.2)
+                                    
+                                    Spacer()
                                 }
-                                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                                .padding(.bottom, 30)
+                                Text("프리셋을 추가해주세요!")
+                                    .font(.system(size: 20, weight: .medium))
+                                    .foregroundColor(Color.cuckooLightGray.opacity(1))
+                                Spacer()
+                                
+                            }.padding(30)
+                        } else {
+                            ForEach(viewModel.presets, id: \.self) { preset in
+                                Button{
+                                    if selectedPresets.contains(preset) {
+                                        selectedPresets.remove(preset)
+                                    } else {
+                                        selectedPresets.insert(preset)
+                                    }
+                                } label: {
+                                    HStack {
+                                        Text(preset.icon)
+                                            .font(.title)
+                                        Text(preset.name)
+                                            .font(.headline)
+                                        Spacer()
+                                        Text(preset.alarm_time)
+                                            .font(.subheadline)
+                                    }
+                                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                                }
+                                .frame(maxHeight: 60)
+                                .buttonStyle(NotificationButtonStyle(selected: selectedPresets.contains(preset)))
                             }
-                            .frame(maxHeight: 60)
-                            .buttonStyle(NotificationButtonStyle(selected: selectedPresets.contains(button)))
-                            //                            Divider()
                         }
                     }.padding(.vertical, 10)
                 }
@@ -305,10 +309,7 @@ struct AddAlarmPresetView: View {
         }
         .onAppear(){
             //불러와서 넣기
-            alarmPresetViewModel.browseAlarmPresetFromServer(uuid: "019cc414-42f5-46b8-a245-ed1a19ac9a24") /*Accessing StateObject's object without being installed on a View. This will create a new instance each time.*/
-            presetButtonList = convertToPresetButtons(alarmPresets: alarmPresetViewModel.getAlarmPresetList(uuid: tmp_uuid))
-            //문제 발생
-            presetButtonList.sort { $0.time < $1.time }
+            viewModel.browsePresets()
         }
         .popover(isPresented: $isAddPopoverPresented) {
             VStack(alignment: .center, spacing: 20) {
@@ -356,8 +357,12 @@ struct AddAlarmPresetView: View {
                 HStack {
                     Spacer()
                     Button("추가") {
-                        addNewPreset()
-                        isAddPopoverPresented.toggle()
+                        if !newEmoji.isEmpty || !newAlarmName.isEmpty || !newTime.isEmpty {
+                            addNewPreset()
+                            isAddPopoverPresented.toggle()
+                        } else {
+                            emptyNameOrIcon.toggle()
+                        }
                     }
                     .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 20))
                     .buttonStyle(NotificationButtonStyle(selected: false))
@@ -373,41 +378,28 @@ struct AddAlarmPresetView: View {
                     .buttonStyle(NotificationButtonStyle(selected: false))
                 }
             }
+            .alert(isPresented: $emptyNameOrIcon) {//차후 이미 존재하는 태그들에 대해서 이슈가 있을 수 있음.
+                Alert(
+                    title: Text("알림"),
+                    message: Text("이름과 이모지 그리고 시간을 정해주세요!"),
+                    dismissButton: .default(Text("확인")){
+                        emptyNameOrIcon = false
+                    }
+                )
+            }
             .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
         }
     }
-    
-    func updatePreset(){
-        alarmPresetViewModel.browseAlarmPresetFromServer(uuid: tmp_uuid)
-        
-    }
-    
-    func editPreset(){
-        
-    }
+
     
     func addNewPreset() {
-        
         let hour = selectedHourIndex
         let minute = selectedMinuteIndex
-        let period = hour < 12 ? "AM" : "PM"
-        let formattedTime = String(format: "%02d:%02d %@", hour % 12, minute, period)
+        let formattedTime = String(format: "%02d시 %02d분", hour, minute)
         
         // Use the AlarmPresetViewModel to add the new alarm preset
-        alarmPresetViewModel.addAlarmPreset(uuid: tmp_uuid, name: newAlarmName, icon: newEmoji, time: formattedTime) { result in
-            switch result {
-            case .success(let message):
-                print(message) // Handle success
-                updatePreset()
-                presetButtonList = convertToPresetButtons(alarmPresets: alarmPresetViewModel.getAlarmPresetList(uuid: tmp_uuid))
-            case .failure(let error):
-                showAlert(title: "Error", message: error.localizedDescription) // Handle error
-            }
-        }
-        
-        // 시간 순서대로 나오도록
-        presetButtonList.sort { $0.time < $1.time }
-        
+        viewModel.addAlarmPreset(icon: newEmoji, name: newAlarmName, time: formattedTime)
+                
         // 다음을 위해 초기화
         newEmoji = ""
         newAlarmName = ""
@@ -416,55 +408,13 @@ struct AddAlarmPresetView: View {
     }
     
     
-    
-    //    func addNewPreset() {
-    //        let hour = selectedHourIndex
-    //        let minute = selectedMinuteIndex
-    //        let period = hour < 12 ? "AM" : "PM"
-    //        let formattedTime = String(format: "%02d:%02d %@", hour % 12, minute, period)
-    //
-    //        let newPreset = presetButton(emoji: newEmoji, alarmName: newAlarmName, time: formattedTime)
-    //        presetButtonList.append(newPreset)
-    //
-    //        //시간 순대로 나오도록
-    //        presetButtonList.sort { $0.time < $1.time }
-    //
-    //        //다음을 위해 초기화
-    //        newEmoji = ""
-    //        newAlarmName = ""
-    //        selectedHourIndex = 12
-    //        selectedMinuteIndex = 0
-    //    }
-    
     func deleteSelectedPresets() {
-        // Create an array to store the successfully deleted preset ids
-        var successfullyDeletedIds: [Int] = []
-        
-        // Use the AlarmPresetViewModel to delete selected alarm presets
         for preset in selectedPresets {
-            alarmPresetViewModel.deleteAlarmPreset(uuid: "YOUR_USER_UUID", preset_id: preset.preset_id) { result in
-                switch result {
-                case .success(let message):
-                    print(message) // Handle success
-                    successfullyDeletedIds.append(preset.preset_id)
-                case .failure(let error):
-                    showAlert(title: "Error", message: error.localizedDescription) // Handle error
-                }
-            }
+            viewModel.deleteAlarmPreset(presetID: preset.objectID)
         }
         
         // Remove only the successfully deleted presets locally
-        presetButtonList.removeAll { successfullyDeletedIds.contains($0.preset_id) }
         selectedPresets.removeAll()
     }
     
-    
-    //    func deleteSelectedPresets() {
-    //        presetButtonList.removeAll { selectedPresets.contains($0) }
-    //        selectedPresets.removeAll()
-    //    }
-    
-    func showAlert(title: String, message: String) {
-        // Show an alert with the given title and message
-    }
 }

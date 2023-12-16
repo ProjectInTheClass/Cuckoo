@@ -20,5 +20,53 @@
             landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0F8A5ABB-B3FE-49B3-8CCA-CCCB16D0C904"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cuckoo/ViewModels/MemoViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "applyFilters()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0F8A5ABB-B3FE-49B3-8CCA-CCCB16D0C904 - cc39fa5e3d75f912"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Cuckoo.MemoEntity) -&gt; Swift.Bool in Cuckoo.MemoViewModel.applyFilters() -&gt; ()"
+                  moduleName = "Cuckoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "1680">
+               </Location>
+               <Location
+                  uuid = "0F8A5ABB-B3FE-49B3-8CCA-CCCB16D0C904 - cc39fa5e3d75f912"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Cuckoo.MemoEntity) -&gt; Swift.Bool in Cuckoo.MemoViewModel.applyFilters() -&gt; ()"
+                  moduleName = "Cuckoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "1444">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

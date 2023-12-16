@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
 struct HeaderView: View {
     var title: String = ""
@@ -92,8 +93,8 @@ struct presetButton : Hashable{// Hash=> 기억해두자
     var emoji : String
     var alarmName : String
     var time : String
-    var preset_id : Int
-    init(emoji: String, alarmName: String, time: String, preset_id : Int) {
+    var preset_id : NSManagedObjectID
+    init(emoji: String, alarmName: String, time: String, preset_id : NSManagedObjectID) {
         self.emoji = emoji
         self.alarmName = alarmName
         self.time = time

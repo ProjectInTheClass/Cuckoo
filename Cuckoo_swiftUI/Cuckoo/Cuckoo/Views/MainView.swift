@@ -11,6 +11,8 @@ struct MainView: View {
     @ObservedObject var memoViewModel = MemoViewModel.shared
     @ObservedObject var tagViewModel = TagViewModel.shared
     let context = CoreDataManager.shared.persistentContainer.viewContext
+    
+
 
     var body: some View {
         NavigationView {
@@ -20,10 +22,17 @@ struct MainView: View {
                 Spacer()
 
                 // Search Bar & Tag
+                // TODO:: Tag에 의한 filtering먼저 적용 -> 이후 남아있는 memo들에 대해 키워드를 포함하는 memo만 보이게끔
+                // 검색어가 없다면 전부를 보여주게끔 해야함.
                 MainViewSearchFilter(
-                    tags: tagViewModel.tags
+                    searchKeyword: $memoViewModel.searchKeyword,
+                    selectedTags: $memoViewModel.selectedTags,
+                    tags: tagViewModel.tags, // Assuming you have a way to get the list of tags
+                    onFilterChange: { newKeyword, newSelectedTags in
+                        memoViewModel.updateFilterCriteria(selectedTags: newSelectedTags, searchKeyword: newKeyword)
+                    }
                 )
-
+                
                 // Body
                 ZStack {
                     VStack(alignment: .center) {
@@ -51,7 +60,9 @@ struct MainView: View {
                     
                     
                     ScrollView {
-                        ForEach(memoViewModel.memos, id: \.self) { memo in
+                        // TODO :: 선택된 Tag들 중 하나라도 해당되는 Memo만 View하도록 Filtering
+                        // Filtering 된 Memo만 볼 수 있게끔 해야함
+                        ForEach(memoViewModel.filteredMemos, id: \.self) { memo in
                             VStack(alignment: .leading) {
                                 NavigationLink(
                                     destination: MemoDetailView(
@@ -170,15 +181,20 @@ struct MainViewHeader: View {
 }
 
 struct MainViewSearchFilter: View {
-    @State private var searchContent: String = "" // 사용자가 입력할 내용을 저장할 상태 변수입니다.
-    var tags: [TagEntity] = []
+    @ObservedObject var memoViewModel = MemoViewModel.shared
+    @Binding var searchKeyword: String
+    @Binding var selectedTags: Set<TagEntity>
+    @State var isInit: Bool = true
+    
+    var tags: [TagEntity]
+    var onFilterChange: (String, Set<TagEntity>) -> Void
     
     
     var body: some View {
         // TextEditor의 스크롤 가능한 영역 설정
         VStack(spacing: 18) {
             HStack(spacing: 0){
-                TextField("검색어를 입력해주세요!", text: $searchContent)
+                TextField("검색어를 입력해주세요!", text: $searchKeyword)
                     .font(.system(size: 14, weight: .medium))
                     .padding(.leading, 25)
                     .padding(10)
@@ -197,12 +213,41 @@ struct MainViewSearchFilter: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(tags, id: \.self) { tag in
-                        TagBubbleView(tag: tag)
+                        TagBubbleView(tag: tag, isSelected: isSelected(tag: tag))
+                            .onTapGesture {
+                                withAnimation(Animation.easeInOut(duration: 0.3)) {
+                                    toggleTagSelection(tag: tag)
+                                    memoViewModel.browseMemos()
+                                }
+                            }
                     }
+                }
+            }
+        }.onAppear {
+            if isInit {
+                isInit = false
+                for tag in tags {
+                    selectedTags.insert(tag)
                 }
             }
         }
         
+    }
+    
+    
+    private func isSelected(tag: TagEntity) -> Bool {
+        return selectedTags.contains(tag)
+    }
+    private func toggleTagSelection(tag: TagEntity) {
+        if selectedTags.contains(tag) {
+            selectedTags.remove(tag)
+        } else {
+            selectedTags.insert(tag)
+        }
+    }
+    
+    private func applyFilters() {
+        onFilterChange(searchKeyword, selectedTags)
     }
 }
 
@@ -219,7 +264,7 @@ struct AddMemoFloatingButton: View {
         }
         .background(Color.cuckooNormalGray)
         .clipShape(Circle())
-        .padding(.trailing, 50)
+        .padding(.trailing, 60)
         .padding(.bottom, 16) // Adjust the bottom padding as needed
         
     }

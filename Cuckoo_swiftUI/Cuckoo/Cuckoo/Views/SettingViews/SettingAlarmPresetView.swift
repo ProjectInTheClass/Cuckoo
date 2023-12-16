@@ -26,12 +26,10 @@ struct SettingAlarmPresetView: View {
     
     @State private var isDeleteConfirmationPresented = false
     
-    @EnvironmentObject public var viewModel : AlarmPresetViewModel
     
     
     var body: some View {
         VStack {
-            
             HeaderView(title: "알람 주기 / 프리셋 설정")
                 .frame(height: 60)
                 .frame(maxWidth: .infinity)
@@ -41,7 +39,6 @@ struct SettingAlarmPresetView: View {
                     AddAlarmTermHeaderView()
                     AddAlarmTermBodyView()
                     AddAlarmPresetView()
-                        .environmentObject(viewModel)
                 }.padding(.horizontal, 30)
             }.padding(.vertical, 20)
             
