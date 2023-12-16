@@ -46,7 +46,7 @@ struct SettingsProfileView: View {
             ImagePicker(isImagePickerPresented: $isImagePickerPresented, selectedImage: $selectedImage)
                 .onDisappear {
                     // Handle the selected image here
-                    // For example, you can save it to your model or upload it to a server
+                    
                 }
                 .sheet(isPresented: $isImagePickerPresented) {
                     ImagePickerView(selectedImage: $selectedImage)

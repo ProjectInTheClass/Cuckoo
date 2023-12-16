@@ -8,11 +8,30 @@
 import SwiftUI
 
 class GlobalState: ObservableObject {
-    @Published var isRegistered: Bool = true
+    @Published var isRegistered: Bool = false {
+        didSet {
+            print("Registration State Updated: \(isRegistered)")
+            saveRegistrationState()
+        }
+    }
+
+    init() {
+        isRegistered = loadRegistrationState()
+        print("App Initialized - isRegistered: \(isRegistered)")
+    }
+
+    private func saveRegistrationState() {
+        UserDefaults.standard.set(isRegistered, forKey: "isRegistered")
+    }
+
+    private func loadRegistrationState() -> Bool {
+        return UserDefaults.standard.bool(forKey: "isRegistered")
+    }
 }
 
 @main
 struct CuckooApp: App {
+    @StateObject var userViewModel = UserProfileViewModel.shared
     @StateObject var globalState = GlobalState()
     
     var body: some Scene {
@@ -20,7 +39,6 @@ struct CuckooApp: App {
             if globalState.isRegistered {
                 MainView()
                     .environmentObject(globalState)
-                    
             } else {
                 Init_AddNameAndTagView()
                     .environmentObject(globalState)
@@ -28,4 +46,3 @@ struct CuckooApp: App {
         }
     }
 }
-

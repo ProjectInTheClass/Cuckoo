@@ -38,7 +38,14 @@ struct MainContainerView: View {
         if let tagSet = memo.memo_tag as? Set<TagEntity> {
             let tagList: [TagEntity] = Array(tagSet)
             
-            self.tag = tagList[0].name
+            if tagList.isEmpty {
+
+                self.tag = ""
+            } else {
+                
+                self.tag = tagList[0].name
+            }
+                
         }
         
         if let created_at = created_at {

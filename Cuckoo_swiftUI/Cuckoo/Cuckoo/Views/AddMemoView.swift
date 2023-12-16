@@ -109,7 +109,7 @@ struct MemoTypeFormView: View {
                                     }.disabled(selectedTags.contains(tag))
                                 }
                             } label: {
-                                AddButton(isEnabled: $isEnabled)
+                                AddButton(isEnabled: $isEnabled, logic: {})
                             }
                         }
                 }

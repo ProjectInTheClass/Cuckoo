@@ -16,7 +16,12 @@ struct Init_AddAlarmPresetView: View {
     @State private var buttonText = "알림주기 등록 완료"
     @State private var headerTitle = "알림 주기를 설정해주세요!"
     @State private var navigateToNextScreen = false
+    
+    @State var term: Int = 1
+    @State var multiplier: Int = 1
+    
     @ObservedObject var alarmPresetViewModel = AlarmPresetViewModel.shared
+    @ObservedObject var userViewModel = UserProfileViewModel.shared
     
     var body: some View {
         VStack {
@@ -25,7 +30,9 @@ struct Init_AddAlarmPresetView: View {
                 .frame(maxWidth: .infinity)
             
             VStack(alignment: .leading, spacing: 30) {
-                AddAlarmTermView()
+                AddAlarmTermView(
+                    term: $term, multiplier: $multiplier
+                )
                 
                 if showAddPresetForm {
                     AddAlarmPresetView()
@@ -48,10 +55,14 @@ struct Init_AddAlarmPresetView: View {
             
             ConfirmFixedButton(confirmMessage: buttonText, logic: {
                 
-                withAnimation {
+                withAnimation(Animation.easeInOut(duration: 0.3)) {
                     
                     if !showAddPresetForm {
                         self.showAddPresetForm.toggle()
+                        
+                        userViewModel.setTerm(term)
+                        userViewModel.setMultiplier(multiplier)
+                        
                         self.buttonText = "알림 정보 등록 완료"
                         self.headerTitle = "프리셋을 추가해주세요!"
                     } else {
@@ -97,17 +108,19 @@ struct AddAlarmTermHeaderView: View {
 }
 
 struct AddAlarmTermBodyView: View {
-    @State private var selectedReminderPeriod = "1일"
+    @ObservedObject var userViewModel = UserProfileViewModel.shared
+    
+    @Binding var selectedReminderPeriod: Int
     @State private var isReminderPeriodPopoverPresented = false
     
-    @State private var selectedMultiplier = 2
+    @Binding var selectedMultiplier: Int
     @State private var isMultiplierPopoverPresented = false
     
-    let PeriodOptions = ["1일", "2일", "3일", "4일", "5일", "6일", "1주", "2주", "3주", "4주", "8주"]
+    let PeriodOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     
     var body: some View {
         HStack(alignment: .center) {
-            Button("\(selectedReminderPeriod) 주기") {
+            Button("\(selectedReminderPeriod)일 주기") {
                 // Handle button tap
                 isReminderPeriodPopoverPresented.toggle()
             }
@@ -132,6 +145,7 @@ struct AddAlarmTermBodyView: View {
                     .padding()
                     
                     Button("확인") {
+                        userViewModel.setTerm(selectedReminderPeriod)
                         isReminderPeriodPopoverPresented.toggle()
                     }
                 }
@@ -164,6 +178,7 @@ struct AddAlarmTermBodyView: View {
                     .padding()
                     
                     Button("확인") {
+                        userViewModel.setMultiplier(selectedMultiplier)
                         isMultiplierPopoverPresented.toggle()
                     }
                     .padding()
@@ -175,11 +190,18 @@ struct AddAlarmTermBodyView: View {
 }
 
 struct AddAlarmTermView: View {
+    @Binding var term: Int
+    @Binding var multiplier: Int
+    
+    
     var body: some View {
         Section {
             VStack(spacing: 20) {
                 AddAlarmTermHeaderView()
-                AddAlarmTermBodyView()
+                AddAlarmTermBodyView(
+                    selectedReminderPeriod: $term,
+                    selectedMultiplier: $multiplier
+                )
             }
         }
     }

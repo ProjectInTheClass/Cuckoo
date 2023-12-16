@@ -121,10 +121,11 @@ struct SettingTagView: View {
 
 struct AddButton: View {
     @Binding var isEnabled: Bool
+    var logic: () -> Void
     
     var body: some View {
         Button(action: {
-            //
+            logic()
         }) {
             Image(systemName: "plus.circle.fill")
                 .foregroundColor(.gray)

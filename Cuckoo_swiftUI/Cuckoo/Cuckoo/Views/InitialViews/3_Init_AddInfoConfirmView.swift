@@ -7,19 +7,33 @@
 
 import SwiftUI
 import Combine
-
+import CoreData
+import Foundation
 
 
 struct Init_AddInfoConfirmView: View {
+    @ObservedObject var userViewModel = UserProfileViewModel.shared
+    
     @State private var buttonText = "등록 완료"
     @State private var headerTitle = "마지막 확인!"
     @State private var navigateToNextScreen = false
     @State private var isAtBottom = false
     @State private var scrollViewHeight: CGFloat = 0
     @State private var contentHeight: CGFloat = 0
-    @Namespace var bottomID
+    
+    @State var term: Int = 1
+    @State var multiplier: Int = 1
+    
+    
+    init() {
+        self.term = userViewModel.reminderPeriod
+        self.multiplier = userViewModel.multiplier
+    }
     
     @EnvironmentObject var globalState: GlobalState
+
+    @Namespace var bottomID
+    
 
     var body: some View {
             ScrollViewReader { scrollViewProxy in
@@ -33,7 +47,9 @@ struct Init_AddInfoConfirmView: View {
                         VStack(spacing: 0) {
                             
                             VStack(alignment: .center, spacing: 30) {
-                                AddNameView()
+                                AddNameView(
+                                    username: $userViewModel.username
+                                )
                                     .frame(maxWidth: .infinity)
                                 
                                 BarDivider()
@@ -44,7 +60,9 @@ struct Init_AddInfoConfirmView: View {
                                 BarDivider()
                                 BarDivider()
                                 
-                                AddAlarmTermView()
+                                AddAlarmTermView(
+                                    term: $term, multiplier: $multiplier
+                                )
                                     .frame(maxWidth: .infinity)
                                 
                                 BarDivider()
@@ -68,7 +86,7 @@ struct Init_AddInfoConfirmView: View {
                     VStack{
                         Spacer()
                         ConfirmFixedButton(confirmMessage: buttonText, logic: {
-                            withAnimation {
+                            withAnimation(Animation.easeInOut(duration: 0.3)) {
                                 scrollViewProxy.scrollTo(bottomID, anchor: .top)
                                 
                                 if !navigateToNextScreen {
@@ -76,6 +94,7 @@ struct Init_AddInfoConfirmView: View {
                                 } else {
                                     withAnimation {
                                         globalState.isRegistered = true;
+                                        userViewModel.createUser(username: userViewModel.username, profileImagePath: nil)
                                     }
                                 }
 
