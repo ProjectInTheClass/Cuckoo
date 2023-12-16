@@ -18,12 +18,12 @@ struct RotatedImageView: View {
 
 struct MainContainerView: View {
     
-    var memo: Memo
+    var memo: MemoEntity
     
     var tag: String
     var timeAgo: String
     
-    init(memo: Memo) {
+    init(memo: MemoEntity) {
         self.memo = memo
         self.timeAgo = "2 days ago" // TODO : 현재 Date랑 차이를 통해, now(5분미만), n minutes ago,  n hour(s) ago, day(s) ago, week(s) ago 중 하나로 나타내야함.
         self.tag = "전체" // TODO : MemoTag에서, memo_id 기준으로 검색 후에 나오는 tag id중 가장 처음거로
@@ -34,17 +34,17 @@ struct MainContainerView: View {
         HStack {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 5) {
-                    if(memo.isPinned==1){
+                    if(memo.isPinned){
                         HStack(spacing: 3){
                             RotatedImageView()
-                            Text(memo.title)
+                            Text(memo.title ?? "")
                                 .font(.system(size:18, weight:.bold))
                                 .foregroundColor(Color.black)
                                 .lineLimit(1) // 한 줄로 제한
                                 .truncationMode(.tail) // 끝 부분에서 잘리도록 설정
                         }
                     }else{
-                        Text(memo.title)
+                        Text(memo.title ?? "")
                             .font(.system(size:18, weight:.bold))
                             .foregroundColor(Color.black)
                             .lineLimit(1) // 한 줄로 제한
@@ -52,7 +52,7 @@ struct MainContainerView: View {
                     }
 
                     
-                    Text(memo.comment)
+                    Text(memo.comment ?? "")
                         .font(.system(size:12, weight: .regular))
                         .foregroundColor(Color.cuckooNormalGray)
                         .frame(maxWidth: 160, alignment: .leading)
@@ -70,8 +70,8 @@ struct MainContainerView: View {
                             .font(.system(size: 10, weight:.light))
                             .foregroundColor(Color.cuckooNormalGray)
                     }
-                    if memo.url != "" {
-                        Text(memo.url ?? "")
+                    if let url = memo.url {
+                        Text(url.absoluteString)
                             .font(.system(size: 10, weight:.light))
                             .underline()
                             .foregroundColor(Color.cuckooNormalGray)
@@ -96,15 +96,15 @@ struct MainContainerView: View {
 }
 
 struct MemoThumbnailImageView: View {
-    var memo: Memo
+    var memo: MemoEntity
     
     var width: CGFloat = 140
     var height: CGFloat = 94
 
     var body: some View {
         ZStack {
-            if memo.thumbURL != "" {
-                AsyncImage(url: URL(string:memo.thumbURL)) { image in
+            if let thumbURL = memo.thumbURL {
+                AsyncImage(url: thumbURL) { image in
                     image
                         .resizable()
                         .scaledToFill()
@@ -124,8 +124,8 @@ struct MemoThumbnailImageView: View {
                 )
 
                 // 링크 추가
-                if memo.url != "" {
-                    Link(destination: URL(string: memo.url)!) {
+                if let url = memo.url {
+                    Link(destination: url) {
                         Rectangle()
                             .foregroundColor(.clear)
                             .frame(width: width, height: height)

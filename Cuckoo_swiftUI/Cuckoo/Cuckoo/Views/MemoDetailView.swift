@@ -43,8 +43,8 @@ struct MemoDetailView: View {
                         TagsView(tags: viewModel.tags)
                     }
                     
-                    if viewModel.memo.url != nil {
-                        MemoLinkView(link: URL(string: viewModel.memo.url))
+                    if let link = viewModel.memo.url {
+                        MemoLinkView(link: link)
                     }
                     
                     MemoContentView(
@@ -59,7 +59,7 @@ struct MemoDetailView: View {
                     )
                     
                     // MemoDetailView에서 MemoInfoView 호출 부분
-                    MemoInfoView(createdAt: viewModel.memo.createdAt, updatedAt: viewModel.memo.updatedAt)
+                    MemoInfoView(createdAt: viewModel.memo.created_at, updatedAt: viewModel.memo.updated_at)
 
                 }.padding(.bottom, 20)
             }.padding(.horizontal, 30)
@@ -347,8 +347,8 @@ struct PickerView: View {
 
 
 struct MemoInfoView: View{
-    let createdAt: String
-    let updatedAt: String
+    let createdAt: Date?
+    let updatedAt: Date?
     var body: some View{
         VStack(alignment: .leading, spacing: 3) {
             Text("메모 정보")
@@ -357,14 +357,25 @@ struct MemoInfoView: View{
             
             
             VStack {
-                Text("생성 일자: \(createdAt)")
+                Text("생성 일자: \(formattedDate(date: createdAt) ?? "정보 없음")")
                     .font(.footnote)
                     .foregroundColor(.gray)
-                Text("수정 일자: \(updatedAt)")
+                Text("수정 일자: \(formattedDate(date: updatedAt) ?? "정보 없음")")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
         }
+    }
+    
+    private func formattedDate(date: Date?) -> String? {
+        guard let date = date else {
+            return nil
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yy.MM.dd HH:mm:ss"
+
+        return dateFormatter.string(from: date)
     }
 }
 

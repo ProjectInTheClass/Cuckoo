@@ -33,6 +33,16 @@
 		00A73E0F2B0C583900B59084 /* ViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E0E2B0C583900B59084 /* ViewComponents.swift */; };
 		00CEBC9A2B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00CEBC982B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld */; };
 		00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */; };
+		00E2868C2B2AF0FF002D894E /* MemoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E286822B2AF0FF002D894E /* MemoEntity+CoreDataClass.swift */; };
+		00E2868D2B2AF0FF002D894E /* NotiLogEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E286832B2AF0FF002D894E /* NotiLogEntity+CoreDataProperties.swift */; };
+		00E2868E2B2AF0FF002D894E /* AlarmPresetEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E286842B2AF0FF002D894E /* AlarmPresetEntity+CoreDataClass.swift */; };
+		00E2868F2B2AF0FF002D894E /* AlarmPresetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E286852B2AF0FF002D894E /* AlarmPresetEntity+CoreDataProperties.swift */; };
+		00E286902B2AF0FF002D894E /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E286862B2AF0FF002D894E /* TagEntity+CoreDataClass.swift */; };
+		00E286912B2AF0FF002D894E /* MemoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E286872B2AF0FF002D894E /* MemoEntity+CoreDataProperties.swift */; };
+		00E286922B2AF0FF002D894E /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E286882B2AF0FF002D894E /* TagEntity+CoreDataProperties.swift */; };
+		00E286932B2AF0FF002D894E /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E286892B2AF0FF002D894E /* UserEntity+CoreDataClass.swift */; };
+		00E286942B2AF0FF002D894E /* NotiLogEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2868A2B2AF0FF002D894E /* NotiLogEntity+CoreDataClass.swift */; };
+		00E286952B2AF0FF002D894E /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E2868B2B2AF0FF002D894E /* UserEntity+CoreDataProperties.swift */; };
 		04CD305975F21353FD0F5627 /* Pods_Cuckoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D17E4E921EDF35CCA729DB3 /* Pods_Cuckoo.framework */; };
 		0FE0BE856E1BDC805AE22CF2 /* Pods_CuckooTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE8C1C48BFF2CFB3C647D07 /* Pods_CuckooTests.framework */; };
 		7A0601A62B26AD6700055EBB /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0601A52B26AD6700055EBB /* LocalNotification.swift */; };
@@ -99,6 +109,16 @@
 		00A73E0E2B0C583900B59084 /* ViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponents.swift; sourceTree = "<group>"; };
 		00CEBC992B2AC6B100A74BBF /* CoreDataContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataContainer.xcdatamodel; sourceTree = "<group>"; };
 		00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingAlarmPresetView.swift; sourceTree = "<group>"; };
+		00E286822B2AF0FF002D894E /* MemoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		00E286832B2AF0FF002D894E /* NotiLogEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotiLogEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		00E286842B2AF0FF002D894E /* AlarmPresetEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlarmPresetEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		00E286852B2AF0FF002D894E /* AlarmPresetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlarmPresetEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		00E286862B2AF0FF002D894E /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		00E286872B2AF0FF002D894E /* MemoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		00E286882B2AF0FF002D894E /* TagEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		00E286892B2AF0FF002D894E /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		00E2868A2B2AF0FF002D894E /* NotiLogEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotiLogEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		00E2868B2B2AF0FF002D894E /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0AE8C1C48BFF2CFB3C647D07 /* Pods_CuckooTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CuckooTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E4B153FD83B73FD01D844F2 /* Pods-Cuckoo-CuckooUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuckoo-CuckooUITests.release.xcconfig"; path = "Target Support Files/Pods-Cuckoo-CuckooUITests/Pods-Cuckoo-CuckooUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4629B32463E2A9976AA36570 /* Pods-Cuckoo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuckoo.release.xcconfig"; path = "Target Support Files/Pods-Cuckoo/Pods-Cuckoo.release.xcconfig"; sourceTree = "<group>"; };
@@ -253,6 +273,23 @@
 			path = InitialViews;
 			sourceTree = "<group>";
 		};
+		00E286812B2AF0F1002D894E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				00E286822B2AF0FF002D894E /* MemoEntity+CoreDataClass.swift */,
+				00E286872B2AF0FF002D894E /* MemoEntity+CoreDataProperties.swift */,
+				00E286862B2AF0FF002D894E /* TagEntity+CoreDataClass.swift */,
+				00E286882B2AF0FF002D894E /* TagEntity+CoreDataProperties.swift */,
+				00E286842B2AF0FF002D894E /* AlarmPresetEntity+CoreDataClass.swift */,
+				00E286852B2AF0FF002D894E /* AlarmPresetEntity+CoreDataProperties.swift */,
+				00E2868A2B2AF0FF002D894E /* NotiLogEntity+CoreDataClass.swift */,
+				00E286832B2AF0FF002D894E /* NotiLogEntity+CoreDataProperties.swift */,
+				00E286892B2AF0FF002D894E /* UserEntity+CoreDataClass.swift */,
+				00E2868B2B2AF0FF002D894E /* UserEntity+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		672C56B125C41E1391F496DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +346,7 @@
 		7A7F87812AEF559C00F14B11 /* Cuckoo */ = {
 			isa = PBXGroup;
 			children = (
+				00E286812B2AF0F1002D894E /* CoreData */,
 				00CEBC982B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld */,
 				7A0601A42B26AD4900055EBB /* Notification */,
 				0043A2B82B247CE10094A2E7 /* Network */,
@@ -589,11 +627,17 @@
 				00A73E0F2B0C583900B59084 /* ViewComponents.swift in Sources */,
 				00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */,
 				00652D982B143E84004C3345 /* SettingView.swift in Sources */,
+				00E286902B2AF0FF002D894E /* TagEntity+CoreDataClass.swift in Sources */,
 				7D8DE4BD2B1EAF95004502FF /* MemoTag.swift in Sources */,
+				00E2868F2B2AF0FF002D894E /* AlarmPresetEntity+CoreDataProperties.swift in Sources */,
+				00E2868D2B2AF0FF002D894E /* NotiLogEntity+CoreDataProperties.swift in Sources */,
 				0043A2BF2B247D290094A2E7 /* UserAPI.swift in Sources */,
 				00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */,
 				0043A2C12B247D540094A2E7 /* TagAPI.swift in Sources */,
 				00A73DFD2B0C323800B59084 /* Memo.swift in Sources */,
+				00E286922B2AF0FF002D894E /* TagEntity+CoreDataProperties.swift in Sources */,
+				00E286952B2AF0FF002D894E /* UserEntity+CoreDataProperties.swift in Sources */,
+				00E286912B2AF0FF002D894E /* MemoEntity+CoreDataProperties.swift in Sources */,
 				0043A2C32B247D630094A2E7 /* AlarmPresetAPI.swift in Sources */,
 				0043A2C52B247D6D0094A2E7 /* NotiLogAPI.swift in Sources */,
 				7D9AB3CE2B2295AE00B00C09 /* SettingTagViewModel.swift in Sources */,
@@ -609,13 +653,17 @@
 				0022CB232B1FA9A900EC6A66 /* NotificationLogView.swift in Sources */,
 				00133EB22B24128E0035AB70 /* UserProfileViewModel.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
+				00E286942B2AF0FF002D894E /* NotiLogEntity+CoreDataClass.swift in Sources */,
 				7D8DE4BF2B1EB078004502FF /* AlarmPreset.swift in Sources */,
 				00133EBB2B2451530035AB70 /* MemoViewModel.swift in Sources */,
 				00133EBC2B2451530035AB70 /* AlarmPresetViewModel.swift in Sources */,
 				A84350DE2B2369B5006CDD60 /* MemoDummy.swift in Sources */,
 				0043A2BD2B247D1F0094A2E7 /* MemoAPI.swift in Sources */,
 				00652DA02B1440BC004C3345 /* Dummy.swift in Sources */,
+				00E2868C2B2AF0FF002D894E /* MemoEntity+CoreDataClass.swift in Sources */,
 				00A73DFF2B0C324200B59084 /* User.swift in Sources */,
+				00E286932B2AF0FF002D894E /* UserEntity+CoreDataClass.swift in Sources */,
+				00E2868E2B2AF0FF002D894E /* AlarmPresetEntity+CoreDataClass.swift in Sources */,
 				00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */,
 				00CEBC9A2B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld in Sources */,
 				00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */,

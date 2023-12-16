@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23B92" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="AlarmPresetEntity" representedClassName="AlarmPresetEntity" syncable="YES" codeGenerationType="class">
+    <entity name="AlarmPresetEntity" representedClassName="AlarmPresetEntity" syncable="YES">
         <attribute name="alarm_time" optional="YES" attributeType="String"/>
         <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="icon" optional="YES" attributeType="String" defaultValueString=""/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
         <attribute name="updated_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="preset_memo" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MemoEntity" inverseName="memo_preset" inverseEntity="MemoEntity"/>
     </entity>
-    <entity name="MemoEntity" representedClassName="MemoEntity" syncable="YES" codeGenerationType="class">
+    <entity name="MemoEntity" representedClassName="MemoEntity" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" defaultValueString="새 메모 내용"/>
         <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isPinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="noti_count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noti_cycle" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="noti_preset" optional="YES" attributeType="Transformable" customClassName="AlarmPreset"/>
-        <attribute name="tags" optional="YES" attributeType="Transformable" customClassName="[Tag]"/>
+        <attribute name="noti_preset" optional="YES" attributeType="Transformable" customClassName="AlarmPresetEntity"/>
+        <attribute name="tags" optional="YES" attributeType="Transformable" customClassName="[TagEntity]"/>
         <attribute name="thumbURL" optional="YES" attributeType="URI" defaultValueString=""/>
-        <attribute name="title" optional="YES" attributeType="String" defaultValueString="새 메모 제목"/>
+        <attribute name="title" attributeType="String"/>
         <attribute name="updated_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="url" optional="YES" attributeType="URI"/>
         <relationship name="memo_log" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NotiLogEntity" inverseName="log_memo" inverseEntity="NotiLogEntity"/>
@@ -25,21 +25,21 @@
         <relationship name="memo_tag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TagEntity" inverseName="tag_memo" inverseEntity="TagEntity"/>
         <relationship name="memo_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="user_memo" inverseEntity="UserEntity"/>
     </entity>
-    <entity name="NotiLogEntity" representedClassName="NotiLogEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="related_memo" optional="YES" attributeType="Transformable" customClassName="[Memo]"/>
-        <attribute name="related_preset" optional="YES" attributeType="Transformable" customClassName="AlarmPreset"/>
+    <entity name="NotiLogEntity" representedClassName="NotiLogEntity" syncable="YES">
+        <attribute name="related_memo" optional="YES" attributeType="Transformable" customClassName="MemoEntity"/>
+        <attribute name="related_preset" optional="YES" attributeType="Transformable" customClassName="AlarmPresetEntity"/>
         <attribute name="sent_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="log_memo" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MemoEntity" inverseName="memo_log" inverseEntity="MemoEntity"/>
         <relationship name="log_preset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlarmPresetEntity"/>
     </entity>
-    <entity name="TagEntity" representedClassName="TagEntity" syncable="YES" codeGenerationType="class">
+    <entity name="TagEntity" representedClassName="TagEntity" syncable="YES">
         <attribute name="color" optional="YES" attributeType="String"/>
         <attribute name="memo_count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="tag_memo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MemoEntity" inverseName="memo_tag" inverseEntity="MemoEntity"/>
         <relationship name="tag_user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="user_tag" inverseEntity="UserEntity"/>
     </entity>
-    <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
+    <entity name="UserEntity" representedClassName="UserEntity" syncable="YES">
         <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="user_memo" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MemoEntity" inverseName="memo_user" inverseEntity="MemoEntity"/>
