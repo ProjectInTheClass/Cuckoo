@@ -164,8 +164,6 @@ struct AddAlarmTermBodyView: View {
                     .padding()
                     
                     Button("확인") {
-                        // Handle the selected multiplier
-                        // You can update your UI or perform other actions here
                         isMultiplierPopoverPresented.toggle()
                     }
                     .padding()
@@ -281,34 +279,24 @@ struct AddAlarmPresetView: View {
                             }.padding(30)
                         } else {
                             ForEach(viewModel.presets, id: \.self) { preset in
-                                Button{
-                                    if selectedPresets.contains(preset) {
-                                        selectedPresets.remove(preset)
-                                    } else {
-                                        selectedPresets.insert(preset)
-                                    }
-                                } label: {
-                                    HStack {
-                                        Text(preset.icon)
-                                            .font(.title)
-                                        Text(preset.name)
-                                            .font(.headline)
-                                        Spacer()
-                                        Text(preset.alarm_time)
-                                            .font(.subheadline)
-                                    }
-                                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                                }
-                                .frame(maxHeight: 60)
-                                .buttonStyle(NotificationButtonStyle(selected: selectedPresets.contains(preset)))
+                                PresetButtonView(
+                                    preset:preset,
+                                    onToggle: {
+                                        if selectedPresets.contains(preset) {
+                                            selectedPresets.remove(preset)
+                                        } else {
+                                            selectedPresets.insert(preset)
+                                        }
+                                    },
+                                    isSelected: selectedPresets.contains(preset)
+                                )
                             }
                         }
                     }.padding(.vertical, 10)
                 }
             }
         }
-        .onAppear(){
-            //불러와서 넣기
+        .onAppear{
             viewModel.browsePresets()
         }
         .popover(isPresented: $isAddPopoverPresented) {
@@ -417,4 +405,32 @@ struct AddAlarmPresetView: View {
         selectedPresets.removeAll()
     }
     
+}
+
+
+struct PresetButtonView: View {
+    var preset: AlarmPresetEntity?
+    var onToggle: () -> Void
+    var isSelected: Bool
+    
+    var body: some View {
+        Button{
+            onToggle()
+        } label: {
+            if let preset = preset {
+                HStack {
+                    Text(preset.icon)
+                        .font(.title)
+                    Text(preset.name)
+                        .font(.headline)
+                    Spacer()
+                    Text(preset.alarm_time)
+                        .font(.subheadline)
+                }
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+            }
+        }
+        .frame(maxHeight: 60)
+        .buttonStyle(NotificationButtonStyle(selected: isSelected))
+    }
 }

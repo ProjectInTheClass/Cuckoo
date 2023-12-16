@@ -14,15 +14,15 @@ struct MemoDetailView: View {
     @State private var isEditing = false
     @State private var showDeleteAlert = false
     @State private var showActionButtons = false
-    @State private var selectedReminder = "7일"
     @StateObject var viewModel: MemoDetailViewModel
+    @ObservedObject var presetViewModel = AlarmPresetViewModel.shared
     
     var title: String
     var comment: String
     var url: URL?
     var thumbURL: URL?
     var noti_cycle: Int32
-    var noti_preset: String?
+    var noti_preset: AlarmPresetEntity?
     var noti_count: Int32
     
     @SwiftUI.Environment(\.dismiss) var dismiss
@@ -65,10 +65,10 @@ struct MemoDetailView: View {
                         Comment: $viewModel.memo.comment
                     )
                     
-                    ReminderPickerView(
+                    MemoAlarmPresetFormView(
+                        presetList: $presetViewModel.presets,
                         selectedReminder: $viewModel.selectedReminder,
-                        isEditing: $viewModel.isEditing,
-                        reminderOptions: viewModel.reminderOptions
+                        isEditing: $viewModel.isEditing
                     )
                     
                     // MemoDetailView에서 MemoInfoView 호출 부분

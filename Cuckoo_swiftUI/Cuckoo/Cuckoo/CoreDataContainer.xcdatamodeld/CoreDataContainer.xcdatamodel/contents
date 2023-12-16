@@ -14,7 +14,6 @@
         <attribute name="isPinned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="noti_count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="noti_cycle" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="noti_preset" optional="YES" attributeType="String" valueTransformerName="TagEntityTransformer" defaultValueString="" customClassName="AlarmPresetEntity"/>
         <attribute name="thumbURL" optional="YES" attributeType="URI" defaultValueString=""/>
         <attribute name="title" attributeType="String"/>
         <attribute name="updated_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

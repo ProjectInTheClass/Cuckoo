@@ -11,9 +11,9 @@ import Combine
 
 struct AddMemoView: View {
     @StateObject private var viewModel = AddMemoViewModel()
+    @ObservedObject private var presetViewModel = AlarmPresetViewModel.shared
     
     @SwiftUI.Environment(\.dismiss) var dismiss
-    @State var isEditing: Bool = true
     
     var body: some View {
             VStack {
@@ -21,28 +21,35 @@ struct AddMemoView: View {
                     .frame(height: 60)
                     .frame(maxWidth: .infinity)
                 
-                VStack(alignment: .leading, spacing: 30) {
-                    MemoTypeFormView(selectedTags: $viewModel.tags)
-                        .frame(maxWidth: .infinity)
-                    
-                    MemoTitleFormView(
-                        isEditing: $viewModel.isEditing,
-                        editedTitle: $viewModel.memoTitle
-                    )
-                    
-                    MemoUrlTypeFormView(link: $viewModel.link)
-                        .frame(maxWidth: .infinity)
-                    
-                    MemoContentFormView(memoContent: $viewModel.memoContent)
-                        .frame(maxWidth: .infinity)
-                    
-                    MemoAlarmIntervalFormView(selectedReminder: $viewModel.selectedReminder)
-                        .frame(maxWidth: .infinity)
-                    
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(alignment: .leading, spacing: 30) {
+                        MemoTypeFormView(selectedTags: $viewModel.tags)
+                            .frame(maxWidth: .infinity)
+                        
+                        MemoTitleFormView(
+                            isEditing: $viewModel.isEditing,
+                            editedTitle: $viewModel.memoTitle
+                        )
+                        
+                        MemoUrlTypeFormView(link: $viewModel.link)
+                            .frame(maxWidth: .infinity)
+                        
+                        MemoContentFormView(memoContent: $viewModel.memoContent)
+                            .frame(maxWidth: .infinity)
+                        
+                        MemoAlarmPresetFormView(
+                            presetList: $presetViewModel.presets,
+                            selectedReminder: $viewModel.selectedReminder,
+                            isEditing: $viewModel.isEditing
+                        )
+                            .frame(maxWidth: .infinity)
+                        
+                    }
+                    .padding(.top, 30)
+                    .padding(.bottom, 100)
+                    .padding(.horizontal, 30)
+                    .frame(maxWidth: .infinity)
                 }
-                .padding(.top, 30)
-                .padding(.horizontal, 30)
-                .frame(maxWidth: .infinity)
                 Spacer()
                 
             }
@@ -208,26 +215,55 @@ struct MemoContentFormView: View {
     }
 }
 
-struct MemoAlarmIntervalFormView: View {
-    @Binding var selectedReminder: String
-    @State var isEditing: Bool = true
+struct MemoAlarmPresetFormView: View {
+    @Binding var presetList: [AlarmPresetEntity]
+    @Binding var selectedReminder: AlarmPresetEntity?
+    @Binding var isEditing: Bool
+    
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             VStack(alignment: .leading, spacing: 3) {
                 HStack {
-                    Text("알람 주기 설정")
-                        .font(.system(size: 16, weight: .medium))
+                    Text("알람 시기 설정")
+                        .font(.system(size: 16, weight: .bold))
                         .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
                     
                     Spacer()
                 }
-                Text("푸시 알림으로 반복해서 리마인드할 주기!")
+                Text("언제 알림받는게 좋을까요?")
                   .font(.system(size: 12, weight: .medium))
                   .foregroundColor(Color(red: 0.7, green: 0.7, blue: 0.7))
             }
             CardContent {
-                PickerView(isEditing: $isEditing)
+                
+                if isEditing {
+                    Menu {
+                        ForEach(presetList, id: \.self) { preset in
+                            Button("\(preset.icon) \(preset.name)") {
+                                selectedReminder = preset
+                            }
+                        }
+                    } label: {
+                        if let selectedReminder = selectedReminder {
+                            PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)
+                        } else {
+                            PresetButtonView(preset: presetList[0], onToggle: {
+                                selectedReminder = presetList[0]
+                            }, isSelected: false)
+                        }
+                    }
+                } else {
+                    if let selectedReminder = selectedReminder {
+                        PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)
+                    } else {
+                        PresetButtonView(preset: presetList[0], onToggle: {
+                            selectedReminder = presetList[0]
+                        }, isSelected: false)
+                    }
+                }
+                
+                
             }
         }
     }

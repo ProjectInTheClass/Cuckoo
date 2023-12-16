@@ -118,7 +118,7 @@ struct NotificationButtonStyle: ButtonStyle {
         configuration.label
             .frame(maxWidth: .infinity)
             .padding()
-            .background(selected ? Color(red: 109 / 255, green: 37 / 255, blue: 224 / 255) : Color(red: 246 / 255, green: 246 / 255, blue: 246 / 255))
+            .background(selected ? Color.cuckooSignature : Color.superPure)
             .foregroundColor(selected ? .white : .black)
             .cornerRadius(10)
     }
@@ -147,6 +147,8 @@ extension Color {
     static let cuckooNormalGray = Color(red: 0.7, green: 0.7, blue: 0.7)
     static let cuckooLightGray = Color(red: 0.85, green: 0.85, blue: 0.85)
     static let backgroundCandidate = Color(red: 1.00, green: 0.99, blue: 0.96)
+    static let cuckooSignature = Color(red: 109 / 255, green: 37 / 255, blue: 224 / 255)
+    static let superPure = Color(red: 245 / 255, green: 244 / 255, blue: 244 / 255)
     
     func toHex() -> String? {
             let uiColor = UIColor(self)

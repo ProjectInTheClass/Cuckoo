@@ -58,7 +58,7 @@ class MemoViewModel: ObservableObject {
     }
     
     // 3. ADD CORE DATA
-    func addMemo(title: String, comment: String, url: URL?, notificationCycle: Int, notificationPreset: Int? = nil, isPinned: Bool, tags: [TagEntity]) {
+    func addMemo(title: String, comment: String, url: URL?, notificationCycle: Int, notificationPreset: AlarmPresetEntity?, isPinned: Bool, tags: [TagEntity]) {
         guard let url = url else {
             // URL이 nil인 경우 처리
             return
@@ -84,9 +84,14 @@ class MemoViewModel: ObservableObject {
                 newMemo.url = URL(string: url.absoluteString)
                 newMemo.thumbURL = thumbURLString != nil ? URL(string: thumbURLString!) : nil
                 newMemo.noti_cycle = Int32(notificationCycle)
-                newMemo.noti_preset = nil // 필요한 로직 구현
                 newMemo.isPinned = isPinned
 
+                // Preset 관련 관계 처리
+                if let notificationPreset = notificationPreset {
+                    newMemo.memo_preset = notificationPreset
+                    notificationPreset.addToPreset_memo(newMemo)
+                }
+                
                 // 태그 설정 및 연관 관계 처리
                 for tag in tags {
                     newMemo.addToMemo_tag(tag)
@@ -167,7 +172,7 @@ class MemoViewModel: ObservableObject {
         comment: String?,
         url: URL? = nil,
         noti_cycle: Int?,
-        noti_preset: String?,
+        noti_preset: AlarmPresetEntity?,
         tags: [TagEntity]?
     )
     {
@@ -186,7 +191,7 @@ class MemoViewModel: ObservableObject {
             }
             
             if let noti_preset = noti_preset {
-                memoToEdit.noti_preset = noti_preset
+                memoToEdit.memo_preset = noti_preset
             }
             
             if let tags = tags {
@@ -255,7 +260,11 @@ class MemoViewModel: ObservableObject {
             let matchesTags = selectedTags.isEmpty || !memoTags.isDisjoint(with: selectedTags)
             
             if !searchKeyword.isEmpty {
-                return matchesTags && (memo.title.contains(searchKeyword) || memo.comment.contains(searchKeyword))
+                if let url = memo.url {
+                    return matchesTags && (memo.title.contains(searchKeyword) || memo.comment.contains(searchKeyword) || url.absoluteString.contains(searchKeyword))
+                } else {
+                    return matchesTags && (memo.title.contains(searchKeyword) || memo.comment.contains(searchKeyword))
+                }
             }
             
             return matchesTags

@@ -52,6 +52,7 @@ struct SettingTagView: View {
                             viewModel.browseTags()
                         }
                         .padding(.horizontal, 30)
+                        .padding(.top, 20)
                     
                     Spacer()
                 }

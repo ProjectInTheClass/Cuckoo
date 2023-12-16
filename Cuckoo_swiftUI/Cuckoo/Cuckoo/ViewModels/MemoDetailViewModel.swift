@@ -15,7 +15,7 @@ class MemoDetailViewModel: ObservableObject {
     @Published var isEditing = false
     @Published var showActionButtons = false
     @Published var showDeleteAlert = false
-    @Published var selectedReminder: String // 선택된 알람 주기를 저장
+    @Published var selectedReminder: AlarmPresetEntity? // 선택된 알람 주기를 저장
     
     private let tagViewModel = TagViewModel.shared
     private var cancellables = Set<AnyCancellable>()
@@ -28,7 +28,6 @@ class MemoDetailViewModel: ObservableObject {
         self.isEditing = false
         self.showDeleteAlert = false
         self.showActionButtons = false
-        self.selectedReminder = "7일"
         
         if let tagSet = memo.memo_tag as? Set<TagEntity> {
             self.tags = Array(tagSet)
@@ -48,13 +47,15 @@ class MemoDetailViewModel: ObservableObject {
     }
     
     func saveChanges() {        
+        memo.memo_preset = selectedReminder
+        
         MemoViewModel.shared.editMemo(
             memoId: memo.objectID,
             title: memo.title,
             comment: memo.comment,
             url: memo.url,
             noti_cycle: Int(memo.noti_cycle),
-            noti_preset: memo.noti_preset,
+            noti_preset: memo.memo_preset,
             tags: tags
         )
     }

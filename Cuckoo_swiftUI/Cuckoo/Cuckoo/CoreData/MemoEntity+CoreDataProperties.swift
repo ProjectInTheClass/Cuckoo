@@ -19,13 +19,12 @@ extension MemoEntity {
     @NSManaged public var comment: String
     @NSManaged public var created_at: Date?
     @NSManaged public var isPinned: Bool
-    @NSManaged public var noti_count: Int32
     @NSManaged public var noti_cycle: Int32
-    @NSManaged public var noti_preset: String?
     @NSManaged public var thumbURL: URL?
     @NSManaged public var title: String
     @NSManaged public var updated_at: Date?
     @NSManaged public var url: URL?
+    @NSManaged public var noti_count: Int32
     @NSManaged public var memo_log: NSSet?
     @NSManaged public var memo_preset: AlarmPresetEntity?
     @NSManaged public var memo_tag: NSSet?

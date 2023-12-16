@@ -75,7 +75,7 @@ struct MainView: View {
                                         url: memo.url,
                                         thumbURL: memo.thumbURL,
                                         noti_cycle: memo.noti_cycle,
-                                        noti_preset: memo.noti_preset,
+                                        noti_preset: memo.memo_preset,
                                         noti_count: memo.noti_count
                                     )
                                 ) {
@@ -194,11 +194,14 @@ struct MainViewSearchFilter: View {
         // TextEditor의 스크롤 가능한 영역 설정
         VStack(spacing: 18) {
             HStack(spacing: 0){
-                TextField("검색어를 입력해주세요!", text: $searchKeyword)
+                TextField("검색어를 입력해주세요!", text: $searchKeyword, onEditingChanged: { isEditing in
+                    onFilterChange(searchKeyword, selectedTags)
+                })
                     .font(.system(size: 14, weight: .medium))
                     .padding(.leading, 25)
                     .padding(10)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 36, alignment: .top)
+                
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.defaultPure, lineWidth: 1)).opacity(0.5)
