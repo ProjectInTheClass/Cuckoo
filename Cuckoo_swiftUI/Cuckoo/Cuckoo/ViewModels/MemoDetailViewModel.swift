@@ -6,26 +6,33 @@
 //
 
 import Foundation
+import Combine
+import CoreData
 
 class MemoDetailViewModel: ObservableObject {
     @Published var memo: MemoEntity
-    @Published var allTags: [Tag]
+    @Published var allTags: [Tag] = []
     @Published var tags: [Tag] = []
-    @Published var memoTags: [MemoTag] = []
     @Published var isEditing = false
     @Published var showActionButtons = false
     @Published var showDeleteAlert = false
     @Published var selectedReminder: String // 선택된 알람 주기를 저장
-    private let memoViewModel = MemoViewModel.shared
+    
+    private let tagViewModel = TagViewModel.shared
+    private var cancellables = Set<AnyCancellable>()
     let reminderOptions = ["없음", "7일", "14일", "21일", "30일"]
 
-    init(memo: MemoEntity, allTags: [Tag] = dummyTags, memoTags: [MemoTag] = dummyMemoTags) {
-            self.memo = memo
-            self.allTags = allTags
-            self.memoTags = memoTags
-            self.selectedReminder = ""
-            loadTags()
-        }
+    let context: NSManagedObjectContext = CoreDataManager.shared.persistentContainer.viewContext
+    
+    init(memoID: NSManagedObjectID, memo: MemoEntity) {
+        self.memo = memo
+        self.allTags = []
+        self.tags = []
+        self.isEditing = false
+        self.showDeleteAlert = false
+        self.showActionButtons = false
+        self.selectedReminder = "7일"
+    }
 
     func toggleEditing() {
         isEditing.toggle()
@@ -38,42 +45,34 @@ class MemoDetailViewModel: ObservableObject {
     func toggleDeleteAlert() {
         showDeleteAlert.toggle()
     }
-
-    func updateMemo(title: String, comment: String, tags: [String], link: URL?) {
-                
-    }
-
+    
     func saveChanges() {
         // TODO :: Memo Core data 테스트를 위해 임시 주석
-//        MemoViewModel.shared.updateMemo(
-//            uuid: "86be72a7-9cae-42e1-ab57-b6d7a0df07b3",
-//            memoId: memo.id,
-//            title: memo.title,
-//            comment: memo.comment,
-//            url: memo.url,
-//            thumbURL: memo.thumbURL,
-//            notificationCycle: memo.notiCycle,
-//            notificationPreset: memo.notiPreset
-//        )
+        MemoViewModel.shared.editMemo(
+            memoId: memo.objectID,
+            title: memo.title,
+            comment: memo.comment,
+            url: memo.url,
+            noti_cycle: Int(memo.noti_cycle),
+            noti_preset: memo.noti_preset
+        )
     }
 
 
 
     func deleteMemo() {
-        // TODO :: Memo Core data 테스트를 위해 임시 주석
-//        MemoViewModel.shared.deleteMemo(uuid: "86be72a7-9cae-42e1-ab57-b6d7a0df07b3", memoId: memo.id)
+        MemoViewModel.shared.deleteMemo(memoId: memo.objectID)
     }
     
-    func updateTags(forMemo memoId: Int, withTagIds tagIds: [Int]) {
-            memoTags = tagIds.map { MemoTag(memoId: memoId, tagId: $0) }
-        }
 
-    func loadTags() {
-        // TODO :: Memo Core data 테스트를 위해 임시 주석
-//            let relatedMemoTags = memoTags.filter { $0.memoId == memo.id }
-//            let relatedTagIds = relatedMemoTags.map { $0.tagId }
-//            tags = allTags.filter { relatedTagIds.contains($0.id) }
-        }
+    private func loadTagsForMemo(memoId: Int) {
+        // 메모와 연관된 태그 로드
+        tagViewModel.loadTagsForMemo(memoId: memoId)
+        // 결과를 관찰하여 tags 배열 업데이트
+        tagViewModel.$tags.receive(on: RunLoop.main).sink { [weak self] loadedTags in
+            self?.tags = loadedTags
+        }.store(in: &cancellables)
+    }
     
 
 }

@@ -7,37 +7,26 @@
 
 import Foundation
 import Moya
-
 import CoreData
+import SwiftSoup
+
 
 class MemoViewModel: ObservableObject {
     static let shared = MemoViewModel()//싱글톤 패턴으로 앱의 어느곳에서나 MemoViewModel.shared를 통해 같은 인스턴스에 접근할 수 있음
-    let container: NSPersistentContainer
-    
-    
+    let container: NSPersistentContainer = CoreDataManager.shared.persistentContainer
+
     @Published var memos: [MemoEntity] = []
-    
-    
+
     init() {
-        container = NSPersistentContainer(name: "CoreDataContainer")
-        container.loadPersistentStores { (description, error) in
-            if let error = error {
-                print("ERROR LOADING CORE DATA. \(error)")
-            } else {
-                print("SUCCESSFULLY LOADED CORE DATA. \(description)")
-            }
-        }
-        
+        fetchMemo()
     }
 
     /// CORE DATA 관련 코드
     
     // 1. Core Data 에서 데이터 가져오기
     private func fetchMemo() {
-        
         let request = NSFetchRequest<MemoEntity>(entityName: "MemoEntity")
         
-        // container에 request 한 것을 fetch해서 가져오기!
         do {
             self.memos = try container.viewContext.fetch(request)
         } catch {
@@ -56,97 +45,182 @@ class MemoViewModel: ObservableObject {
         }
     }
     
-    
-    private func requestUserMemos(uuid: String) {
-        fetchMemo()
-    }
-    
-    func browseMemosFromServer(uuid: String) {
-        requestUserMemos(uuid: uuid)
+    func browseMemos() {
+        self.memos = []
+        self.fetchMemo()
+        save()
     }
     
     // TODO :: Memo -> MemoEntity 전환 중 반환값 임시 교체
-    func getMemoList() -> [Memo] {
-        return []
-    }
-    
-    
-    // TODO :: Memo -> MemoEntity 전환 중 반환값 임시 교체
-    func updateMemo(uuid: String, memoId: Int, title: String?, comment: String?, url: String?, thumbURL: String?, notificationCycle: Int?, notificationPreset: Int?) {
-//        NetworkManager.shared.memo_provider.request(
-//            .updateMemo(
-//                type: "uuid",
-//                identifier: uuid,
-//                memo_id: memoId,
-//                title: title,
-//                comment: comment,
-//                url: URL(string: url ?? "")?.absoluteURL,
-//                thumbURL: URL(string: thumbURL ?? "")?.absoluteURL,
-//                noti_cycle: notificationCycle,
-//                noti_preset: notificationPreset)
-//        ) { result in
-//            switch result {
-//            case .success(let response):
-//                do {
-//                    let updatedMemo = try JSONDecoder().decode(Memo.self, from: response.data)
-//                    DispatchQueue.main.async {
-//                        if let index = self.memos.firstIndex(where: { $0.id == updatedMemo.id }) {
-//                            self.memos[index] = updatedMemo
-//                        }
-//                    }
-//                } catch {
-//                    print("Error updating memo: \(error)")
-//                }
-//            case .failure(let error):
-//                print("Error updating memo: \(error)")
-//            }
-//        }
-        
+    func getMemoList() -> [MemoEntity] {
+        return self.memos
     }
 
     
     // 3. ADD CORE DATA (참고용!!!)
-    func addMemo(title: String, comment: String, url: URL?, thumbURL: URL?, notificationCycle: Int, notificationPreset: Int? = nil, isPinned: Bool) {
-
-        let newMemo = MemoEntity(context: container.viewContext)
-        newMemo.title = title
-        newMemo.comment = comment
-        newMemo.url = url ?? URL(string: "")
-        newMemo.thumbURL = thumbURL
-        newMemo.noti_cycle = Int32(notificationCycle)
-        newMemo.noti_preset = nil // 오른쪽 처럼 구현해야함!!! AlarmPresetViewModel.shared.getAlarmPresetList(id: notificationPreset)
-        newMemo.isPinned = isPinned
+    func addMemo(title: String, comment: String, url: URL?, notificationCycle: Int, notificationPreset: Int? = nil, isPinned: Bool) {
+        guard let url = url else {
+            // URL이 nil인 경우 처리
+            return
+        }
         
-        save()
+        getThumbURL(from: url) { result in
+            var thumbURLString: String?
+            
+            switch result {
+            case .success(let thumbnailURL):
+                print("Thumbnail URL: \(thumbnailURL)")
+                thumbURLString = thumbnailURL
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+            
+            DispatchQueue.main.async {
+                let newMemo = MemoEntity(context: self.container.viewContext)
+                newMemo.title = title
+                newMemo.comment = comment
+                newMemo.url = url
+                newMemo.thumbURL = thumbURLString != nil ? URL(string: thumbURLString!) : nil
+                newMemo.noti_cycle = Int32(notificationCycle)
+                newMemo.noti_preset = nil // 필요한 로직 구현
+                newMemo.isPinned = isPinned
+                
+                self.save()
+                self.fetchMemo()
+            }
+        }
     }
     
+    
+    func getThumbURL(from url: URL?, completion: @escaping (Result<String, Error>) -> Void) {
+        guard let url = url else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0)))
+            return
+        }
+
+        // Check if the URL is a YouTube link
+        if url.host?.contains("youtube.com") == true || url.host?.contains("youtu.be") == true {
+            // Extract the YouTube video ID
+            let videoID: String
+            if url.host == "youtu.be" {
+                videoID = url.lastPathComponent
+            } else {
+                videoID = URLComponents(string: url.absoluteString)?.queryItems?.first(where: { $0.name == "v" })?.value ?? ""
+            }
+
+            // Construct the YouTube thumbnail URL
+            if !videoID.isEmpty {
+                let youtubeThumbnailURL = "https://img.youtube.com/vi/\(videoID)/hqdefault.jpg"
+                completion(.success(youtubeThumbnailURL))
+                return
+            }
+        }
+
+        // For non-YouTube URLs, parse the HTML to find the og:image
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let data = data, let htmlString = String(data: data, encoding: .utf8) else {
+                completion(.failure(NSError(domain: "Error parsing data", code: 0)))
+                return
+            }
+
+            do {
+                let doc: Document = try SwiftSoup.parse(htmlString)
+                if let ogImage: Element = try doc.select("meta[property=og:image]").first() {
+                    let thumbnailURL = try ogImage.attr("content")
+                    if !thumbnailURL.isEmpty {
+                        completion(.success(thumbnailURL))
+                    } else {
+                        completion(.failure(NSError(domain: "Empty content in og:image tag", code: 0)))
+                    }
+                } else {
+                    completion(.failure(NSError(domain: "No og:image tag found on the page", code: 0)))
+                }
+            } catch Exception.Error(_, let message) {
+                completion(.failure(NSError(domain: message, code: 0)))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+
+    
     func editMemo(
-        uuid: String!,
-        memo_id: Int,
+        memoId: NSManagedObjectID,
         title: String?,
         comment: String?,
-        url: URL? = URL(string:""),
-        thumbURL: URL? = URL(string: ""),
+        url: URL? = nil,
         noti_cycle: Int?,
-        noti_preset: Int?) {
-        
-        // 1. 기존 메모 불러오기
-        // 2. 내용 수정하기
-        // 3. save()
+        noti_preset: AlarmPresetEntity?)
+    {
+        let context = container.viewContext
+        if let memoToEdit = context.object(with: memoId) as? MemoEntity {
+            if let title = title {
+                memoToEdit.title = title
+            }
+
+            if let comment = comment {
+                memoToEdit.comment = comment
+            }
+
+            if let noti_cycle = noti_cycle {
+                memoToEdit.noti_cycle = Int32(noti_cycle)
+            }
+
+            if let noti_preset = noti_preset {
+                 memoToEdit.noti_preset = noti_preset
+            }
+
+            if let url = url {
+                // URL이 변경된 경우, 썸네일 URL도 업데이트
+                getThumbURL(from: url) { result in
+                    var thumbURLString: String?
+
+                    switch result {
+                    case .success(let thumbnailURL):
+                        thumbURLString = thumbnailURL
+                    case .failure(let error):
+                        print("Error: \(error.localizedDescription)")
+                    }
+
+                    DispatchQueue.main.async {
+                        memoToEdit.url = url
+                        memoToEdit.thumbURL = thumbURLString != nil ? URL(string: thumbURLString!) : nil
+                        self.save()
+                        self.fetchMemo()
+                    }
+                }
+            } else {
+                save()
+                self.fetchMemo()
+            }
             
+            
+            fetchMemo()
+        }
     }
         
         
-    func deleteMemo(uuid: String, memoId: Int) {
-//        NetworkManager.shared.memo_provider.request(.deleteMemo(type: "uuid", identifier: uuid, memo_id: memoId)) { result in
-//            switch result {
-//            case .success:
-//                DispatchQueue.main.async {
-//                    self.memos.removeAll(where: { $0.id == memoId })
-//                }
-//            case .failure(let error):
-//                print("Error deleting memo: \(error)")
-//            }
-//        }
+    func deleteMemo(memoId: NSManagedObjectID) {
+        let context = container.viewContext
+        if let memoToDelete = context.object(with: memoId) as? MemoEntity {
+            context.delete(memoToDelete)
+            do {
+                try context.save()
+                fetchMemo() // 목록 업데이트
+                print("Memo successfully deleted.")
+            } catch {
+                print("Error deleting memo: \(error)")
+            }
+        }
     }
+    
+    // extra
+    
+
 }

@@ -10,8 +10,9 @@ import Combine
 
 
 struct AddMemoView: View {
-    
+    @StateObject private var viewModel = AddMemoViewModel()
     @SwiftUI.Environment(\.dismiss) var dismiss
+    @State var isEditing: Bool = true
     
     var body: some View {
             VStack {
@@ -20,39 +21,39 @@ struct AddMemoView: View {
                     .frame(maxWidth: .infinity)
                 
                 VStack(alignment: .leading, spacing: 30) {
-                    MemoTypeFormView()
+                    MemoTypeFormView(memoType: $viewModel.memoType)
                         .frame(maxWidth: .infinity)
                     
-                    MemoUrlTypeFormView()
+                    MemoTitleFormView(
+                        isEditing: $viewModel.isEditing,
+                        editedTitle: $viewModel.memoTitle
+                    )
+                    
+                    MemoUrlTypeFormView(link: $viewModel.link)
                         .frame(maxWidth: .infinity)
                     
-                    MemoContentFormView()
+                    MemoContentFormView(memoContent: $viewModel.memoContent)
                         .frame(maxWidth: .infinity)
                     
-                    MemoAlarmIntervalFormView()
+                    MemoAlarmIntervalFormView(selectedReminder: $viewModel.selectedReminder)
                         .frame(maxWidth: .infinity)
                     
-//                    MemoPreView()
-//                        .frame(maxWidth: .infinity)
                 }
                 .padding(.top, 30)
                 .padding(.horizontal, 30)
                 .frame(maxWidth: .infinity)
                 Spacer()
-                AddMemoFooterView()
-                    .frame(height: 60)
-                    .frame(maxWidth: .infinity)
-                    .onTapGesture {
-                        MemoViewModel.shared.addMemo(
-                            title: "테스트 등록",
-                            comment: "테스트 등록 내용",
-                            url: URL(string: "https://festa.io/events/4457"),
-                            thumbURL: URL(string: ""),
-                            notificationCycle: 1,
-                            isPinned: false
-                        )
-                    }
+                
             }
+            .overlay(
+                AddMemoFooterView(
+                    addMemoAction: {
+                        viewModel.addNewMemo()
+                        dismiss()
+                    })
+                .frame(height: 60)
+                .frame(maxWidth: .infinity)
+                ,alignment: .bottom)
             .navigationBarBackButtonHidden(true)
     }
 }
@@ -66,6 +67,8 @@ struct AddMemoView_Previews: PreviewProvider {
 // Components
 
 struct MemoTypeFormView: View {
+    @Binding var memoType: String
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             CardTitleText(title: "메모 타입")
@@ -80,8 +83,31 @@ struct MemoTypeFormView: View {
     }
 }
 
+struct MemoTitleFormView: View {
+    @Binding var isEditing: Bool
+    @Binding var editedTitle: String
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            CardTitleText(title: "메모 제목")
+            if isEditing {
+                TextField("제목", text: $editedTitle)
+                    .font(.system(size: 24, weight: .bold))
+                    .underline()
+                
+            } else {
+                Text(editedTitle)
+                    .font(.system(size: 24, weight: .bold))
+                    .underline()
+                
+            }
+        }
+    }
+}
+
+
 struct MemoUrlTypeFormView: View {
-    @State private var link: String = ""
+    @Binding var link: String
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -113,12 +139,9 @@ struct MemoUrlTypeFormView: View {
 
 
 struct MemoContentFormView: View {
-    @State private var memoContent: String = "" // 사용자가 입력할 내용을 저장할 상태 변수입니다.
+    @Binding var memoContent: String // 사용자가 입력할 내용을 저장할 상태 변수입니다.
+    
     private let maxCharacterLimit = 250
-
-    init() {
-        UITextView.appearance().backgroundColor = .clear
-    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -155,6 +178,7 @@ struct MemoContentFormView: View {
 }
 
 struct MemoAlarmIntervalFormView: View {
+    @Binding var selectedReminder: String
     @State var isEditing: Bool = true
     
     var body: some View {
@@ -205,11 +229,14 @@ struct MemoPreView: View {
 }
 
 struct AddMemoFooterView: View {
+    var addMemoAction: () -> Void
     var body: some View {
         VStack {
+            Button(action: addMemoAction) {
                 Text("작성 완료")
-                .font(.system(size: 20, weight: .bold))
-                .foregroundColor(.white)
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(.white)
+            }
         }
         .frame(maxWidth: .infinity)
         .padding(15)

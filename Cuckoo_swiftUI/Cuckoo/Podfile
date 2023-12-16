@@ -6,6 +6,7 @@ target 'Cuckoo' do
   use_frameworks!
   pod 'Alamofire', '5.1'
   pod 'Moya', '~> 14.0'
+  pod 'SwiftSoup'
 
   # Pods for Cuckoo
 

@@ -8,42 +8,49 @@
 import SwiftUI
 
 struct MainView: View {
-    
-    //title 수정용
-    @State private var isPresentingMemoSheet = false
     @ObservedObject var memoViewModel = MemoViewModel.shared
-    
-    // TODO : <og:preview> tag에서 미리보기 이미지 떼오는 hook
-    
-    var itemCount: Int {
-        return MemoViewModel.shared.memos.count
-    }
-    
+    let context = CoreDataManager.shared.persistentContainer.viewContext
+
     var body: some View {
-        NavigationView{
-            VStack(spacing:10){
+        NavigationView {
+            VStack(spacing: 10) {
                 // Header
-                MainViewHeader(itemCount: itemCount)
+                MainViewHeader(itemCount: memoViewModel.memos.count)
                 Spacer()
-                
+
                 // Search Bar & Tag
                 MainViewSearchFilter()
                 Spacer()
-                
+
                 // Body
                 ScrollView {
                     ForEach(memoViewModel.memos, id: \.self) { memo in
                         VStack(alignment: .leading) {
-                            NavigationLink(destination: MemoDetailView(viewModel: MemoDetailViewModel(memo: memo))) {
-                                MainContainerView(memo: memo)
+                            NavigationLink(
+                                destination: MemoDetailView(
+                                    viewModel: MemoDetailViewModel(
+                                        memoID: memo.objectID,
+                                        memo: memo
+                                    ),
+                                    title: memo.title,
+                                    comment: memo.comment,
+                                    url: memo.url,
+                                    thumbURL: memo.thumbURL,
+                                    noti_cycle: memo.noti_cycle,
+                                    noti_preset: memo.noti_preset,
+                                    noti_count: memo.noti_count
+                                )
+                            ) {
+                                MainContainerView(
+                                    title: memo.title, comment: memo.comment, url: memo.url, thumbURL: memo.thumbURL, isPinned: memo.isPinned
+                                )
                             }.padding(.vertical, 15)
                             
                             Divider()
                         }
                     }
-                }
-                .onAppear {
-                    memoViewModel.browseMemosFromServer(uuid: "86be72a7-9cae-42e1-ab57-b6d7a0df07b3")
+                }.onAppear {
+                    memoViewModel.browseMemos() // Refresh memos list when MainView appears
                 }
                 
                 .scrollIndicators(.hidden)
@@ -51,8 +58,8 @@ struct MainView: View {
                     AddMemoFloatingButton(),
                     alignment: .bottomTrailing
                 )
-                
-            }.padding(.horizontal, 30)
+            }
+            .padding(.horizontal, 30)
         }
     }
 }
