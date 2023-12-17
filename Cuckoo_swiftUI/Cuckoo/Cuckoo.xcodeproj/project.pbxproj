@@ -36,16 +36,6 @@
 		00A73E0F2B0C583900B59084 /* ViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E0E2B0C583900B59084 /* ViewComponents.swift */; };
 		00CEBC9A2B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00CEBC982B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld */; };
 		00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */; };
-		00F862DD2B2E426D001AD1CA /* NotiLogEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F862D52B2E426D001AD1CA /* NotiLogEntity+CoreDataProperties.swift */; };
-		00F862DE2B2E426D001AD1CA /* AlarmPresetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F862DB2B2E426D001AD1CA /* AlarmPresetEntity+CoreDataProperties.swift */; };
-		00F862DF2B2E426D001AD1CA /* NotiLogEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F862D92B2E426D001AD1CA /* NotiLogEntity+CoreDataClass.swift */; };
-		00F862E02B2E426D001AD1CA /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F862D72B2E426D001AD1CA /* TagEntity+CoreDataClass.swift */; };
-		00F862E12B2E426D001AD1CA /* MemoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F862D42B2E426D001AD1CA /* MemoEntity+CoreDataProperties.swift */; };
-		00F862E22B2E426D001AD1CA /* AlarmPresetEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F862DC2B2E426D001AD1CA /* AlarmPresetEntity+CoreDataClass.swift */; };
-		00F862E32B2E426D001AD1CA /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F862DA2B2E426D001AD1CA /* UserEntity+CoreDataProperties.swift */; };
-		00F862E42B2E426D001AD1CA /* MemoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F862D82B2E426D001AD1CA /* MemoEntity+CoreDataClass.swift */; };
-		00F862E52B2E426D001AD1CA /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F862D32B2E426D001AD1CA /* TagEntity+CoreDataProperties.swift */; };
-		00F862E62B2E426D001AD1CA /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F862D62B2E426D001AD1CA /* UserEntity+CoreDataClass.swift */; };
 		04CD305975F21353FD0F5627 /* Pods_Cuckoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D17E4E921EDF35CCA729DB3 /* Pods_Cuckoo.framework */; };
 		0FE0BE856E1BDC805AE22CF2 /* Pods_CuckooTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE8C1C48BFF2CFB3C647D07 /* Pods_CuckooTests.framework */; };
 		7A0601A62B26AD6700055EBB /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0601A52B26AD6700055EBB /* LocalNotification.swift */; };
@@ -54,6 +44,16 @@
 		7A7F87942AEF559E00F14B11 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87932AEF559E00F14B11 /* CuckooTests.swift */; };
 		7A7F879E2AEF559E00F14B11 /* CuckooUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */; };
 		7A7F87A02AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */; };
+		7D7D71B42B2EE93100746FCB /* MemoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AA2B2EE93100746FCB /* MemoEntity+CoreDataProperties.swift */; };
+		7D7D71B52B2EE93100746FCB /* NotiLogEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AB2B2EE93100746FCB /* NotiLogEntity+CoreDataClass.swift */; };
+		7D7D71B62B2EE93100746FCB /* MemoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AC2B2EE93100746FCB /* MemoEntity+CoreDataClass.swift */; };
+		7D7D71B72B2EE93100746FCB /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AD2B2EE93100746FCB /* TagEntity+CoreDataProperties.swift */; };
+		7D7D71B82B2EE93100746FCB /* AlarmPresetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AE2B2EE93100746FCB /* AlarmPresetEntity+CoreDataProperties.swift */; };
+		7D7D71B92B2EE93100746FCB /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AF2B2EE93100746FCB /* TagEntity+CoreDataClass.swift */; };
+		7D7D71BA2B2EE93100746FCB /* NotiLogEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B02B2EE93100746FCB /* NotiLogEntity+CoreDataProperties.swift */; };
+		7D7D71BB2B2EE93100746FCB /* AlarmPresetEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B12B2EE93100746FCB /* AlarmPresetEntity+CoreDataClass.swift */; };
+		7D7D71BC2B2EE93100746FCB /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B22B2EE93100746FCB /* UserEntity+CoreDataProperties.swift */; };
+		7D7D71BD2B2EE93100746FCB /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B32B2EE93100746FCB /* UserEntity+CoreDataClass.swift */; };
 		7D8DE4BD2B1EAF95004502FF /* MemoTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4BC2B1EAF95004502FF /* MemoTag.swift */; };
 		7D8DE4BF2B1EB078004502FF /* AlarmPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */; };
 		7D8DE4C12B1EB0A6004502FF /* NotificationLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */; };
@@ -115,16 +115,6 @@
 		00A73E0E2B0C583900B59084 /* ViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponents.swift; sourceTree = "<group>"; };
 		00CEBC992B2AC6B100A74BBF /* CoreDataContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataContainer.xcdatamodel; sourceTree = "<group>"; };
 		00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingAlarmPresetView.swift; sourceTree = "<group>"; };
-		00F862D32B2E426D001AD1CA /* TagEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TagEntity+CoreDataProperties.swift"; path = "/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/TagEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		00F862D42B2E426D001AD1CA /* MemoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MemoEntity+CoreDataProperties.swift"; path = "/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/MemoEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		00F862D52B2E426D001AD1CA /* NotiLogEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NotiLogEntity+CoreDataProperties.swift"; path = "/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/NotiLogEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		00F862D62B2E426D001AD1CA /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserEntity+CoreDataClass.swift"; path = "/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/UserEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		00F862D72B2E426D001AD1CA /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TagEntity+CoreDataClass.swift"; path = "/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/TagEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		00F862D82B2E426D001AD1CA /* MemoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MemoEntity+CoreDataClass.swift"; path = "/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/MemoEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		00F862D92B2E426D001AD1CA /* NotiLogEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NotiLogEntity+CoreDataClass.swift"; path = "/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/NotiLogEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		00F862DA2B2E426D001AD1CA /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserEntity+CoreDataProperties.swift"; path = "/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/UserEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		00F862DB2B2E426D001AD1CA /* AlarmPresetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AlarmPresetEntity+CoreDataProperties.swift"; path = "/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/AlarmPresetEntity+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		00F862DC2B2E426D001AD1CA /* AlarmPresetEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AlarmPresetEntity+CoreDataClass.swift"; path = "/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/AlarmPresetEntity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		0AE8C1C48BFF2CFB3C647D07 /* Pods_CuckooTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CuckooTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E4B153FD83B73FD01D844F2 /* Pods-Cuckoo-CuckooUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuckoo-CuckooUITests.release.xcconfig"; path = "Target Support Files/Pods-Cuckoo-CuckooUITests/Pods-Cuckoo-CuckooUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4629B32463E2A9976AA36570 /* Pods-Cuckoo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuckoo.release.xcconfig"; path = "Target Support Files/Pods-Cuckoo/Pods-Cuckoo.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +132,16 @@
 		7A7F87992AEF559E00F14B11 /* CuckooUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CuckooUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F879D2AEF559E00F14B11 /* CuckooUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITests.swift; sourceTree = "<group>"; };
 		7A7F879F2AEF559E00F14B11 /* CuckooUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7D7D71AA2B2EE93100746FCB /* MemoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7D7D71AB2B2EE93100746FCB /* NotiLogEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotiLogEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7D7D71AC2B2EE93100746FCB /* MemoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7D7D71AD2B2EE93100746FCB /* TagEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7D7D71AE2B2EE93100746FCB /* AlarmPresetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlarmPresetEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7D7D71AF2B2EE93100746FCB /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7D7D71B02B2EE93100746FCB /* NotiLogEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotiLogEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7D7D71B12B2EE93100746FCB /* AlarmPresetEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlarmPresetEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7D7D71B22B2EE93100746FCB /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7D7D71B32B2EE93100746FCB /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7D8DE4BC2B1EAF95004502FF /* MemoTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTag.swift; sourceTree = "<group>"; };
 		7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPreset.swift; sourceTree = "<group>"; };
 		7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLog.swift; sourceTree = "<group>"; };
@@ -284,16 +284,16 @@
 		00E286812B2AF0F1002D894E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				00F862DC2B2E426D001AD1CA /* AlarmPresetEntity+CoreDataClass.swift */,
-				00F862DB2B2E426D001AD1CA /* AlarmPresetEntity+CoreDataProperties.swift */,
-				00F862D62B2E426D001AD1CA /* UserEntity+CoreDataClass.swift */,
-				00F862DA2B2E426D001AD1CA /* UserEntity+CoreDataProperties.swift */,
-				00F862D82B2E426D001AD1CA /* MemoEntity+CoreDataClass.swift */,
-				00F862D42B2E426D001AD1CA /* MemoEntity+CoreDataProperties.swift */,
-				00F862D92B2E426D001AD1CA /* NotiLogEntity+CoreDataClass.swift */,
-				00F862D52B2E426D001AD1CA /* NotiLogEntity+CoreDataProperties.swift */,
-				00F862D72B2E426D001AD1CA /* TagEntity+CoreDataClass.swift */,
-				00F862D32B2E426D001AD1CA /* TagEntity+CoreDataProperties.swift */,
+				7D7D71B12B2EE93100746FCB /* AlarmPresetEntity+CoreDataClass.swift */,
+				7D7D71AE2B2EE93100746FCB /* AlarmPresetEntity+CoreDataProperties.swift */,
+				7D7D71AC2B2EE93100746FCB /* MemoEntity+CoreDataClass.swift */,
+				7D7D71AA2B2EE93100746FCB /* MemoEntity+CoreDataProperties.swift */,
+				7D7D71AB2B2EE93100746FCB /* NotiLogEntity+CoreDataClass.swift */,
+				7D7D71B02B2EE93100746FCB /* NotiLogEntity+CoreDataProperties.swift */,
+				7D7D71AF2B2EE93100746FCB /* TagEntity+CoreDataClass.swift */,
+				7D7D71AD2B2EE93100746FCB /* TagEntity+CoreDataProperties.swift */,
+				7D7D71B32B2EE93100746FCB /* UserEntity+CoreDataClass.swift */,
+				7D7D71B22B2EE93100746FCB /* UserEntity+CoreDataProperties.swift */,
 				008DB1B22B2DA04F001F9064 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
@@ -632,54 +632,54 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7D71BB2B2EE93100746FCB /* AlarmPresetEntity+CoreDataClass.swift in Sources */,
 				0043A2C72B247FC50094A2E7 /* NetworkManager.swift in Sources */,
 				00A73E0F2B0C583900B59084 /* ViewComponents.swift in Sources */,
+				7D7D71BC2B2EE93100746FCB /* UserEntity+CoreDataProperties.swift in Sources */,
 				00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */,
 				00652D982B143E84004C3345 /* SettingView.swift in Sources */,
 				7D8DE4BD2B1EAF95004502FF /* MemoTag.swift in Sources */,
-				00F862E32B2E426D001AD1CA /* UserEntity+CoreDataProperties.swift in Sources */,
-				00F862DE2B2E426D001AD1CA /* AlarmPresetEntity+CoreDataProperties.swift in Sources */,
+				7D7D71BA2B2EE93100746FCB /* NotiLogEntity+CoreDataProperties.swift in Sources */,
+				7D7D71B92B2EE93100746FCB /* TagEntity+CoreDataClass.swift in Sources */,
 				0043A2BF2B247D290094A2E7 /* UserAPI.swift in Sources */,
 				00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */,
 				0043A2C12B247D540094A2E7 /* TagAPI.swift in Sources */,
+				7D7D71B62B2EE93100746FCB /* MemoEntity+CoreDataClass.swift in Sources */,
 				00A73DFD2B0C323800B59084 /* Memo.swift in Sources */,
-				00F862DF2B2E426D001AD1CA /* NotiLogEntity+CoreDataClass.swift in Sources */,
 				0043A2C32B247D630094A2E7 /* AlarmPresetAPI.swift in Sources */,
+				7D7D71B52B2EE93100746FCB /* NotiLogEntity+CoreDataClass.swift in Sources */,
+				7D7D71B72B2EE93100746FCB /* TagEntity+CoreDataProperties.swift in Sources */,
 				0043A2C52B247D6D0094A2E7 /* NotiLogAPI.swift in Sources */,
-				00F862E22B2E426D001AD1CA /* AlarmPresetEntity+CoreDataClass.swift in Sources */,
 				7D9AB3CE2B2295AE00B00C09 /* SettingTagViewModel.swift in Sources */,
 				008DB1B32B2DA04F001F9064 /* CoreDataManager.swift in Sources */,
 				00A73E012B0C35D300B59084 /* Tag.swift in Sources */,
 				00652D962B143E70004C3345 /* SettingTagView.swift in Sources */,
+				7D7D71BD2B2EE93100746FCB /* UserEntity+CoreDataClass.swift in Sources */,
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
 				00652DA22B1443AB004C3345 /* functions.swift in Sources */,
 				7DF6B4D22B1B204800B64CC0 /* MemoDetailViewModel.swift in Sources */,
-				00F862E12B2E426D001AD1CA /* MemoEntity+CoreDataProperties.swift in Sources */,
 				A82451F02AFE69A600EB4F54 /* AddMemoView.swift in Sources */,
-				00F862E42B2E426D001AD1CA /* MemoEntity+CoreDataClass.swift in Sources */,
 				00A73DFB2B0C31D700B59084 /* AddMemoViewModel.swift in Sources */,
 				00652D9C2B143FAE004C3345 /* SettingProfileView.swift in Sources */,
 				7D8DE4C12B1EB0A6004502FF /* NotificationLog.swift in Sources */,
 				0022CB232B1FA9A900EC6A66 /* NotificationLogView.swift in Sources */,
 				0056C0242B2EB8FA001148AD /* NotificationLogViewModel.swift in Sources */,
-				00F862E02B2E426D001AD1CA /* TagEntity+CoreDataClass.swift in Sources */,
 				00133EB22B24128E0035AB70 /* UserProfileViewModel.swift in Sources */,
-				00F862E62B2E426D001AD1CA /* UserEntity+CoreDataClass.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
-				00F862E52B2E426D001AD1CA /* TagEntity+CoreDataProperties.swift in Sources */,
 				7D8DE4BF2B1EB078004502FF /* AlarmPreset.swift in Sources */,
 				00133EBB2B2451530035AB70 /* MemoViewModel.swift in Sources */,
-				00F862DD2B2E426D001AD1CA /* NotiLogEntity+CoreDataProperties.swift in Sources */,
 				00133EBC2B2451530035AB70 /* AlarmPresetViewModel.swift in Sources */,
 				A84350DE2B2369B5006CDD60 /* MemoDummy.swift in Sources */,
 				0043A2BD2B247D1F0094A2E7 /* MemoAPI.swift in Sources */,
 				00652DA02B1440BC004C3345 /* Dummy.swift in Sources */,
+				7D7D71B82B2EE93100746FCB /* AlarmPresetEntity+CoreDataProperties.swift in Sources */,
 				00A73DFF2B0C324200B59084 /* User.swift in Sources */,
 				00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */,
 				00CEBC9A2B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld in Sources */,
 				00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */,
 				008DB1B12B2D744C001F9064 /* TagViewModel.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
+				7D7D71B42B2EE93100746FCB /* MemoEntity+CoreDataProperties.swift in Sources */,
 				7A0601A62B26AD6700055EBB /* LocalNotification.swift in Sources */,
 				7DF6B4D42B1B26E800B64CC0 /* MainContainerViewModel.swift in Sources */,
 				00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */,

@@ -2,36 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/AlarmPresetEntity+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/AlarmPresetEntity+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/UserEntity+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/UserEntity+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/MemoEntity+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/MemoEntity+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/NotiLogEntity+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/NotiLogEntity+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/TagEntity+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/CoreData/TagEntity+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:Cuckoo.xcodeproj">
    </FileRef>
    <FileRef
