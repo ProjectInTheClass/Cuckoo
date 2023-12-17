@@ -10,7 +10,7 @@ import Moya
 import CoreData
 import SwiftSoup
 
-
+ 
 class MemoViewModel: ObservableObject {
     static let shared = MemoViewModel()//싱글톤 패턴으로 앱의 어느곳에서나 MemoViewModel.shared를 통해 같은 인스턴스에 접근할 수 있음
     let container: NSPersistentContainer = CoreDataManager.shared.persistentContainer
