@@ -10,6 +10,7 @@ import SwiftUI
 import CoreData
 
 class NotificationLogViewModel: ObservableObject {
+    
     static let shared = NotificationLogViewModel()
     let container: NSPersistentContainer = CoreDataManager.shared.persistentContainer
     
@@ -28,7 +29,7 @@ class NotificationLogViewModel: ObservableObject {
         } catch {
             print("ERROR FETCHING CORE DATA(LOG): \(error)")
         }
-    }
+    } 
     
     private func save() {
         do {

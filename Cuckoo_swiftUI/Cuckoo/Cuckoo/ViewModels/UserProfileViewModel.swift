@@ -10,13 +10,13 @@ class UserProfileViewModel: ObservableObject {
     var isRegistered = false
 
     init() {
-        username = ""
+        username = "" 
         profileImage = nil
         multiplier = 1
         reminderPeriod = 1
         fetchUserData()
     }
-    
+     
     private func fetchUserData() {
         if let savedUsername = UserDefaults.standard.string(forKey: "username") {
             self.username = savedUsername

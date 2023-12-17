@@ -69,7 +69,7 @@ struct AddMemoView: View {
 struct AddMemoView_Previews: PreviewProvider {
     static var previews: some View {
         AddMemoView()
-    }
+    } 
 }
 
 // Components

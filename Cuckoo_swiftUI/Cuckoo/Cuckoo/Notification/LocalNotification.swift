@@ -8,9 +8,20 @@ import Foundation
 import SwiftUI
 import UserNotifications
 import CoreLocation
-class NotificationManager {
+
+///1. 메모 생성 여부 확인
+///1-1. 메모가 처음 생성되었다. => 
+///
+///
+///1-2. 메모가 수정되었다.
+
+
+
+class NotificationManager : ObservedObject {
     //공유용 객체
     static let sharedNoti = NotificationManager()
+    
+    
     
     private init() {}
     
