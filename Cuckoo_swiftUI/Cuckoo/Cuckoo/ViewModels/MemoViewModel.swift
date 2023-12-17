@@ -193,6 +193,7 @@ class MemoViewModel: ObservableObject {
             if let noti_preset = noti_preset {
                 memoToEdit.memo_preset = noti_preset
             }
+            memoToEdit.updated_at = Date()
             // "전체" 태그를 제외하고 기존 태그 관계 제거
                     if let currentTags = memoToEdit.memo_tag as? Set<TagEntity> {
                         for tag in currentTags {
