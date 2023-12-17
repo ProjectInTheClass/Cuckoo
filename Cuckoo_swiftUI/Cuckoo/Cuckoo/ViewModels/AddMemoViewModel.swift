@@ -16,7 +16,14 @@ class AddMemoViewModel: ObservableObject {
     @Published var isEditing: Bool = true
     @Published var tags: [TagEntity] = [] // tags를 [TagEntity]로 변경
     private let memoViewModel = MemoViewModel.shared
-    
+    private let tagViewModel = TagViewModel.shared
+    init() {
+        // "전체" 태그를 selectedTags에 추가
+        if let entireTag = tagViewModel.tags.first(where: { $0.name == "전체" }) {
+            tags.append(entireTag)
+        }
+    }
+
     func addNewMemo() {
         let url = URL(string: link)
         

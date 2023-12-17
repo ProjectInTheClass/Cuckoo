@@ -52,7 +52,10 @@ struct MemoDetailView: View {
                             editedTitle: $viewModel.memo.title
                         )
                         
-                        TagsView(tags: $viewModel.tags)
+                        TagsView(
+                            tags: $viewModel.tags,
+                            isEditing: $viewModel.isEditing,
+                            tagViewModel: TagViewModel.shared)
                     }
                     
                     MemoLinkView(
@@ -134,26 +137,78 @@ struct MemoTitleView: View {
 // Tags View
 struct TagsView: View {
     @Binding var tags: [TagEntity]?
+    @Binding var isEditing: Bool
+    @State private var isAddPopoverPresented = false
+    @State private var newTagTitle: String = ""
+    @State private var newTagColor: Color = .gray
+    @State private var emptyTagTitle = false
     
+    @ObservedObject var tagViewModel: TagViewModel // 태그 뷰 모델
+
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                if let tags = tags {
-                    ForEach(tags, id: \.self) { tag in
-                        Text(tag.name)
-                            .font(.caption.weight(.bold))
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 5)
-                            .background(Color.fromHex(tag.color))
-                            .foregroundColor(.black)
-                            .cornerRadius(15)
+        VStack(alignment: .leading, spacing: 10) {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    existingTagsView
+
+                    if isEditing {
+                        addTagMenu
                     }
                 }
             }
         }
+        
     }
+
+    private var existingTagsView: some View {
+        ForEach(tags?.filter { $0.name != "전체" } ?? [], id: \.self) { tag in
+            Button(action: {
+                removeTag(tag)
+            }) {
+                Text(tag.name)
+                    .font(.caption.weight(.bold))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(Color.fromHex(tag.color))
+                    .cornerRadius(15)
+            }}
+    }
+    private func removeTag(_ tag: TagEntity) {
+            if let index = tags?.firstIndex(of: tag) {
+                tags?.remove(at: index)
+            }
+        }
+
+    private var addTagMenu: some View {
+        Menu {
+            ForEach(tagViewModel.tags.filter { $0.name != "전체" }, id: \.self) { tag in
+                Button(tag.name) {
+                    if let tags = tags, !tags.contains(tag) {
+                        self.tags?.append(tag)
+                    }
+                }.disabled(tags?.contains(tag) ?? false)
+            }
+        } label: {
+            addButton
+        }
+    }
+
+    private var addButton: some View {
+           Button(action: {
+               isAddPopoverPresented.toggle()
+           }) {
+               Image(systemName: "plus")
+                           .padding(.horizontal, 10)
+                           .padding(.vertical, 5)
+                           .background(Circle().fill(Color.gray))
+                           .foregroundColor(.white)
+           }
+       }
+
 }
+
+
 
 // Link View
 struct MemoLinkView: View {

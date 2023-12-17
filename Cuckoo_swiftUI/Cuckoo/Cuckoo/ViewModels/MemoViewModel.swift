@@ -193,13 +193,25 @@ class MemoViewModel: ObservableObject {
             if let noti_preset = noti_preset {
                 memoToEdit.memo_preset = noti_preset
             }
-            
-            if let tags = tags {
-                for tag in tags {
-                    memoToEdit.addToMemo_tag(tag)
-                    tag.addToTag_memo(memoToEdit)
-                }
-            }
+            // "전체" 태그를 제외하고 기존 태그 관계 제거
+                    if let currentTags = memoToEdit.memo_tag as? Set<TagEntity> {
+                        for tag in currentTags {
+                            if tag.name != "전체" {
+                                memoToEdit.removeFromMemo_tag(tag)
+                                tag.removeFromTag_memo(memoToEdit)
+                            }
+                        }
+                    }
+
+                    // 새로운 태그 관계 추가 ("전체" 태그는 이미 추가되어 있음을 가정)
+                    if let tags = tags {
+                        for tag in tags {
+                            if tag.name != "전체" {
+                                memoToEdit.addToMemo_tag(tag)
+                                tag.addToTag_memo(memoToEdit)
+                            }
+                        }
+                    }
             
             if let url = url {
                 // URL이 변경된 경우, 썸네일 URL도 업데이트

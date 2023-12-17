@@ -190,7 +190,7 @@ struct SettingTagBubble: View {
         Button {
             isDeleteConfirmationPresented.toggle()
         } label: {
-            TagBubbleView(tag: tag)
+            TagNoEntireView(tag: tag)
         }
         .alert(isPresented: $isDeleteConfirmationPresented) {
             Alert(
@@ -221,6 +221,25 @@ struct TagBubbleView: View {
             .foregroundColor(.white)
             .opacity(isSelected ? 1 : 0.4)
     }
+}
+
+struct TagNoEntireView: View {
+    let tag: TagEntity
+    var isSelected: Bool = true
+
+    var body: some View {
+            // "전체" 태그를 숨기는 조건 추가
+            if tag.name != "전체" {
+                Text(tag.name)
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(Color.white)
+                    .padding(.vertical, 5)
+                    .padding(.horizontal, 10)
+                    .background(Color.fromHex(tag.color))
+                    .cornerRadius(15)
+                    .opacity(isSelected ? 1 : 0.4)
+            }
+        }
 }
 
 struct SettingTagHeaderView: View {
