@@ -76,6 +76,16 @@
 		7ABBCCF72B2EDE5500E4E3F7 /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCED2B2EDE5500E4E3F7 /* TagEntity+CoreDataClass.swift */; };
 		7ABBCCF82B2EDE5500E4E3F7 /* AlarmPresetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEE2B2EDE5500E4E3F7 /* AlarmPresetEntity+CoreDataProperties.swift */; };
 		7ABBCCF92B2EDE5500E4E3F7 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEF2B2EDE5500E4E3F7 /* UserEntity+CoreDataClass.swift */; };
+		7D7D71B42B2EE93100746FCB /* MemoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AA2B2EE93100746FCB /* MemoEntity+CoreDataProperties.swift */; };
+		7D7D71B52B2EE93100746FCB /* NotiLogEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AB2B2EE93100746FCB /* NotiLogEntity+CoreDataClass.swift */; };
+		7D7D71B62B2EE93100746FCB /* MemoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AC2B2EE93100746FCB /* MemoEntity+CoreDataClass.swift */; };
+		7D7D71B72B2EE93100746FCB /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AD2B2EE93100746FCB /* TagEntity+CoreDataProperties.swift */; };
+		7D7D71B82B2EE93100746FCB /* AlarmPresetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AE2B2EE93100746FCB /* AlarmPresetEntity+CoreDataProperties.swift */; };
+		7D7D71B92B2EE93100746FCB /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AF2B2EE93100746FCB /* TagEntity+CoreDataClass.swift */; };
+		7D7D71BA2B2EE93100746FCB /* NotiLogEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B02B2EE93100746FCB /* NotiLogEntity+CoreDataProperties.swift */; };
+		7D7D71BB2B2EE93100746FCB /* AlarmPresetEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B12B2EE93100746FCB /* AlarmPresetEntity+CoreDataClass.swift */; };
+		7D7D71BC2B2EE93100746FCB /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B22B2EE93100746FCB /* UserEntity+CoreDataProperties.swift */; };
+		7D7D71BD2B2EE93100746FCB /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B32B2EE93100746FCB /* UserEntity+CoreDataClass.swift */; };
 		7D8DE4BD2B1EAF95004502FF /* MemoTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4BC2B1EAF95004502FF /* MemoTag.swift */; };
 		7D8DE4BF2B1EB078004502FF /* AlarmPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */; };
 		7D8DE4C12B1EB0A6004502FF /* NotificationLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */; };
@@ -196,6 +206,16 @@
 		7ABBCCED2B2EDE5500E4E3F7 /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7ABBCCEE2B2EDE5500E4E3F7 /* AlarmPresetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlarmPresetEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7ABBCCEF2B2EDE5500E4E3F7 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7D7D71AA2B2EE93100746FCB /* MemoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7D7D71AB2B2EE93100746FCB /* NotiLogEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotiLogEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7D7D71AC2B2EE93100746FCB /* MemoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7D7D71AD2B2EE93100746FCB /* TagEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7D7D71AE2B2EE93100746FCB /* AlarmPresetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlarmPresetEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7D7D71AF2B2EE93100746FCB /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7D7D71B02B2EE93100746FCB /* NotiLogEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotiLogEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7D7D71B12B2EE93100746FCB /* AlarmPresetEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlarmPresetEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7D7D71B22B2EE93100746FCB /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7D7D71B32B2EE93100746FCB /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7D8DE4BC2B1EAF95004502FF /* MemoTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTag.swift; sourceTree = "<group>"; };
 		7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPreset.swift; sourceTree = "<group>"; };
 		7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLog.swift; sourceTree = "<group>"; };
@@ -355,6 +375,16 @@
 				7ABBCCE82B2EDE5500E4E3F7 /* TagEntity+CoreDataProperties.swift */,
 				7ABBCCEF2B2EDE5500E4E3F7 /* UserEntity+CoreDataClass.swift */,
 				7ABBCCEA2B2EDE5500E4E3F7 /* UserEntity+CoreDataProperties.swift */,
+				7D7D71B12B2EE93100746FCB /* AlarmPresetEntity+CoreDataClass.swift */,
+				7D7D71AE2B2EE93100746FCB /* AlarmPresetEntity+CoreDataProperties.swift */,
+				7D7D71AC2B2EE93100746FCB /* MemoEntity+CoreDataClass.swift */,
+				7D7D71AA2B2EE93100746FCB /* MemoEntity+CoreDataProperties.swift */,
+				7D7D71AB2B2EE93100746FCB /* NotiLogEntity+CoreDataClass.swift */,
+				7D7D71B02B2EE93100746FCB /* NotiLogEntity+CoreDataProperties.swift */,
+				7D7D71AF2B2EE93100746FCB /* TagEntity+CoreDataClass.swift */,
+				7D7D71AD2B2EE93100746FCB /* TagEntity+CoreDataProperties.swift */,
+				7D7D71B32B2EE93100746FCB /* UserEntity+CoreDataClass.swift */,
+				7D7D71B22B2EE93100746FCB /* UserEntity+CoreDataProperties.swift */,
 				008DB1B22B2DA04F001F9064 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
@@ -786,23 +816,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7D71BB2B2EE93100746FCB /* AlarmPresetEntity+CoreDataClass.swift in Sources */,
 				0043A2C72B247FC50094A2E7 /* NetworkManager.swift in Sources */,
 				00A73E0F2B0C583900B59084 /* ViewComponents.swift in Sources */,
+				7D7D71BC2B2EE93100746FCB /* UserEntity+CoreDataProperties.swift in Sources */,
 				00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */,
 				00652D982B143E84004C3345 /* SettingView.swift in Sources */,
 				7D8DE4BD2B1EAF95004502FF /* MemoTag.swift in Sources */,
 				7ABBCCF42B2EDE5500E4E3F7 /* UserEntity+CoreDataProperties.swift in Sources */,
+				7D7D71BA2B2EE93100746FCB /* NotiLogEntity+CoreDataProperties.swift in Sources */,
+				7D7D71B92B2EE93100746FCB /* TagEntity+CoreDataClass.swift in Sources */,
 				0043A2BF2B247D290094A2E7 /* UserAPI.swift in Sources */,
 				00A73E0B2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift in Sources */,
 				0043A2C12B247D540094A2E7 /* TagAPI.swift in Sources */,
+				7D7D71B62B2EE93100746FCB /* MemoEntity+CoreDataClass.swift in Sources */,
 				00A73DFD2B0C323800B59084 /* Memo.swift in Sources */,
 				0043A2C32B247D630094A2E7 /* AlarmPresetAPI.swift in Sources */,
 				7ABBCCF12B2EDE5500E4E3F7 /* NotiLogEntity+CoreDataClass.swift in Sources */,
+				7D7D71B52B2EE93100746FCB /* NotiLogEntity+CoreDataClass.swift in Sources */,
+				7D7D71B72B2EE93100746FCB /* TagEntity+CoreDataProperties.swift in Sources */,
 				0043A2C52B247D6D0094A2E7 /* NotiLogAPI.swift in Sources */,
 				7D9AB3CE2B2295AE00B00C09 /* SettingTagViewModel.swift in Sources */,
 				008DB1B32B2DA04F001F9064 /* CoreDataManager.swift in Sources */,
 				00A73E012B0C35D300B59084 /* Tag.swift in Sources */,
 				00652D962B143E70004C3345 /* SettingTagView.swift in Sources */,
+				7D7D71BD2B2EE93100746FCB /* UserEntity+CoreDataClass.swift in Sources */,
 				A8BC23912AFA014B00A2F87F /* MainView.swift in Sources */,
 				00652DA22B1443AB004C3345 /* functions.swift in Sources */,
 				7DF6B4D22B1B204800B64CC0 /* MemoDetailViewModel.swift in Sources */,
@@ -825,6 +863,7 @@
 				0043A2BD2B247D1F0094A2E7 /* MemoAPI.swift in Sources */,
 				00652DA02B1440BC004C3345 /* Dummy.swift in Sources */,
 				7A3574C72B2F175900FF5DB2 /* TagViewModel.swift in Sources */,
+				7D7D71B82B2EE93100746FCB /* AlarmPresetEntity+CoreDataProperties.swift in Sources */,
 				00A73DFF2B0C324200B59084 /* User.swift in Sources */,
 				00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */,
 				7ABBCCF32B2EDE5500E4E3F7 /* NotiLogEntity+CoreDataProperties.swift in Sources */,
@@ -834,6 +873,7 @@
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
 				7ABBCCF72B2EDE5500E4E3F7 /* TagEntity+CoreDataClass.swift in Sources */,
 				7ABBCCF02B2EDE5500E4E3F7 /* MemoEntity+CoreDataProperties.swift in Sources */,
+				7D7D71B42B2EE93100746FCB /* MemoEntity+CoreDataProperties.swift in Sources */,
 				7A0601A62B26AD6700055EBB /* LocalNotification.swift in Sources */,
 				7DF6B4D42B1B26E800B64CC0 /* MainContainerViewModel.swift in Sources */,
 				00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */,

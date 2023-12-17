@@ -84,7 +84,6 @@ struct MemoTypeFormView: View {
             CardTitleText(title: "메모 타입")
             CardContent {
                 ScrollView(.horizontal, showsIndicators:false) {
-                    
                         HStack {
                             ForEach(selectedTags, id: \.self) { tag in
                                 Button {
@@ -95,19 +94,21 @@ struct MemoTypeFormView: View {
                                         }
                                     }
                                 } label: {
-                                    TagBubbleView(tag: tag)
+                                    TagNoEntireView(tag: tag)
                                 }
                             }
                             Menu {
                                 ForEach(tagViewModel.tags, id: \.self) { tag in
                                     
-                                    Button(tag.name) {
-                                        if !selectedTags.contains(tag) {
-                                            selectedTags.append(tag) // 중복되지 않는 경우에만 선택된 태그에 추가
-                                            isEnabled = selectedTags.count != tagViewModel.tags.count
+                                    if tag.name != "전체" {
+                                                Button(tag.name) {
+                                                    if !selectedTags.contains(tag) {
+                                                        selectedTags.append(tag) // 중복되지 않는 경우에만 선택된 태그에 추가
+                                                        isEnabled = selectedTags.count != tagViewModel.tags.count
+                                                    }
+                                                }.disabled(selectedTags.contains(tag))
+                                            }
                                         }
-                                    }.disabled(selectedTags.contains(tag))
-                                }
                             } label: {
                                 AddButton(isEnabled: $isEnabled, logic: {})
                             }
