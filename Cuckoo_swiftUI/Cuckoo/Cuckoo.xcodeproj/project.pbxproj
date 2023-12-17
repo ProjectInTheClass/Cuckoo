@@ -61,6 +61,7 @@
 		7A3574DB2B2F18EE00FF5DB2 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEF2B2EDE5500E4E3F7 /* UserEntity+CoreDataClass.swift */; };
 		7A3574DC2B2F18F000FF5DB2 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEA2B2EDE5500E4E3F7 /* UserEntity+CoreDataProperties.swift */; };
 		7A3574DD2B2F18F300FF5DB2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DB1B22B2DA04F001F9064 /* CoreDataManager.swift */; };
+		7A3574DF2B2F586800FF5DB2 /* PresetNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574DE2B2F586800FF5DB2 /* PresetNotification.swift */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
 		7A7F87942AEF559E00F14B11 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87932AEF559E00F14B11 /* CuckooTests.swift */; };
@@ -187,6 +188,7 @@
 		7A3574CC2B2F182D00FF5DB2 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		7A3574CE2B2F184B00FF5DB2 /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
 		7A3574D02B2F186700FF5DB2 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		7A3574DE2B2F586800FF5DB2 /* PresetNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetNotification.swift; sourceTree = "<group>"; };
 		7A7F877F2AEF559C00F14B11 /* Cuckoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuckoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F87822AEF559C00F14B11 /* CuckooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooApp.swift; sourceTree = "<group>"; };
 		7A7F87862AEF559D00F14B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				7A0601A52B26AD6700055EBB /* LocalNotification.swift */,
+				7A3574DE2B2F586800FF5DB2 /* PresetNotification.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				7ABBCCF32B2EDE5500E4E3F7 /* NotiLogEntity+CoreDataProperties.swift in Sources */,
 				00CEBC9A2B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld in Sources */,
 				00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */,
+				7A3574DF2B2F586800FF5DB2 /* PresetNotification.swift in Sources */,
 				7ABBCCF22B2EDE5500E4E3F7 /* TagEntity+CoreDataProperties.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
 				7ABBCCF72B2EDE5500E4E3F7 /* TagEntity+CoreDataClass.swift in Sources */,
