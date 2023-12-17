@@ -26,7 +26,6 @@
 		00652D9C2B143FAE004C3345 /* SettingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D9B2B143FAE004C3345 /* SettingProfileView.swift */; };
 		00652DA02B1440BC004C3345 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D9F2B1440BC004C3345 /* Dummy.swift */; };
 		00652DA22B1443AB004C3345 /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652DA12B1443AB004C3345 /* functions.swift */; };
-		008DB1B12B2D744C001F9064 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DB1B02B2D744C001F9064 /* TagViewModel.swift */; };
 		008DB1B32B2DA04F001F9064 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DB1B22B2DA04F001F9064 /* CoreDataManager.swift */; };
 		00A73DFB2B0C31D700B59084 /* AddMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73DFA2B0C31D700B59084 /* AddMemoViewModel.swift */; };
 		00A73DFD2B0C323800B59084 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73DFC2B0C323800B59084 /* Memo.swift */; };
@@ -39,6 +38,29 @@
 		04CD305975F21353FD0F5627 /* Pods_Cuckoo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D17E4E921EDF35CCA729DB3 /* Pods_Cuckoo.framework */; };
 		0FE0BE856E1BDC805AE22CF2 /* Pods_CuckooTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE8C1C48BFF2CFB3C647D07 /* Pods_CuckooTests.framework */; };
 		7A0601A62B26AD6700055EBB /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0601A52B26AD6700055EBB /* LocalNotification.swift */; };
+		7A3574A62B2F0CD300FF5DB2 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574A52B2F0CD300FF5DB2 /* ShareViewController.swift */; };
+		7A3574A92B2F0CD300FF5DB2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3574A72B2F0CD300FF5DB2 /* MainInterface.storyboard */; };
+		7A3574AD2B2F0CD300FF5DB2 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A3574A32B2F0CD300FF5DB2 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A3574B22B2F0D5C00FF5DB2 /* FirstSharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574B12B2F0D5C00FF5DB2 /* FirstSharedView.swift */; };
+		7A3574B42B2F0DEC00FF5DB2 /* SecondSharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574B32B2F0DEC00FF5DB2 /* SecondSharedView.swift */; };
+		7A3574C72B2F175900FF5DB2 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DB1B02B2D744C001F9064 /* TagViewModel.swift */; };
+		7A3574C92B2F17E500FF5DB2 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574C82B2F17E500FF5DB2 /* Presets.swift */; };
+		7A3574CB2B2F180000FF5DB2 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574CA2B2F180000FF5DB2 /* Cards.swift */; };
+		7A3574CD2B2F182D00FF5DB2 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574CC2B2F182D00FF5DB2 /* Dummy.swift */; };
+		7A3574CF2B2F184B00FF5DB2 /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574CE2B2F184B00FF5DB2 /* MainContainerView.swift */; };
+		7A3574D12B2F186700FF5DB2 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574D02B2F186700FF5DB2 /* Tags.swift */; };
+		7A3574D22B2F18D300FF5DB2 /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00CEBC982B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld */; };
+		7A3574D32B2F18D700FF5DB2 /* AlarmPresetEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEB2B2EDE5500E4E3F7 /* AlarmPresetEntity+CoreDataClass.swift */; };
+		7A3574D42B2F18DA00FF5DB2 /* AlarmPresetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEE2B2EDE5500E4E3F7 /* AlarmPresetEntity+CoreDataProperties.swift */; };
+		7A3574D52B2F18DD00FF5DB2 /* MemoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEC2B2EDE5500E4E3F7 /* MemoEntity+CoreDataClass.swift */; };
+		7A3574D62B2F18DF00FF5DB2 /* MemoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCE62B2EDE5500E4E3F7 /* MemoEntity+CoreDataProperties.swift */; };
+		7A3574D72B2F18E300FF5DB2 /* NotiLogEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCE72B2EDE5500E4E3F7 /* NotiLogEntity+CoreDataClass.swift */; };
+		7A3574D82B2F18E600FF5DB2 /* NotiLogEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCE92B2EDE5500E4E3F7 /* NotiLogEntity+CoreDataProperties.swift */; };
+		7A3574D92B2F18E900FF5DB2 /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCED2B2EDE5500E4E3F7 /* TagEntity+CoreDataClass.swift */; };
+		7A3574DA2B2F18EB00FF5DB2 /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCE82B2EDE5500E4E3F7 /* TagEntity+CoreDataProperties.swift */; };
+		7A3574DB2B2F18EE00FF5DB2 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEF2B2EDE5500E4E3F7 /* UserEntity+CoreDataClass.swift */; };
+		7A3574DC2B2F18F000FF5DB2 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEA2B2EDE5500E4E3F7 /* UserEntity+CoreDataProperties.swift */; };
+		7A3574DD2B2F18F300FF5DB2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DB1B22B2DA04F001F9064 /* CoreDataManager.swift */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
 		7A7F87942AEF559E00F14B11 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87932AEF559E00F14B11 /* CuckooTests.swift */; };
@@ -54,17 +76,6 @@
 		7ABBCCF72B2EDE5500E4E3F7 /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCED2B2EDE5500E4E3F7 /* TagEntity+CoreDataClass.swift */; };
 		7ABBCCF82B2EDE5500E4E3F7 /* AlarmPresetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEE2B2EDE5500E4E3F7 /* AlarmPresetEntity+CoreDataProperties.swift */; };
 		7ABBCCF92B2EDE5500E4E3F7 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEF2B2EDE5500E4E3F7 /* UserEntity+CoreDataClass.swift */; };
-		7ABBCD012B2EE55800E4E3F7 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCD002B2EE55800E4E3F7 /* ShareViewController.swift */; };
-		7ABBCD042B2EE55800E4E3F7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ABBCD022B2EE55800E4E3F7 /* MainInterface.storyboard */; };
-		7ABBCD082B2EE55800E4E3F7 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7ABBCCFE2B2EE55800E4E3F7 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		7ABBCD0E2B2EE59000E4E3F7 /* FirstSharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCD0D2B2EE59000E4E3F7 /* FirstSharedView.swift */; };
-		7ABBCD102B2EE5A100E4E3F7 /* SecondSharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCD0F2B2EE5A100E4E3F7 /* SecondSharedView.swift */; };
-		7ABBCD132B2EE5E400E4E3F7 /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00CEBC982B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld */; };
-		7ABBCD252B2EE85100E4E3F7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCD242B2EE85100E4E3F7 /* Card.swift */; };
-		7ABBCD272B2EE86C00E4E3F7 /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCD262B2EE86C00E4E3F7 /* MainContainerView.swift */; };
-		7ABBCD292B2EE88200E4E3F7 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCD282B2EE88200E4E3F7 /* Tags.swift */; };
-		7ABBCD2B2B2EE89500E4E3F7 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCD2A2B2EE89500E4E3F7 /* Dummy.swift */; };
-		7ABBCD2D2B2EE8AE00E4E3F7 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCD2C2B2EE8AE00E4E3F7 /* Presets.swift */; };
 		7D8DE4BD2B1EAF95004502FF /* MemoTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4BC2B1EAF95004502FF /* MemoTag.swift */; };
 		7D8DE4BF2B1EB078004502FF /* AlarmPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */; };
 		7D8DE4C12B1EB0A6004502FF /* NotificationLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */; };
@@ -79,6 +90,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7A3574AB2B2F0CD300FF5DB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A7F87772AEF559C00F14B11 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A3574A22B2F0CD300FF5DB2;
+			remoteInfo = ShareExtension;
+		};
 		7A7F87902AEF559E00F14B11 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7A7F87772AEF559C00F14B11 /* Project object */;
@@ -93,13 +111,6 @@
 			remoteGlobalIDString = 7A7F877E2AEF559C00F14B11;
 			remoteInfo = Cuckoo;
 		};
-		7ABBCD062B2EE55800E4E3F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A7F87772AEF559C00F14B11 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7ABBCCFD2B2EE55800E4E3F7;
-			remoteInfo = ShareExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -109,7 +120,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				7ABBCD082B2EE55800E4E3F7 /* ShareExtension.appex in Embed Foundation Extensions */,
+				7A3574AD2B2F0CD300FF5DB2 /* ShareExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,6 +166,17 @@
 		5D17E4E921EDF35CCA729DB3 /* Pods_Cuckoo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cuckoo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AA721CC5902FC1B3145AF41 /* Pods-Cuckoo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cuckoo.debug.xcconfig"; path = "Target Support Files/Pods-Cuckoo/Pods-Cuckoo.debug.xcconfig"; sourceTree = "<group>"; };
 		7A0601A52B26AD6700055EBB /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		7A3574A32B2F0CD300FF5DB2 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A3574A52B2F0CD300FF5DB2 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		7A3574A82B2F0CD300FF5DB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7A3574AA2B2F0CD300FF5DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A3574B12B2F0D5C00FF5DB2 /* FirstSharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSharedView.swift; sourceTree = "<group>"; };
+		7A3574B32B2F0DEC00FF5DB2 /* SecondSharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSharedView.swift; sourceTree = "<group>"; };
+		7A3574C82B2F17E500FF5DB2 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
+		7A3574CA2B2F180000FF5DB2 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
+		7A3574CC2B2F182D00FF5DB2 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
+		7A3574CE2B2F184B00FF5DB2 /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
+		7A3574D02B2F186700FF5DB2 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		7A7F877F2AEF559C00F14B11 /* Cuckoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuckoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F87822AEF559C00F14B11 /* CuckooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooApp.swift; sourceTree = "<group>"; };
 		7A7F87862AEF559D00F14B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,17 +196,6 @@
 		7ABBCCED2B2EDE5500E4E3F7 /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7ABBCCEE2B2EDE5500E4E3F7 /* AlarmPresetEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AlarmPresetEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7ABBCCEF2B2EDE5500E4E3F7 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7ABBCCFE2B2EE55800E4E3F7 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		7ABBCD002B2EE55800E4E3F7 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		7ABBCD032B2EE55800E4E3F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		7ABBCD052B2EE55800E4E3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7ABBCD0D2B2EE59000E4E3F7 /* FirstSharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSharedView.swift; sourceTree = "<group>"; };
-		7ABBCD0F2B2EE5A100E4E3F7 /* SecondSharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSharedView.swift; sourceTree = "<group>"; };
-		7ABBCD242B2EE85100E4E3F7 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		7ABBCD262B2EE86C00E4E3F7 /* MainContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerView.swift; sourceTree = "<group>"; };
-		7ABBCD282B2EE88200E4E3F7 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
-		7ABBCD2A2B2EE89500E4E3F7 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
-		7ABBCD2C2B2EE8AE00E4E3F7 /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		7D8DE4BC2B1EAF95004502FF /* MemoTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTag.swift; sourceTree = "<group>"; };
 		7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPreset.swift; sourceTree = "<group>"; };
 		7D8DE4C02B1EB0A6004502FF /* NotificationLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLog.swift; sourceTree = "<group>"; };
@@ -200,6 +211,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7A3574A02B2F0CD300FF5DB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A7F877C2AEF559C00F14B11 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -221,13 +239,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9162AADA89D798FE43F3AB9 /* Pods_Cuckoo_CuckooUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7ABBCCFB2B2EE55800E4E3F7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,13 +391,46 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		7A3574A42B2F0CD300FF5DB2 /* ShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				7A3574B62B2F0E0400FF5DB2 /* SubView */,
+				7A3574B52B2F0DF500FF5DB2 /* MainView */,
+				7A3574A72B2F0CD300FF5DB2 /* MainInterface.storyboard */,
+				7A3574AA2B2F0CD300FF5DB2 /* Info.plist */,
+			);
+			path = ShareExtension;
+			sourceTree = "<group>";
+		};
+		7A3574B52B2F0DF500FF5DB2 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				7A3574B32B2F0DEC00FF5DB2 /* SecondSharedView.swift */,
+				7A3574A52B2F0CD300FF5DB2 /* ShareViewController.swift */,
+				7A3574B12B2F0D5C00FF5DB2 /* FirstSharedView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		7A3574B62B2F0E0400FF5DB2 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				7A3574C82B2F17E500FF5DB2 /* Presets.swift */,
+				7A3574CA2B2F180000FF5DB2 /* Cards.swift */,
+				7A3574CC2B2F182D00FF5DB2 /* Dummy.swift */,
+				7A3574CE2B2F184B00FF5DB2 /* MainContainerView.swift */,
+				7A3574D02B2F186700FF5DB2 /* Tags.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		7A7F87762AEF559C00F14B11 = {
 			isa = PBXGroup;
 			children = (
 				7A7F87812AEF559C00F14B11 /* Cuckoo */,
 				7A7F87922AEF559E00F14B11 /* CuckooTests */,
 				7A7F879C2AEF559E00F14B11 /* CuckooUITests */,
-				7ABBCCFF2B2EE55800E4E3F7 /* ShareExtension */,
+				7A3574A42B2F0CD300FF5DB2 /* ShareExtension */,
 				7A7F87802AEF559C00F14B11 /* Products */,
 				71F80CFC4C0B32F28DA267F1 /* Pods */,
 				672C56B125C41E1391F496DE /* Frameworks */,
@@ -399,7 +443,7 @@
 				7A7F877F2AEF559C00F14B11 /* Cuckoo.app */,
 				7A7F878F2AEF559E00F14B11 /* CuckooTests.xctest */,
 				7A7F87992AEF559E00F14B11 /* CuckooUITests.xctest */,
-				7ABBCCFE2B2EE55800E4E3F7 /* ShareExtension.appex */,
+				7A3574A32B2F0CD300FF5DB2 /* ShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -447,42 +491,26 @@
 			path = CuckooUITests;
 			sourceTree = "<group>";
 		};
-		7ABBCCFF2B2EE55800E4E3F7 /* ShareExtension */ = {
-			isa = PBXGroup;
-			children = (
-				7ABBCD232B2EE83B00E4E3F7 /* SubView */,
-				7ABBCD222B2EE82E00E4E3F7 /* MainView */,
-				7ABBCD022B2EE55800E4E3F7 /* MainInterface.storyboard */,
-				7ABBCD052B2EE55800E4E3F7 /* Info.plist */,
-				7ABBCD2C2B2EE8AE00E4E3F7 /* Presets.swift */,
-			);
-			path = ShareExtension;
-			sourceTree = "<group>";
-		};
-		7ABBCD222B2EE82E00E4E3F7 /* MainView */ = {
-			isa = PBXGroup;
-			children = (
-				7ABBCD0F2B2EE5A100E4E3F7 /* SecondSharedView.swift */,
-				7ABBCD0D2B2EE59000E4E3F7 /* FirstSharedView.swift */,
-				7ABBCD002B2EE55800E4E3F7 /* ShareViewController.swift */,
-			);
-			path = MainView;
-			sourceTree = "<group>";
-		};
-		7ABBCD232B2EE83B00E4E3F7 /* SubView */ = {
-			isa = PBXGroup;
-			children = (
-				7ABBCD242B2EE85100E4E3F7 /* Card.swift */,
-				7ABBCD262B2EE86C00E4E3F7 /* MainContainerView.swift */,
-				7ABBCD282B2EE88200E4E3F7 /* Tags.swift */,
-				7ABBCD2A2B2EE89500E4E3F7 /* Dummy.swift */,
-			);
-			path = SubView;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7A3574A22B2F0CD300FF5DB2 /* ShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A3574AE2B2F0CD300FF5DB2 /* Build configuration list for PBXNativeTarget "ShareExtension" */;
+			buildPhases = (
+				7A35749F2B2F0CD300FF5DB2 /* Sources */,
+				7A3574A02B2F0CD300FF5DB2 /* Frameworks */,
+				7A3574A12B2F0CD300FF5DB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareExtension;
+			productName = ShareExtension;
+			productReference = 7A3574A32B2F0CD300FF5DB2 /* ShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		7A7F877E2AEF559C00F14B11 /* Cuckoo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A7F87A32AEF559E00F14B11 /* Build configuration list for PBXNativeTarget "Cuckoo" */;
@@ -497,7 +525,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				7ABBCD072B2EE55800E4E3F7 /* PBXTargetDependency */,
+				7A3574AC2B2F0CD300FF5DB2 /* PBXTargetDependency */,
 			);
 			name = Cuckoo;
 			productName = Cuckoo;
@@ -543,23 +571,6 @@
 			productReference = 7A7F87992AEF559E00F14B11 /* CuckooUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		7ABBCCFD2B2EE55800E4E3F7 /* ShareExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7ABBCD092B2EE55800E4E3F7 /* Build configuration list for PBXNativeTarget "ShareExtension" */;
-			buildPhases = (
-				7ABBCCFA2B2EE55800E4E3F7 /* Sources */,
-				7ABBCCFB2B2EE55800E4E3F7 /* Frameworks */,
-				7ABBCCFC2B2EE55800E4E3F7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ShareExtension;
-			productName = ShareExtension;
-			productReference = 7ABBCCFE2B2EE55800E4E3F7 /* ShareExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -567,9 +578,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					7A3574A22B2F0CD300FF5DB2 = {
+						CreatedOnToolsVersion = 15.0;
+					};
 					7A7F877E2AEF559C00F14B11 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -580,9 +594,6 @@
 					7A7F87982AEF559E00F14B11 = {
 						CreatedOnToolsVersion = 15.0.1;
 						TestTargetID = 7A7F877E2AEF559C00F14B11;
-					};
-					7ABBCCFD2B2EE55800E4E3F7 = {
-						CreatedOnToolsVersion = 15.1;
 					};
 				};
 			};
@@ -602,12 +613,20 @@
 				7A7F877E2AEF559C00F14B11 /* Cuckoo */,
 				7A7F878E2AEF559E00F14B11 /* CuckooTests */,
 				7A7F87982AEF559E00F14B11 /* CuckooUITests */,
-				7ABBCCFD2B2EE55800E4E3F7 /* ShareExtension */,
+				7A3574A22B2F0CD300FF5DB2 /* ShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7A3574A12B2F0CD300FF5DB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A3574A92B2F0CD300FF5DB2 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A7F877D2AEF559C00F14B11 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -627,14 +646,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7ABBCCFC2B2EE55800E4E3F7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7ABBCD042B2EE55800E4E3F7 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -744,6 +755,33 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7A35749F2B2F0CD300FF5DB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A3574D52B2F18DD00FF5DB2 /* MemoEntity+CoreDataClass.swift in Sources */,
+				7A3574DC2B2F18F000FF5DB2 /* UserEntity+CoreDataProperties.swift in Sources */,
+				7A3574CB2B2F180000FF5DB2 /* Cards.swift in Sources */,
+				7A3574D32B2F18D700FF5DB2 /* AlarmPresetEntity+CoreDataClass.swift in Sources */,
+				7A3574DA2B2F18EB00FF5DB2 /* TagEntity+CoreDataProperties.swift in Sources */,
+				7A3574B22B2F0D5C00FF5DB2 /* FirstSharedView.swift in Sources */,
+				7A3574A62B2F0CD300FF5DB2 /* ShareViewController.swift in Sources */,
+				7A3574D92B2F18E900FF5DB2 /* TagEntity+CoreDataClass.swift in Sources */,
+				7A3574D82B2F18E600FF5DB2 /* NotiLogEntity+CoreDataProperties.swift in Sources */,
+				7A3574D22B2F18D300FF5DB2 /* CoreDataContainer.xcdatamodeld in Sources */,
+				7A3574C92B2F17E500FF5DB2 /* Presets.swift in Sources */,
+				7A3574D62B2F18DF00FF5DB2 /* MemoEntity+CoreDataProperties.swift in Sources */,
+				7A3574D12B2F186700FF5DB2 /* Tags.swift in Sources */,
+				7A3574D72B2F18E300FF5DB2 /* NotiLogEntity+CoreDataClass.swift in Sources */,
+				7A3574DB2B2F18EE00FF5DB2 /* UserEntity+CoreDataClass.swift in Sources */,
+				7A3574CF2B2F184B00FF5DB2 /* MainContainerView.swift in Sources */,
+				7A3574CD2B2F182D00FF5DB2 /* Dummy.swift in Sources */,
+				7A3574D42B2F18DA00FF5DB2 /* AlarmPresetEntity+CoreDataProperties.swift in Sources */,
+				7A3574DD2B2F18F300FF5DB2 /* CoreDataManager.swift in Sources */,
+				7A3574B42B2F0DEC00FF5DB2 /* SecondSharedView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A7F877B2AEF559C00F14B11 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -786,13 +824,13 @@
 				A84350DE2B2369B5006CDD60 /* MemoDummy.swift in Sources */,
 				0043A2BD2B247D1F0094A2E7 /* MemoAPI.swift in Sources */,
 				00652DA02B1440BC004C3345 /* Dummy.swift in Sources */,
+				7A3574C72B2F175900FF5DB2 /* TagViewModel.swift in Sources */,
 				00A73DFF2B0C324200B59084 /* User.swift in Sources */,
 				00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */,
 				7ABBCCF32B2EDE5500E4E3F7 /* NotiLogEntity+CoreDataProperties.swift in Sources */,
 				00CEBC9A2B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld in Sources */,
 				00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */,
 				7ABBCCF22B2EDE5500E4E3F7 /* TagEntity+CoreDataProperties.swift in Sources */,
-				008DB1B12B2D744C001F9064 /* TagViewModel.swift in Sources */,
 				7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */,
 				7ABBCCF72B2EDE5500E4E3F7 /* TagEntity+CoreDataClass.swift in Sources */,
 				7ABBCCF02B2EDE5500E4E3F7 /* MemoEntity+CoreDataProperties.swift in Sources */,
@@ -819,25 +857,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7ABBCCFA2B2EE55800E4E3F7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7ABBCD132B2EE5E400E4E3F7 /* CoreDataContainer.xcdatamodeld in Sources */,
-				7ABBCD2B2B2EE89500E4E3F7 /* Dummy.swift in Sources */,
-				7ABBCD252B2EE85100E4E3F7 /* Card.swift in Sources */,
-				7ABBCD0E2B2EE59000E4E3F7 /* FirstSharedView.swift in Sources */,
-				7ABBCD292B2EE88200E4E3F7 /* Tags.swift in Sources */,
-				7ABBCD272B2EE86C00E4E3F7 /* MainContainerView.swift in Sources */,
-				7ABBCD2D2B2EE8AE00E4E3F7 /* Presets.swift in Sources */,
-				7ABBCD012B2EE55800E4E3F7 /* ShareViewController.swift in Sources */,
-				7ABBCD102B2EE5A100E4E3F7 /* SecondSharedView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7A3574AC2B2F0CD300FF5DB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A3574A22B2F0CD300FF5DB2 /* ShareExtension */;
+			targetProxy = 7A3574AB2B2F0CD300FF5DB2 /* PBXContainerItemProxy */;
+		};
 		7A7F87912AEF559E00F14B11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7A7F877E2AEF559C00F14B11 /* Cuckoo */;
@@ -848,18 +875,13 @@
 			target = 7A7F877E2AEF559C00F14B11 /* Cuckoo */;
 			targetProxy = 7A7F879A2AEF559E00F14B11 /* PBXContainerItemProxy */;
 		};
-		7ABBCD072B2EE55800E4E3F7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7ABBCCFD2B2EE55800E4E3F7 /* ShareExtension */;
-			targetProxy = 7ABBCD062B2EE55800E4E3F7 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7ABBCD022B2EE55800E4E3F7 /* MainInterface.storyboard */ = {
+		7A3574A72B2F0CD300FF5DB2 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7ABBCD032B2EE55800E4E3F7 /* Base */,
+				7A3574A82B2F0CD300FF5DB2 /* Base */,
 			);
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
@@ -867,6 +889,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7A3574AF2B2F0CD300FF5DB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A3574B02B2F0CD300FF5DB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		7A7F87A12AEF559E00F14B11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1134,61 +1206,18 @@
 			};
 			name = Release;
 		};
-		7ABBCD0A2B2EE55800E4E3F7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4QG3GC35LA;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ShareExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo.ShareExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		7ABBCD0B2B2EE55800E4E3F7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4QG3GC35LA;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ShareExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo.ShareExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7A3574AE2B2F0CD300FF5DB2 /* Build configuration list for PBXNativeTarget "ShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A3574AF2B2F0CD300FF5DB2 /* Debug */,
+				7A3574B02B2F0CD300FF5DB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7A7F877A2AEF559C00F14B11 /* Build configuration list for PBXProject "Cuckoo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1221,15 +1250,6 @@
 			buildConfigurations = (
 				7A7F87AA2AEF559E00F14B11 /* Debug */,
 				7A7F87AB2AEF559E00F14B11 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7ABBCD092B2EE55800E4E3F7 /* Build configuration list for PBXNativeTarget "ShareExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7ABBCD0A2B2EE55800E4E3F7 /* Debug */,
-				7ABBCD0B2B2EE55800E4E3F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

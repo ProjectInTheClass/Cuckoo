@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 struct FirstSharedView: View {
     
     @State public var memoTitle: String = "" // 사용자가 입력할 제목을 저장할 상태 변수입니다.
@@ -463,7 +462,3 @@ struct FirstSharedView: View {
         Spacer()
     }
 }
-
-
-
-
