@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 // MemoDetailView
 struct MemoDetailView: View {
@@ -13,8 +14,18 @@ struct MemoDetailView: View {
     @State private var isEditing = false
     @State private var showDeleteAlert = false
     @State private var showActionButtons = false
-    @State private var selectedReminder = "7일"
     @StateObject var viewModel: MemoDetailViewModel
+    @ObservedObject var presetViewModel = AlarmPresetViewModel.shared
+    
+    var title: String
+    var comment: String
+    var url: URL?
+    var thumbURL: URL?
+    var noti_cycle: Int32
+    var noti_preset: AlarmPresetEntity?
+    var noti_count: Int32
+    
+    @SwiftUI.Environment(\.dismiss) var dismiss
     // Constants
     let reminderOptions = ["없음", "7일", "14일", "21일"]
 
@@ -29,9 +40,10 @@ struct MemoDetailView: View {
             ScrollView(.vertical, showsIndicators:false) {
                 VStack(alignment: .leading, spacing: 40) {
                     MemoThumbnailImageView(
-                        memo: viewModel.memo,
-                        width: .infinity,
-                        height: 150
+                        width: UIScreen.main.bounds.width - 60,
+                        height: 150,
+                        thumbURL: thumbURL,
+                        url: url
                     ).padding(.top, 20)
                     
                     VStack(alignment: .leading, spacing: 5) {
@@ -40,29 +52,32 @@ struct MemoDetailView: View {
                             editedTitle: $viewModel.memo.title
                         )
                         
-                        TagsView(tags: viewModel.tags)
+                        TagsView(tags: $viewModel.tags)
                     }
                     
-                    if viewModel.memo.url != nil {
-                        MemoLinkView(link: URL(string: viewModel.memo.url))
-                    }
+                    MemoLinkView(
+                        link: $viewModel.memo.url,
+                        isEditing: $viewModel.isEditing
+                    )
                     
                     MemoContentView(
                         isEditing: $viewModel.isEditing,
                         Comment: $viewModel.memo.comment
                     )
                     
-                    ReminderPickerView(
+                    MemoAlarmPresetFormView(
+                        presetList: $presetViewModel.presets,
                         selectedReminder: $viewModel.selectedReminder,
-                        isEditing: $viewModel.isEditing,
-                        reminderOptions: viewModel.reminderOptions
+                        isEditing: $viewModel.isEditing
                     )
                     
                     // MemoDetailView에서 MemoInfoView 호출 부분
-                    MemoInfoView(createdAt: viewModel.memo.createdAt, updatedAt: viewModel.memo.updatedAt)
+                    MemoInfoView(createdAt: viewModel.memo.created_at, updatedAt: viewModel.memo.updated_at)
 
                 }.padding(.bottom, 20)
-            }.padding(.horizontal, 30)
+            }
+            .onAppear(perform : UIApplication.shared.hideKeyboard)
+            .padding(.horizontal, 30)
             
             
         }
@@ -71,7 +86,9 @@ struct MemoDetailView: View {
                 isEditing: $viewModel.isEditing,
                 showActionButtons: $viewModel.showActionButtons,
                 showDeleteAlert: $viewModel.showDeleteAlert,
-                saveChanges: viewModel.saveChanges,
+                saveChanges: {
+                    viewModel.saveChanges()
+                },
                 deleteMemo: viewModel.deleteMemo)
                     .padding(.trailing, 15),
             alignment: .bottom)
@@ -80,22 +97,16 @@ struct MemoDetailView: View {
                 title: Text("삭제 확인"),
                 message: Text("이 메모를 삭제하시겠습니까?"),
                 primaryButton: .destructive(Text("삭제")) {
+                    // TODO :: CoreData에 있는 MemoEntity의 id를 deleteMemo에 넘기기
+                    // CoreData Entity에 id를 어떻게 넘겨야 하는지 몰라서 작성
                     viewModel.deleteMemo()
+                    
+                    dismiss()
                 },
                 secondaryButton: .cancel()
             )
         }
         .navigationBarBackButtonHidden(true)
-    }
-    
-    func saveChanges() {
-        // Implement your save changes logic here
-        print("Changes saved")
-    }
-    
-    func deleteMemo() {
-        // Implement your delete memo logic here
-        print("Memo deleted")
     }
 }
 
@@ -122,20 +133,22 @@ struct MemoTitleView: View {
 
 // Tags View
 struct TagsView: View {
-    let tags: [Tag]
+    @Binding var tags: [TagEntity]?
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(tags) { tag in
-                    Text(tag.name)
-                        .font(.caption.weight(.bold))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(Color.fromHex(tag.color))
-                        .foregroundColor(.black)
-                        .cornerRadius(15)
+                if let tags = tags {
+                    ForEach(tags, id: \.self) { tag in
+                        Text(tag.name)
+                            .font(.caption.weight(.bold))
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(Color.fromHex(tag.color))
+                            .foregroundColor(.black)
+                            .cornerRadius(15)
+                    }
                 }
             }
         }
@@ -144,8 +157,21 @@ struct TagsView: View {
 
 // Link View
 struct MemoLinkView: View {
-    var link: URL? // URL? 타입으로 변경
+    @Binding var link: URL?
+    @Binding var isEditing: Bool
+    @State private var linkString: String = ""
+    @FocusState private var isTyping: Bool
 
+    
+    private func pasteFromClipboard() {
+        if let clipboardString = UIPasteboard.general.string {
+            // 클립보드의 문자열이 유효한 URL인지 확인
+            if URL(string: clipboardString) != nil {
+                linkString = clipboardString
+            }
+        }
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             VStack(alignment: .leading, spacing: 5) {
@@ -156,19 +182,48 @@ struct MemoLinkView: View {
                     
                     Spacer()
                 }
-                if let url = link {
-                    Link(destination: url) {
-                        Text(url.absoluteString)
+
+                if isEditing {
+                    // 수정 가능한 텍스트 필드
+                    TextField("링크 입력해주세요!", text: $linkString)
+                        .font(.system(size: 12, weight: .medium))
+                        .focused($isTyping)
+                        .underline()
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                        .foregroundColor(Color.gray)
+                        .onTapGesture {
+                            if !isTyping{
+                                pasteFromClipboard()
+                            }
+                        }
+                        .onChange(of: linkString) { newValue in
+                            self.link = URL(string: newValue)
+                        }
+                        .onAppear {
+                            // 편집 모드에 진입할 때 URL을 문자열로 변환
+                            self.linkString = self.link?.absoluteString ?? ""
+                        }
+                } else {
+                    // Link 뷰
+                    if let url = link {
+                        Link(destination: url) {
+                            Text(url.absoluteString)
+                                .font(.system(size: 12, weight: .medium))
+                                .underline()
+                                .lineLimit(1)
+                                .truncationMode(.tail)
+                                .foregroundColor(Color.gray)
+                        }
+                    } else {
+                        TextField("링크 입력해주세요!", text: $linkString)
                             .font(.system(size: 12, weight: .medium))
                             .underline()
                             .lineLimit(1)
                             .truncationMode(.tail)
-                            .foregroundColor(Color.gray)
+                            .foregroundColor(Color.cuckooNormalGray)
+                            .disabled(true)
                     }
-                } else {
-                    Text("")
-                        .font(.system(size: 12, weight: .medium))
-                        .foregroundColor(Color.gray)
                 }
             }
         }
@@ -333,8 +388,6 @@ struct PickerView: View {
                     .padding()
                     
                     Button("확인") {
-                        // Handle the selected multiplier
-                        // You can update your UI or perform other actions here
                         isMultiplierPopoverPresented.toggle()
                     }
                     .padding()
@@ -347,8 +400,8 @@ struct PickerView: View {
 
 
 struct MemoInfoView: View{
-    let createdAt: String
-    let updatedAt: String
+    let createdAt: Date?
+    let updatedAt: Date?
     var body: some View{
         VStack(alignment: .leading, spacing: 3) {
             Text("메모 정보")
@@ -357,14 +410,25 @@ struct MemoInfoView: View{
             
             
             VStack {
-                Text("생성 일자: \(createdAt)")
+                Text("생성 일자: \(formattedDate(date: createdAt) ?? "정보 없음")")
                     .font(.footnote)
                     .foregroundColor(.gray)
-                Text("수정 일자: \(updatedAt)")
+                Text("수정 일자: \(formattedDate(date: updatedAt) ?? "정보 없음")")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
         }
+    }
+    
+    private func formattedDate(date: Date?) -> String? {
+        guard let date = date else {
+            return nil
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yy.MM.dd HH:mm:ss"
+
+        return dateFormatter.string(from: date)
     }
 }
 
@@ -385,6 +449,7 @@ struct EditButtonView: View {
                     VStack {
                         if !isEditing {
                             Button(action: {
+                                print("toggled")
                                 isEditing = true
                             }) {
                                 Image(systemName: "pencil")
@@ -409,8 +474,11 @@ struct EditButtonView: View {
                         }
                     }
                     .padding(.horizontal, 20)
+                }.onAppear {
+                    print("hihi")
                 }
             }
+                
 
             HStack {
                 Spacer()
@@ -435,29 +503,3 @@ struct EditButtonView: View {
         
     }
 }
-
-//struct MemoDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        // 더미 데이터 생성
-//        let dummyMemo = Memo(
-//            id: 1, // id 추가 (예시로 1을 사용)
-//            userId: 1, // userId 추가 (예시로 1을 사용)
-//            title: "Sample Memo",
-//            comment:"This is a sample memo.",
-//            url: URL(string: "https://www.example.com"),
-//            thumbURL: URL(string: "https://www.example.com"),
-//            notificationCycle: 7, // 예시 값
-//            notificationPreset: 2,
-//            notificationCount: 3, // 예시 횟수
-//            isPinned: 0 // 예시 고정 상태
-//        )
-//
-//
-//        // 더미 데이터를 사용하여 ViewModel 인스턴스 생성
-//        let viewModel = MemoDetailViewModel(memo: dummyMemo)
-//
-//        // 생성된 ViewModel을 사용하여 MemoDetailView 렌더링
-//        MemoDetailView(viewModel: viewModel)
-//    }
-//}
-

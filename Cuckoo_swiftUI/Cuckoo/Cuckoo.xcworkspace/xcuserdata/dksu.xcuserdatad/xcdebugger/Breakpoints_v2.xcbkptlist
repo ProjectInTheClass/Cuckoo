@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "076382D5-D97E-4B81-AE94-3D204FAAB95F"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "97F41F79-212D-4D0B-AAAC-98FB6AD1FD80"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cuckoo/Views/SettingViews/SettingTagView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3"
+            endingLineNumber = "3"
+            landmarkName = "SettingTagView"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0F8A5ABB-B3FE-49B3-8CCA-CCCB16D0C904"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cuckoo/ViewModels/MemoViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "applyFilters()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0F8A5ABB-B3FE-49B3-8CCA-CCCB16D0C904 - cc39fa5e3d75f912"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Cuckoo.MemoEntity) -&gt; Swift.Bool in Cuckoo.MemoViewModel.applyFilters() -&gt; ()"
+                  moduleName = "Cuckoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "1680">
+               </Location>
+               <Location
+                  uuid = "0F8A5ABB-B3FE-49B3-8CCA-CCCB16D0C904 - cc39fa5e3d75f912"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Cuckoo.MemoEntity) -&gt; Swift.Bool in Cuckoo.MemoViewModel.applyFilters() -&gt; ()"
+                  moduleName = "Cuckoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "1444">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

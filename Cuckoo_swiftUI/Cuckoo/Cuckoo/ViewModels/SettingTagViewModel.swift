@@ -10,9 +10,10 @@ import Foundation
 import Foundation
 
 class SettingTagViewModel: ObservableObject {
-    @Published var tags: [Tag]
+//    static let shared: Setting
+    @Published var tags: [TagEntity]
 
-    init(tags: [Tag] = dummyTags) {
+    init(tags: [TagEntity]) {
         self.tags = tags
     }
     
@@ -34,8 +35,8 @@ class SettingTagViewModel: ObservableObject {
 
         /// 성공적으로 추가했다면, 응답에서 id을 반환받아서, Tag 객체를 새로 정의해서 Tag  배열에 넣고
         /// 실패했다면 alert 등을 띄우기 (중복 문제라던가 등등)
-        let newTag = Tag(id: tags.count + 1, name: name, color: color, memoCount: 0)
-        tags.append(newTag)
+//        let newTag = TagEntity(id: tags.count + 1, name: name, color: color, memoCount: 0)
+//        tags.append(newTag)
     }
     
     func editTag(uuid: String!, tag_id: Int, name: String?, color: String?) {

@@ -8,16 +8,18 @@
 import SwiftUI
 import Combine
 
+let defaults = UserDefaults.standard
 
 struct Init_AddNameAndTagView: View {
+    @ObservedObject var userViewModel = UserProfileViewModel.shared
+    
     // 상태 관리를 위한 변수 추가
     @State private var showAddTagForm = false
     @State private var buttonText = "프로필 입력 완료!"
     @State private var headerTitle = "누구인지 알려주세요!"
     @State private var navigateToNextScreen = false
-    @ObservedObject var userProfile = UserProfileViewModel.userProfile
-    @State var userName = "__의 메모장"
-
+    
+    @State var username = "____"
     var body: some View {
         NavigationView {
             VStack {
@@ -27,7 +29,9 @@ struct Init_AddNameAndTagView: View {
                     .frame(maxWidth: .infinity)
                 
                 VStack(alignment: .center, spacing: 30) {
-                    AddNameView(userName : $userName)
+                    AddNameView(
+                        username: $username
+                    )
                         .frame(maxWidth: .infinity)//임시처리
                     
                     BarDivider()
@@ -52,23 +56,23 @@ struct Init_AddNameAndTagView: View {
                 }
 
                 // 버튼 클릭 시 액션 추가
-                ConfirmFixedButton(confirmMessage: buttonText)
+                ConfirmFixedButton(confirmMessage: buttonText, logic: {
+                    if !showAddTagForm {
+                        withAnimation(Animation.easeInOut(duration: 0.3)) {
+                            self.showAddTagForm.toggle()
+                            
+                            
+                        }
+                        self.buttonText = "태그 추가 완료"
+                        self.headerTitle = "태그를 추가해주세요!"
+                    } else {
+                        // 다른 화면으로 이동
+                        userViewModel.username = username;
+                        self.navigateToNextScreen = true
+                    }
+                })
                     .frame(height: 120)
                     .frame(maxWidth: .infinity)
-                    .onTapGesture {
-                        if !showAddTagForm {
-                            withAnimation {
-                                self.showAddTagForm.toggle()
-                                
-                                userProfile.createUser(username: userName)//AddNameView의 userName을 받아와서 넣기
-                            }
-                            self.buttonText = "태그 추가 완료"
-                            self.headerTitle = "태그를 추가해주세요!"
-                        } else {
-                            // 다른 화면으로 이동
-                            self.navigateToNextScreen = true
-                        }
-                    }
                 
                     
                     
@@ -85,11 +89,11 @@ struct Init_AddNameAndTagView_Previews: PreviewProvider {
 
 // Components
 struct AddNameView: View {
-    @Binding var userName: String
+    @Binding var username: String
     @FocusState private var isEditing: Bool
 
     func getUserName() -> String{
-        return userName
+        return username
     }
     
     var body: some View {
@@ -106,8 +110,8 @@ struct AddNameView: View {
                     
                     HStack {
                         Spacer()
-                        
-                        TextField("", text: $userName)
+                        // TODO: 가운데정렬, trucation 안생기게
+                        TextField("", text: $username)
                             .focused($isEditing)
                             .font(.system(size: 20, weight: .heavy))
                             .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
@@ -124,23 +128,24 @@ struct AddNameView: View {
     }
 }
 
-// 태그를 나타내는 구조체 정의
-struct Tag_init: Hashable {
-    var name: String
-    var color: String
-}
-
 struct AddTagFormView: View {
-    @State private var tags: [Tag_init] = [
-        Tag_init(name: "전체", color: "#b2b2b2"),
-        Tag_init(name: "메모", color: "#b2b2b2"),
-        Tag_init(name: "메모1", color: "#b2b2b2"),
-        Tag_init(name: "메모2", color: "#b2b2b2"),
-        Tag_init(name: "메모3", color: "#b2b2b2"),
-        Tag_init(name: "메모4", color: "#b2b2b2"),
-        // 추가 태그는 여기에
-    ]
+    @ObservedObject var tagViewModel = TagViewModel.shared
+    @State var isAddPopoverPresented = false
     
+    @State var newTagTitle = ""
+    @State var newTagColor = Color.gray
+    
+    @State var emptyTagTitle = false
+    @State var showTagAlert = false
+    @State var showEmptyTitleAlert = false
+    
+    @State var isEnabled = true
+    
+    init() {
+        if tagViewModel.tags.isEmpty {
+            tagViewModel.addTag(name: "전체", color: "6D25E0")
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -148,16 +153,56 @@ struct AddTagFormView: View {
             CardContent {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(tags, id: \.self) { tag in
-                            TypeBubble(tag.name, tag.color)
+                        ForEach(tagViewModel.tags, id: \.self) { tag in
+                            SettingTagBubble(tag: tag)
                         }
                         
-                        // TODO: '+' 버튼 토글 이벤트
-                        Image(systemName: "plus.circle.fill")
-                            .font(.system(size:25, weight: .medium))
-                            .foregroundColor(Color(red:100, green: 0, blue:0).opacity(0.9))
-                            .onTapGesture {
-                                // 여기에 버튼 토글 이벤트 처리 로직 추가
+                        AddButton(isEnabled: $isEnabled, logic: {
+                            isAddPopoverPresented.toggle()
+                        })
+                        .popover(
+                            isPresented: $isAddPopoverPresented,
+                            attachmentAnchor: .rect(.bounds),
+                            arrowEdge: .bottom) {
+                                // 태그 추가 팝업창
+                                VStack {
+                                    Text("새로운 태그 추가")
+                                        .font(.headline)
+                                        .padding()
+                                    
+                                    TextField("태그 제목", text: $newTagTitle)
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .padding()
+                                    
+                                    
+                                    ColorPicker("색상 선택", selection: $newTagColor, supportsOpacity: false)
+                                        .padding()
+                                    
+                                    Button("확인") {
+                                        // 새로운 태그를 만들어서 tagButtonList에 추가
+                                        if newTagTitle.isEmpty{
+                                            emptyTagTitle = true
+                                        }
+                                        else{
+                                            tagViewModel.addTag(name: newTagTitle, color: newTagColor.hexCode())
+                                            newTagTitle = "" // 새로운 태그 제목 초기화
+                                            newTagColor = Color.gray
+                                            isAddPopoverPresented.toggle()
+                                        }
+                                    }
+                                    .padding()
+                                }
+                                .padding(.horizontal, 30)
+                                .alert(isPresented: $emptyTagTitle) {//차후 이미 존재하는 태그들에 대해서 이슈가 있을 수 있음.
+                                    Alert(
+                                        title: Text("알림"),
+                                        message: Text("빈 제목의 태그는 만들 수 없습니다."),
+                                        dismissButton: .default(Text("확인")){
+                                            showTagAlert = false
+                                            showEmptyTitleAlert = false
+                                        }
+                                    )
+                                }
                             }
                     }
                 }

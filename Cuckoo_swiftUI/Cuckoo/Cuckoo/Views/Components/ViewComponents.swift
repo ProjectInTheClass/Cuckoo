@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import CoreData
 
 struct HeaderView: View {
     var title: String = ""
@@ -61,19 +62,24 @@ struct BarDivider: View {
 
 struct ConfirmFixedButton: View {
     var confirmMessage: String
+    var logic : () -> Void
     
     var body: some View {
         VStack {
+            Button {
+                logic()
+            }label: {
                 Text(confirmMessage)
-                .font(.system(size: 20, weight: .bold))
-                .foregroundColor(.white)
-        }
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(.white)
+                
+            }}
         .frame(maxWidth: .infinity)
         .padding(15)
         .background(.purple)
         .cornerRadius(15)
         .padding(.horizontal, 30)
-
+        
     }
 }
 
@@ -87,8 +93,8 @@ struct presetButton : Hashable{// Hash=> 기억해두자
     var emoji : String
     var alarmName : String
     var time : String
-    var preset_id : Int
-    init(emoji: String, alarmName: String, time: String, preset_id : Int) {
+    var preset_id : NSManagedObjectID
+    init(emoji: String, alarmName: String, time: String, preset_id : NSManagedObjectID) {
         self.emoji = emoji
         self.alarmName = alarmName
         self.time = time
@@ -112,7 +118,7 @@ struct NotificationButtonStyle: ButtonStyle {
         configuration.label
             .frame(maxWidth: .infinity)
             .padding()
-            .background(selected ? Color(red: 109 / 255, green: 37 / 255, blue: 224 / 255) : Color(red: 246 / 255, green: 246 / 255, blue: 246 / 255))
+            .background(selected ? Color.cuckooSignature : Color.superPure)
             .foregroundColor(selected ? .white : .black)
             .cornerRadius(10)
     }
@@ -141,6 +147,8 @@ extension Color {
     static let cuckooNormalGray = Color(red: 0.7, green: 0.7, blue: 0.7)
     static let cuckooLightGray = Color(red: 0.85, green: 0.85, blue: 0.85)
     static let backgroundCandidate = Color(red: 1.00, green: 0.99, blue: 0.96)
+    static let cuckooSignature = Color(red: 109 / 255, green: 37 / 255, blue: 224 / 255)
+    static let superPure = Color(red: 245 / 255, green: 244 / 255, blue: 244 / 255)
     
     func toHex() -> String? {
             let uiColor = UIColor(self)

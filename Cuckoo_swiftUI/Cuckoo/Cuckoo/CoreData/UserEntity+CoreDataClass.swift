@@ -1,0 +1,15 @@
+//
+//  UserEntity+CoreDataClass.swift
+//  
+//
+//  Created by DKSU on 12/17/23.
+//
+//
+
+import Foundation
+import CoreData
+
+@objc(UserEntity)
+public class UserEntity: NSManagedObject {
+
+}
