@@ -17,6 +17,7 @@
 		0043A2C32B247D630094A2E7 /* AlarmPresetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043A2C22B247D630094A2E7 /* AlarmPresetAPI.swift */; };
 		0043A2C52B247D6D0094A2E7 /* NotiLogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043A2C42B247D6D0094A2E7 /* NotiLogAPI.swift */; };
 		0043A2C72B247FC50094A2E7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043A2C62B247FC50094A2E7 /* NetworkManager.swift */; };
+		0056C0242B2EB8FA001148AD /* NotificationLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0056C0232B2EB8FA001148AD /* NotificationLogViewModel.swift */; };
 		00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */; };
 		00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */; };
 		00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D932B143E51004C3345 /* MemoDetailView.swift */; };
@@ -119,6 +120,7 @@
 		0043A2C22B247D630094A2E7 /* AlarmPresetAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPresetAPI.swift; sourceTree = "<group>"; };
 		0043A2C42B247D6D0094A2E7 /* NotiLogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiLogAPI.swift; sourceTree = "<group>"; };
 		0043A2C62B247FC50094A2E7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0056C0232B2EB8FA001148AD /* NotificationLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLogViewModel.swift; sourceTree = "<group>"; };
 		00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2_Init_AddAlarmPresetView.swift; sourceTree = "<group>"; };
 		00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3_Init_AddInfoConfirmView.swift; sourceTree = "<group>"; };
 		00652D932B143E51004C3345 /* MemoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailView.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */,
 				00133EB12B24128E0035AB70 /* UserProfileViewModel.swift */,
 				008DB1B02B2D744C001F9064 /* TagViewModel.swift */,
+				0056C0232B2EB8FA001148AD /* NotificationLogViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				00652D9C2B143FAE004C3345 /* SettingProfileView.swift in Sources */,
 				7D8DE4C12B1EB0A6004502FF /* NotificationLog.swift in Sources */,
 				0022CB232B1FA9A900EC6A66 /* NotificationLogView.swift in Sources */,
+				0056C0242B2EB8FA001148AD /* NotificationLogViewModel.swift in Sources */,
 				00F862E02B2E426D001AD1CA /* TagEntity+CoreDataClass.swift in Sources */,
 				00133EB22B24128E0035AB70 /* UserProfileViewModel.swift in Sources */,
 				00F862E62B2E426D001AD1CA /* UserEntity+CoreDataClass.swift in Sources */,
