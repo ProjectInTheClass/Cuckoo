@@ -364,7 +364,6 @@
 				00A73DF82B0C318600B59084 /* ViewModels */,
 				00A73DF72B0C301200B59084 /* Views */,
 				7A7F87822AEF559C00F14B11 /* CuckooApp.swift */,
-				7A7F87862AEF559D00F14B11 /* Assets.xcassets */,
 				7A7F87882AEF559D00F14B11 /* Preview Content */,
 			);
 			path = Cuckoo;
@@ -381,6 +380,7 @@
 		7A7F87922AEF559E00F14B11 /* CuckooTests */ = {
 			isa = PBXGroup;
 			children = (
+				7A7F87862AEF559D00F14B11 /* Assets.xcassets */,
 				7A7F87932AEF559E00F14B11 /* CuckooTests.swift */,
 			);
 			path = CuckooTests;

@@ -241,6 +241,36 @@ struct TagNoEntireView: View {
             }
         }
 }
+struct TagCountView: View {
+    let tag: TagEntity
+    var isSelected: Bool = true
+
+    // 메모 개수 계산
+    var memoCount: Int {
+        (tag.tag_memo as? Set<MemoEntity>)?.count ?? 0
+    }
+
+    var body: some View {
+        // "전체" 태그를 숨기는 조건 추가
+        if tag.name != "전체" {
+            HStack {
+                Text(tag.name)
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(Color.white)
+
+                Text(" \(memoCount)개")
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(Color.white.opacity(0.7))
+            }
+            .padding(.vertical, 5)
+            .padding(.horizontal, 10)
+            .background(Color.fromHex(tag.color))
+            .cornerRadius(15)
+            .opacity(isSelected ? 1 : 0.4)
+        }
+    }
+}
+
 
 struct SettingTagHeaderView: View {
     var body: some View {
