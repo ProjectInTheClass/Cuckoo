@@ -9,10 +9,12 @@ import Foundation
 import SwiftUI
 import SwiftSoup
 import CoreData
+import MobileCoreServices
 
 struct SecondSharedView: View {
     
-    @Binding var onClose: () -> Void // 창을 닫기 위해서 있음
+    @Binding var onClose: () -> Void
+    @Binding var onOpenInApp : (URL) -> Void
     @Binding var newMemo: MemoEntity?
     
     @State private var registrationCompleted: Bool = false
@@ -53,17 +55,16 @@ struct SecondSharedView: View {
                 }
                 .foregroundColor(.white)
                 .padding()
-                .frame(width: 150, height: 50) // Set a fixed size for the button
+                .frame(width: 150, height: 50)
                 .background(Color.cuckooViolet)
                 .cornerRadius(10)
 
                 Button("앱에서 보기") {
-                    // Handle the action for "앱에서 보기"
-                    // TODO : "http://Cuckoo/a" 로 연결 , 단, share extension이기 때문에 UIApplication.shared은 쓰지 못한다.
+                    onOpenInApp(URL(string: "http://Cuckoo/a")!)
                 }
                 .foregroundColor(.white)
                 .padding()
-                .frame(width: 150, height: 50) // Set the same fixed size for the button
+                .frame(width: 150, height: 50)
                 .background(Color.cuckooPurple)
                 .cornerRadius(10)
 
@@ -76,4 +77,7 @@ struct SecondSharedView: View {
         }
         .padding(20)
     }
+    
+    
 }
+

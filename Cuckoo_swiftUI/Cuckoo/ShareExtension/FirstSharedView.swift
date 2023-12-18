@@ -5,6 +5,7 @@ import CoreData
 
 struct FirstSharedView: View {
     @State var onClose : () -> Void
+    @State var onOpenInApp : (URL) -> Void
     @StateObject private var viewModel = AddMemoViewModel()
     @ObservedObject private var presetViewModel = AlarmPresetViewModel.shared
 
@@ -14,9 +15,10 @@ struct FirstSharedView: View {
     @State var newMemo: MemoEntity?
 
     // ContentView의 initializer 추가
-    init(linkURL: String, onClose: @escaping () -> Void) {
+    init(linkURL: String, onClose: @escaping () -> Void, onOpenInApp : @escaping (URL) -> Void) {
         newURL = linkURL
         self.onClose = onClose
+        self.onOpenInApp = onOpenInApp
         self.newMemo = nil
     }
 
@@ -97,7 +99,7 @@ struct FirstSharedView: View {
             )
         }
         .popover(isPresented: $isSecondViewPresented, arrowEdge: .bottom) {
-            SecondSharedView(onClose: $onClose, newMemo: $newMemo)
+            SecondSharedView(onClose: $onClose, onOpenInApp: $onOpenInApp, newMemo: $newMemo)
                 .frame(height: 500) // Set specific height for popover
         }
         .overlay(
