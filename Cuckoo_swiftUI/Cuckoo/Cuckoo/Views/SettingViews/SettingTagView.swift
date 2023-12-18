@@ -240,12 +240,13 @@ struct TagNoEntireView: View {
         }
 }
 struct TagCountView: View {
-    let tag: TagEntity
+    var tag: TagEntity
+    var count : Int
     var isSelected: Bool = true
-
-    // 메모 개수 계산
-    var memoCount: Int {
-        (tag.tag_memo as? Set<MemoEntity>)?.count ?? 0
+    
+    init(tag: TagEntity, count: Int) {
+        self.tag = tag
+        self.count = count
     }
 
     var body: some View {
@@ -256,7 +257,7 @@ struct TagCountView: View {
                     .font(.system(size: 14, weight: .medium))
                     .foregroundColor(Color.white)
 
-                Text(" \(memoCount)개")
+                Text(" \(count)개")
                     .font(.system(size: 14, weight: .medium))
                     .foregroundColor(Color.white.opacity(0.7))
             }

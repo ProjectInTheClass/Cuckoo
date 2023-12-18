@@ -83,8 +83,6 @@ struct SettingsProfileView: View {
                             }
                             .padding()
                             
-                            //                            Spacer()
-                            
                             Button("확인") {
                                 // Handle username confirmation
                                 if !editedUsername.isEmpty {
@@ -99,18 +97,13 @@ struct SettingsProfileView: View {
                 }
             }.padding()
             
-            //수치 정보 창
-//            HStack(spacing: 30) {
-//                RoundedStatsView(title: "보유 메모 수", value: memoViewModel.memos.count)
-//                RoundedStatsView(title: "누적 알림", value: notificationCount)
-//            }.padding(.bottom, 30)
-            
             //디바이더
             Divider()
                 .frame(width: UIScreen.main.bounds.width/1.15)
                 .padding(.vertical, 20)
             
-            TagSectionView(tagViewModel: tagViewModel).padding(.horizontal, 20)
+            TagSectionView()
+                .padding(.horizontal, 20)
             
             //디바이더
             Divider()
@@ -149,7 +142,7 @@ struct RoundedStatsView: View {
 }
 
 struct TagSectionView: View {
-    @ObservedObject var tagViewModel: TagViewModel
+    @ObservedObject var tagViewModel = TagViewModel.shared
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -161,7 +154,10 @@ struct TagSectionView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(tagViewModel.tags, id: \.self) { tag in
-                        TagCountView(tag: tag)
+                        TagCountView(
+                            tag: tag,
+                            count: (tag.tag_memo as? Set<MemoEntity>)?.count ?? 0
+                        )
                     }
                 }
                 .padding(.vertical, 10)
