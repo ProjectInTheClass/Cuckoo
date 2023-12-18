@@ -62,7 +62,8 @@ struct AddMemoView: View {
                     message: Text(viewModel.memoTitle.isEmpty || viewModel.memoContent.isEmpty || viewModel.tags.isEmpty ? "태그와 제목과 내용은 필수입니다." : "메모를 등록하시겠습니까?"),
                     primaryButton: .destructive(Text("확인")) {
                         if !(viewModel.memoTitle.isEmpty || viewModel.memoContent.isEmpty || viewModel.tags.isEmpty) {
-                            viewModel.addNewMemo()
+                            viewModel.addNewMemo { newMemo in
+                            }
                             dismiss()
                         }
                     },

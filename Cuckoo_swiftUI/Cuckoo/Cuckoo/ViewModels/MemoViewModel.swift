@@ -52,57 +52,68 @@ class MemoViewModel: ObservableObject {
     }
     
     func browseMemos() {
-        self.memos = []
         self.fetchMemo()
         save()
     }
     
+    func getMemo(memoID: NSManagedObjectID) -> MemoEntity? {
+        
+        let context = container.viewContext
+        if let targetMemo = context.object(with: memoID) as? MemoEntity {
+            return targetMemo
+        }
+        
+        return nil
+    }
+    
     // 3. ADD CORE DATA
-    func addMemo(title: String, comment: String, url: URL?, notificationCycle: Int, notificationPreset: AlarmPresetEntity?, isPinned: Bool, tags: [TagEntity]) {
+    func addMemo(title: String, comment: String, url: URL?, notificationCycle: Int, notificationPreset: AlarmPresetEntity?, isPinned: Bool, tags: [TagEntity], completion: @escaping (MemoEntity?) -> Void) {
         guard let url = url else {
             // URL이 nil인 경우 처리
             return
         }
         
-        getThumbURL(from: url) { [weak self] result in
-            guard let self = self else { return }
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.getThumbURL(from: url) { [weak self] result in
+                guard let self = self else { return }
 
-            var thumbURLString: String?
-            
-            switch result {
-            case .success(let thumbnailURL):
-                print("Thumbnail URL: \(thumbnailURL)")
-                thumbURLString = thumbnailURL
-            case .failure(let error):
-                print("Error: \(error.localizedDescription)")
-            }
-            
-            DispatchQueue.main.async {
-                let newMemo = MemoEntity(context: self.container.viewContext)
-                newMemo.title = title
-                newMemo.comment = comment
-                newMemo.url = URL(string: url.absoluteString)
-                newMemo.thumbURL = thumbURLString != nil ? URL(string: thumbURLString!) : nil
-                newMemo.noti_cycle = Int32(notificationCycle)
-                newMemo.isPinned = isPinned
-
-                // Preset 관련 관계 처리
-                if let notificationPreset = notificationPreset {
-                    newMemo.memo_preset = notificationPreset
-                    notificationPreset.addToPreset_memo(newMemo)
+                var thumbURLString: String?
+                
+                switch result {
+                case .success(let thumbnailURL):
+                    print("Thumbnail URL: \(thumbnailURL)")
+                    thumbURLString = thumbnailURL
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
                 }
                 
-                // 태그 설정 및 연관 관계 처리
-                for tag in tags {
-                    newMemo.addToMemo_tag(tag)
-                    tag.addToTag_memo(newMemo)
-                }
+                DispatchQueue.main.async {
+                    let newMemo = MemoEntity(context: self.container.viewContext)
+                    newMemo.title = title
+                    newMemo.comment = comment
+                    newMemo.url = URL(string: url.absoluteString)
+                    newMemo.thumbURL = thumbURLString != nil ? URL(string: thumbURLString!) : nil
+                    newMemo.noti_cycle = Int32(notificationCycle)
+                    newMemo.isPinned = isPinned
 
-                newMemo.created_at = Date()
-                newMemo.updated_at = Date()
-                
-                self.save()
-                self.fetchMemo()
+                    // Preset 관련 관계 처리
+                    if let notificationPreset = notificationPreset {
+                        newMemo.memo_preset = notificationPreset
+                        notificationPreset.addToPreset_memo(newMemo)
+                    }
+                    
+                    // 태그 설정 및 연관 관계 처리
+                    for tag in tags {
+                        newMemo.addToMemo_tag(tag)
+                        tag.addToTag_memo(newMemo)
+                    }
+
+                    newMemo.created_at = Date()
+                    newMemo.updated_at = Date()
+                    
+                    self.save()
+                    completion(newMemo)
+                }
             }
         }
     }
@@ -290,7 +301,6 @@ class MemoViewModel: ObservableObject {
     //secondSharedView를 위해서
     func getMostRecentlyCreatedMemo() -> MemoEntity? {
         fetchMemo()
-        print(memos)
         return memos.max(by: { $0.created_at! < $1.created_at! })
     }
 

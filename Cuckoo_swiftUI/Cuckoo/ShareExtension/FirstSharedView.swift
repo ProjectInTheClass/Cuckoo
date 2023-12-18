@@ -1,36 +1,27 @@
-//
-//  FirstSharedView.swift
-//  ShareExtension
-//
-//  Created by 유철민 on 12/6/23.
-//
-
 import Foundation
 import SwiftUI
 import SwiftSoup
-
+import CoreData
 
 struct FirstSharedView: View {
-    
-    @State private var onClose : () -> Void // 화면 닫는 클로저
+    @State var onClose : () -> Void
     @StateObject private var viewModel = AddMemoViewModel()
     @ObservedObject private var presetViewModel = AlarmPresetViewModel.shared
-    @StateObject private var mvm = MemoViewModel.shared
-    
+
     @State var isAddingMemo: Bool = false
     @State var newURL: String = ""
     @State var isSecondViewPresented : Bool = false
-    
+    @State var newMemo: MemoEntity?
+
     // ContentView의 initializer 추가
     init(linkURL: String, onClose: @escaping () -> Void) {
         newURL = linkURL
         self.onClose = onClose
+        self.newMemo = nil
     }
-    
+
     var body: some View {
-        
         VStack {
-            
             HStack {
                 Spacer()
                 Text("메모 등록")
@@ -41,39 +32,37 @@ struct FirstSharedView: View {
                     onClose()
                 }) {
                     Image(systemName: "xmark")
-                    
                         .foregroundColor(.black)
                 }
-            }.frame(height: 60)
-                .frame(maxWidth: .infinity)
-                .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
-            
-            
-            //contents
+            }
+            .frame(height: 60)
+            .frame(maxWidth: .infinity)
+            .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
+
+            // Contents
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 30) {
-                    
-                    //제목
+                    // Title
                     MemoTitleFormView(
                         isEditing: $viewModel.isEditing,
                         editedTitle: $viewModel.memoTitle
                     )
                     
+                    // Type
                     MemoTypeFormView(
                         selectedTags: $viewModel.tags
                     )
                     .frame(maxWidth: .infinity)
                     
-                    //url
+                    // URL
                     MemoUrlTypeFormView(link: $newURL)
                         .frame(maxWidth: .infinity)
                     
-                    //comment 입력
+                    // Comment input
                     MemoContentFormView(memoContent: $viewModel.memoContent)
                         .frame(maxWidth: .infinity)
                     
-                    //alarm period
-                    //TODO : 여기서 MemoAlarmPresetFormView
+                    // Alarm period (using MemoAlarmPresetFormView)
                     MemoAlarmPresetFormView(
                         presetList: $presetViewModel.presets,
                         selectedReminder: $viewModel.selectedReminder,
@@ -88,35 +77,35 @@ struct FirstSharedView: View {
             }
             .frame(maxWidth: .infinity)
             Spacer()
-        }.alert(isPresented: $isAddingMemo) {
+        }
+        .alert(isPresented: $isAddingMemo) {
             Alert(
                 title: Text("알림"),
                 message: Text(viewModel.memoTitle.isEmpty || viewModel.memoContent.isEmpty || viewModel.tags.isEmpty ? "태그와 제목과 내용은 필수입니다." : "메모를 등록하시겠습니까?"),
                 primaryButton: .destructive(Text("확인")) {
                     if !(viewModel.memoTitle.isEmpty || viewModel.memoContent.isEmpty || viewModel.tags.isEmpty) {
                         viewModel.link = newURL
-                        viewModel.addNewMemo()
-                        print(mvm.memos) //memos에 없음...!
-                        isSecondViewPresented.toggle()
-                        ///여기서 SecondSharedView를 띄운다.
+                        viewModel.addNewMemo { newMemoResult in
+                            if let newMemoResult = newMemoResult {
+                                self.newMemo = newMemoResult
+                                isSecondViewPresented.toggle()
+                            }
+                        }
                     }
                 },
                 secondaryButton: .cancel(Text("취소"))
             )
-        }.popover(isPresented: $isSecondViewPresented, arrowEdge: .bottom) {
-            // Pass the necessary bindings to the SecondSharedView
-            SecondSharedView(onClose : $onClose, newURL: $newURL)
         }
-
+        .popover(isPresented: $isSecondViewPresented, arrowEdge: .bottom) {
+            SecondSharedView(onClose: $onClose, newMemo: $newMemo)
+                .frame(height: 500) // Set specific height for popover
+        }
         .overlay(
-            AddMemoFooterView(
-                addMemoAction: {
-                    isAddingMemo.toggle()
-                })
-            .frame(height: 60)
-            .frame(maxWidth: .infinity)
-            ,alignment: .bottom)
+            AddMemoFooterView(addMemoAction: { isAddingMemo.toggle() })
+                .frame(height: 60)
+                .frame(maxWidth: .infinity),
+            alignment: .bottom
+        )
         .navigationBarBackButtonHidden(true)
     }
-    
 }

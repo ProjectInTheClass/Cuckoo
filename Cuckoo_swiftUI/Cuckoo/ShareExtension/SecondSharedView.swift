@@ -8,40 +8,60 @@
 import Foundation
 import SwiftUI
 import SwiftSoup
+import CoreData
 
 struct SecondSharedView: View {
-    
-    @State private var registrationCompleted = false
     @Binding var onClose: () -> Void // 창을 닫기 위해서 있음
-    @Binding var newURL : String
-    @ObservedObject var mvm = MemoViewModel.shared
+    @Binding var newMemo: MemoEntity?
+    
+    @State private var registrationCompleted: Bool = false
     
     var body: some View {
-    
         
-        VStack{
+        
+        VStack(spacing: 20){
             
-            let memo = mvm.getMostRecentlyCreatedMemo()
+            Spacer()
             
             Text("메모 등록 완료!")
+                .font(.system(size: 20, weight: .bold))
+                .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
+            
             
             VStack{
-                BarDivider()
-                
-                MainContainerView(memo: memo!, title: memo!.title, comment: memo!.comment, url: memo!.url, thumbURL: memo!.thumbURL, isPinned: memo!.isPinned, created_at: memo!.created_at)
-                
-                BarDivider()
+                if let _memo = newMemo {
+                    MainContainerView(
+                        memo: _memo,
+                        title: _memo.title,
+                        comment: _memo.comment,
+                        url: _memo.url,
+                        thumbURL: _memo.thumbURL,
+                        isPinned: _memo.isPinned,
+                        created_at: _memo.created_at
+                    )
+                    .frame(maxHeight: 100)
+                    .padding(.horizontal, 30)
+                }
+            
             }
             
-            HStack{
+            
+            HStack(spacing: 30){
+                
+                    Spacer()
                 Button("확인"){
                     onClose()
                 }
                 
+                
                 Button("앱에서 보기"){
                     var a = Link("Open in Browser", destination: URL(string : "Cuckoo://a")!)
                 }
+                
+                    Spacer()
             }
+            
+            Spacer()
         }
     }
 }

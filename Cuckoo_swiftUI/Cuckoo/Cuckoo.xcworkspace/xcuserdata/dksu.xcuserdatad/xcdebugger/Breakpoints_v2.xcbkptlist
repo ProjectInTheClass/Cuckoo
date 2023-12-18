@@ -62,8 +62,8 @@
             filePath = "Cuckoo/ViewModels/MemoViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "applyFilters()"
             landmarkType = "7">
             <Locations>
@@ -110,8 +110,8 @@
             filePath = "Cuckoo/Views/AddMemoView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
