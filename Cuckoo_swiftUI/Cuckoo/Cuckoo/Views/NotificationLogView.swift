@@ -10,8 +10,6 @@ import SwiftUI
 struct NotificationLogView: View {
     @StateObject var viewModel = NotificationLogViewModel.shared
     
-    
-    
     var body: some View {
         VStack {
             HeaderView(title: "알림")
@@ -20,11 +18,10 @@ struct NotificationLogView: View {
                 .overlay(
                     Button{
                         viewModel.addLog(related_preset: AlarmPresetViewModel.shared.presets[0], memos: MemoViewModel.shared.memos)
-                    }label: {
+                    } label: {
                         // Add logic
                         Text("더미 메모 추가(Test)")
                     }
-                    
                     , alignment: .top)
             
             Spacer()

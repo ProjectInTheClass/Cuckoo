@@ -36,6 +36,19 @@ class UserProfileViewModel: ObservableObject {
     func setTerm(_ selectedReminderPeriod: Int) {
         UserDefaults.standard.set(selectedReminderPeriod, forKey: "reminderPeriod")
     }
+    
+    func updateUsername(username: String) {
+        UserDefaults.standard.setValue(username, forKey: "username")
+        self.username = username
+    }
+    
+    func getUsername() -> String {
+        if let username = UserDefaults.standard.string(forKey: "username") {
+            return username
+        }
+        
+        return self.username
+    }
 
     func createUser(username: String, profileImagePath: String?) {
         UserDefaults.standard.set(username, forKey: "username")

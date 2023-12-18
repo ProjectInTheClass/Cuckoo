@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct SettingView: View {
+    @ObservedObject var userViewModel = UserProfileViewModel()
+    
+    @State var username: String = ""
+    
+    init() {
+        self.username = userViewModel.username
+    }
     
     var body: some View {
         VStack {
@@ -20,8 +27,10 @@ struct SettingView: View {
                 
                 HStack {
                     NavigationLink(destination: SettingsProfileView()) {
-                        SettingProfileListView(title: "경민의 메모장")
+                        SettingProfileListView(username: $username)
                     }
+                }.onAppear {
+                    self.username = userViewModel.getUsername()
                 }
                 
                 VStack(spacing: 0) {
@@ -45,7 +54,7 @@ struct SettingView: View {
 }
 
 struct SettingProfileListView: View {
-    var title: String
+    @Binding var username: String
     
     var body: some View {
         HStack {
@@ -54,7 +63,7 @@ struct SettingProfileListView: View {
                 .frame(width:45, height:45)
                 .foregroundColor(.gray)
             VStack(alignment: .leading) {
-                Text(title)
+                Text("\(username)의 메모장")
                     .font(.system(size: 16, weight: .bold))
                     .foregroundColor(Color.black.opacity(0.80))
                 Text("내 정보 수정하기")

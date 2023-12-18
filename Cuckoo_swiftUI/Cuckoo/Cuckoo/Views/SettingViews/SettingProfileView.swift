@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct SettingsProfileView: View {
+    @ObservedObject var userViewModel = UserProfileViewModel()
     
     //프로필 사진 용
     @State private var isImagePickerPresented: Bool = false
@@ -46,19 +47,17 @@ struct SettingsProfileView: View {
                 .frame(height: 60)
             
             //이미지 찾아올 수 있음.
-            ImagePicker(isImagePickerPresented: $isImagePickerPresented, selectedImage: $selectedImage)
-                .onDisappear {
-                    // Handle the selected image here
-                    
-                }
-                .sheet(isPresented: $isImagePickerPresented) {
-                    ImagePickerView(selectedImage: $selectedImage)
-                }
+            Image("DefaultPreview")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 140, height: 140)
+                .cornerRadius(70)
+                .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.30))
                 .padding(.vertical, 20)
             
             //프로필(이름) 편집
             HStack {
-                Text("\(username)의 메모장")
+                Text("\(userViewModel.getUsername())의 메모장")
                     .font(.title2)
                     .fontWeight(.bold)
                 
@@ -89,7 +88,7 @@ struct SettingsProfileView: View {
                             Button("확인") {
                                 // Handle username confirmation
                                 if !editedUsername.isEmpty {
-                                    username = editedUsername
+                                    userViewModel.updateUsername(username: editedUsername)
                                 }
                                 isEditUsernamePopoverPresented.toggle()
                             }
@@ -101,10 +100,10 @@ struct SettingsProfileView: View {
             }.padding()
             
             //수치 정보 창
-            HStack(spacing: 30) {
-                RoundedStatsView(title: "보유 메모 수", value: memoViewModel.memos.count)
-                RoundedStatsView(title: "누적 알림", value: notificationCount)
-            }.padding(.bottom, 30)
+//            HStack(spacing: 30) {
+//                RoundedStatsView(title: "보유 메모 수", value: memoViewModel.memos.count)
+//                RoundedStatsView(title: "누적 알림", value: notificationCount)
+//            }.padding(.bottom, 30)
             
             //디바이더
             Divider()

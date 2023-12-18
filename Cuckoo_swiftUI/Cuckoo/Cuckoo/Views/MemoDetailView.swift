@@ -68,8 +68,9 @@ struct MemoDetailView: View {
                         Comment: $viewModel.memo.comment
                     )
                     
-                    MemoAlarmPresetFormView(
+                    MemoAlarmPresetEditFormView(
                         presetList: $presetViewModel.presets,
+                        nowPreset: $viewModel.memo.memo_preset,
                         selectedReminder: $viewModel.selectedReminder,
                         isEditing: $viewModel.isEditing
                     )
@@ -556,5 +557,61 @@ struct EditButtonView: View {
             }
         }
         
+    }
+}
+
+
+struct MemoAlarmPresetEditFormView: View {
+    @Binding var presetList: [AlarmPresetEntity]
+    @Binding var nowPreset: AlarmPresetEntity?
+    @Binding var selectedReminder: AlarmPresetEntity?
+    @Binding var isEditing: Bool
+    
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 3) {
+                HStack {
+                    Text("알람 시기 설정")
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
+                    
+                    Spacer()
+                }
+                Text("언제 알림받는게 좋을까요?")
+                  .font(.system(size: 12, weight: .medium))
+                  .foregroundColor(Color(red: 0.7, green: 0.7, blue: 0.7))
+            }
+            CardContent {
+                
+                if isEditing {
+                    Menu {
+                        ForEach(presetList, id: \.self) { preset in
+                            Button("\(preset.icon) \(preset.name)") {
+                                selectedReminder = preset
+                            }
+                        }
+                    } label: {
+                        if let selectedReminder = selectedReminder {
+                            PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)
+                        } else {
+                            PresetButtonView(preset: nowPreset, onToggle: {
+                                selectedReminder = nowPreset
+                            }, isSelected: false)
+                        }
+                    }
+                } else {
+                    if let selectedReminder = selectedReminder {
+                        PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)
+                    } else {
+                        PresetButtonView(preset: nowPreset, onToggle: {
+                            selectedReminder = nowPreset
+                        }, isSelected: false)
+                    }
+                }
+                
+                
+            }
+        }
     }
 }

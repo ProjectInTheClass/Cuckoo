@@ -47,17 +47,29 @@ class MemoDetailViewModel: ObservableObject {
     }
     
     func saveChanges() {
-        memo.memo_preset = selectedReminder
+        if let sel_rem = selectedReminder {
+            MemoViewModel.shared.editMemo(
+                memoId: memo.objectID,
+                title: memo.title,
+                comment: memo.comment,
+                url: memo.url,
+                noti_cycle: Int(memo.noti_cycle),
+                noti_preset: sel_rem,
+                tags: tags
+            )
+        } else {
+            
+            MemoViewModel.shared.editMemo(
+                memoId: memo.objectID,
+                title: memo.title,
+                comment: memo.comment,
+                url: memo.url,
+                noti_cycle: Int(memo.noti_cycle),
+                noti_preset: memo.memo_preset,
+                tags: tags
+            )
+        }
         
-        MemoViewModel.shared.editMemo(
-            memoId: memo.objectID,
-            title: memo.title,
-            comment: memo.comment,
-            url: memo.url,
-            noti_cycle: Int(memo.noti_cycle),
-            noti_preset: memo.memo_preset,
-            tags: tags
-        )
     }
 
     func deleteMemo() {

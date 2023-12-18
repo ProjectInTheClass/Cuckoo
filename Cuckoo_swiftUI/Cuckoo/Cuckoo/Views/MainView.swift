@@ -124,10 +124,18 @@ struct MainView_PreViews: PreviewProvider {
 // Components
 
 struct MainViewHeader: View {
-    var itemCount: Int
     
+    var itemCount: Int = 0
+    
+    @ObservedObject var userViewModel = UserProfileViewModel()
     @State private var text = "Initial Text"
     @State private var isEditing = false
+    @State var username: String = ""
+    
+    init(itemCount: Int) {
+        self.itemCount = itemCount
+        self.username = userViewModel.username
+    }
     
     var body: some View {
         VStack {
@@ -160,11 +168,14 @@ struct MainViewHeader: View {
                         .padding()
                 } else {
                     VStack(alignment: .leading,spacing: 0){
-                        Text("득수의 메모장")
+                        Text("\(username)의 메모장")
                             .font(.system(size: 30, weight: .heavy))
                             .lineSpacing(130)
                             .kerning(-0.03)
                             .multilineTextAlignment(.leading)
+                            .onAppear {
+                                username = userViewModel.getUsername()
+                            }
                         Text("\(itemCount)개의 메모")
                             .font(.system(size:12, weight: .regular))
                             .lineSpacing(52)
