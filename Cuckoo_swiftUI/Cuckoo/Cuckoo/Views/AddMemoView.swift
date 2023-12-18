@@ -12,7 +12,7 @@ import Combine
 struct AddMemoView: View {
     @StateObject private var viewModel = AddMemoViewModel()
     @ObservedObject private var presetViewModel = AlarmPresetViewModel.shared
-    
+    @FocusState private var isTextFieldFocused: Bool
     @SwiftUI.Environment(\.dismiss) var dismiss
     
     @State var isAddingMemo: Bool = false
@@ -199,7 +199,6 @@ struct MemoUrlTypeFormView: View {
 struct MemoContentFormView: View {
     @Binding var memoContent: String // 사용자가 입력할 내용을 저장할 상태 변수입니다.
     
-    @FocusState private var isTextFieldFocused: Bool
     private let maxCharacterLimit = 250
     
     var body: some View {
@@ -209,7 +208,6 @@ struct MemoContentFormView: View {
                 // TextEditor의 스크롤 가능한 영역 설정
                 VStack(alignment: .leading, spacing: 0){
                     TextField("메모 디테일한 내용을 작성해주세요.", text: $memoContent, axis: .vertical)
-                        .focused($isTextFieldFocused)
                         .font(.system(size: 14, weight: .medium))
                         .padding(15)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 140, alignment: .top) // 가로길이 고정을 위해 최소 너비를 0, 최대 너비를 무한으로 설정합니다.
@@ -233,9 +231,6 @@ struct MemoContentFormView: View {
                     
                 }
             }
-        }.onTapGesture {
-            // TODO :: 상위 View에서 적용이 되도록 (지금은 MemoContent 있는 부분을 눌러야만 됨)
-            isTextFieldFocused = false
         }
     }
 }

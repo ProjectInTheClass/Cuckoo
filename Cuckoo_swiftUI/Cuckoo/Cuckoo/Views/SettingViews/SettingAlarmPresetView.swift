@@ -48,33 +48,6 @@ struct SettingAlarmPresetView: View {
         }.navigationBarBackButtonHidden(true)
     }
     
-//    func addNewPreset() {
-//        let hour = selectedHourIndex
-//        let minute = selectedMinuteIndex
-//        let period = hour < 12 ? "AM" : "PM"
-//        let formattedTime = String(format: "%02d:%02d %@", hour % 12, minute, period)
-//        
-//        let newPreset = presetButton(emoji: newEmoji, alarmName: newAlarmName, time: formattedTime, preset_id: 1)
-//        presetButtonList.append(newPreset)
-//        
-//        //시간 순대로 나오도록
-//        presetButtonList.sort { $0.time < $1.time }
-//        
-//        //다음을 위해 초기화
-//        newEmoji = ""
-//        newAlarmName = ""
-//        selectedHourIndex = 12
-//        selectedMinuteIndex = 0
-//    }
-//    
-//    func deleteSelectedPresets() {
-//        presetButtonList.removeAll { selectedPresets.contains($0) }
-//        selectedPresets.removeAll()
-//    }
-//    
-//    func showAlert(title: String, message: String) {
-//        // Show an alert with the given title and message
-//    }
     
 }
 
