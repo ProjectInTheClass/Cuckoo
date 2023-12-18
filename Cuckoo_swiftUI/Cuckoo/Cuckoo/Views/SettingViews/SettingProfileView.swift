@@ -119,7 +119,7 @@ struct SettingsProfileView: View {
             
             Spacer()
         }.navigationBarBackButtonHidden(true)
-        .padding(.vertical, 20)
+        .padding(.bottom, 20)
     }
     
 }

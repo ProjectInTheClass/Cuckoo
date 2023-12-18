@@ -11,6 +11,7 @@ import Combine
 let defaults = UserDefaults.standard
 
 struct Init_AddNameAndTagView: View {
+    @ObservedObject var tagViewModel = TagViewModel.shared
     @ObservedObject var userViewModel = UserProfileViewModel.shared
     
     // 상태 관리를 위한 변수 추가
@@ -18,8 +19,9 @@ struct Init_AddNameAndTagView: View {
     @State private var buttonText = "프로필 입력 완료!"
     @State private var headerTitle = "누구인지 알려주세요!"
     @State private var navigateToNextScreen = false
+    @State private var needMoreTagAlert = false
     
-    @State var username = "____"
+    @State var username = "이름"
     var body: some View {
         NavigationView {
             VStack {
@@ -60,15 +62,18 @@ struct Init_AddNameAndTagView: View {
                     if !showAddTagForm {
                         withAnimation(Animation.easeInOut(duration: 0.3)) {
                             self.showAddTagForm.toggle()
-                            
-                            
                         }
                         self.buttonText = "태그 추가 완료"
                         self.headerTitle = "태그를 추가해주세요!"
                     } else {
                         // 다른 화면으로 이동
-                        userViewModel.username = username;
-                        self.navigateToNextScreen = true
+                        if tagViewModel.tags.count == 1 {
+                            needMoreTagAlert.toggle()
+                        }
+                        else{
+                            userViewModel.username = username;
+                            self.navigateToNextScreen = true
+                        }
                     }
                 })
                     .frame(height: 120)
@@ -77,6 +82,14 @@ struct Init_AddNameAndTagView: View {
                     
                     
             }
+        }.alert(isPresented: $needMoreTagAlert) {
+            Alert(
+                title: Text("알림"),
+                message: Text("적어도 태그 하나 이상 추가해주세요!"),
+                dismissButton: .default(Text("확인")){
+                    needMoreTagAlert = false
+                }
+            )
         }
     }
 }
@@ -97,33 +110,33 @@ struct AddNameView: View {
     }
     
     var body: some View {
-        VStack(alignment: .center, spacing: 30) {
-            CardContent {
-                VStack(spacing: 20) {
-                    // TODO: 나중에 이미지 업로드 가능하게 변경 (Profile Image)
-                    Image("DefaultPreview")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 140, height: 140)
-                        .cornerRadius(70)
-                        .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.30))
-                    
-                    HStack {
-                        Spacer()
-                        // TODO: 가운데정렬, trucation 안생기게
-                        TextField("", text: $username)
-                            .focused($isEditing)
-                            .font(.system(size: 20, weight: .heavy))
-                            .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
-                            .underline(isEditing)
-                            .scaledToFit()
+            VStack(alignment: .center, spacing: 30) {
+                CardContent {
+                    VStack(spacing: 20) {
+                        // TODO: 나중에 이미지 업로드 가능하게 변경 (Profile Image)
+                        Image("DefaultPreview")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 140, height: 140)
+                            .cornerRadius(70)
+                            .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.30))
                         
-                        Spacer()
+                        HStack {
+                            Spacer()
+                            TextField("", text: $username)
+                                .focused($isEditing)
+                                .font(.system(size: 20, weight: .heavy))
+                                .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.80))
+                                .underline(isEditing)
+                                .multilineTextAlignment(.center)
+                                .fixedSize(horizontal: true, vertical: false)
+                            Spacer()
+                        }
                     }
                 }
+                
             }
-            
-        }
+        
     }
 }
 

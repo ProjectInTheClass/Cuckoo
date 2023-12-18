@@ -20,6 +20,8 @@ struct FirstSharedView: View {
         self.onClose = onClose
         self.onOpenInApp = onOpenInApp
         self.newMemo = nil
+        
+        print("init")
     }
 
     var body: some View {
@@ -101,6 +103,7 @@ struct FirstSharedView: View {
         .popover(isPresented: $isSecondViewPresented, arrowEdge: .bottom) {
             SecondSharedView(onClose: $onClose, onOpenInApp: $onOpenInApp, newMemo: $newMemo)
                 .frame(height: 500) // Set specific height for popover
+                .environment(\.colorScheme, .light)
         }
         .overlay(
             AddMemoFooterView(addMemoAction: { isAddingMemo.toggle() })

@@ -20,10 +20,7 @@ struct MainView: View {
                 // Header
                 MainViewHeader(itemCount: memoViewModel.memos.count)
                 Spacer()
-
-                // Search Bar & Tag
-                // TODO:: Tag에 의한 filtering먼저 적용 -> 이후 남아있는 memo들에 대해 키워드를 포함하는 memo만 보이게끔
-                // 검색어가 없다면 전부를 보여주게끔 해야함.
+                
                 MainViewSearchFilter(
                     searchKeyword: $memoViewModel.searchKeyword,
                     selectedTags: $memoViewModel.selectedTags,
@@ -60,55 +57,62 @@ struct MainView: View {
                     
                     
                     ScrollView {
-                        // TODO :: 선택된 Tag들 중 하나라도 해당되는 Memo만 View하도록 Filtering
-                        // Filtering 된 Memo만 볼 수 있게끔 해야함
-                        ForEach(memoViewModel.filteredMemos, id: \.self) { memo in
-                            VStack(alignment: .leading) {
-                                NavigationLink(
-                                    destination: MemoDetailView(
-                                        viewModel: MemoDetailViewModel(
-                                            memoID: memo.objectID,
-                                            memo: memo
-                                        ),
-                                        title: memo.title,
-                                        comment: memo.comment,
-                                        url: memo.url,
-                                        thumbURL: memo.thumbURL,
-                                        noti_cycle: memo.noti_cycle,
-                                        noti_preset: memo.memo_preset,
-                                        noti_count: memo.noti_count
-                                    )
-                                ) {
+                        // TODO :: 아래로 쭉 당기면 새로고침 되게끔 해야함 (유튜브처럼)
+                        
+                            ForEach(memoViewModel.filteredMemos, id: \.self) { memo in
+                                VStack(alignment: .leading) {
+                                    NavigationLink(
+                                        destination: MemoDetailView(
+                                            viewModel: MemoDetailViewModel(
+                                                memoID: memo.objectID,
+                                                memo: memo
+                                            ),
+                                            title: memo.title,
+                                            comment: memo.comment,
+                                            url: memo.url,
+                                            thumbURL: memo.thumbURL,
+                                            noti_cycle: memo.noti_cycle,
+                                            noti_preset: memo.memo_preset,
+                                            noti_count: memo.noti_count
+                                        )
+                                    ) {
+                                        
+                                        MainContainerView(
+                                            memo: memo,
+                                            title: memo.title,
+                                            comment: memo.comment,
+                                            url: memo.url,
+                                            thumbURL: memo.thumbURL,
+                                            isPinned: memo.isPinned,
+                                            created_at: memo.created_at
+                                        )
+                                    }.padding(.vertical, 15)
                                     
-                                    MainContainerView(
-                                        memo: memo,
-                                        title: memo.title,
-                                        comment: memo.comment,
-                                        url: memo.url,
-                                        thumbURL: memo.thumbURL,
-                                        isPinned: memo.isPinned,
-                                        created_at: memo.created_at
-                                    )
-                                }.padding(.vertical, 15)
-                                
-                                Divider()
+                                    Divider()
+                                }
                             }
-                        }
+                        
                     }
+                    .refreshable {
+                        // 여기에 새로고침 로직을 작성
+                        memoViewModel.browseMemos()
+                    }
+
                     .padding(.horizontal, 30)
-                    .onAppear {
-                        memoViewModel.browseMemos() // Refresh memos list when MainView appears
-                    }
+                    
                     .scrollIndicators(.hidden)
                     
                     
                 } // ZStack
             }
+            
             .padding(.horizontal, 30)
             .overlay(
                 AddMemoFloatingButton(),
                 alignment: .bottomTrailing
             )
+        }.onAppear {
+            memoViewModel.browseMemos() // Refresh memos list when MainView appears
         }
     }
 }
@@ -239,8 +243,10 @@ struct MainViewSearchFilter: View {
         }.onAppear {
             if isInit {
                 isInit = false
-                for tag in tags {
-                    selectedTags.insert(tag)
+                
+                selectedTags.removeAll()
+                if let allTag = tags.first(where: { $0.name == "전체" }) {
+                    selectedTags.insert(allTag)
                 }
             }
         }
@@ -251,12 +257,14 @@ struct MainViewSearchFilter: View {
     private func isSelected(tag: TagEntity) -> Bool {
         return selectedTags.contains(tag)
     }
+    
     private func toggleTagSelection(tag: TagEntity) {
-        if selectedTags.contains(tag) {
-            selectedTags.remove(tag)
-        } else {
+        if !selectedTags.contains(tag) {
+            selectedTags.removeAll()
+            
             selectedTags.insert(tag)
         }
+        
     }
     
     private func applyFilters() {

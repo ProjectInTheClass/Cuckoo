@@ -34,6 +34,7 @@ class MemoViewModel: ObservableObject {
         
         do {
             self.memos = try container.viewContext.fetch(request)
+            self.memos.sort { ($0.updated_at ?? Date()) > ($1.updated_at ?? Date()) }
             applyFilters()
         } catch {
             print("ERROR FETCHING CORE DATA: \(error)")
@@ -131,10 +132,16 @@ class MemoViewModel: ObservableObject {
             let videoID: String
             if url.host == "youtu.be" {
                 videoID = url.lastPathComponent
+            } else if url.pathComponents.contains("shorts") {
+                // Handling YouTube Shorts URLs
+                if let shortsIndex = url.pathComponents.firstIndex(of: "shorts"), shortsIndex + 1 < url.pathComponents.count {
+                    videoID = url.pathComponents[shortsIndex + 1]
+                } else {
+                    videoID = ""
+                }
             } else {
                 videoID = URLComponents(string: url.absoluteString)?.queryItems?.first(where: { $0.name == "v" })?.value ?? ""
             }
-
             // Construct the YouTube thumbnail URL
             if !videoID.isEmpty {
                 let youtubeThumbnailURL = "https://img.youtube.com/vi/\(videoID)/hqdefault.jpg"

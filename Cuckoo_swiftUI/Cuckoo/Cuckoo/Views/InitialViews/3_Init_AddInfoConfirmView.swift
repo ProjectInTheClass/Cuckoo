@@ -34,7 +34,6 @@ struct Init_AddInfoConfirmView: View {
 
     @Namespace var bottomID
     
-
     var body: some View {
             ScrollViewReader { scrollViewProxy in
                 VStack {
@@ -61,7 +60,8 @@ struct Init_AddInfoConfirmView: View {
                                 BarDivider()
                                 
                                 AddAlarmTermView(
-                                    term: $term, multiplier: $multiplier
+                                    term: $term, 
+                                    multiplier: $multiplier
                                 )
                                     .frame(maxWidth: .infinity)
                                 

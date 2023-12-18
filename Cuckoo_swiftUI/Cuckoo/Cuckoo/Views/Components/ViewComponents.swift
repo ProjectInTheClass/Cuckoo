@@ -202,3 +202,54 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
 //        return viewControllers.count > 1
 //    }
 }
+
+
+// Refreshable
+
+
+struct RefreshableScrollView<Content: View>: UIViewRepresentable {
+    var content: Content
+    var onRefresh: () -> Void
+
+    init(@ViewBuilder content: () -> Content, onRefresh: @escaping () -> Void) {
+        self.content = content()
+        self.onRefresh = onRefresh
+    }
+
+    func makeUIView(context: Context) -> UIScrollView {
+        let scrollView = UIScrollView()
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(context.coordinator, action: #selector(Coordinator.refresh), for: .valueChanged)
+        scrollView.refreshControl = refreshControl
+        scrollView.delegate = context.coordinator
+
+        let hostView = UIHostingController(rootView: content).view!
+        hostView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(hostView)
+
+        hostView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        hostView.heightAnchor.constraint(equalTo: scrollView.heightAnchor).isActive = true
+
+        return scrollView
+    }
+
+    func updateUIView(_ uiView: UIScrollView, context: Context) {
+        context.coordinator.parent = self
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, UIScrollViewDelegate {
+        var parent: RefreshableScrollView
+
+        init(_ parent: RefreshableScrollView) {
+            self.parent = parent
+        }
+
+        @objc func refresh() {
+            parent.onRefresh()
+        }
+    }
+}
