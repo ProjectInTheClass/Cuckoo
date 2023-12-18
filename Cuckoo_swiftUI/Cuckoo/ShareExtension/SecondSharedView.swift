@@ -60,7 +60,7 @@ struct SecondSharedView: View {
                 .cornerRadius(10)
 
                 Button("앱에서 보기") {
-                    onOpenInApp(URL(string: "http://Cuckoo/a")!)
+                    onOpenInApp(URL(string: "Cuckoo://Cuckoo")!)
                 }
                 .foregroundColor(.white)
                 .padding()
