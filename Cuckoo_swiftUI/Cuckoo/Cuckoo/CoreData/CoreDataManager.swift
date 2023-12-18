@@ -1,10 +1,3 @@
-//
-//  CoreDataManager.swift
-//  Cuckoo
-//
-//  Created by DKSU on 12/16/23.
-//
-
 import Foundation
 import CoreData
 
@@ -12,21 +5,26 @@ class CoreDataManager {
     static var shared: CoreDataManager = CoreDataManager()
     
     lazy var persistentContainer: NSPersistentContainer = {
-            let container = NSPersistentContainer(name: "CoreDataContainer")
+        let container = NSPersistentContainer(name: "CoreDataContainer")
         
-            container.loadPersistentStores { (description, error) in
-                if let error = error {
-                    print("ERROR LOADING CORE DATA. \(error)")
-                } else {
-                    print("SUCCESSFULLY LOADED CORE DATA. \(description)")
-                }
+        if let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.cuckoo")?.appendingPathComponent("CoreDataContainer.sqlite") {
+            let description = NSPersistentStoreDescription(url: storeURL)
+            container.persistentStoreDescriptions = [description]
+        }
+
+        container.loadPersistentStores { (storeDescription, error) in
+            if let error = error {
+                print("ERROR LOADING CORE DATA. \(error)")
+            } else {
+                print("SUCCESSFULLY LOADED CORE DATA. \(storeDescription)")
             }
+        }
         
-            return container
+        return container
     }()
     
     var context: NSManagedObjectContext {
-            return persistentContainer.viewContext
+        return persistentContainer.viewContext
     }
     
     var MemoEntity: NSEntityDescription? {

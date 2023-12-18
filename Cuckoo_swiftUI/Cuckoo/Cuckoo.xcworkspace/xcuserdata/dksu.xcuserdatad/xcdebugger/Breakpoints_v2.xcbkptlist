@@ -68,5 +68,69 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3CBF4F4-8CA5-40B0-A0A6-4871E4CB509C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cuckoo/Views/AddMemoView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "D3CBF4F4-8CA5-40B0-A0A6-4871E4CB509C - 3f2e94857b546879"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (ShareExtension.TagEntity) -&gt; SwiftUI.Button&lt;ShareExtension.TagNoEntireView&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, SwiftUI.Button&lt;ShareExtension.TagNoEntireView&gt;&gt;, SwiftUI.Menu&lt;ShareExtension.AddButton, SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, Swift.Optional&lt;SwiftUI.Button&lt;SwiftUI.Text&gt;&gt;&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, SwiftUI.Button&lt;ShareExtension.TagNoEntireView&gt;&gt;, SwiftUI.Menu&lt;ShareExtension.AddButton, SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, Swift.Optional&lt;SwiftUI.Button&lt;SwiftUI.Text&gt;&gt;&gt;&gt;)&gt;&gt; in closure #1 () -&gt; SwiftUI.ScrollView&lt;SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, SwiftUI.Button&lt;ShareExtension.TagNoEntireView&gt;&gt;, SwiftUI.Menu&lt;ShareExtension.AddButton, SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, Swift.Optional&lt;SwiftUI.Button&lt;SwiftUI.Text&gt;&gt;&gt;&gt;)&gt;&gt;&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(ShareExtension.CardTitleText, ShareExtension.CardContent&lt;SwiftUI.ScrollView&lt;SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, SwiftUI.Button&lt;ShareExtension.TagNoEntireView&gt;&gt;, SwiftUI.Menu&lt;ShareExtension.AddButton, SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, Swift.Optional&lt;SwiftUI.Button&lt;SwiftUI.Text&gt;&gt;&gt;&gt;)&gt;&gt;&gt;&gt;)&gt; in ShareExtension.MemoTypeFormView.body.getter : some"
+                  moduleName = "ShareExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/Views/AddMemoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  uuid = "D3CBF4F4-8CA5-40B0-A0A6-4871E4CB509C - 5539b0f139561ba6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (ShareExtension.TagEntity) -&gt; SwiftUI.Button&lt;ShareExtension.TagNoEntireView&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, SwiftUI.Button&lt;ShareExtension.TagNoEntireView&gt;&gt;, SwiftUI.Menu&lt;ShareExtension.AddButton, SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, Swift.Optional&lt;SwiftUI.Button&lt;SwiftUI.Text&gt;&gt;&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, SwiftUI.Button&lt;ShareExtension.TagNoEntireView&gt;&gt;, SwiftUI.Menu&lt;ShareExtension.AddButton, SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, Swift.Optional&lt;SwiftUI.Button&lt;SwiftUI.Text&gt;&gt;&gt;&gt;)&gt;&gt; in closure #1 () -&gt; SwiftUI.ScrollView&lt;SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, SwiftUI.Button&lt;ShareExtension.TagNoEntireView&gt;&gt;, SwiftUI.Menu&lt;ShareExtension.AddButton, SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, Swift.Optional&lt;SwiftUI.Button&lt;SwiftUI.Text&gt;&gt;&gt;&gt;)&gt;&gt;&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(ShareExtension.CardTitleText, ShareExtension.CardContent&lt;SwiftUI.ScrollView&lt;SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, SwiftUI.Button&lt;ShareExtension.TagNoEntireView&gt;&gt;, SwiftUI.Menu&lt;ShareExtension.AddButton, SwiftUI.ForEach&lt;Swift.Array&lt;ShareExtension.TagEntity&gt;, ShareExtension.TagEntity, Swift.Optional&lt;SwiftUI.Button&lt;SwiftUI.Text&gt;&gt;&gt;&gt;)&gt;&gt;&gt;&gt;)&gt; in ShareExtension.MemoTypeFormView.body.getter : some"
+                  moduleName = "ShareExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dksu/DEV/HYU/SS2/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/Views/AddMemoView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "256">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "41166576-C173-420A-A6D1-EFFEB4B92969"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cuckoo/ViewModels/TagViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "fetchTag()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -120,7 +120,6 @@ struct AddNameView: View {
                         
                         Spacer()
                     }
-                    .onAppear (perform : UIApplication.shared.hideKeyboard)
                 }
             }
             

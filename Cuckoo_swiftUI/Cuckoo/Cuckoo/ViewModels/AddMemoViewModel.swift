@@ -12,9 +12,10 @@ class AddMemoViewModel: ObservableObject {
     @Published var link: String = ""
     @Published var memoTitle: String = ""
     @Published var memoContent: String = ""
-    @Published var selectedReminder: AlarmPresetEntity?
+    @Published var selectedReminder: AlarmPresetEntity = AlarmPresetEntity()
     @Published var isEditing: Bool = true
     @Published var tags: [TagEntity] = [] // tags를 [TagEntity]로 변경
+    private let presetViewModel = AlarmPresetViewModel.shared
     private let memoViewModel = MemoViewModel.shared
     private let tagViewModel = TagViewModel.shared
     init() {
@@ -22,8 +23,10 @@ class AddMemoViewModel: ObservableObject {
         if let entireTag = tagViewModel.tags.first(where: { $0.name == "전체" }) {
             tags.append(entireTag)
         }
+        
+        selectedReminder = presetViewModel.presets[0]
     }
-
+    
     func addNewMemo() {
         let url = URL(string: link)
         

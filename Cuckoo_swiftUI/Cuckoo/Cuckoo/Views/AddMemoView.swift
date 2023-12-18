@@ -18,6 +18,7 @@ struct AddMemoView: View {
     @State var isAddingMemo: Bool = false
     
     var body: some View {
+            // TODO :: 여기에 onTabGesture 적용을 해야하나?
             VStack {
                 HeaderView(title: "메모 등록")
                     .frame(height: 60)
@@ -108,25 +109,28 @@ struct MemoTypeFormView: View {
                                             isEnabled = selectedTags.count != tagViewModel.tags.count
                                         }
                                     }
+                                    
+                                    print("activated")
                                 } label: {
                                     TagNoEntireView(tag: tag)
                                 }
                             }
                             Menu {
                                 ForEach(tagViewModel.tags, id: \.self) { tag in
-                                    
                                     if tag.name != "전체" {
-                                                Button(tag.name) {
-                                                    if !selectedTags.contains(tag) {
-                                                        selectedTags.append(tag) // 중복되지 않는 경우에만 선택된 태그에 추가
-                                                        isEnabled = selectedTags.count != tagViewModel.tags.count
-                                                    }
-                                                }.disabled(selectedTags.contains(tag))
+                                        Button(tag.name) {
+                                            if !selectedTags.contains(tag) {
+                                                selectedTags.append(tag) // 중복되지 않는 경우에만 선택된 태그에 추가
+                                                isEnabled = selectedTags.count != tagViewModel.tags.count
                                             }
                                         }
+                                    }
+                                }
                             } label: {
                                 AddButton(isEnabled: $isEnabled, logic: {})
                             }
+                        }.onAppear {
+                            print("count : \(tagViewModel.tags.count)")
                         }
                 }
                 
@@ -195,6 +199,7 @@ struct MemoUrlTypeFormView: View {
 struct MemoContentFormView: View {
     @Binding var memoContent: String // 사용자가 입력할 내용을 저장할 상태 변수입니다.
     
+    @FocusState private var isTextFieldFocused: Bool
     private let maxCharacterLimit = 250
     
     var body: some View {
@@ -204,6 +209,7 @@ struct MemoContentFormView: View {
                 // TextEditor의 스크롤 가능한 영역 설정
                 VStack(alignment: .leading, spacing: 0){
                     TextField("메모 디테일한 내용을 작성해주세요.", text: $memoContent, axis: .vertical)
+                        .focused($isTextFieldFocused)
                         .font(.system(size: 14, weight: .medium))
                         .padding(15)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 140, alignment: .top) // 가로길이 고정을 위해 최소 너비를 0, 최대 너비를 무한으로 설정합니다.
@@ -225,15 +231,18 @@ struct MemoContentFormView: View {
                             .padding(.trailing, 15)
                     }
                     
-                }.onAppear (perform : UIApplication.shared.hideKeyboard)
+                }
             }
+        }.onTapGesture {
+            // TODO :: 상위 View에서 적용이 되도록 (지금은 MemoContent 있는 부분을 눌러야만 됨)
+            isTextFieldFocused = false
         }
     }
 }
 
 struct MemoAlarmPresetFormView: View {
     @Binding var presetList: [AlarmPresetEntity]
-    @Binding var selectedReminder: AlarmPresetEntity?
+    @Binding var selectedReminder: AlarmPresetEntity
     @Binding var isEditing: Bool
     
     
@@ -261,22 +270,9 @@ struct MemoAlarmPresetFormView: View {
                             }
                         }
                     } label: {
-                        if let selectedReminder = selectedReminder {
-                            PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)
-                        } else {
-                            PresetButtonView(preset: presetList[0], onToggle: {
-                                selectedReminder = presetList[0]
-                            }, isSelected: false)
-                        }
-                    }
+                        PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)                    }
                 } else {
-                    if let selectedReminder = selectedReminder {
-                        PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)
-                    } else {
-                        PresetButtonView(preset: presetList[0], onToggle: {
-                            selectedReminder = presetList[0]
-                        }, isSelected: false)
-                    }
+                    PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)
                 }
                 
                 
@@ -441,13 +437,13 @@ struct TextFormView: View {
             }
             
         }
-        .onTapGesture {
-            hideKeyboard()
-        }
+//        .onTapGesture {
+//            hideKeyboard()
+//        }
         
     }
 
-    private func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
+//    private func hideKeyboard() {
+//        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//    }
 }
