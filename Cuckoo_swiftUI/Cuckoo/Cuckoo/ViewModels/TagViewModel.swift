@@ -39,7 +39,7 @@ class TagViewModel: ObservableObject {
     }
     
     func browseTags() {
-        self.tags = []
+//        self.tags = []
         self.fetchTag()
         save()
     }

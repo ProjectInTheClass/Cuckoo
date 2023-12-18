@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Combine
-import CoreData
+import CoreData 
 
 struct HeaderView: View {
     var title: String = ""
@@ -188,22 +188,6 @@ extension Color {
 
 
 // 이하는 키보드 숨기기용
-
-extension UIApplication {
-    func hideKeyboard() {
-        guard let window = windows.first else { return }
-        let tapRecognizer = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
-        tapRecognizer.cancelsTouchesInView = false
-        tapRecognizer.delegate = self
-        window.addGestureRecognizer(tapRecognizer)
-    }
- }
- 
-extension UIApplication: UIGestureRecognizerDelegate {
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return false
-    }
-}
 
 
 // Back Swipe

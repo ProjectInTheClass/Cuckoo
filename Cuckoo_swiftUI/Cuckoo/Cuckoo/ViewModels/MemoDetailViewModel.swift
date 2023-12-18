@@ -15,8 +15,9 @@ class MemoDetailViewModel: ObservableObject {
     @Published var isEditing = false
     @Published var showActionButtons = false
     @Published var showDeleteAlert = false
-    @Published var selectedReminder: AlarmPresetEntity? // 선택된 알람 주기를 저장
+    @Published var selectedReminder: AlarmPresetEntity // 선택된 알람 주기를 저장
     
+    private let presetViewModel = AlarmPresetViewModel.shared
     private let tagViewModel = TagViewModel.shared
     private var cancellables = Set<AnyCancellable>()
     let reminderOptions = ["없음", "7일", "14일", "21일", "30일"]
@@ -32,6 +33,13 @@ class MemoDetailViewModel: ObservableObject {
         if let tagSet = memo.memo_tag as? Set<TagEntity> {
             self.tags = Array(tagSet)
         }
+        
+        if let preset = memo.memo_preset {
+            selectedReminder = preset
+        } else {
+            selectedReminder = presetViewModel.presets[0]
+        }
+        
     }
 
     func toggleEditing() {
@@ -47,29 +55,15 @@ class MemoDetailViewModel: ObservableObject {
     }
     
     func saveChanges() {
-        if let sel_rem = selectedReminder {
-            MemoViewModel.shared.editMemo(
-                memoId: memo.objectID,
-                title: memo.title,
-                comment: memo.comment,
-                url: memo.url,
-                noti_cycle: Int(memo.noti_cycle),
-                noti_preset: sel_rem,
-                tags: tags
-            )
-        } else {
-            
-            MemoViewModel.shared.editMemo(
-                memoId: memo.objectID,
-                title: memo.title,
-                comment: memo.comment,
-                url: memo.url,
-                noti_cycle: Int(memo.noti_cycle),
-                noti_preset: memo.memo_preset,
-                tags: tags
-            )
-        }
-        
+        MemoViewModel.shared.editMemo(
+            memoId: memo.objectID,
+            title: memo.title,
+            comment: memo.comment,
+            url: memo.url,
+            noti_cycle: Int(memo.noti_cycle),
+            noti_preset: selectedReminder,
+            tags: tags
+        )
     }
 
     func deleteMemo() {

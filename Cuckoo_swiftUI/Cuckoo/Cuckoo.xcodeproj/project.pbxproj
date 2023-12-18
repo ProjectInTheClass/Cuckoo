@@ -12,6 +12,20 @@
 		00133EBC2B2451530035AB70 /* AlarmPresetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00133EBA2B2451530035AB70 /* AlarmPresetViewModel.swift */; };
 		0022CB232B1FA9A900EC6A66 /* NotificationLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022CB222B1FA9A900EC6A66 /* NotificationLogView.swift */; };
 		0056C0242B2EB8FA001148AD /* NotificationLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0056C0232B2EB8FA001148AD /* NotificationLogViewModel.swift */; };
+		006084A22B3015C000387180 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D9F2B1440BC004C3345 /* Dummy.swift */; };
+		006084A32B3015CD00387180 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00133EB12B24128E0035AB70 /* UserProfileViewModel.swift */; };
+		006084A42B3015DB00387180 /* NotificationLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0056C0232B2EB8FA001148AD /* NotificationLogViewModel.swift */; };
+		006084A52B3015F700387180 /* SettingTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D952B143E70004C3345 /* SettingTagView.swift */; };
+		006084A62B3015FD00387180 /* NotificationLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022CB222B1FA9A900EC6A66 /* NotificationLogView.swift */; };
+		006084A72B30160000387180 /* MemoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D932B143E51004C3345 /* MemoDetailView.swift */; };
+		006084A82B30160300387180 /* MainContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC238E2AFA013B00A2F87F /* MainContainerView.swift */; };
+		006084A92B30160A00387180 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BC23902AFA014B00A2F87F /* MainView.swift */; };
+		006084AA2B30160E00387180 /* 3_Init_AddInfoConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */; };
+		006084AB2B30161200387180 /* 1_Init_AddNameAndTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E0A2B0C40B700B59084 /* 1_Init_AddNameAndTagView.swift */; };
+		006084AC2B30161700387180 /* SettingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D9B2B143FAE004C3345 /* SettingProfileView.swift */; };
+		006084AD2B30161A00387180 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D972B143E84004C3345 /* SettingView.swift */; };
+		006084AE2B30163A00387180 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
+		006084AF2B30164600387180 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		00652D902B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */; };
 		00652D922B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */; };
 		00652D942B143E51004C3345 /* MemoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D932B143E51004C3345 /* MemoDetailView.swift */; };
@@ -32,6 +46,36 @@
 		00CEBC9A2B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00CEBC982B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld */; };
 		00DBF6FC2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */; };
 		7A0601A62B26AD6700055EBB /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0601A52B26AD6700055EBB /* LocalNotification.swift */; };
+		7A3574EB2B2FFBA700FF5DB2 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574EA2B2FFBA700FF5DB2 /* ShareViewController.swift */; };
+		7A3574EE2B2FFBA700FF5DB2 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3574EC2B2FFBA700FF5DB2 /* MainInterface.storyboard */; };
+		7A3574F22B2FFBA700FF5DB2 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7A3574E82B2FFBA700FF5DB2 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A3574F92B2FFBD500FF5DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 7A3574F82B2FFBD500FF5DB2 /* SwiftSoup */; };
+		7A3574FB2B2FFCFA00FF5DB2 /* FirstSharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574FA2B2FFCFA00FF5DB2 /* FirstSharedView.swift */; };
+		7A3574FD2B2FFD3400FF5DB2 /* SecondSharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574FC2B2FFD3400FF5DB2 /* SecondSharedView.swift */; };
+		7A3575092B2FFE6400FF5DB2 /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00CEBC982B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld */; };
+		7A35750A2B2FFE6700FF5DB2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DB1B22B2DA04F001F9064 /* CoreDataManager.swift */; };
+		7A35750B2B2FFE6A00FF5DB2 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B22B2EE93100746FCB /* UserEntity+CoreDataProperties.swift */; };
+		7A35750C2B2FFE6E00FF5DB2 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B32B2EE93100746FCB /* UserEntity+CoreDataClass.swift */; };
+		7A35750D2B2FFE7100FF5DB2 /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AD2B2EE93100746FCB /* TagEntity+CoreDataProperties.swift */; };
+		7A35750E2B2FFE7400FF5DB2 /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AF2B2EE93100746FCB /* TagEntity+CoreDataClass.swift */; };
+		7A35750F2B2FFE7700FF5DB2 /* NotiLogEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B02B2EE93100746FCB /* NotiLogEntity+CoreDataProperties.swift */; };
+		7A3575102B2FFE7900FF5DB2 /* NotiLogEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AB2B2EE93100746FCB /* NotiLogEntity+CoreDataClass.swift */; };
+		7A3575112B2FFE7C00FF5DB2 /* MemoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AA2B2EE93100746FCB /* MemoEntity+CoreDataProperties.swift */; };
+		7A3575122B2FFE7F00FF5DB2 /* MemoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AC2B2EE93100746FCB /* MemoEntity+CoreDataClass.swift */; };
+		7A3575132B2FFE8100FF5DB2 /* AlarmPresetEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71AE2B2EE93100746FCB /* AlarmPresetEntity+CoreDataProperties.swift */; };
+		7A3575142B2FFE8300FF5DB2 /* AlarmPresetEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7D71B12B2EE93100746FCB /* AlarmPresetEntity+CoreDataClass.swift */; };
+		7A3575152B2FFEB700FF5DB2 /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00133EB92B2451530035AB70 /* MemoViewModel.swift */; };
+		7A3575162B3005DD00FF5DB2 /* AlarmPresetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00133EBA2B2451530035AB70 /* AlarmPresetViewModel.swift */; };
+		7A3575172B3005EE00FF5DB2 /* AlarmPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8DE4BE2B1EB078004502FF /* AlarmPreset.swift */; };
+		7A3575182B30064200FF5DB2 /* ViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73E0E2B0C583900B59084 /* ViewComponents.swift */; };
+		7A3575192B3007A100FF5DB2 /* AddMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A73DFA2B0C31D700B59084 /* AddMemoViewModel.swift */; };
+		7A35751A2B3007A600FF5DB2 /* MemoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF6B4D12B1B204800B64CC0 /* MemoDetailViewModel.swift */; };
+		7A35751B2B3007B300FF5DB2 /* SettingTagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9AB3CD2B2295AE00B00C09 /* SettingTagViewModel.swift */; };
+		7A35751C2B3007BF00FF5DB2 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DB1B02B2D744C001F9064 /* TagViewModel.swift */; };
+		7A35751D2B3007E600FF5DB2 /* SettingAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */; };
+		7A35751E2B3007F100FF5DB2 /* 2_Init_AddAlarmPresetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */; };
+		7A3575202B30109700FF5DB2 /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82451EF2AFE69A600EB4F54 /* AddMemoView.swift */; };
+		7A3575232B3034BA00FF5DB2 /* HandleURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3575222B3034BA00FF5DB2 /* HandleURL.swift */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
 		7A7F87942AEF559E00F14B11 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87932AEF559E00F14B11 /* CuckooTests.swift */; };
@@ -60,6 +104,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7A3574F02B2FFBA700FF5DB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A7F87772AEF559C00F14B11 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A3574E72B2FFBA700FF5DB2;
+			remoteInfo = ShareExtension;
+		};
 		7A7F87902AEF559E00F14B11 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7A7F87772AEF559C00F14B11 /* Project object */;
@@ -76,6 +127,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7A3574F62B2FFBA800FF5DB2 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7A3574F22B2FFBA700FF5DB2 /* ShareExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		00133EB12B24128E0035AB70 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		00133EB92B2451530035AB70 /* MemoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
@@ -83,6 +148,8 @@
 		00133EBD2B2456EF0035AB70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0022CB222B1FA9A900EC6A66 /* NotificationLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLogView.swift; sourceTree = "<group>"; };
 		0056C0232B2EB8FA001148AD /* NotificationLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLogViewModel.swift; sourceTree = "<group>"; };
+		006084B02B301F0000387180 /* Cuckoo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cuckoo.entitlements; sourceTree = "<group>"; };
+		006084B12B301F2A00387180 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
 		00652D8F2B12E2DB004C3345 /* 2_Init_AddAlarmPresetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2_Init_AddAlarmPresetView.swift; sourceTree = "<group>"; };
 		00652D912B12FA1A004C3345 /* 3_Init_AddInfoConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3_Init_AddInfoConfirmView.swift; sourceTree = "<group>"; };
 		00652D932B143E51004C3345 /* MemoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoDetailView.swift; sourceTree = "<group>"; };
@@ -102,6 +169,13 @@
 		00CEBC992B2AC6B100A74BBF /* CoreDataContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataContainer.xcdatamodel; sourceTree = "<group>"; };
 		00DBF6FB2B1F1FF1001EBCE3 /* SettingAlarmPresetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingAlarmPresetView.swift; sourceTree = "<group>"; };
 		7A0601A52B26AD6700055EBB /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		7A3574E82B2FFBA700FF5DB2 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A3574EA2B2FFBA700FF5DB2 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		7A3574ED2B2FFBA700FF5DB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7A3574EF2B2FFBA700FF5DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A3574FA2B2FFCFA00FF5DB2 /* FirstSharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSharedView.swift; sourceTree = "<group>"; };
+		7A3574FC2B2FFD3400FF5DB2 /* SecondSharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSharedView.swift; sourceTree = "<group>"; };
+		7A3575222B3034BA00FF5DB2 /* HandleURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleURL.swift; sourceTree = "<group>"; };
 		7A7F877F2AEF559C00F14B11 /* Cuckoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuckoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7F87822AEF559C00F14B11 /* CuckooApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuckooApp.swift; sourceTree = "<group>"; };
 		7A7F87862AEF559D00F14B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,6 +208,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7A3574E52B2FFBA700FF5DB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A3574F92B2FFBD500FF5DB2 /* SwiftSoup in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A7F877C2AEF559C00F14B11 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,13 +335,6 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		71F80CFC4C0B32F28DA267F1 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		7A0601A42B26AD4900055EBB /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,14 +343,43 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		7A3574E92B2FFBA700FF5DB2 /* ShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				006084B12B301F2A00387180 /* ShareExtension.entitlements */,
+				7A3574EA2B2FFBA700FF5DB2 /* ShareViewController.swift */,
+				7A3574EC2B2FFBA700FF5DB2 /* MainInterface.storyboard */,
+				7A3574EF2B2FFBA700FF5DB2 /* Info.plist */,
+				7A3574FA2B2FFCFA00FF5DB2 /* FirstSharedView.swift */,
+				7A3574FC2B2FFD3400FF5DB2 /* SecondSharedView.swift */,
+			);
+			path = ShareExtension;
+			sourceTree = "<group>";
+		};
+		7A3574F72B2FFBD500FF5DB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A3575212B3034AC00FF5DB2 /* HandleURL */ = {
+			isa = PBXGroup;
+			children = (
+				7A3575222B3034BA00FF5DB2 /* HandleURL.swift */,
+			);
+			path = HandleURL;
+			sourceTree = "<group>";
+		};
 		7A7F87762AEF559C00F14B11 = {
 			isa = PBXGroup;
 			children = (
 				7A7F87812AEF559C00F14B11 /* Cuckoo */,
 				7A7F87922AEF559E00F14B11 /* CuckooTests */,
 				7A7F879C2AEF559E00F14B11 /* CuckooUITests */,
+				7A3574E92B2FFBA700FF5DB2 /* ShareExtension */,
 				7A7F87802AEF559C00F14B11 /* Products */,
-				71F80CFC4C0B32F28DA267F1 /* Pods */,
+				7A3574F72B2FFBD500FF5DB2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -285,6 +389,7 @@
 				7A7F877F2AEF559C00F14B11 /* Cuckoo.app */,
 				7A7F878F2AEF559E00F14B11 /* CuckooTests.xctest */,
 				7A7F87992AEF559E00F14B11 /* CuckooUITests.xctest */,
+				7A3574E82B2FFBA700FF5DB2 /* ShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -292,6 +397,8 @@
 		7A7F87812AEF559C00F14B11 /* Cuckoo */ = {
 			isa = PBXGroup;
 			children = (
+				7A3575212B3034AC00FF5DB2 /* HandleURL */,
+				006084B02B301F0000387180 /* Cuckoo.entitlements */,
 				00E286812B2AF0F1002D894E /* CoreData */,
 				00CEBC982B2AC6B100A74BBF /* CoreDataContainer.xcdatamodeld */,
 				7A0601A42B26AD4900055EBB /* Notification */,
@@ -334,6 +441,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7A3574E72B2FFBA700FF5DB2 /* ShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A3574F32B2FFBA800FF5DB2 /* Build configuration list for PBXNativeTarget "ShareExtension" */;
+			buildPhases = (
+				7A3574E42B2FFBA700FF5DB2 /* Sources */,
+				7A3574E52B2FFBA700FF5DB2 /* Frameworks */,
+				7A3574E62B2FFBA700FF5DB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareExtension;
+			packageProductDependencies = (
+				7A3574F82B2FFBD500FF5DB2 /* SwiftSoup */,
+			);
+			productName = ShareExtension;
+			productReference = 7A3574E82B2FFBA700FF5DB2 /* ShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		7A7F877E2AEF559C00F14B11 /* Cuckoo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A7F87A32AEF559E00F14B11 /* Build configuration list for PBXNativeTarget "Cuckoo" */;
@@ -341,10 +468,12 @@
 				7A7F877B2AEF559C00F14B11 /* Sources */,
 				7A7F877C2AEF559C00F14B11 /* Frameworks */,
 				7A7F877D2AEF559C00F14B11 /* Resources */,
+				7A3574F62B2FFBA800FF5DB2 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7A3574F12B2FFBA700FF5DB2 /* PBXTargetDependency */,
 			);
 			name = Cuckoo;
 			packageProductDependencies = (
@@ -400,6 +529,9 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					7A3574E72B2FFBA700FF5DB2 = {
+						CreatedOnToolsVersion = 15.0;
+					};
 					7A7F877E2AEF559C00F14B11 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -432,11 +564,21 @@
 				7A7F877E2AEF559C00F14B11 /* Cuckoo */,
 				7A7F878E2AEF559E00F14B11 /* CuckooTests */,
 				7A7F87982AEF559E00F14B11 /* CuckooUITests */,
+				7A3574E72B2FFBA700FF5DB2 /* ShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7A3574E62B2FFBA700FF5DB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				006084AE2B30163A00387180 /* Assets.xcassets in Resources */,
+				7A3574EE2B2FFBA700FF5DB2 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A7F877D2AEF559C00F14B11 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -462,6 +604,52 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7A3574E42B2FFBA700FF5DB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A3575142B2FFE8300FF5DB2 /* AlarmPresetEntity+CoreDataClass.swift in Sources */,
+				7A3575202B30109700FF5DB2 /* AddMemoView.swift in Sources */,
+				7A35750C2B2FFE6E00FF5DB2 /* UserEntity+CoreDataClass.swift in Sources */,
+				7A3575162B3005DD00FF5DB2 /* AlarmPresetViewModel.swift in Sources */,
+				7A35751B2B3007B300FF5DB2 /* SettingTagViewModel.swift in Sources */,
+				7A35750B2B2FFE6A00FF5DB2 /* UserEntity+CoreDataProperties.swift in Sources */,
+				7A3574FB2B2FFCFA00FF5DB2 /* FirstSharedView.swift in Sources */,
+				7A35750F2B2FFE7700FF5DB2 /* NotiLogEntity+CoreDataProperties.swift in Sources */,
+				7A35751D2B3007E600FF5DB2 /* SettingAlarmPresetView.swift in Sources */,
+				7A3575092B2FFE6400FF5DB2 /* CoreDataContainer.xcdatamodeld in Sources */,
+				7A3574EB2B2FFBA700FF5DB2 /* ShareViewController.swift in Sources */,
+				006084A92B30160A00387180 /* MainView.swift in Sources */,
+				006084AB2B30161200387180 /* 1_Init_AddNameAndTagView.swift in Sources */,
+				006084A72B30160000387180 /* MemoDetailView.swift in Sources */,
+				7A35750E2B2FFE7400FF5DB2 /* TagEntity+CoreDataClass.swift in Sources */,
+				006084A42B3015DB00387180 /* NotificationLogViewModel.swift in Sources */,
+				7A3575102B2FFE7900FF5DB2 /* NotiLogEntity+CoreDataClass.swift in Sources */,
+				7A35751A2B3007A600FF5DB2 /* MemoDetailViewModel.swift in Sources */,
+				7A3575132B2FFE8100FF5DB2 /* AlarmPresetEntity+CoreDataProperties.swift in Sources */,
+				7A3575182B30064200FF5DB2 /* ViewComponents.swift in Sources */,
+				006084AA2B30160E00387180 /* 3_Init_AddInfoConfirmView.swift in Sources */,
+				006084AC2B30161700387180 /* SettingProfileView.swift in Sources */,
+				7A3575172B3005EE00FF5DB2 /* AlarmPreset.swift in Sources */,
+				006084A32B3015CD00387180 /* UserProfileViewModel.swift in Sources */,
+				7A3575122B2FFE7F00FF5DB2 /* MemoEntity+CoreDataClass.swift in Sources */,
+				7A3575152B2FFEB700FF5DB2 /* MemoViewModel.swift in Sources */,
+				7A3574FD2B2FFD3400FF5DB2 /* SecondSharedView.swift in Sources */,
+				7A35750D2B2FFE7100FF5DB2 /* TagEntity+CoreDataProperties.swift in Sources */,
+				7A35751E2B3007F100FF5DB2 /* 2_Init_AddAlarmPresetView.swift in Sources */,
+				006084AD2B30161A00387180 /* SettingView.swift in Sources */,
+				006084AF2B30164600387180 /* CuckooApp.swift in Sources */,
+				006084A82B30160300387180 /* MainContainerView.swift in Sources */,
+				006084A62B3015FD00387180 /* NotificationLogView.swift in Sources */,
+				7A3575192B3007A100FF5DB2 /* AddMemoViewModel.swift in Sources */,
+				7A35751C2B3007BF00FF5DB2 /* TagViewModel.swift in Sources */,
+				7A35750A2B2FFE6700FF5DB2 /* CoreDataManager.swift in Sources */,
+				006084A22B3015C000387180 /* Dummy.swift in Sources */,
+				006084A52B3015F700387180 /* SettingTagView.swift in Sources */,
+				7A3575112B2FFE7C00FF5DB2 /* MemoEntity+CoreDataProperties.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A7F877B2AEF559C00F14B11 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -495,6 +683,7 @@
 				0056C0242B2EB8FA001148AD /* NotificationLogViewModel.swift in Sources */,
 				00133EB22B24128E0035AB70 /* UserProfileViewModel.swift in Sources */,
 				A8BC238F2AFA013B00A2F87F /* MainContainerView.swift in Sources */,
+				7A3575232B3034BA00FF5DB2 /* HandleURL.swift in Sources */,
 				7D8DE4BF2B1EB078004502FF /* AlarmPreset.swift in Sources */,
 				00133EBB2B2451530035AB70 /* MemoViewModel.swift in Sources */,
 				00133EBC2B2451530035AB70 /* AlarmPresetViewModel.swift in Sources */,
@@ -534,6 +723,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7A3574F12B2FFBA700FF5DB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A3574E72B2FFBA700FF5DB2 /* ShareExtension */;
+			targetProxy = 7A3574F02B2FFBA700FF5DB2 /* PBXContainerItemProxy */;
+		};
 		7A7F87912AEF559E00F14B11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7A7F877E2AEF559C00F14B11 /* Cuckoo */;
@@ -546,7 +740,70 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		7A3574EC2B2FFBA700FF5DB2 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A3574ED2B2FFBA700FF5DB2 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		7A3574F42B2FFBA800FF5DB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A3574F52B2FFBA800FF5DB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = softwarestudio2.Cuckoo.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		7A7F87A12AEF559E00F14B11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -671,8 +928,10 @@
 		7A7F87A42AEF559E00F14B11 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Cuckoo/Cuckoo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cuckoo/Preview Content\"";
@@ -704,8 +963,10 @@
 		7A7F87A52AEF559E00F14B11 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Cuckoo/Cuckoo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cuckoo/Preview Content\"";
@@ -809,6 +1070,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7A3574F32B2FFBA800FF5DB2 /* Build configuration list for PBXNativeTarget "ShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A3574F42B2FFBA800FF5DB2 /* Debug */,
+				7A3574F52B2FFBA800FF5DB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7A7F877A2AEF559C00F14B11 /* Build configuration list for PBXProject "Cuckoo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -860,6 +1130,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		007BF25A2B2FF78E00B121CE /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 007BF2592B2FF78E00B121CE /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		7A3574F82B2FFBD500FF5DB2 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 007BF2592B2FF78E00B121CE /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;

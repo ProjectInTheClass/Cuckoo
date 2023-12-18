@@ -6,25 +6,30 @@
 //
 
 import Foundation
+import CoreData
 
 class AddMemoViewModel: ObservableObject {
     @Published var memoType: String = ""
     @Published var link: String = ""
     @Published var memoTitle: String = ""
     @Published var memoContent: String = ""
-    @Published var selectedReminder: AlarmPresetEntity?
+    @Published var selectedReminder: AlarmPresetEntity = AlarmPresetEntity()
     @Published var isEditing: Bool = true
     @Published var tags: [TagEntity] = [] // tags를 [TagEntity]로 변경
+    private let presetViewModel = AlarmPresetViewModel.shared
     private let memoViewModel = MemoViewModel.shared
     private let tagViewModel = TagViewModel.shared
+    
     init() {
         // "전체" 태그를 selectedTags에 추가
         if let entireTag = tagViewModel.tags.first(where: { $0.name == "전체" }) {
             tags.append(entireTag)
         }
+        
+        selectedReminder = presetViewModel.presets[0]
     }
-
-    func addNewMemo() {
+    
+    func addNewMemo(completion: @escaping (MemoEntity?) -> Void) {
         let url = URL(string: link)
         
         // 메모 타입, 내용, URL 등을 사용하여 새 메모 추가
@@ -36,7 +41,9 @@ class AddMemoViewModel: ObservableObject {
             notificationPreset: selectedReminder, // 알림 프리셋, 예시로 0 사용
             isPinned: false, // 고정 여부, 예시로 false 사용
             tags: tags // [TagEntity]를 NSSet으로 변환하여 사용
-        )
+        ) { newMemo in
+            completion(newMemo)
+        }
     }
 
 

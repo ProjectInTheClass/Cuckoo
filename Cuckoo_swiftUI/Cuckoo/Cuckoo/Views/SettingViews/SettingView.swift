@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
-    @ObservedObject var userViewModel = UserProfileViewModel()
+    @ObservedObject var userViewModel = UserProfileViewModel.shared
     
     @State var username: String = ""
     

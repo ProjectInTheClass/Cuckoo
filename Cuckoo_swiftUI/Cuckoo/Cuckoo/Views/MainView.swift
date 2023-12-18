@@ -217,7 +217,6 @@ struct MainViewSearchFilter: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.defaultPure, lineWidth: 1)).opacity(0.5)
             }
-            .onAppear (perform : UIApplication.shared.hideKeyboard)
             .overlay(Image(systemName: "magnifyingglass")
                 .padding(.leading, 10)
                 .foregroundColor(.gray)

@@ -33,15 +33,24 @@ class GlobalState: ObservableObject {
 struct CuckooApp: App {
     @StateObject var userViewModel = UserProfileViewModel.shared
     @StateObject var globalState = GlobalState()
+    @FocusState private var isTextFieldFocused: Bool
     
     var body: some Scene {
         WindowGroup {
             if globalState.isRegistered {
                 MainView()
+                    .onTapGesture {
+                        isTextFieldFocused = false
+                    }
                     .environmentObject(globalState)
+                    .focused($isTextFieldFocused)
             } else {
                 Init_AddNameAndTagView()
+                    .onTapGesture {
+                        isTextFieldFocused = false
+                    }
                     .environmentObject(globalState)
+                    .focused($isTextFieldFocused)
             }
         }
     }

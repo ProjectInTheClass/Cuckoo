@@ -80,7 +80,6 @@ struct MemoDetailView: View {
 
                 }.padding(.bottom, 20)
             }
-            .onAppear(perform : UIApplication.shared.hideKeyboard)
             .padding(.horizontal, 30)
             
             
@@ -294,6 +293,9 @@ struct MemoContentView: View {
     
     private let maxCharacterLimit: Int = 250
     
+    @FocusState private var isTextFieldFocused: Bool
+    
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("메모 내용")
@@ -303,6 +305,7 @@ struct MemoContentView: View {
             // TextEditor의 스크롤 가능한 영역 설정
             VStack(alignment: .leading, spacing: 0){
                 TextField("메모 디테일한 내용을 작성해주세요.", text: $Comment, axis: .vertical)
+                    .focused($isTextFieldFocused)
                     .disabled(!isEditing)
                     .font(.system(size: 14, weight: .regular))
                     .foregroundColor(isEditing ? .black : Color.cuckooDeepGray)
@@ -326,7 +329,9 @@ struct MemoContentView: View {
                         .padding(.trailing, 15)
                 }
                 
-            }.onAppear (perform : UIApplication.shared.hideKeyboard)
+            }
+        }.onTapGesture {
+            isTextFieldFocused = false
         }
         .onAppear {
             UITextView.appearance().backgroundColor = .clear
@@ -564,7 +569,7 @@ struct EditButtonView: View {
 struct MemoAlarmPresetEditFormView: View {
     @Binding var presetList: [AlarmPresetEntity]
     @Binding var nowPreset: AlarmPresetEntity?
-    @Binding var selectedReminder: AlarmPresetEntity?
+    @Binding var selectedReminder: AlarmPresetEntity
     @Binding var isEditing: Bool
     
     
@@ -592,22 +597,10 @@ struct MemoAlarmPresetEditFormView: View {
                             }
                         }
                     } label: {
-                        if let selectedReminder = selectedReminder {
-                            PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)
-                        } else {
-                            PresetButtonView(preset: nowPreset, onToggle: {
-                                selectedReminder = nowPreset
-                            }, isSelected: false)
-                        }
+                        PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)
                     }
                 } else {
-                    if let selectedReminder = selectedReminder {
-                        PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)
-                    } else {
-                        PresetButtonView(preset: nowPreset, onToggle: {
-                            selectedReminder = nowPreset
-                        }, isSelected: false)
-                    }
+                    PresetButtonView(preset: selectedReminder, onToggle: {}, isSelected: false)
                 }
                 
                 

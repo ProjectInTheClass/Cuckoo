@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 class SettingTagViewModel: ObservableObject {
 //    static let shared: Setting
     @Published var tags: [TagEntity]

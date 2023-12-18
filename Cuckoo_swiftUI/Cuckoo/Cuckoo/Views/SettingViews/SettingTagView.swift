@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SettingTagView: View {
-    @StateObject var viewModel = TagViewModel.shared
+    @ObservedObject var viewModel = TagViewModel.shared
     var limit: Int = 3
     var buttonText: String = "새로 추가하기"
     
@@ -47,10 +47,7 @@ struct SettingTagView: View {
                 
                 VStack {
                     Spacer()
-                    FlowLayout(tags: viewModel.tags)
-                        .onAppear{
-                            viewModel.browseTags()
-                        }
+                    FlowLayout(tags: $viewModel.tags)
                         .padding(.horizontal, 30)
                         .padding(.top, 20)
                     
@@ -60,7 +57,8 @@ struct SettingTagView: View {
             
             Spacer()
             
-        }.overlay(
+        }
+        .overlay(
             ConfirmFixedButton(
                 confirmMessage: buttonText,
                 logic: {
@@ -68,53 +66,53 @@ struct SettingTagView: View {
                 })
             .frame(height: 120)
             .frame(maxWidth: .infinity)
-            .popover(
-                isPresented: $isAddPopoverPresented,
-                attachmentAnchor: .rect(.bounds),
-                arrowEdge: .bottom) {
-                    // 태그 추가 팝업창
-                    VStack {
-                        Text("새로운 태그 추가")
-                            .font(.headline)
-                            .padding()
-                        
-                        TextField("태그 제목", text: $newTagTitle)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
-                        
-                        ColorPicker("색상 선택", selection: $newTagColor, supportsOpacity: false)
-                            .padding()
-                        
-                        Button("확인") {
-                            // 새로운 태그를 만들어서 tagButtonList에 추가
-                            if newTagTitle.isEmpty{
-                                emptyTagTitle = true
-                            }
-                            else{
-                                viewModel.addTag(name: newTagTitle, color: newTagColor.hexCode())
-                                newTagTitle = "" // 새로운 태그 제목 초기화
-                                newTagColor = Color.gray
-                                isAddPopoverPresented.toggle()
-                            }
-                        }
-                        .padding()
-                    }
-                    .padding(.horizontal, 30)
-                    .alert(isPresented: $emptyTagTitle) {//차후 이미 존재하는 태그들에 대해서 이슈가 있을 수 있음.
-                        Alert(
-                            title: Text("알림"),
-                            message: Text("빈 제목의 태그는 만들 수 없습니다."),
-                            dismissButton: .default(Text("확인")){
-                                showTagAlert = false
-                                showEmptyTitleAlert = false
-                            }
-                        )
-                    }
-                }
             
-            ,alignment: .bottom
-        )
+            
+            ,alignment: .bottom)
         .navigationBarHidden(true)
+        .popover(
+            isPresented: $isAddPopoverPresented,
+            attachmentAnchor: .rect(.bounds),
+            arrowEdge: .bottom) {
+                // 태그 추가 팝업창
+                VStack {
+                    Text("새로운 태그 추가")
+                        .font(.headline)
+                        .padding()
+                    
+                    TextField("태그 제목", text: $newTagTitle)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                    
+                    ColorPicker("색상 선택", selection: $newTagColor, supportsOpacity: false)
+                        .padding()
+                    
+                    Button("확인") {
+                        // 새로운 태그를 만들어서 tagButtonList에 추가
+                        if newTagTitle.isEmpty{
+                            emptyTagTitle = true
+                        }
+                        else{
+                            viewModel.addTag(name: newTagTitle, color: newTagColor.hexCode())
+                            newTagTitle = "" // 새로운 태그 제목 초기화
+                            newTagColor = Color.gray
+                            isAddPopoverPresented.toggle()
+                        }
+                    }
+                    .padding()
+                }
+                .padding(.horizontal, 30)
+                .alert(isPresented: $emptyTagTitle) {//차후 이미 존재하는 태그들에 대해서 이슈가 있을 수 있음.
+                    Alert(
+                        title: Text("알림"),
+                        message: Text("빈 제목의 태그는 만들 수 없습니다."),
+                        dismissButton: .default(Text("확인")){
+                            showTagAlert = false
+                            showEmptyTitleAlert = false
+                        }
+                    )
+                }
+            }
     }
     
 }
@@ -140,7 +138,7 @@ struct AddButton: View {
 }
 
 struct FlowLayout: View {
-    var tags: [TagEntity]
+    @Binding var tags: [TagEntity]
     let spacing: CGFloat = 4
 
     var body: some View {
