@@ -46,7 +46,7 @@ class MemoDetailViewModel: ObservableObject {
         showDeleteAlert.toggle()
     }
     
-    func saveChanges() {        
+    func saveChanges() {
         memo.memo_preset = selectedReminder
         
         MemoViewModel.shared.editMemo(

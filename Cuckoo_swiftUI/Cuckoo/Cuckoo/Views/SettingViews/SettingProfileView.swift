@@ -25,14 +25,17 @@ struct SettingsProfileView: View {
     
     //보유 메모수, 누적 알림
     @State private var memoCount: String = "10" // Placeholder value
-    @State private var notificationCount: String = "999+" // Placeholder value
+    @State private var notificationCount: Int = 999 // Placeholder value
     
     // Tags array fetched from the database (replace this with your actual data)
-    @State private var tags: [String : Int] = ["메모" : 8, "개발관련" : 2, "유튜브" : 1]
+//    @State private var tags: [String : Int] = ["메모" : 8, "개발관련" : 2, "유튜브" : 1]
     // Alert for confirming tag deletion
     @State private var deleteTagAlert: Alert?
     // ActionSheet for tag options (modify, delete)
     @State private var tagOptionsSheet: ActionSheet?
+    @ObservedObject var tagViewModel = TagViewModel.shared
+    @ObservedObject var memoViewModel = MemoViewModel.shared
+   
     
     
     var body: some View {
@@ -99,7 +102,7 @@ struct SettingsProfileView: View {
             
             //수치 정보 창
             HStack(spacing: 30) {
-                RoundedStatsView(title: "보유 메모 수", value: memoCount)
+                RoundedStatsView(title: "보유 메모 수", value: memoViewModel.memos.count)
                 RoundedStatsView(title: "누적 알림", value: notificationCount)
             }.padding(.bottom, 30)
             
@@ -108,9 +111,7 @@ struct SettingsProfileView: View {
                 .frame(width: UIScreen.main.bounds.width/1.15)
                 .padding(.vertical, 20)
             
-            TagSectionView(
-                tags: $tags
-            ).padding(.horizontal, 20)
+            TagSectionView(tagViewModel: tagViewModel).padding(.horizontal, 20)
             
             //디바이더
             Divider()
@@ -126,18 +127,18 @@ struct SettingsProfileView: View {
 
 struct RoundedStatsView: View {
     var title: String
-    var value: String
+    var value: Int
     
     var body: some View {
         VStack {
-            Text(value)
-                .font(.title)
-                .fontWeight(.bold)
             
-            Text(title)
+            Text("\(title) :")
                 .font(.caption)
                 .fontWeight(.bold)
                 .foregroundColor(.black)
+            Text("\(value)개")
+                .font(.title)
+                .fontWeight(.bold)
         }
         .padding(20)
         .frame(width: 130, height: 130)
@@ -149,30 +150,28 @@ struct RoundedStatsView: View {
 }
 
 struct TagSectionView: View {
-    @Binding var tags: [String : Int]
+    @ObservedObject var tagViewModel: TagViewModel
+
     var body: some View {
-        
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text("태그 정보")
                     .font(.headline)
                 Spacer()
-                
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    ForEach(tags.sorted(by: { $0.key < $1.key }), id: \.key) { tag, numOfMemo in
-                        SettingsView_myInfo_Tag(tagName: tag, numOfMemo: numOfMemo)
+                    ForEach(tagViewModel.tags, id: \.self) { tag in
+                        TagCountView(tag: tag)
                     }
                 }
                 .padding(.vertical, 10)
             }
-            .frame(height: 40)
-            
         }
         .padding(.horizontal, 20)
     }
 }
+
 
 struct SettingsView_myInfo_Tag: View {
     
