@@ -253,7 +253,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "62"
             endingLineNumber = "62"
-            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:)"
+            landmarkName = "getMemo(memoID:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -269,7 +269,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:)"
+            landmarkName = "getMemo(memoID:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -317,7 +317,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
             endingLineNumber = "81"
-            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:)"
+            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -333,7 +333,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
             endingLineNumber = "102"
-            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:)"
+            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -493,7 +493,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
             endingLineNumber = "108"
-            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:)"
+            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -653,7 +653,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
             endingLineNumber = "35"
-            landmarkName = "addNewMemo()"
+            landmarkName = "addNewMemo(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -669,7 +669,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
             endingLineNumber = "40"
-            landmarkName = "addNewMemo()"
+            landmarkName = "addNewMemo(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -685,7 +685,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "addNewMemo()"
+            landmarkName = "addNewMemo(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -701,7 +701,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:)"
+            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -717,7 +717,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
             endingLineNumber = "75"
-            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:)"
+            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -733,31 +733,15 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
-            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:)"
+            landmarkName = "addMemo(title:comment:url:notificationCycle:notificationPreset:isPinned:tags:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8E7E192C-0778-493D-8246-44D8138383C6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ShareExtension/SecondSharedView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "E6D7D3B9-4690-4425-9FDC-B50A27B1CD1E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cuckoo/ViewModels/MemoViewModel.swift"
@@ -765,15 +749,62 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "292"
             endingLineNumber = "292"
-            landmarkName = "getMostRecentlyCreatedMemo()"
+            landmarkName = "applyFilters()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E6D7D3B9-4690-4425-9FDC-B50A27B1CD1E - 5e5374cb603aec49"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShareExtension.MemoViewModel.getMostRecentlyCreatedMemo() -&gt; Swift.Optional&lt;ShareExtension.MemoEntity&gt;"
+                  moduleName = "ShareExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoocheolmin/Desktop/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
+                  offsetFromSymbolStart = "33">
+               </Location>
+               <Location
+                  uuid = "E6D7D3B9-4690-4425-9FDC-B50A27B1CD1E - 6d7968465e8b8997"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cuckoo.MemoViewModel.getMostRecentlyCreatedMemo() -&gt; Swift.Optional&lt;Cuckoo.MemoEntity&gt;"
+                  moduleName = "Cuckoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoocheolmin/Desktop/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
+                  offsetFromSymbolStart = "33">
+               </Location>
+               <Location
+                  uuid = "E6D7D3B9-4690-4425-9FDC-B50A27B1CD1E - a224d04c65713243"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (ShareExtension.MemoEntity) -&gt; Swift.Bool in ShareExtension.MemoViewModel.applyFilters() -&gt; ()"
+                  moduleName = "ShareExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoocheolmin/Desktop/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "292"
+                  endingLineNumber = "292"
+                  offsetFromSymbolStart = "1206">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AEA5D4B6-9BD1-4116-BE26-5842087999E1"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cuckoo/ViewModels/MemoViewModel.swift"
@@ -781,7 +812,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "294"
             endingLineNumber = "294"
-            landmarkName = "getMostRecentlyCreatedMemo()"
+            landmarkName = "applyFilters()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -814,6 +845,51 @@
                   endingLineNumber = "294"
                   offsetFromSymbolStart = "168">
                </Location>
+               <Location
+                  uuid = "AEA5D4B6-9BD1-4116-BE26-5842087999E1 - 6d7968465e8b8949"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cuckoo.MemoViewModel.getMostRecentlyCreatedMemo() -&gt; Swift.Optional&lt;Cuckoo.MemoEntity&gt;"
+                  moduleName = "Cuckoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoocheolmin/Desktop/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "294"
+                  endingLineNumber = "294"
+                  offsetFromSymbolStart = "216">
+               </Location>
+               <Location
+                  uuid = "AEA5D4B6-9BD1-4116-BE26-5842087999E1 - 1742fc8df68f29f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Cuckoo.MemoEntity, Cuckoo.MemoEntity) -&gt; Swift.Bool in Cuckoo.MemoViewModel.getMostRecentlyCreatedMemo() -&gt; Swift.Optional&lt;Cuckoo.MemoEntity&gt;"
+                  moduleName = "Cuckoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoocheolmin/Desktop/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "294"
+                  endingLineNumber = "294"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "AEA5D4B6-9BD1-4116-BE26-5842087999E1 - a224d04c657132df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (ShareExtension.MemoEntity) -&gt; Swift.Bool in ShareExtension.MemoViewModel.applyFilters() -&gt; ()"
+                  moduleName = "ShareExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoocheolmin/Desktop/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "296"
+                  endingLineNumber = "296"
+                  offsetFromSymbolStart = "2872">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -821,7 +897,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "341C515A-3DFA-45D1-9596-A7E1F134C5B9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cuckoo/ViewModels/MemoViewModel.swift"
@@ -829,8 +905,55 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "293"
             endingLineNumber = "293"
-            landmarkName = "getMostRecentlyCreatedMemo()"
+            landmarkName = "applyFilters()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "341C515A-3DFA-45D1-9596-A7E1F134C5B9 - 5e5374cb603aec68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShareExtension.MemoViewModel.getMostRecentlyCreatedMemo() -&gt; Swift.Optional&lt;ShareExtension.MemoEntity&gt;"
+                  moduleName = "ShareExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoocheolmin/Desktop/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "293"
+                  endingLineNumber = "293"
+                  offsetFromSymbolStart = "75">
+               </Location>
+               <Location
+                  uuid = "341C515A-3DFA-45D1-9596-A7E1F134C5B9 - 6d7968465e8b89b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cuckoo.MemoViewModel.getMostRecentlyCreatedMemo() -&gt; Swift.Optional&lt;Cuckoo.MemoEntity&gt;"
+                  moduleName = "Cuckoo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoocheolmin/Desktop/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "293"
+                  endingLineNumber = "293"
+                  offsetFromSymbolStart = "75">
+               </Location>
+               <Location
+                  uuid = "341C515A-3DFA-45D1-9596-A7E1F134C5B9 - a224d04c657132df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (ShareExtension.MemoEntity) -&gt; Swift.Bool in ShareExtension.MemoViewModel.applyFilters() -&gt; ()"
+                  moduleName = "ShareExtension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yoocheolmin/Desktop/Cuckoo/Cuckoo_swiftUI/Cuckoo/Cuckoo/ViewModels/MemoViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "296"
+                  endingLineNumber = "296"
+                  offsetFromSymbolStart = "2872">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
