@@ -15,6 +15,8 @@ struct AddMemoView: View {
     
     @SwiftUI.Environment(\.dismiss) var dismiss
     
+    @State var isAddingMemo: Bool = false
+    
     var body: some View {
             VStack {
                 HeaderView(title: "메모 등록")
@@ -53,11 +55,24 @@ struct AddMemoView: View {
                 Spacer()
                 
             }
+            .alert(isPresented: $isAddingMemo) {
+                Alert(
+                    title: Text("알림"),
+                    message: Text(viewModel.memoTitle.isEmpty || viewModel.memoContent.isEmpty || viewModel.tags.isEmpty ? "태그와 제목과 내용은 필수입니다." : "메모를 등록하시겠습니까?"),
+                    primaryButton: .destructive(Text("확인")) {
+                        if !(viewModel.memoTitle.isEmpty || viewModel.memoContent.isEmpty || viewModel.tags.isEmpty) {
+                            viewModel.addNewMemo()
+                            dismiss()
+                        }
+                    },
+                    secondaryButton: .cancel(Text("취소"))
+                )
+            }
+
             .overlay(
                 AddMemoFooterView(
                     addMemoAction: {
-                        viewModel.addNewMemo()
-                        dismiss()
+                        isAddingMemo.toggle()
                     })
                 .frame(height: 60)
                 .frame(maxWidth: .infinity)
