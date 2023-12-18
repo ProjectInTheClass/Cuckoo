@@ -20,6 +20,7 @@ class MemoViewModel: ObservableObject {
     @Published var selectedTags: Set<TagEntity> = []
     @Published var searchKeyword: String = ""
 
+
     
     init() {
         fetchMemo()
@@ -286,6 +287,12 @@ class MemoViewModel: ObservableObject {
         
     }
     
+    //secondSharedView를 위해서
+    func getMostRecentlyCreatedMemo() -> MemoEntity? {
+        fetchMemo()
+        print(memos)
+        return memos.max(by: { $0.created_at! < $1.created_at! })
+    }
 
 
 }

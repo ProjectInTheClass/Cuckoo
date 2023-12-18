@@ -15,9 +15,11 @@ struct FirstSharedView: View {
     @State private var onClose : () -> Void // 화면 닫는 클로저
     @StateObject private var viewModel = AddMemoViewModel()
     @ObservedObject private var presetViewModel = AlarmPresetViewModel.shared
+    @StateObject private var mvm = MemoViewModel.shared
     
     @State var isAddingMemo: Bool = false
     @State var newURL: String = ""
+    @State var isSecondViewPresented : Bool = false
     
     // ContentView의 initializer 추가
     init(linkURL: String, onClose: @escaping () -> Void) {
@@ -71,6 +73,7 @@ struct FirstSharedView: View {
                         .frame(maxWidth: .infinity)
                     
                     //alarm period
+                    //TODO : 여기서 MemoAlarmPresetFormView
                     MemoAlarmPresetFormView(
                         presetList: $presetViewModel.presets,
                         selectedReminder: $viewModel.selectedReminder,
@@ -93,12 +96,16 @@ struct FirstSharedView: View {
                     if !(viewModel.memoTitle.isEmpty || viewModel.memoContent.isEmpty || viewModel.tags.isEmpty) {
                         viewModel.link = newURL
                         viewModel.addNewMemo()
-                        
-                        onClose()
+                        print(mvm.memos) //memos에 없음...!
+                        isSecondViewPresented.toggle()
+                        ///여기서 SecondSharedView를 띄운다.
                     }
                 },
                 secondaryButton: .cancel(Text("취소"))
             )
+        }.popover(isPresented: $isSecondViewPresented, arrowEdge: .bottom) {
+            // Pass the necessary bindings to the SecondSharedView
+            SecondSharedView(onClose : $onClose, newURL: $newURL)
         }
 
         .overlay(
