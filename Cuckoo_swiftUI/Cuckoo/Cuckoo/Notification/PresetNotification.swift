@@ -1,73 +1,103 @@
-//
-//  PresetNotification.swift
-//  Cuckoo
-//
-//  Created by 유철민 on 12/18/23.
-//
-
-import Foundation
+import UIKit
 import CoreData
 
-class AlarmManager {
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    var window: UIWindow?
     var timer: Timer?
-
-    init() {
-        // 매일 특정 시간마다 호출되도록 타이머 설정 (예: 매일 오전 8시)
-        let date = Date()
-        let calendar = Calendar.current
-        let targetDateComponents = DateComponents(hour: 8, minute: 0, second: 0)
-        guard let targetDate = calendar.date(bySettingHour: targetDateComponents.hour!, minute: targetDateComponents.minute!, second: targetDateComponents.second!, of: date) else {
-            return
-        }
-
-        timer = Timer(fire: targetDate, interval: 60*60*24, repeats: true, block: { [weak self] _ in
-            self?.handleAlarm()
-        })
-
-        // 타이머를 실행 루프에 추가
-        if let timer = timer {
-            RunLoop.current.add(timer, forMode: .default)
-        }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // 앱이 시작될 때 타이머 시작
+        startTimer()
+        return true
     }
-
-    deinit {
-        // 타이머가 더 이상 필요하지 않을 때 해제
-        timer?.invalidate()
+    
+    func startTimer() {
+        // 60초마다 타이머를 설정하여 데이터를 가져옴
+        timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(fetchData), userInfo: nil, repeats: true)
     }
-
-    @objc func handleAlarm() {
-        // 매일 호출될 동작 수행
-        print("Alarm time reached!")
-
-        // AlarmPresetEntity에 등록된 시간에 해당하는 MemoEntity 가져오기
-        let memoArray = getMemosForAlarmTime()
-        for memo in memoArray {
+    
+    @objc func fetchData() {
+        // 백그라운드에서 주기적으로 실행될 코드
+        print("Fetching data in the background...")
+        
+        // CoreData에서 AlarmPresetEntity의 alarm_time을 가져오고, 해당 시간에 맞는 MemoEntity를 가져옴
+        guard let alarmTime = fetchAlarmTimeFromCoreData() else { return }
+        let memosForAlarmTime = getMemosForAlarmTime(alarmTime: alarmTime)
+        
+        for memo in memosForAlarmTime {
             print("Memo Content: \(memo.title)")
-            // 여기에서 필요한 동작 수행
+            // 여기에서 MemoEntity에 대한 추가 동작 수행
         }
     }
-
-    func getMemosForAlarmTime() -> [MemoEntity] {
+    
+    func fetchAlarmTimeFromCoreData() -> String? {
+        // CoreData에서 AlarmPresetEntity의 alarm_time을 가져오는 코드를 작성
+        // 필요에 따라 NSManagedObjectContext 등을 설정
+        // 예제에서는 간략하게 표현
         let context = // your NSManagedObjectContext
-
-        let fetchRequest: NSFetchRequest<MemoEntity> = MemoEntity.fetchRequest()
-
-        // 현재 날짜 및 시간 가져오기
-        let currentDate = Date()
-
-        // AlarmPresetEntity의 alarm_time과 현재 날짜 및 시간을 비교하여 조건 설정
-        fetchRequest.predicate = NSPredicate(format: "memo_preset.alarm_time == %@", currentDate as CVarArg)
-
+        
+        let fetchRequest: NSFetchRequest<AlarmPresetEntity> = AlarmPresetEntity.fetchRequest()
+        
         do {
-            let memos = try context.fetch(fetchRequest)
-            return memos
+            let presets = try context.fetch(fetchRequest)
+            // 여기에서 적절한 로직으로 alarm_time을 선택
+            if let selectedPreset = presets.first {
+                return selectedPreset.alarm_time
+            }
         } catch {
-            print("Error fetching memos: \(error.localizedDescription)")
-            return []
+            print("Error fetching alarm presets: \(error.localizedDescription)")
         }
+        
+        return nil
     }
+    
+    // MemoEntity에서 최신 NotiLogEntity의 sent_at을 찾는 함수
+    func findLatestSentDate(for memo: MemoEntity) -> Date? {
+        guard let logs = memo.memo_log as? Set<NotiLogEntity>, !logs.isEmpty else {
+            return nil
+        }
+        
+        let sortedLogs = logs.sorted { $0.sent_at > $1.sent_at }
+        return sortedLogs.first?.sent_at
+    }
+
+    // 메인 로직
+    func filterMemosForToday(memoArray: [MemoEntity]) -> [MemoEntity] {
+        let userDefaults = UserDefaults.standard
+        
+        // 오늘의 기준 날짜 생성
+        let today = Calendar.current.startOfDay(for: Date())
+        
+        // 오늘에 해당하는 MemoEntity 배열 생성
+        let filteredMemos = memoArray.filter { memo in
+            if let latestSentDate = findLatestSentDate(for: memo) {
+                // MemoEntity의 noti_count, userDefaults에서 가져온 term, multiplier 값 사용
+                let term = userDefaults.integer(forKey: "term")
+                let multiplier = userDefaults.integer(forKey: "multiplier")
+                
+                // 최신 NotiLogEntity의 sent_at에 (noti_count + 1) * term * multiplier를 더한 날짜 계산
+                let nextNotificationDate = Calendar.current.date(byAdding: .day, value: (Int(memo.noti_count) + 1) * term * multiplier, to: latestSentDate)
+                
+                // 오늘과 계산된 날짜가 일치하면 MemoEntity를 반환
+                return Calendar.current.isDate(nextNotificationDate ?? Date(), inSameDayAs: today)
+            }
+            
+            return false
+        }
+        
+        return filteredMemos
+    }
+    
+    
 }
 
-// AlarmManager 인스턴스 생성
-let alarmManager = AlarmManager()
+
+
+//// 사용 예제
+//let filteredMemos = filterMemosForToday(memoArray: yourMemoArray)
+//print("Filtered Memos for Today: \(filteredMemos)")
+
+
+

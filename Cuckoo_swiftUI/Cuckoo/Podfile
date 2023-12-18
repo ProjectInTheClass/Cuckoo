@@ -18,5 +18,12 @@ target 'Cuckoo' do
   target 'CuckooUITests' do
     # Pods for testing
   end
+  
+  target 'ShareExtension' do
+    use_frameworks!
+    pod 'Alamofire', '5.1'
+    pod 'Moya', '~> 14.0'
+    pod 'SwiftSoup'
+  end
 
 end

@@ -62,6 +62,7 @@
 		7A3574DC2B2F18F000FF5DB2 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABBCCEA2B2EDE5500E4E3F7 /* UserEntity+CoreDataProperties.swift */; };
 		7A3574DD2B2F18F300FF5DB2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DB1B22B2DA04F001F9064 /* CoreDataManager.swift */; };
 		7A3574DF2B2F586800FF5DB2 /* PresetNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3574DE2B2F586800FF5DB2 /* PresetNotification.swift */; };
+		7A3574E02B2FE4DB00FF5DB2 /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00133EB92B2451530035AB70 /* MemoViewModel.swift */; };
 		7A7F87832AEF559C00F14B11 /* CuckooApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87822AEF559C00F14B11 /* CuckooApp.swift */; };
 		7A7F87872AEF559D00F14B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7F87862AEF559D00F14B11 /* Assets.xcassets */; };
 		7A7F87942AEF559E00F14B11 /* CuckooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F87932AEF559E00F14B11 /* CuckooTests.swift */; };
@@ -807,6 +808,7 @@
 				7A3574D12B2F186700FF5DB2 /* Tags.swift in Sources */,
 				7A3574D72B2F18E300FF5DB2 /* NotiLogEntity+CoreDataClass.swift in Sources */,
 				7A3574DB2B2F18EE00FF5DB2 /* UserEntity+CoreDataClass.swift in Sources */,
+				7A3574E02B2FE4DB00FF5DB2 /* MemoViewModel.swift in Sources */,
 				7A3574CF2B2F184B00FF5DB2 /* MainContainerView.swift in Sources */,
 				7A3574CD2B2F182D00FF5DB2 /* Dummy.swift in Sources */,
 				7A3574D42B2F18DA00FF5DB2 /* AlarmPresetEntity+CoreDataProperties.swift in Sources */,
