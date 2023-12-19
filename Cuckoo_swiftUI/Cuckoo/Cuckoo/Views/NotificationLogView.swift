@@ -15,14 +15,14 @@ struct NotificationLogView: View {
             HeaderView(title: "알림")
                 .frame(height: 60)
                 .frame(maxWidth: .infinity)
-                .overlay(
-                    Button{
-                        viewModel.addLog(related_preset: AlarmPresetViewModel.shared.presets[0], memos: MemoViewModel.shared.memos)
-                    } label: {
-                        // Add logic
-                        Text("더미 메모 추가(Test)")
-                    }
-                    , alignment: .top)
+//                .overlay(
+//                    Button{
+//                        viewModel.addLog(related_preset: AlarmPresetViewModel.shared.presets[0], memos: MemoViewModel.shared.memos)
+//                    } label: {
+//                        // Add logic
+//                        Text("더미 메모 추가(Test)")
+//                    }
+//                    , alignment: .top)
             
             Spacer()
             
