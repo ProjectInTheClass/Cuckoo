@@ -49,6 +49,10 @@ class UserProfileViewModel: ObservableObject {
         
         return self.username
     }
+    
+    func resetRegistration() {
+        UserDefaults.standard.set(false, forKey: "isRegistered")
+    }
 
     func createUser(username: String, profileImagePath: String?) {
         UserDefaults.standard.set(username, forKey: "username")

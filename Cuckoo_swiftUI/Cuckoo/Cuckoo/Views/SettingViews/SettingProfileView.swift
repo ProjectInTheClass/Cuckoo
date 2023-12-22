@@ -54,6 +54,9 @@ struct SettingsProfileView: View {
                 .cornerRadius(70)
                 .foregroundColor(Color(red: 0, green: 0, blue: 0).opacity(0.30))
                 .padding(.vertical, 20)
+                .onTapGesture {
+//                    userViewModel.resetRegistration()
+                }
             
             //프로필(이름) 편집
             HStack {
